@@ -91,8 +91,7 @@
 					</fixedPart>
 				</whereClause>
 				<searchDocumentType>Invoice_Search_cv</searchDocumentType>
-				<sort column="Invoice:date_paid" ascending="true" />
-				<sort column="Invoice:date_issued" ascending="true" />
+				<sort column="dc:modified" ascending="false" />
 				<pageSize>10</pageSize>
 			</genericPageProvider>
 			<searchLayout name="Invoice_Search_cv@search" />

@@ -40,18 +40,27 @@
 				</row>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_0">2</property>
 					</properties>
 					<widget>Invoice_issuer_id</widget>
+					<widget></widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
 					<widget>Invoice_issuer_code</widget>
 				</row>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_0">2</property>
 					</properties>
 					<widget>Invoice_billTo_id</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
 					<widget>Invoice_billTo_code</widget>
 				</row>
 				<row>
