@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.schemas"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.core.schema.TypeService"
+		point="schema">
+
+		<schema name="administrative" prefix="administrative" src="data/schemas/administrative.xsd" />
+		<schema name="Invoice" prefix="Invoice" src="data/schemas/Invoice.xsd" />
+
+	</extension>
+
+</component>

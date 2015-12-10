@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-paymentOrder"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-paymentOrder">
+			<labels>
+				<label>label.athento-nx-common-doctypes.PaymentOrder</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/paymentOrder_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>number</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>concept</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>paymentOrderDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>amount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>sourceAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>destinationAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>signDate</widget>
+				</row>
+			</rows>
+			<widget name="number" type="text">
+				<labels>
+					<label mode="any">label.administrative.number</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:number</field>
+				</fields>
+			</widget>
+			<widget name="concept" type="text">
+				<labels>
+					<label mode="any">label.administrative.concept</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:concept</field>
+				</fields>
+			</widget>
+			<widget name="paymentOrderDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.paymentOrderDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:paymentOrderDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="amount" type="text">
+				<labels>
+					<label mode="any">label.administrative.amount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:amount</field>
+				</fields>
+			</widget>
+			<widget name="sourceAccount" type="text">
+				<labels>
+					<label mode="any">label.administrative.sourceAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:sourceAccount</field>
+				</fields>
+			</widget>
+			<widget name="destinationAccount" type="text">
+				<labels>
+					<label mode="any">label.administrative.destinationAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:destinationAccount</field>
+				</fields>
+			</widget>
+			<widget name="signDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.signDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:signDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+		</layout>
+
+	</extension>
+
+</component>
+		

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.contentview-cv"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.ui.web.ContentViewService"
+		point="contentViews">
+
+		<contentView name="Invoice_Search">
+			<title>label.athento-nx-administrative-doctypes.Invoice_Search
+			</title>
+			<translateTitle>true</translateTitle>
+			<genericPageProvider
+				class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+				<title>label.athento-nx-administrative-doctypes.Invoice_Search
+				</title>
+				<translateTitle>true</translateTitle>
+				<property name="coreSession">#{documentManager}</property>
+				<whereClause>
+					<predicate parameter="Invoice:billTo_code" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_billTo_code" />
+					</predicate>
+					<predicate parameter="Invoice:billTo_id" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_billTo_id" />
+					</predicate>
+					<predicate parameter="dc:created" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_created_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_created_max" />
+					</predicate>
+					<predicate parameter="Invoice:date_arrived" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_date_arrived_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_date_arrived_max" />
+					</predicate>
+					<predicate parameter="Invoice:date_issued" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_issued_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_issued_max" />
+					</predicate>
+					<predicate parameter="Invoice:date_paid" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_paid_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_paid_max" />
+					</predicate>
+					<predicate parameter="Invoice:issuer_code" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_issuer_code" />
+					</predicate>
+					<predicate parameter="Invoice:billTo_id" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_issuer_id" />
+					</predicate>
+					<predicate parameter="Invoice:locator" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_locator" />
+					</predicate>
+					<predicate parameter="Invoice:number" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_number" />
+					</predicate>
+					<predicate parameter="Invoice:observations" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_observations" />
+					</predicate>
+					<predicate parameter="Invoice:state" operator="=">
+						<field schema="Invoice_Search_cv" name="Invoice_state" />
+					</predicate>
+					<predicate parameter="Invoice:subtotal" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_subtotal_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_subtotal_max" />
+					</predicate>
+					<predicate parameter="Invoice:taxes" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_taxes_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_taxes_max" />
+					</predicate>
+					<predicate parameter="Invoice:taxes_percent" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_taxes_percent_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_taxes_percent_max" />
+					</predicate>
+					<predicate parameter="dc:title" operator="STARTSWITH">
+						<field schema="Invoice_Search_cv" name="Invoice_title" />
+					</predicate>
+					<predicate parameter="Invoice:total" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_total_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_total_max" />
+					</predicate>
+					<predicate parameter="Invoice:type" operator="=">
+						<field schema="Invoice_Search_cv" name="Invoice_type" />
+					</predicate>
+					<predicate parameter="dc:created" operator="BETWEEN">
+						<field schema="Invoice_Search_cv" name="Invoice_date_created_min" />
+						<field schema="Invoice_Search_cv" name="Invoice_date_created_max" />
+					</predicate>
+					<fixedPart>ecm:mixinType != 'HiddenInNavigation' AND
+						ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+						'deleted' AND ecm:primaryType = 'Invoice'
+					</fixedPart>
+				</whereClause>
+				<searchDocumentType>Invoice_Search_cv</searchDocumentType>
+				<sort column="Invoice:date_paid" ascending="true" />
+				<sort column="Invoice:date_issued" ascending="true" />
+				<pageSize>10</pageSize>
+			</genericPageProvider>
+			<searchLayout name="Invoice_Search_cv@search" />
+			<useGlobalPageSize>true</useGlobalPageSize>
+			<refresh>
+				<event>documentChanged</event>
+				<event>documentChildrenChanged</event>
+			</refresh>
+			<cacheKey>#{currentDocument.id}</cacheKey>
+			<cacheSize>10</cacheSize>
+			<selectionList>CURRENT_SELECTION</selectionList>
+			<showTitle>false</showTitle>
+			<showFilterForm>true</showFilterForm>
+			<showPageSizeSelector>true</showPageSizeSelector>
+			<showRefreshCommand>true</showRefreshCommand>
+			<actions category="CURRENT_SELECTION_LIST" />
+			<actions category="cv_actions@Invoice_Search" />
+			<resultLayouts>
+				<layout name="Invoice_Search_cv@results" title="document_listing"
+					translateTitle="true" iconPath="/icons/document_listing_icon.png"
+					showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+			</resultLayouts>
+			<resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+			</resultColumns>
+			<resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+			<flags>
+				<flag>SEARCH</flag>
+			</flags>
+		</contentView>
+
+		<contentView name="administrative_cv">
+			<title>label.athento-nx-administrative-doctypes.administrative_cv
+			</title>
+			<translateTitle>true</translateTitle>
+			<genericPageProvider
+				class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+				<property name="coreSession">#{documentManager}</property>
+				<whereClause>
+					<predicate parameter="administrative:amount" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_amount" />
+					</predicate>
+					<predicate parameter="administrative:concept" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_concept" />
+					</predicate>
+					<predicate parameter="administrative:category" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_category" />
+					</predicate>
+					<predicate parameter="administrative:company" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_company" />
+					</predicate>
+					<predicate parameter="administrative:companyNumber"
+						operator="LIKE">
+						<field schema="administrative_cv" name="administrative_companyNumber" />
+					</predicate>
+					<predicate parameter="administrative:destinationAccount"
+						operator="LIKE">
+						<field schema="administrative_cv" name="administrative_destinationAccount" />
+					</predicate>
+					<predicate parameter="administrative:sourceAccount"
+						operator="LIKE">
+						<field schema="administrative_cv" name="administrative_sourceAccount" />
+					</predicate>
+					<predicate parameter="administrative:location" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_location" />
+					</predicate>
+					<predicate parameter="administrative:number" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_number" />
+					</predicate>
+					<predicate parameter="administrative:signDate" operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_signDate_min" />
+						<field schema="administrative_cv" name="administrative_signDate_max" />
+					</predicate>
+					<predicate parameter="administrative:expenseDate"
+						operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_expenseDate_min" />
+						<field schema="administrative_cv" name="administrative_expenseDate_max" />
+					</predicate>
+					<predicate parameter="administrative:paymentOrderDate"
+						operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_paymentOrderDate_min" />
+						<field schema="administrative_cv" name="administrative_paymentOrderDate_max" />
+					</predicate>
+					<predicate parameter="administrative:transferDoneDate"
+						operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_transferDoneDate_min" />
+						<field schema="administrative_cv" name="administrative_transferDoneDate_max" />
+					</predicate>
+					<predicate parameter="administrative:transferRequestDate"
+						operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_transferRequestDate_min" />
+						<field schema="administrative_cv" name="administrative_transferRequestDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelEndDate"
+						operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_travelEndDate_min" />
+						<field schema="administrative_cv" name="administrative_travelEndDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelName"
+						operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travelName" />
+					</predicate>
+					<predicate parameter="administrative:travelRequestDate"
+						operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_travelRequestDate_min" />
+						<field schema="administrative_cv" name="administrative_travelRequestDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelStartDate"
+						operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_travelStartDate_min" />
+						<field schema="administrative_cv" name="administrative_travelStartDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelPurpose"
+						operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travelPurpose" />
+					</predicate>
+					<predicate parameter="userFile:nameid" operator="LIKE">
+						<field schema="userFile_cv" name="userFile_nameid" />
+					</predicate>
+					<predicate parameter="projectFile:nameid" operator="LIKE">
+						<field schema="projectFile_cv" name="projectFile_projectid" />
+					</predicate>
+					<fixedPart>ecm:mixinType != 'HiddenInNavigation' AND
+						ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+						'deleted' AND (ecm:primaryType = 'Expenses' OR ecm:primaryType =
+						'Invoice' OR ecm:primaryType = 'PaymentOrder' OR ecm:primaryType =
+						'TravelRequest' OR
+						ecm:primaryType = 'TransferRequest')
+					</fixedPart>
+				</whereClause>
+				<searchDocumentType>administrative_cv</searchDocumentType>
+				<sort column="dc:modified" ascending="false" />
+				<pageSize>10</pageSize>
+			</genericPageProvider>
+			<searchLayout name="administrative_cv@search" />
+			<useGlobalPageSize>true</useGlobalPageSize>
+			<refresh>
+				<event>documentChanged</event>
+				<event>documentChildrenChanged</event>
+			</refresh>
+			<cacheKey>#{currentDocument.id}</cacheKey>
+			<cacheSize>10</cacheSize>
+			<selectionList>CURRENT_SELECTION</selectionList>
+			<showTitle>false</showTitle>
+			<showFilterForm>true</showFilterForm>
+			<showPageSizeSelector>true</showPageSizeSelector>
+			<showRefreshCommand>true</showRefreshCommand>
+			<actions category="CURRENT_SELECTION_LIST" />
+			<actions category="cv_actions@Invoice_Search" />
+			<resultLayouts>
+				<layout name="document_listing_ajax" title="document_listing"
+					translateTitle="true" iconPath="/icons/document_listing_icon.png"
+					showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+			</resultLayouts>
+			<resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+			</resultColumns>
+			<resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+			<flags>
+				<flag>SEARCH</flag>
+			</flags>
+		</contentView>
+
+	</extension>
+
+</component>

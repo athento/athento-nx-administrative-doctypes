@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.schemas-cv"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.core.schema.TypeService"
+		point="schema">
+
+		<schema name="Invoice_Search_cv" prefix="Invoice_Search_cv"
+			src="data/schemas/Invoice_Search_cv.xsd" />
+		<schema name="administrative_cv" prefix="administrative_cv"
+			src="data/schemas/administrative_cv.xsd" />
+
+	</extension>
+
+</component>

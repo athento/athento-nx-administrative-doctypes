@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-travelRequest"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-travelRequest">
+			<labels>
+				<label>label.athento-nx-common-doctypes.TravelRequest</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/travelRequest_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>travelRequestDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>travelStartDate</widget>
+					<widget>travelEndDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>travelName</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>travelPurpose</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>amount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>signDate</widget>
+				</row>
+			</rows>
+			<widget name="travelRequestDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.travelRequestDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:travelRequestDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="travelStartDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.travelStartDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:travelStartDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="travelEndDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.travelEndDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:travelEndDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="travelName" type="text">
+				<labels>
+					<label mode="any">label.administrative.travelName</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:travelName</field>
+				</fields>
+			</widget>
+			<widget name="travelPurpose" type="textarea">
+				<labels>
+					<label mode="any">label.administrative.travelPurpose</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:travelPurpose</field>
+				</fields>
+			</widget>
+			<widget name="amount" type="text">
+				<labels>
+					<label mode="any">label.administrative.amount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:amount</field>
+				</fields>
+			</widget>
+			<widget name="signDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.signDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:signDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+		</layout>
+
+	</extension>
+
+</component>
+		

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.actions-cv"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.actions.ActionService"
+		point="actions">
+
+		<action id="Invoice_Search_search_action" enabled="true" order="20"
+			type="link" immediate="false" link=".">
+			<category>SEARCH_CONTENT_VIEWS</category>
+			<properties>
+				<property name="contentViewName">Invoice_Search</property>
+			</properties>
+		</action>
+		
+		<action id="administrative_cv_search_action" enabled="true" order="25"
+			type="link" immediate="false" link=".">
+			<category>SEARCH_CONTENT_VIEWS</category>
+			<properties>
+				<property name="contentViewName">administrative_cv</property>
+			</properties>
+		</action>
+
+	</extension>
+
+</component>	

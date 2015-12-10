@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-expenses"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-expenses">
+			<labels>
+				<label>label.athento-nx-common-doctypes.Expenses</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/expenses_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<properties mode="any">
+				<property name="widgetsDisplay">label_top</property>
+			</properties>
+			<rows>
+				>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>category</widget>
+					<widget>location</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>companyNumber</widget>
+					<widget>expenseDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>amount</widget>
+					<widget>signDate</widget>
+				</row>
+			</rows>
+			<widget name="category" type="text">
+				<labels>
+					<label mode="any">label.administrative.category</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:category</field>
+				</fields>
+			</widget>
+			<widget name="location" type="text">
+				<labels>
+					<label mode="any">label.administrative.location</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:location</field>
+				</fields>
+			</widget>
+			<widget name="companyNumber" type="text">
+				<labels>
+					<label mode="any">label.administrative.companyNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:companyNumber</field>
+				</fields>
+			</widget>
+			<widget name="expenseDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.expenseDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:expenseDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="amount" type="text">
+				<labels>
+					<label mode="any">label.administrative.amount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:amount</field>
+				</fields>
+			</widget>
+			<widget name="signDate" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.signDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:signDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+		</layout>
+
+	</extension>
+
+</component>
+		

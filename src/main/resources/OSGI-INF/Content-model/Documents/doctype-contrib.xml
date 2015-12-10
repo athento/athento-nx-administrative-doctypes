@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.doctype"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.core.schema.TypeService"
+		point="doctype">
+
+		<doctype name="Expenses" extends="File" append="true">
+			<schema name="administrative" />
+			<schema name="userFile" />
+			<schema name="projectFile" />
+			<schema name="common" />
+			<schema name="dublincore" />
+			<facet name="HasRelatedText" />
+			<facet name="Versionable" />
+			<facet name="Commentable" />
+			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
+		</doctype>
+
+		<doctype name="Invoice" extends="File" append="true">
+			<schema name="Invoice" />
+			<schema name="userFile" />
+			<schema name="projectFile" />
+			<schema name="common" />
+			<schema name="dublincore" />
+			<facet name="HasRelatedText" />
+			<facet name="Versionable" />
+			<facet name="Commentable" />
+			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
+		</doctype>
+
+		<doctype name="PaymentOrder" extends="File" append="true">
+			<schema name="administrative" />
+			<schema name="userFile" />
+			<schema name="projectFile" />
+			<schema name="common" />
+			<schema name="dublincore" />
+			<facet name="HasRelatedText" />
+			<facet name="Versionable" />
+			<facet name="Commentable" />
+			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
+		</doctype>
+
+		<doctype name="TransferRequest" extends="File" append="true">
+			<schema name="administrative" />
+			<schema name="userFile" />
+			<schema name="projectFile" />
+			<schema name="common" />
+			<schema name="dublincore" />
+			<facet name="HasRelatedText" />
+			<facet name="Versionable" />
+			<facet name="Commentable" />
+			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
+		</doctype>
+
+		<doctype name="TravelRequest" extends="File" append="true">
+			<schema name="administrative" />
+			<schema name="userFile" />
+			<schema name="projectFile" />
+			<schema name="common" />
+			<schema name="dublincore" />
+			<facet name="HasRelatedText" />
+			<facet name="Versionable" />
+			<facet name="Commentable" />
+			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
+		</doctype>
+
+	</extension>
+
+	<extension target="org.nuxeo.ecm.platform.types.TypeService"
+		point="types">
+
+		<type id="Expenses">
+			<label>label.athento-nx-administrative-doctypes.Expenses</label>
+			<translated>true</translated>
+			<icon>/img/file_100.png</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>label.athento-nx-administrative-doctypes.Expenses.description
+			</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-expenses</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-expenses</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout@formlayout-expenses</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+		</type>
+
+		<type id="Invoice">
+			<label>label.athento-nx-administrative-doctypes.Invoice</label>
+			<icon>/img/file_100.png</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>label.athento-nx-administrative-doctypes.Invoice.description
+			</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-invoice</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-invoice</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout@formlayout-invoice</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+		</type>
+
+		<type id="PaymentOrder">
+			<label>label.athento-nx-administrative-doctypes.PaymentOrder</label>
+			<translated>true</translated>
+			<icon>/img/file_100.png</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>label.athento-nx-administrative-doctypes.PaymentOrder.description
+			</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-paymentOrder</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-paymentOrder</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout@formlayout-paymentOrder</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+		</type>
+
+		<type id="TransferRequest">
+			<label>label.athento-nx-administrative-doctypes.TransferRequest
+			</label>
+			<translated>true</translated>
+			<icon>/img/file_100.png</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>label.athento-nx-administrative-doctypes.TransferRequest.description
+			</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-transferRequest</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-transferRequest</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout@formlayout-transferRequest</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+		</type>
+
+		<type id="TravelRequest">
+			<label>label.athento-nx-administrative-doctypes.TravelRequest</label>
+			<translated>true</translated>
+			<icon>/img/file_100.png</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>label.athento-nx-administrative-doctypes.TravelRequest.description
+			</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-travelRequest</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-travelRequest</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout@formlayout-travelRequest</layout>
+				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+			</layouts>
+		</type>
+
+		<type id="Folder">
+			<subtypes>
+				<type>Expenses</type>
+				<type>Invoice</type>
+				<type>PaymentOrder</type>
+				<type>TransferRequest</type>
+				<type>TravelRequest</type>
+			</subtypes>
+		</type>
+		<type id="Workspace">
+			<subtypes>
+				<type>Expenses</type>
+				<type>Invoice</type>
+				<type>PaymentOrder</type>
+				<type>TransferRequest</type>
+				<type>TravelRequest</type>
+			</subtypes>
+		</type>
+
+	</extension>
+
+</component>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.filters"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.actions.ActionService"
+		point="filters">
+
+		<filter id="filter@wf@ParallelDocumentReview" append="true">
+			<rule grant="true">
+				<permission>ReadWrite</permission>
+				<type>Expense</type>
+				<type>Invoice</type>
+				<type>PaymentOrder</type>
+				<type>TransferRequest</type>
+				<type>TravelRequest</type>
+			</rule>
+			<rule grant="false">
+				<condition>document.isImmutable()</condition>
+			</rule>
+		</filter>
+
+		<filter id="filter@SerialDocumentReview" append="true">
+			<rule grant="true">
+				<permission>ReadWrite</permission>
+				<type>Expense</type>
+				<type>Invoice</type>
+				<type>PaymentOrder</type>
+				<type>TransferRequest</type>
+				<type>TravelRequest</type>
+			</rule>
+			<rule grant="false">
+				<condition>document.isImmutable()</condition>
+			</rule>
+		</filter>
+
+		<filter id="create" append="true">
+			<rule grant="false">
+				<type>Expense</type>
+				<type>Invoice</type>
+				<type>PaymentOrder</type>
+				<type>TransferRequest</type>
+				<type>TravelRequest</type>
+			</rule>
+		</filter>
+
+	</extension>
+
+</component>

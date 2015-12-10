@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.searchlayout-cv"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="Invoice_Search_cv@search">
+			<templates>
+				<template mode="any">/layouts/layout_default_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>Invoice_title</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>Invoice_observations</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>Invoice_number</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>Invoice_locator</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_issuer_id</widget>
+					<widget>Invoice_issuer_code</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_billTo_id</widget>
+					<widget>Invoice_billTo_code</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>Invoice_state</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>Invoice_type</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_subtotal_min</widget>
+					<widget>Invoice_subtotal_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_taxes_min</widget>
+					<widget>Invoice_taxes_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_taxes_percent_min</widget>
+					<widget>Invoice_taxes_percent_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_total_min</widget>
+					<widget>Invoice_total_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_date_arrived_min</widget>
+					<widget>Invoice_date_arrived_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_date_issued_min</widget>
+					<widget>Invoice_date_issued_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_date_paid_min</widget>
+					<widget>Invoice_date_paid_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>Invoice_date_created_min</widget>
+					<widget>Invoice_date_created_max</widget>
+				</row>
+			</rows>
+
+			<widget name="Invoice_title" type="text">
+				<labels>
+					<label mode="any">label.Invoice.title</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_title</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_number" type="text">
+				<labels>
+					<label mode="any">label.Invoice.number</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_number</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_locator" type="text">
+				<labels>
+					<label mode="any">label.Invoice.locator</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_locator</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_issuer_code" type="text">
+				<labels>
+					<label mode="any">label.Invoice.issuer.code</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_issuer_code</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_issuer_id" type="text">
+				<labels>
+					<label mode="any">label.Invoice.issuer.id</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_issuer_id</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_billTo_code" type="text">
+				<labels>
+					<label mode="any">label.Invoice.billTo.code</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_billTo_code</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_billTo_id" type="text">
+				<labels>
+					<label mode="any">label.Invoice.billTo.id</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_billTo_id</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_observations" type="textarea">
+				<labels>
+					<label mode="any">label.Invoice.observations</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_observations</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_state" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.Invoice.state</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_state</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="localize">true</property>
+					<property name="directoryName">invoiceStates</property>
+					<property name="ordering">ordering</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_type" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.Invoice.type</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_type</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="localize">true</property>
+					<property name="directoryName">invoiceTypes</property>
+					<property name="ordering">ordering</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_subtotal_max" type="double">
+				<labels>
+					<label mode="any">label.Invoice.subtotal.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_subtotal_max</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_subtotal_min" type="double">
+				<labels>
+					<label mode="any">label.Invoice.subtotal.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_subtotal_min</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_taxes_min" type="double">
+				<labels>
+					<label mode="any">label.Invoice.taxes.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_taxes_min</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_taxes_max" type="double">
+				<labels>
+					<label mode="any">label.Invoice.taxes.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_taxes_max</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_taxes_percent_max" type="double">
+				<labels>
+					<label mode="any">label.Invoice.taxes_percent.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_taxes_percent_max</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_taxes_percent_min" type="double">
+				<labels>
+					<label mode="any">label.Invoice.taxes_percent.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_taxes_percent_min</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_total_max" type="double">
+				<labels>
+					<label mode="any">label.Invoice.total.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_total_max</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_total_min" type="double">
+				<labels>
+					<label mode="any">label.Invoice.total.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_total_min</field>
+				</fields>
+			</widget>
+
+			<widget name="Invoice_date_issued_min" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_issued.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_issued_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_date_issued_max" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_issued.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_issued_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_date_paid_min" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_paid.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_paid_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_date_paid_max" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_paid.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_paid_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_date_arrived_min" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_arrived.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_arrived_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_date_arrived_max" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_arrived.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_arrived_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_date_created_min" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_created.min</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_created_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="Invoice_date_created_max" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_created.max</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice_Search_cv:Invoice_date_created_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+		</layout>
+
+		<layout name="administrative_cv@search">
+			<templates>
+				<template mode="any">/layouts/layout_default_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_amount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_concept</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_category</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_company</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_companyNumber</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_destinationAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_sourceAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_location</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_number</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_signDate_min</widget>
+					<widget>administrative_signDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_expenseDate_min</widget>
+					<widget>administrative_expenseDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_paymentOrderDate_min</widget>
+					<widget>administrative_paymentOrderDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_transferDoneDate_min</widget>
+					<widget>administrative_transferDoneDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_transferRequestDate_min</widget>
+					<widget>administrative_transferRequestDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_travelEndDate_min</widget>
+					<widget>administrative_travelEndDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_travelName</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_travelRequestDate_min</widget>
+					<widget>administrative_travelRequestDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>administrative_travelStartDate_min</widget>
+					<widget>administrative_travelStartDate_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_travelPurpose</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>userFile_nameid</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>projectFile_projectid</widget>
+				</row>
+			</rows>
+
+			<widget name="administrative_amount" type="text">
+				<labels>
+					<label mode="any">label.administrative.amount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_amount</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_concept" type="text">
+				<labels>
+					<label mode="any">label.administrative.concept</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_concept</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_category" type="text">
+				<labels>
+					<label mode="any">label.administrative.concept</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_category</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_company" type="text">
+				<labels>
+					<label mode="any">label.administrative.company</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_company</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_companyNumber" type="text">
+				<labels>
+					<label mode="any">label.administrative.companyNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_companyNumber</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_destinationAccount" type="text">
+				<labels>
+					<label mode="any">label.administrative.destinationAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_destinationAccount</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_sourceAccount" type="text">
+				<labels>
+					<label mode="any">label.administrative.sourceAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_sourceAccount</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_location" type="text">
+				<labels>
+					<label mode="any">label.administrative.location</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_location</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_number" type="text">
+				<labels>
+					<label mode="any">label.administrative.number</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_number</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_signDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.signDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_signDate_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_signDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_signDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_expenseDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.expenseDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_expenseDate_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_expenseDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_expenseDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_paymentOrderDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.paymentOrderDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_paymentOrderDate_min
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_paymentOrderDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_paymentOrderDate_max
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_transferDoneDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.transferDoneDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_transferDoneDate_min
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_transferDoneDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_transferDoneDate_max
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_transferRequestDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.transferRequestDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_transferRequestDate_min
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_transferRequestDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_transferRequestDate_max
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_travelEndDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.travelEndDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelEndDate_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_travelEndDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelEndDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_travelName" type="text">
+				<labels>
+					<label mode="any">label.administrative.travelName</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelName</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_travelRequestDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.travelRequestDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelRequestDate_min
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_travelRequestDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelRequestDate_max
+					</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_travelStartDate_min" type="datetime">
+				<labels>
+					<label mode="any">label.administrative.travelStartDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelStartDate_min</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_travelStartDate_max" type="datetime">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelStartDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="administrative_travelPurpose" type="text">
+				<labels>
+					<label mode="any">label.administrative.travelPurpose</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelPurpose</field>
+				</fields>
+			</widget>
+
+			<widget name="userFile_nameid" type="text">
+				<labels>
+					<label mode="any">label.administrative.userFile_nameid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile_cv:userFile_nameid</field>
+				</fields>
+			</widget>
+
+			<widget name="projectFile_projectid" type="text">
+				<labels>
+					<label mode="any">label.administrative.projectFile_projectid
+					</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>projectFile_cv:projectFile_projectid</field>
+				</fields>
+			</widget>
+		</layout>
+
+	</extension>
+
+</component>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-invoice"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-invoice">
+			<labels>
+				<label>label.athento-nx-common-doctypes.Invoice</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/invoice_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_1">2</property>
+					</properties>
+					<widget>number</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>locator</widget>
+					<widget>date_arrived</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>date_issued</widget>
+					<widget>date_paid</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>state</widget>
+					<widget>type</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>issuer_id</widget>
+					<widget>issuer_code</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>billTo_id</widget>
+					<widget>billTo_code</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>subtotal</widget>
+					<widget>total</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>taxes</widget>
+					<widget>taxes_percent</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>observations</widget>
+				</row>
+			</rows>
+			<widget name="billTo_code" type="textarea">
+				<labels>
+					<label mode="any">label.Invoice.billTo.code</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:billTo_code</field>
+				</fields>
+			</widget>
+			<widget name="billTo_id" type="textarea">
+				<labels>
+					<label mode="any">label.Invoice.billTo.id</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:billTo_id</field>
+				</fields>
+			</widget>
+			<widget name="date_arrived" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_arrived</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:date_arrived</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="date_issued" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_issued</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:date_issued</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="date_paid" type="datetime">
+				<labels>
+					<label mode="any">label.Invoice.date_paid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:date_paid</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>			
+			<widget name="issuer_code" type="text">
+				<labels>
+					<label mode="any">label.Invoice.issuer.code</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:issuer_code</field>
+				</fields>
+			</widget>
+			<widget name="issuer_id" type="text">
+				<labels>
+					<label mode="any">label.Invoice.issuer.id</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:issuer_id</field>
+				</fields>
+			</widget>
+			<widget name="locator" type="text">
+				<labels>
+					<label mode="any">label.Invoice.locator</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:locator</field>
+				</fields>
+			</widget>
+			<widget name="number" type="text">
+				<labels>
+					<label mode="any">label.Invoice.number</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:number</field>
+				</fields>
+			</widget>
+			<widget name="subtotal" type="double">
+				<labels>
+					<label mode="any">label.Invoice.subtotal</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:subtotal</field>
+				</fields>
+			</widget>
+			<widget name="taxes" type="double">
+				<labels>
+					<label mode="any">label.Invoice.taxes</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:taxes</field>
+				</fields>
+			</widget>
+			<widget name="taxes_percent" type="double">
+				<labels>
+					<label mode="any">label.Invoice.taxes_percent</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:taxes_percent</field>
+				</fields>
+			</widget>
+			<widget name="observations" type="textarea">
+				<labels>
+					<label mode="any">label.Invoice.observations</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:observations</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="styleClass">dataInputText</property>
+				</properties>
+			</widget>
+			<widget name="state" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.Invoice.state</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:state</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="localize">true</property>
+					<property name="directoryName">invoiceStates</property>
+					<property name="ordering">ordering</property>
+				</properties>
+				<properties widgetMode="view">
+					<property name="localize">true</property>
+					<property name="directoryName">invoiceStates</property>
+				</properties>
+			</widget>
+			<widget name="total" type="double">
+				<labels>
+					<label mode="any">label.Invoice.total</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:total</field>
+				</fields>
+			</widget>
+			<widget name="type" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.Invoice.type</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>Invoice:type</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="localize">true</property>
+					<property name="directoryName">invoiceTypes</property>
+				</properties>
+			</widget>
+		</layout>
+
+	</extension>
+
+</component>
+		

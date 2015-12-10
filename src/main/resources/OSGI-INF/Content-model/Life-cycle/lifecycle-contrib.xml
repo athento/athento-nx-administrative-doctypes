@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.lifecycle"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+	<extension target="org.nuxeo.ecm.core.lifecycle.LifeCycleService"
+		point="types">
+
+		<types>			
+			<type name="Expenses">default</type>
+			<type name="Invoice">default</type>
+			<type name="PaymentOrder">default</type>
+			<type name="TransferRequest">default</type>
+			<type name="TravelRequest">default</type>
+		</types>
+
+	</extension>
+
+</component>

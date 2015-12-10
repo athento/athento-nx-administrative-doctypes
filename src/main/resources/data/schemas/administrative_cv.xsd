@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:nxs="http://www.nuxeo.org/ecm/project/schemas/athento/administrative"
+	targetNamespace="http://www.nuxeo.org/ecm/project/schemas/athento/administrative">
+	<!-- helper XSD definitions for list types -->
+	<xs:complexType name="content">
+		<xs:sequence>
+			<xs:element name="encoding" type="xs:string" />
+			<xs:element name="mime-type" type="xs:string" />
+			<xs:element name="data" type="xs:base64Binary" />
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="length" type="xs:long" />
+			<xs:element name="digest" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="stringList">
+		<xs:list itemType="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="doubleList">
+		<xs:list itemType="xs:double" />
+	</xs:simpleType>
+	<xs:simpleType name="dateList">
+		<xs:list itemType="xs:date" />
+	</xs:simpleType>
+	<xs:simpleType name="integerList">
+		<xs:list itemType="xs:integer" />
+	</xs:simpleType>
+	<xs:simpleType name="booleanList">
+		<xs:list itemType="xs:boolean" />
+	</xs:simpleType>
+	<xs:complexType name="blobList">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:content" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Total Amount of the Document (meaning depends on the document) -->
+	<xs:element name="administrative_amount" type="xs:string" />
+	<!-- Concept for the Document -->
+	<xs:element name="administrative_concept" type="xs:string" />
+	<!-- Category for the Document -->
+	<xs:element name="administrative_category" type="xs:string" />
+	<!-- Company for the Document (oriented for external Company reference) -->
+	<xs:element name="administrative_company" type="xs:string" />
+	<!-- Company Number for the Document (oriented for internal Company reference) -->
+	<xs:element name="administrative_companyNumber" type="xs:string" />
+	<!-- Destination Account -->
+	<xs:element name="administrative_destinationAccount" type="xs:string" />
+	<!-- Location for the Document -->
+	<xs:element name="administrative_location" type="xs:string" />
+	<!-- Number of the Document (if enumerated) -->
+	<xs:element name="administrative_number" type="xs:string" />
+	<!-- Validation date for the Document -->
+	<xs:element name="administrative_signDate_min" type="xs:date" />
+	<xs:element name="administrative_signDate_max" type="xs:date" />
+	<!-- Source Account -->
+	<xs:element name="administrative_sourceAccount" type="xs:string" />
+
+	<!-- ** Expenses ** -->
+
+	<!-- Document Expense date -->
+	<xs:element name="administrative_expenseDate_min" type="xs:date" />
+	<xs:element name="administrative_expenseDate_max" type="xs:date" />
+
+	<!-- ** Payment Orders ** -->
+
+	<!-- Payment Order date -->
+	<xs:element name="administrative_paymentOrderDate_min" type="xs:date" />
+	<xs:element name="administrative_paymentOrderDate_max" type="xs:date" />
+
+	<!-- ** Transfer Requests ** -->
+
+	<!-- Transfer date when it is done -->
+	<xs:element name="administrative_transferDoneDate_min" type="xs:date" />
+	<xs:element name="administrative_transferDoneDate_max" type="xs:date" />
+	<!-- Transfer Request date -->
+	<xs:element name="administrative_transferRequestDate_min" type="xs:date" />
+	<xs:element name="administrative_transferRequestDate_max" type="xs:date" />
+
+	<!-- ** Travel Requests ** -->
+
+	<!-- Travel end date -->
+	<xs:element name="administrative_travelEndDate_min" type="xs:date" />
+	<xs:element name="administrative_travelEndDate_max" type="xs:date" />
+	<!-- Travel name. Destination usually -->
+	<xs:element name="administrative_travelName" type="xs:string" />
+	<!-- Travel Request date -->
+	<xs:element name="administrative_travelRequestDate_min" type="xs:date" />
+	<xs:element name="administrative_travelRequestDate_max" type="xs:date" />
+	<!-- Travel start date -->
+	<xs:element name="administrative_travelStartDate_min" type="xs:date" />
+	<xs:element name="administrative_travelStartDate_max" type="xs:date" />
+	<!-- Travel Purpose -->
+	<xs:element name="administrative_travelPurpose" type="xs:string" />
+
+</xs:schema>
