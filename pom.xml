@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>athento-nx-administrative-doctypes</groupId>
 	<artifactId>athento-nx-administrative-doctypes</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<name>Athento NX Administrative Doctypes</name>
 	<description>Athento NX Administrative Doctypes</description>
 
