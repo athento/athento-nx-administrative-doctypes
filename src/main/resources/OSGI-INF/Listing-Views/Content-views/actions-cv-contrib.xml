@@ -8,16 +8,8 @@
 	<extension target="org.nuxeo.ecm.platform.actions.ActionService"
 		point="actions">
 
-		<action id="Invoice_Search_search_action" enabled="true" order="20"
-			type="link" immediate="false" link=".">
-			<category>SEARCH_CONTENT_VIEWS</category>
-			<properties>
-				<property name="contentViewName">Invoice_Search</property>
-			</properties>
-		</action>
-		
-		<action id="administrative_cv_search_action" enabled="true" order="25"
-			type="link" immediate="false" link=".">
+		<action id="administrative_cv_search_action" enabled="true"
+			order="25" type="link" immediate="false" link=".">
 			<category>SEARCH_CONTENT_VIEWS</category>
 			<properties>
 				<property name="contentViewName">administrative_cv</property>

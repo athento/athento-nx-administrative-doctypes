@@ -8,13 +8,6 @@
 	<extension target="org.nuxeo.ecm.core.schema.TypeService"
 		point="doctype">
 
-		<doctype name="Invoice_Search_cv" extends="Document">
-			<facet name="ContentViewDisplay" />
-			<facet name="SavedSearch" />
-			<facet name="HiddenInNavigation" />
-			<schema name="Invoice_Search_cv" />
-		</doctype>
-
 		<doctype name="administrative_cv" extends="Document">
 			<facet name="ContentViewDisplay" />
 			<facet name="SavedSearch" />
@@ -28,18 +21,6 @@
 
 	<extension target="org.nuxeo.ecm.platform.types.TypeService"
 		point="types">
-
-		<type id="Invoice_Search_cv">
-			<label>DefaultSearch</label>
-			<icon>/icons/search.png</icon>
-			<bigIcon>/icons/search_100.png</bigIcon>
-			<description>DefaultSearch.description</description>
-			<default-view>home_view_documents</default-view>
-			<layouts mode="any">
-				<layout>heading</layout>
-				<layout>Invoice_Search_cv@search</layout>
-			</layouts>
-		</type>
 
 		<type id="administrative_cv">
 			<label>DefaultSearch</label>

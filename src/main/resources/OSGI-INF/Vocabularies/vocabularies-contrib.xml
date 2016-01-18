@@ -8,38 +8,10 @@
 	<extension target="org.nuxeo.ecm.directory.sql.SQLDirectoryFactory"
 		point="directories">
 
-		<directory name="invoiceStates">
-			<schema>vocabulary</schema>
-			<dataSource>java:/nxsqldirectory</dataSource>
-			<cacheTimeout>3600</cacheTimeout>
-			<cacheMaxSize>1000</cacheMaxSize>
-			<idField>id</idField>
-			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>on_missing_columns</createTablePolicy>
-			<table>vocabulary_invoiceStates</table>
-			<dataFile>data/vocabularies/invoiceStates.csv</dataFile>
-		</directory>
-		<directory name="invoiceTypes">
-			<schema>vocabulary</schema>
-			<dataSource>java:/nxsqldirectory</dataSource>
-			<cacheTimeout>3600</cacheTimeout>
-			<cacheMaxSize>1000</cacheMaxSize>
-			<idField>id</idField>
-			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>on_missing_columns</createTablePolicy>
-			<table>vocabulary_invoiceTypes</table>
-			<dataFile>data/vocabularies/invoiceTypes.csv</dataFile>
-		</directory>
-
 	</extension>
 
 	<extension target="org.nuxeo.ecm.directory.ui.DirectoryUIManager"
 		point="directories">
-
-		<directory name="invoiceStates" layout="vocabulary"
-			sortField="label" />
-		<directory name="invoiceTypes" layout="vocabulary"
-			sortField="label" />
 
 	</extension>
 
