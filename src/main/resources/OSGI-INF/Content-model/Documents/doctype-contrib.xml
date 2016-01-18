@@ -91,35 +91,6 @@
 			</layouts>
 		</type>
 
-		<type id="Invoice">
-			<label>label.athento-nx-administrative-doctypes.Invoice</label>
-			<icon>/img/file_100.png</icon>
-			<bigIcon>/img/file_100.png</bigIcon>
-			<description>label.athento-nx-administrative-doctypes.Invoice.description
-			</description>
-			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
-			<default-view>view_documents</default-view>
-			<layouts mode="create">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-invoice</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
-			</layouts>
-			<layouts mode="edit">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-invoice</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
-			</layouts>
-			<layouts mode="view">
-				<layout>layout@formlayout-invoice</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
-			</layouts>
-		</type>
-
 		<type id="PaymentOrder">
 			<label>label.athento-nx-administrative-doctypes.PaymentOrder</label>
 			<translated>true</translated>
