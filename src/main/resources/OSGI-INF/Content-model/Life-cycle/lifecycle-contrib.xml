@@ -7,9 +7,8 @@
 	<extension target="org.nuxeo.ecm.core.lifecycle.LifeCycleService"
 		point="types">
 
-		<types>			
+		<types>
 			<type name="Expenses">default</type>
-			<type name="Invoice">default</type>
 			<type name="PaymentOrder">default</type>
 			<type name="TransferRequest">default</type>
 			<type name="TravelRequest">default</type>

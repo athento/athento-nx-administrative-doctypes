@@ -20,18 +20,6 @@
 			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
 		</doctype>
 
-		<doctype name="Invoice" extends="File" append="true">
-			<schema name="Invoice" />
-			<schema name="userFile" />
-			<schema name="projectFile" />
-			<schema name="common" />
-			<schema name="dublincore" />
-			<facet name="HasRelatedText" />
-			<facet name="Versionable" />
-			<facet name="Commentable" />
-			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
-		</doctype>
-
 		<doctype name="PaymentOrder" extends="File" append="true">
 			<schema name="administrative" />
 			<schema name="userFile" />
