@@ -8,7 +8,7 @@
 	<extension target="org.nuxeo.ecm.core.versioning.VersioningService"
 		point="versioningRules">
 
-		<versioningRule typeName="Invoice">
+		<versioningRule typeName="Expenses">
 			<initialState major="0" minor="0" />
 			<options lifeCycleState="*">
 				<none default="true" />
@@ -16,8 +16,26 @@
 				<major />
 			</options>
 		</versioningRule>
-		
-		<versioningRule typeName="Expenses">
+
+		<versioningRule typeName="PaymentOrder">
+			<initialState major="0" minor="0" />
+			<options lifeCycleState="*">
+				<none default="true" />
+				<minor />
+				<major />
+			</options>
+		</versioningRule>
+
+		<versioningRule typeName="TransferRequest">
+			<initialState major="0" minor="0" />
+			<options lifeCycleState="*">
+				<none default="true" />
+				<minor />
+				<major />
+			</options>
+		</versioningRule>
+
+		<versioningRule typeName="TravelRequest">
 			<initialState major="0" minor="0" />
 			<options lifeCycleState="*">
 				<none default="true" />

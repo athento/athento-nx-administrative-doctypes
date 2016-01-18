@@ -12,7 +12,6 @@
 			<rule grant="true">
 				<permission>ReadWrite</permission>
 				<type>Expense</type>
-				<type>Invoice</type>
 				<type>PaymentOrder</type>
 				<type>TransferRequest</type>
 				<type>TravelRequest</type>
@@ -26,7 +25,6 @@
 			<rule grant="true">
 				<permission>ReadWrite</permission>
 				<type>Expense</type>
-				<type>Invoice</type>
 				<type>PaymentOrder</type>
 				<type>TransferRequest</type>
 				<type>TravelRequest</type>
@@ -39,7 +37,6 @@
 		<filter id="create" append="true">
 			<rule grant="false">
 				<type>Expense</type>
-				<type>Invoice</type>
 				<type>PaymentOrder</type>
 				<type>TransferRequest</type>
 				<type>TravelRequest</type>

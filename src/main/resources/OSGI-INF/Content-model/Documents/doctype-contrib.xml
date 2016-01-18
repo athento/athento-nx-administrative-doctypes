@@ -20,18 +20,6 @@
 			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
 		</doctype>
 
-		<doctype name="Invoice" extends="File" append="true">
-			<schema name="Invoice" />
-			<schema name="userFile" />
-			<schema name="projectFile" />
-			<schema name="common" />
-			<schema name="dublincore" />
-			<facet name="HasRelatedText" />
-			<facet name="Versionable" />
-			<facet name="Commentable" />
-			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
-		</doctype>
-
 		<doctype name="PaymentOrder" extends="File" append="true">
 			<schema name="administrative" />
 			<schema name="userFile" />
@@ -98,35 +86,6 @@
 			</layouts>
 			<layouts mode="view">
 				<layout>layout@formlayout-expenses</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
-			</layouts>
-		</type>
-
-		<type id="Invoice">
-			<label>label.athento-nx-administrative-doctypes.Invoice</label>
-			<icon>/img/file_100.png</icon>
-			<bigIcon>/img/file_100.png</bigIcon>
-			<description>label.athento-nx-administrative-doctypes.Invoice.description
-			</description>
-			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
-			<default-view>view_documents</default-view>
-			<layouts mode="create">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-invoice</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
-			</layouts>
-			<layouts mode="edit">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-invoice</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
-			</layouts>
-			<layouts mode="view">
-				<layout>layout@formlayout-invoice</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
 				<layout>layout@formlayout-projectFileHeading</layout>
 			</layouts>

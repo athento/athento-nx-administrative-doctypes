@@ -8,8 +8,8 @@
 	<extension target="org.nuxeo.ecm.core.schema.TypeService"
 		point="schema">
 
-		<schema name="administrative" prefix="administrative" src="data/schemas/administrative.xsd" />
-		<schema name="Invoice" prefix="Invoice" src="data/schemas/Invoice.xsd" />
+		<schema name="administrative" prefix="administrative"
+			src="data/schemas/administrative.xsd" />
 
 	</extension>
 
