@@ -8,10 +8,38 @@
 	<extension target="org.nuxeo.ecm.directory.sql.SQLDirectoryFactory"
 		point="directories">
 
+		<directory name="invoicestate">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_invoicestate</table>
+			<dataFile>data/vocabularies/invoicestate.csv</dataFile>
+		</directory>
+
+		<directory name="type">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_type</table>
+			<dataFile>data/vocabularies/type.csv</dataFile>
+		</directory>
+
 	</extension>
 
 	<extension target="org.nuxeo.ecm.directory.ui.DirectoryUIManager"
 		point="directories">
+
+		<directory name="invoicestate" layout="vocabulary"
+			sortField="label" />
+		<directory name="type" layout="vocabulary" sortField="label" />
 
 	</extension>
 
