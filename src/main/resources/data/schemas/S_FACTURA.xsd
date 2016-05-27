@@ -35,19 +35,51 @@
 				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+	
+	<!-- Included for compatibility -->
 	<xs:element name="bill" type="xs:string" />
+	<!-- Invoice date -->
 	<xs:element name="date" type="xs:date" />
+	<!-- Invoice number -->
 	<xs:element name="number" type="xs:string" />
+	<!-- Provider company, identified by their fiscal identification number -->
 	<xs:element name="provider" type="xs:string" />
+	<!-- Included for compatibility -->
 	<xs:element name="state" type="xs:string" />
+	<!-- Included for compatibility -->
 	<xs:element name="subtotal" type="xs:string" />
+	<!-- Included for compatibility -->
 	<xs:element name="taxes" type="xs:string" />
+	<!-- Included for compatibility -->
 	<xs:element name="total" type="xs:string" />
+	<!-- Outgoing or incoming invoice -->
 	<xs:element name="type" type="xs:string" />
 	
+	<!-- Source company, identified by their fiscal identification number -->
 	<xs:element name="company" type="xs:string" />
+	<!-- Source company, identified by an internal ID -->
 	<xs:element name="companyid" type="xs:string" />
+	<!-- Provider company, identified by an internal ID -->
 	<xs:element name="providerid" type="xs:string" />
+	<!-- Account date -->
 	<xs:element name="accountDate" type="xs:date" />
+	<!-- Taxable Income -->
+	<xs:element name="taxableIncome" type="xs:double" />
+	<!-- Ledger Account from the Ledger -->
+	<xs:element name="ledgerAccount" type="xs:string" />
+	<!-- Account -->
+	<xs:element name="account" type="xs:string" />
+	<!-- Tax Amout -->
+	<xs:element name="taxAmount" type="xs:double" />
+	<!-- Tax Percentage -->
+	<xs:element name="taxPercentage" type="xs:string" />
+	<!-- Total Amount -->
+	<xs:element name="totalAmount" type="xs:double" />
+	<!-- Bank Account -->
+	<xs:element name="bankAccount" type="xs:string" />
+	<!-- Payment Date -->
+	<xs:element name="paymentDate" type="xs:date" />
+	<!-- Payment Method -->
+	<xs:element name="paymentMethod" type="xs:string" />
 	
 </xs:schema>
