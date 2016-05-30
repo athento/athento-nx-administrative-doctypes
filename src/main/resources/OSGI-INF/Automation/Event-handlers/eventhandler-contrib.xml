@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.eventhandler"
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.eventhandler"
 	version="1.0.0">
 	<require>org.nuxeo.runtime.started</require>
 
 	<extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
 		point="event-handlers">
 
+		<handler chainId="updateRelated-checkEnabled">
+			<documentation>This event handler needs the
+				updateRelated-checkEnabled chain, which is included in
+				athento-nx-automatic-metadata-calculations. TODO: Change this
+				handler chain for another one with a simple operation: fire an 
+				event: documentRelatedNeedsUpdate
+			</documentation>
+			<event>documentModified</event>
+			<event>documentCreated</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
 
 	</extension>
 

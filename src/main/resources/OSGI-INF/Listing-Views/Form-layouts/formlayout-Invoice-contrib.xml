@@ -19,64 +19,70 @@
 			<rows>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>date</widget>
-				</row>
-				<row>
-					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
 					</properties>
-					<widget>provider</widget>
-					<widget>number</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>bill</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>subtotal</widget>
-					<widget>taxes</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>total</widget>
-					<widget />
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>state</widget>
 					<widget>type</widget>
 				</row>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_2">1</property>
 					</properties>
-					<widget>content</widget>
+					<widget>companyid</widget>
+					<widget>providerid</widget>
+					<widget>accountDate</widget>
 				</row>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
 					</properties>
-					<widget>description</widget>
+					<widget>date</widget>
+					<widget>number</widget>
 				</row>
-			</rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>subject</widget>
+					<widget>account</widget>
+				</row>
+			</rows>	
+			<widget name="account" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.account</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:account</field>
+				</fields>
+			</widget>
+			<widget name="accountDate" type="datetime">
+				<labels>
+					<label mode="any">label.S_FACTURA.accountDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:accountDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="companyid" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.companyid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:provider</field>
+				</fields>
+			</widget>
 			<widget name="date" type="datetime">
 				<labels>
-					<label mode="any">label.factura.date</label>
+					<label mode="any">label.S_FACTURA.date</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
@@ -85,15 +91,6 @@
 				<properties widgetMode="any">
 					<property name="format">#{nxu:basicDateFormatter()}</property>
 				</properties>
-			</widget>
-			<widget name="provider" type="text">
-				<labels>
-					<label mode="any">label.factura.provider</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:provider</field>
-				</fields>
 			</widget>
 			<widget name="number" type="text">
 				<labels>
@@ -104,55 +101,23 @@
 					<field>S_FACTURA:number</field>
 				</fields>
 			</widget>
-			<widget name="bill" type="textarea">
+			<widget name="providerid" type="text">
 				<labels>
-					<label mode="any">label.factura.bill</label>
+					<label mode="any">label.S_FACTURA.providerid</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>S_FACTURA:bill</field>
+					<field>S_FACTURA:providerid</field>
 				</fields>
 			</widget>
-			<widget name="subtotal" type="text">
+			<widget name="subject" type="text">
 				<labels>
-					<label mode="any">label.factura.subtotal</label>
+					<label mode="any">label.S_FACTURA.subject</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>S_FACTURA:subtotal</field>
+					<field>S_FACTURA:subject</field>
 				</fields>
-			</widget>
-			<widget name="taxes" type="text">
-				<labels>
-					<label mode="any">label.factura.taxes</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:taxes</field>
-				</fields>
-			</widget>
-			<widget name="total" type="text">
-				<labels>
-					<label mode="any">label.factura.total</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:total</field>
-				</fields>
-			</widget>
-			<widget name="state" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.factura.state</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:state</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="localize">true</property>
-					<property name="directoryName">invoicestate</property>
-					<property name="ordering">ordering</property>
-				</properties>
 			</widget>
 			<widget name="type" type="selectOneDirectory">
 				<labels>
@@ -162,32 +127,10 @@
 				<fields>
 					<field>S_FACTURA:type</field>
 				</fields>
-				<properties widgetMode="edit">
+				<properties widgetMode="any">
 					<property name="localize">true</property>
 					<property name="directoryName">type</property>
 					<property name="ordering">ordering</property>
-				</properties>
-			</widget>
-			<widget name="content" type="file">
-				<labels>
-					<label mode="any">label.factura.content</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>file:content</field>
-					<field>file:filename</field>
-				</fields>
-			</widget>
-			<widget name="description" type="textarea">
-				<labels>
-					<label mode="any">label.factura.description</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>dc:description</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="styleClass">dataInputText</property>
 				</properties>
 			</widget>
 		</layout>

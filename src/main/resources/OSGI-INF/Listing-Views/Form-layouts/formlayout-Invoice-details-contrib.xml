@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-Invoice-details"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-Invoice-details">
+			<labels>
+				<label>label.athento-nx-administrative-doctypes.Invoice-details</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/Invoice-details_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>ledgerAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_2">1</property>
+					</properties>
+					<widget>taxableIncome</widget>
+					<widget>taxPercentage</widget>
+					<widget>taxAmount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>totalAmount</widget>
+				</row>
+			</rows>	
+			<widget name="ledgerAccount" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.ledgerAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:ledgerAccount</field>
+				</fields>
+			</widget>
+			<widget name="taxAmount" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxAmount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:taxAmount</field>
+				</fields>
+			</widget>
+			<widget name="taxableIncome" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxableIncome</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:taxableIncome</field>
+				</fields>
+			</widget>
+			<widget name="taxPercentage" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxPercentage</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:taxPercentage</field>
+				</fields>
+			</widget>
+			<widget name="totalAmount" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.totalAmount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:totalAmount</field>
+				</fields>
+			</widget>
+		</layout>
+
+	</extension>
+
+</component>
+		

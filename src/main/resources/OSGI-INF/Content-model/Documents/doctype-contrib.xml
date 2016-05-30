@@ -93,25 +93,36 @@
 		</type>
 
 		<type id="Invoice">
-			<label>Invoice</label>
+			<label>label.athento-nx-administrative-doctypes.Invoice</label>
 			<icon>/img/file_100.png</icon>
 			<bigIcon>/img/file_100.png</bigIcon>
-			<description>Invoice</description>
+			<description>label.athento-nx-administrative-doctypes.Invoice.description</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory
+			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
 				<layout>heading</layout>
 				<layout>file</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
 				<layout>layout@formlayout-Invoice</layout>
+				<layout>layout@formlayout-Invoice-details</layout>
+				<layout>layout@formlayout-Invoice-payment</layout>
 			</layouts>
 			<layouts mode="edit">
 				<layout>heading</layout>
 				<layout>file</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
 				<layout>layout@formlayout-Invoice</layout>
+				<layout>layout@formlayout-Invoice-details</layout>
+				<layout>layout@formlayout-Invoice-payment</layout>
 			</layouts>
 			<layouts mode="view">
 				<layout>heading</layout>
 				<layout>file</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
 				<layout>layout@formlayout-Invoice</layout>
+				<layout>layout@formlayout-Invoice-details</layout>
+				<layout>layout@formlayout-Invoice-payment</layout>
 			</layouts>
 		</type>
 
