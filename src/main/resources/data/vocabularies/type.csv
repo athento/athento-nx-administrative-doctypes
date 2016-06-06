@@ -1,3 +1,3 @@
 "id","label","obsolete","ordering"
-"label.factura.issuedinvoices","label.factura.issuedinvoices","0","0"
-"label.factura.accountspayable","label.factura.accountspayable","0","1"
+"01","label.factura.accountspayable","0","0"
+"02","label.factura.issuedinvoices","0","1"

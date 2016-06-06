@@ -94,5 +94,65 @@
 	<xs:element name="administrative_travelStartDate_max" type="xs:date" />
 	<!-- Travel Purpose -->
 	<xs:element name="administrative_travelPurpose" type="xs:string" />
+	
+	<!-- Invoices -->
+	
+	<!-- Account -->
+	<xs:element name="S_FACTURA_account" type="xs:string" />
+	<!-- Account date -->
+	<xs:element name="S_FACTURA_accountDate_min" type="xs:date" />
+	<xs:element name="S_FACTURA_accountDate_max" type="xs:date" />
+	<!-- Bank -->
+	<xs:element name="S_FACTURA_bank" type="xs:string" />
+	<!-- Bank Account -->
+	<xs:element name="S_FACTURA_bankAccount" type="xs:string" />
+	<!-- Included for compatibility -->
+	<xs:element name="S_FACTURA_bill" type="xs:string" />
+	<!-- Source company, identified by their fiscal identification number -->
+	<xs:element name="S_FACTURA_company" type="xs:string" />
+	<!-- Source company, identified by an internal ID -->
+	<xs:element name="S_FACTURA_companyid" type="xs:string" />
+	<!-- Invoice date -->
+	<xs:element name="S_FACTURA_date_min" type="xs:date" />
+	<xs:element name="S_FACTURA_date_max" type="xs:date" />
+	<!-- Ledger Account from the Ledger -->
+	<xs:element name="S_FACTURA_ledgerAccount" type="xs:string" />
+	<!-- Invoice number -->
+	<xs:element name="S_FACTURA_number" type="xs:string" />
+	<!-- Payment Date -->
+	<xs:element name="S_FACTURA_paymentDate_min" type="xs:date" />
+	<xs:element name="S_FACTURA_paymentDate_max" type="xs:date" />
+	<!-- Payment Method -->
+	<xs:element name="S_FACTURA_paymentMethod" type="xs:string" />
+	<!-- Provider company, identified by their fiscal identification number -->
+	<xs:element name="S_FACTURA_provider" type="xs:string" />
+	<!-- Provider company, identified by an internal ID -->
+	<xs:element name="S_FACTURA_providerid" type="xs:string" />
+	<!-- Included for compatibility -->
+	<xs:element name="S_FACTURA_state" type="xs:string" />
+	<!-- Subject -->
+	<xs:element name="S_FACTURA_subject" type="xs:string" />
+	<!-- Included for compatibility -->
+	<xs:element name="S_FACTURA_subtotal" type="xs:string" />
+	<!-- Taxable Income -->
+	<xs:element name="S_FACTURA_taxableIncome_min" type="xs:double" />
+	<xs:element name="S_FACTURA_taxableIncome_max" type="xs:double" />
+	<!-- Tax Amout -->
+	<xs:element name="S_FACTURA_taxAmount_min" type="xs:double" />
+	<xs:element name="S_FACTURA_taxAmount_max" type="xs:double" />
+	<!-- Included for compatibility -->
+	<xs:element name="S_FACTURA_taxes" type="xs:string" />
+	<!-- Tax Percentage -->
+	<xs:element name="S_FACTURA_taxPercentage" type="xs:double" />
+	<!-- Included for compatibility -->
+	<xs:element name="S_FACTURA_total" type="xs:string" />
+	<!-- Total Amount -->
+	<xs:element name="S_FACTURA_totalAmount_min" type="xs:double" />
+	<xs:element name="S_FACTURA_totalAmount_max" type="xs:double" />
+	<!-- Outgoing or incoming invoice -->
+	<xs:element name="S_FACTURA_type" type="xs:string" />
+	<!-- Project binded to -->
+	<xs:element name="projectFile_projectid" type="xs:string" />
+	<xs:element name="projectFile_category" type="xs:string" />
 
 </xs:schema>
