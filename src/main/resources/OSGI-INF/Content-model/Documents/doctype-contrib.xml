@@ -12,8 +12,6 @@
 			<schema name="administrative" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
-			<schema name="common" />
-			<schema name="dublincore" />
 			<facet name="HasRelatedText" />
 			<facet name="Versionable" />
 			<facet name="Commentable" />
@@ -24,8 +22,6 @@
 			<schema name="administrative" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
-			<schema name="common" />
-			<schema name="dublincore" />
 			<facet name="HasRelatedText" />
 			<facet name="Versionable" />
 			<facet name="Commentable" />
@@ -36,8 +32,6 @@
 			<schema name="administrative" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
-			<schema name="common" />
-			<schema name="dublincore" />
 			<facet name="HasRelatedText" />
 			<facet name="Versionable" />
 			<facet name="Commentable" />
@@ -48,11 +42,17 @@
 			<schema name="administrative" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
-			<schema name="common" />
-			<schema name="dublincore" />
 			<facet name="HasRelatedText" />
 			<facet name="Versionable" />
 			<facet name="Commentable" />
+			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
+		</doctype>
+
+		<doctype name="Invoice" extends="File" append="true">
+			<schema name="S_FACTURA" />
+			<schema name="administrative" />
+			<schema name="userFile" />
+			<schema name="projectFile" />
 			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
 		</doctype>
 
@@ -64,11 +64,12 @@
 		<type id="Expenses">
 			<label>label.athento-nx-administrative-doctypes.Expenses</label>
 			<translated>true</translated>
-			<icon>/img/file_100.png</icon>
+			<icon>/icons/file.gif</icon>
 			<bigIcon>/img/file_100.png</bigIcon>
 			<description>label.athento-nx-administrative-doctypes.Expenses.description
 			</description>
-			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory
+			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
 				<layout>heading</layout>
@@ -91,6 +92,41 @@
 			</layouts>
 		</type>
 
+		<type id="Invoice">
+			<label>label.athento-nx-administrative-doctypes.Invoice</label>
+			<translated>true</translated>
+			<icon>/icons/file.gif</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>label.athento-nx-administrative-doctypes.Invoice.description</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory
+			</category>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-Invoice</layout>
+				<layout>layout@formlayout-Invoice-details</layout>
+				<layout>layout@formlayout-Invoice-payment</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-Invoice</layout>
+				<layout>layout@formlayout-Invoice-details</layout>
+				<layout>layout@formlayout-Invoice-payment</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>heading</layout>
+				<layout>file</layout>
+				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-Invoice</layout>
+				<layout>layout@formlayout-Invoice-details</layout>
+				<layout>layout@formlayout-Invoice-payment</layout>
+			</layouts>
+		</type>
+
 		<type id="PaymentOrder">
 			<label>label.athento-nx-administrative-doctypes.PaymentOrder</label>
 			<translated>true</translated>
@@ -98,7 +134,8 @@
 			<bigIcon>/img/file_100.png</bigIcon>
 			<description>label.athento-nx-administrative-doctypes.PaymentOrder.description
 			</description>
-			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory
+			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
 				<layout>heading</layout>
@@ -129,7 +166,8 @@
 			<bigIcon>/img/file_100.png</bigIcon>
 			<description>label.athento-nx-administrative-doctypes.TransferRequest.description
 			</description>
-			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory
+			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
 				<layout>heading</layout>
@@ -159,7 +197,8 @@
 			<bigIcon>/img/file_100.png</bigIcon>
 			<description>label.athento-nx-administrative-doctypes.TravelRequest.description
 			</description>
-			<category>label.athento-nx-administrative-doctypes.administrativeCategory</category>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory
+			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
 				<layout>heading</layout>
@@ -189,6 +228,7 @@
 				<type>PaymentOrder</type>
 				<type>TransferRequest</type>
 				<type>TravelRequest</type>
+				<type>Invoice</type>
 			</subtypes>
 		</type>
 		<type id="Workspace">
@@ -198,6 +238,7 @@
 				<type>PaymentOrder</type>
 				<type>TransferRequest</type>
 				<type>TravelRequest</type>
+				<type>Invoice</type>
 			</subtypes>
 		</type>
 
