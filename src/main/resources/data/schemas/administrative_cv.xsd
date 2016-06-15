@@ -35,6 +35,9 @@
 				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+	
+	<!-- Possible states for the Life Cycle -->
+	<xs:element name="system_currentLifeCycleState" type="nxs:stringList" />
 
 	<!-- Total Amount of the Document (meaning depends on the document) -->
 	<xs:element name="administrative_amount" type="xs:string" />
@@ -115,6 +118,8 @@
 	<!-- Invoice date -->
 	<xs:element name="S_FACTURA_date_min" type="xs:date" />
 	<xs:element name="S_FACTURA_date_max" type="xs:date" />
+	<!-- ERP unique number. Reserved for integrations -->
+	<xs:element name="S_FACTURA_erpNumber" type="xs:string" />
 	<!-- Ledger Account from the Ledger -->
 	<xs:element name="S_FACTURA_ledgerAccount" type="xs:string" />
 	<!-- Invoice number -->

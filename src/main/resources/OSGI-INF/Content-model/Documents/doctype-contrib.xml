@@ -64,7 +64,7 @@
 		<type id="Expenses">
 			<label>label.athento-nx-administrative-doctypes.Expenses</label>
 			<translated>true</translated>
-			<icon>/img/file_100.png</icon>
+			<icon>/icons/file.gif</icon>
 			<bigIcon>/img/file_100.png</bigIcon>
 			<description>label.athento-nx-administrative-doctypes.Expenses.description
 			</description>
@@ -94,7 +94,8 @@
 
 		<type id="Invoice">
 			<label>label.athento-nx-administrative-doctypes.Invoice</label>
-			<icon>/img/file_100.png</icon>
+			<translated>true</translated>
+			<icon>/icons/file.gif</icon>
 			<bigIcon>/img/file_100.png</bigIcon>
 			<description>label.athento-nx-administrative-doctypes.Invoice.description</description>
 			<category>label.athento-nx-administrative-doctypes.administrativeCategory

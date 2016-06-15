@@ -20,6 +20,22 @@
 			<filters>
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>
+				<lifeCycle>Validated</lifeCycle>
+			</filters>
+		</handler>
+		
+		<handler chainId="validateIssuedInvoice">
+			<documentation>This event handler automatically validates issued invoices
+			</documentation>
+			<event>documentCreated</event>
+			<event>documentModified</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+				<lifeCycle>Draft</lifeCycle>
+				<condition>Document['S_FACTURA:type'] == "Emitida" || 
+				Document['S_FACTURA:type'] == "02" ||
+				Document['S_FACTURA:type'] == "label.factura.issuedinvoices"</condition>
 			</filters>
 		</handler>
 

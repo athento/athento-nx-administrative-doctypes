@@ -57,6 +57,8 @@
 	<xs:element name="ledgerAccount" type="xs:string" />
 	<!-- Invoice number -->
 	<xs:element name="number" type="xs:string" />
+	<!-- ERP unique number. Reserved for integrations -->
+	<xs:element name="erpNumber" type="xs:string" />
 	<!-- Payment Date -->
 	<xs:element name="paymentDate" type="xs:date" />
 	<!-- Payment Method -->

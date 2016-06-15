@@ -49,6 +49,12 @@
 					<widget>subject</widget>
 					<widget>account</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>erpNumber</widget>
+				</row>
 			</rows>	
 			<widget name="account" type="text">
 				<labels>
@@ -91,6 +97,15 @@
 				<properties widgetMode="any">
 					<property name="format">#{nxu:basicDateFormatter()}</property>
 				</properties>
+			</widget>
+			<widget name="erpNumber" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.erpNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:erpNumber</field>
+				</fields>
 			</widget>
 			<widget name="number" type="text">
 				<labels>

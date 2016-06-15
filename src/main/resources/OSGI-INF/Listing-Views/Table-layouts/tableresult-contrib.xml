@@ -223,6 +223,21 @@
 					</properties>
 					<widget>date</widget>
 				</column>
+				<column name="erpNumber" selectedByDefault="false">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.S_FACTURA.erpNumber</property>
+						<property name="sortPropertyName">S_FACTURA:erpNumber</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>erpNumber</widget>
+				</column>
 				<column name="ledgerAccount" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
@@ -493,6 +508,15 @@
 				<translated>true</translated>
 				<fields>
 					<field>data['S_FACTURA']['date']</field>
+				</fields>
+			</widget>
+			<widget name="erpNumber" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.erpNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>data['S_FACTURA']['erpNumber']</field>
 				</fields>
 			</widget>
 			<widget name="ledgerAccount" type="text">

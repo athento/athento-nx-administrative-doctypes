@@ -125,7 +125,7 @@
 			<showPageSizeSelector>true</showPageSizeSelector>
 			<showRefreshCommand>true</showRefreshCommand>
 			<actions category="CURRENT_SELECTION_LIST" />
-			<actions category="cv_actions@Invoice_Search" />
+			<actions category="cv_actions@administrative_cv" />
 			<resultLayouts>
 				<layout name="document_listing_ajax" title="document_listing"
 					translateTitle="true" iconPath="/icons/document_listing_icon.png"
@@ -140,32 +140,40 @@
 		</contentView>
 
 		<contentView name="Invoice_listing">
-			<title>label.athento-nx-administrative-doctypes.Invoice_listing</title>
+			<title>label.athento-nx-administrative-doctypes.Invoice_listing
+			</title>
 			<translateTitle>true</translateTitle>
 			<coreQueryPageProvider>
 				<property name="coreSession">#{documentManager}</property>
+				<whereClause>
+					<predicate parameter="ecm:currentLifeCycleState"
+						operator="IN">
+						<field schema="administrative_cv" name="system_currentLifeCycleState" />
+					</predicate>
+					<fixedPart statement="SELECT * FROM Invoice ">
+						ecm:isCheckedInVersion =
+						0 AND
+						ecm:currentLifeCycleState != 'deleted' AND
+						ecm:parentId = ?
+					</fixedPart>
+				</whereClause>
 				<searchDocumentType>administrative_cv</searchDocumentType>
-				<pattern>SELECT * FROM Invoice WHERE (ecm:mixinType !=
-					'HiddenInNavigation' AND
-					ecm:isCheckedInVersion = 0 AND
-					ecm:currentLifeCycleState != 'deleted' AND
-					ecm:parentId = ?)
-				</pattern>
 				<parameter>#{currentDocument.id}</parameter>
-				<sort column="dc:created" ascending="false" />
+				<sort column="dc:modified" ascending="false" />
 				<pageSize>20</pageSize>
 			</coreQueryPageProvider>
-			
+			<searchLayout name="Invoice_search_listing"
+				filterDisplayType="quick" />
 			<useGlobalPageSize>true</useGlobalPageSize>
 			<refresh>
 				<event>documentChanged</event>
 				<event>documentChildrenChanged</event>
 			</refresh>
 			<cacheKey>#{currentDocument.id}</cacheKey>
-			<cacheSize>10</cacheSize>
+			<cacheSize>0</cacheSize>
 			<selectionList>CURRENT_SELECTION</selectionList>
-			<actions category="CURRENT_SELECTION_LIST" />
 			<actions category="cv_actions@Invoice_listing" />
+			<actions category="CURRENT_SELECTION_LIST" />
 			<showTitle>false</showTitle>
 			<showFilterForm>true</showFilterForm>
 			<showPageSizeSelector>true</showPageSizeSelector>
@@ -182,9 +190,10 @@
 				<flag>DOCUMENT_CONTENT</flag>
 			</flags>
 		</contentView>
-		
+
 		<contentView name="Invoice_search">
-			<title>label.athento-nx-administrative-doctypes.Invoice_listing</title>
+			<title>label.athento-nx-administrative-doctypes.Invoice_search
+			</title>
 			<translateTitle>true</translateTitle>
 			<genericPageProvider
 				class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
@@ -203,7 +212,6 @@
 					<predicate parameter="S_FACTURA:bankAccount" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_bankAccount" />
 					</predicate>
-					
 					<predicate parameter="S_FACTURA:company" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_company" />
 					</predicate>
@@ -214,14 +222,16 @@
 						<field schema="administrative_cv" name="S_FACTURA_date_min" />
 						<field schema="administrative_cv" name="S_FACTURA_date_max" />
 					</predicate>
+					<predicate parameter="S_FACTURA:erpNumber" operator="LIKE">
+						<field schema="administrative_cv" name="S_FACTURA_erpNumber" />
+					</predicate>
 					<predicate parameter="S_FACTURA:ledgerAccount" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_ledgerAccount" />
 					</predicate>
 					<predicate parameter="S_FACTURA:number" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_number" />
 					</predicate>
-					<predicate parameter="S_FACTURA:paymentDate"
-						operator="BETWEEN">
+					<predicate parameter="S_FACTURA:paymentDate" operator="BETWEEN">
 						<field schema="administrative_cv" name="S_FACTURA_paymentDate_min" />
 						<field schema="administrative_cv" name="S_FACTURA_paymentDate_max" />
 					</predicate>
@@ -257,7 +267,7 @@
 					</predicate>
 					<predicate parameter="S_FACTURA:totalAmount" operator="&lt;">
 						<field schema="administrative_cv" name="S_FACTURA_totalAmount_max" />
-					</predicate>					
+					</predicate>
 					<predicate parameter="S_FACTURA:type" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_type" />
 					</predicate>
@@ -267,7 +277,12 @@
 					<predicate parameter="projectFile:category" operator="LIKE">
 						<field schema="administrative_cv" name="projectFile_category" />
 					</predicate>
-					<fixedPart>ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+					<predicate parameter="ecm:currentLifeCycleState"
+						operator="IN">
+						<field schema="administrative_cv" name="system_currentLifeCycleState" />
+					</predicate>
+					<fixedPart>ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState
+						!=
 						'deleted' AND ecm:primaryType = 'Invoice'
 					</fixedPart>
 				</whereClause>
