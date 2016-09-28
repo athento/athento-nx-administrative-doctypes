@@ -7,30 +7,32 @@
 	<extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
 		point="chains">
 
-		<chain id="validateIssuedInvoice">
+		<chain id="calculateProject">
 			<documentation>
-				Automatically validates and relates with Project
+				Invoked when projectDocid exists.
+				This chain does not save results (to be used in abouttocreate or beforemodification)
 			</documentation>
-			<operation id="Context.FetchDocument" />
-			<operation id="Auth.LoginAs">
-				<param type="string" name="name">Administrator</param>
-			</operation>
-			<operation id="Document.SetLifeCycle">
-				<param type="string" name="value">to_Validated</param>
-			</operation>
-			<operation id="Auth.Logout" />
-			<operation id="Audit.Log">
-				<param type="string" name="event">LifeCycle: Validated</param>
-				<param type="string" name="category">Document</param>
-				<param type="string" name="comment">expr:@{"Issued: "+Document["dc:title"]+" marked
-					as Validated"}
+			<operation id="Context.SetVar">
+				<param type="string" name="name">projectDocid_var</param>
+				<param type="object" name="value">expr:Document["projectFile:projectDocid"]
 				</param>
 			</operation>
-			<operation id="Context.RunOperation">
-				<param type="string" name="id">relateDocuments</param>
-				<param type="boolean" name="isolate">false</param>
+			<operation id="Document.Push" />
+			<operation id="Document.Fetch">
+				<param type="document" name="value">expr:projectDocid_var</param>
 			</operation>
-			<operation id="Document.Save" />
+			<operation id="Context.SetVar">
+				<param type="string" name="name">projectid_var</param>
+				<param type="object" name="value">expr:Document["projectFile:projectid"]
+				</param>
+			</operation>
+			<operation id="Document.Pop" />
+			<operation id="Document.SetProperty">
+				<param type="string" name="xpath">projectFile:projectid</param>
+				<param type="boolean" name="save">false</param>
+				<param type="serializable" name="value">expr:projectid_var
+				</param>
+			</operation>
 		</chain>
 		
 		<chain id="relateDocuments">
@@ -90,6 +92,39 @@
 				<param type="boolean" name="newTx">false</param>
 				<param type="boolean" name="rollbackGlobalOnError">true</param>
 			</operation>
+		</chain>
+		
+		<chain id="validateIssuedInvoice">
+			<documentation>
+				Automatically validates and relates with Project
+			</documentation>
+			<operation id="Context.FetchDocument" />
+			<operation id="Auth.LoginAs">
+				<param type="string" name="name">Administrator</param>
+			</operation>
+			<operation id="Document.SetLifeCycle">
+				<param type="string" name="value">to_Validated</param>
+			</operation>
+			<operation id="Auth.Logout" />
+			<operation id="Audit.Log">
+				<param type="string" name="event">LifeCycle: Validated</param>
+				<param type="string" name="category">Document</param>
+				<param type="string" name="comment">expr:@{"Issued: "+Document["dc:title"]+" marked
+					as Validated"}
+				</param>
+			</operation>
+			<operation id="Context.RunOperation">
+				<param type="string" name="id">relateDocuments</param>
+				<param type="boolean" name="isolate">false</param>
+			</operation>
+			<operation id="Document.Save" />
+		</chain>
+		
+		<chain id="voidChain">
+			<documentation>
+				No action
+			</documentation>
+			<operation id="Context.FetchDocument" />
 		</chain>
 
 	</extension>

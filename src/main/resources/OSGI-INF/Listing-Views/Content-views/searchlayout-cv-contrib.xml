@@ -415,14 +415,20 @@
 				</fields>
 			</widget>
 			
-			<widget name="type" type="text">
+			<widget name="type" type="selectOneDirectory">
 				<labels>
-					<label mode="any"></label>
+					<label mode="any">label.S_FACTURA.type</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
 					<field>administrative_cv:S_FACTURA_type</field>
 				</fields>
+				<properties widgetMode="edit">
+					<property name="directoryName">type</property>
+					<property name="ordering">id</property>
+					<property name="localize">true</property>
+					<property name="displayIdAndLabel">false</property>
+				</properties>
 			</widget>
 			
 		</layout>
