@@ -26,6 +26,12 @@
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
+					</properties>
+					<widget>assignedTo</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 						<property name="nxl_colspan_2">1</property>
 					</properties>
@@ -75,6 +81,21 @@
 				</fields>
 				<properties widgetMode="any">
 					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			<widget name="assignedTo" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.S_FACTURA.assignedTo</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:assignedTo</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="localize">true</property>
+					<property name="directoryName">pivot_users</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">true</property>
 				</properties>
 			</widget>
 			<widget name="companyid" type="text">
