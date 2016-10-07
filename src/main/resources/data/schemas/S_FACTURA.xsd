@@ -89,5 +89,27 @@
 	<xs:element name="totalAmount" type="xs:double" />
 	<!-- Outgoing or incoming invoice -->
 	<xs:element name="type" type="xs:string" />
+	<!-- Invoice lines -->
+	<xs:element name="subjectLine" type="nxs:subjectLineType" />
+	<xs:complexType name="subjectLineType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:subjectLineItem" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="subjectLineItem">
+		<xs:sequence>
+		<!-- Subject Line Subject (per line) -->
+			<xs:element name="subjectLineSubject" type="xs:string" />
+			<!-- Subject Line Amount -->
+			<xs:element name="subjectLineAmount" type="xs:double" />
+			<!-- Subject Line Tax -->
+			<xs:element name="subjectLineTax" type="xs:string" />
+			<!-- Subject Line Tax Percentage -->
+			<xs:element name="subjectLineTaxPercentage" type="xs:double" />
+			<!-- Subject Line account -->
+			<xs:element name="subjectLineAccount" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
 		
 </xs:schema>

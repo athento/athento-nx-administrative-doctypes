@@ -108,6 +108,7 @@
 				<layout>layout@formlayout-Invoice</layout>
 				<layout>layout@formlayout-Invoice-details</layout>
 				<layout>layout@formlayout-Invoice-payment</layout>
+				<layout>layout@formlayout-Invoice-lines</layout>
 			</layouts>
 			<layouts mode="edit">
 				<layout>heading</layout>
@@ -116,6 +117,7 @@
 				<layout>layout@formlayout-Invoice</layout>
 				<layout>layout@formlayout-Invoice-details</layout>
 				<layout>layout@formlayout-Invoice-payment</layout>
+				<layout>layout@formlayout-Invoice-lines</layout>
 			</layouts>
 			<layouts mode="view">
 				<layout>heading</layout>
@@ -124,6 +126,7 @@
 				<layout>layout@formlayout-Invoice</layout>
 				<layout>layout@formlayout-Invoice-details</layout>
 				<layout>layout@formlayout-Invoice-payment</layout>
+				<layout>layout@formlayout-Invoice-lines</layout>
 			</layouts>
 		</type>
 
