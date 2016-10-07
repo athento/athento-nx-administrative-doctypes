@@ -15,6 +15,14 @@
 				<property name="contentViewName">administrative_cv</property>
 			</properties>
 		</action>
+		
+		<action id="Invoice_cv_search_action" enabled="true"
+			order="25" type="link" immediate="false" link=".">
+			<category>SEARCH_CONTENT_VIEWS</category>
+			<properties>
+				<property name="contentViewName">Invoice_search</property>
+			</properties>
+		</action>
 
 	</extension>
 

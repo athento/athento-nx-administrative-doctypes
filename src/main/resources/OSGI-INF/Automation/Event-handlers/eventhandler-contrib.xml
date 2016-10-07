@@ -1,12 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.eventhandler"
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.eventhandler"
 	version="1.0.0">
 	<require>org.nuxeo.runtime.started</require>
 
 	<extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
 		point="event-handlers">
 
+		<handler chainId="updateRelated-checkEnabled">
+			<documentation>
+				This event handler needs the
+				updateRelated-checkEnabled chain, which is included in
+				athento-nx-automatic-metadata-calculations. TODO: Change this
+				handler chain for another one with a simple operation: fire an 
+				event: documentRelatedNeedsUpdate
+			</documentation>
+			<event>documentModified</event>
+			<event>documentCreated</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+				<lifeCycle>Validated</lifeCycle>
+			</filters>
+		</handler>
+		
+		<handler chainId="validateIssuedInvoice">
+			<documentation>
+				This event handler automatically validates issued invoices
+			</documentation>
+			<event>documentCreated</event>
+			<event>documentModified</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+				<lifeCycle>Draft</lifeCycle>
+				<condition>Document['S_FACTURA:type'] == "Emitida" || 
+				Document['S_FACTURA:type'] == "02" ||
+				Document['S_FACTURA:type'] == "label.factura.issuedinvoices"</condition>
+			</filters>
+		</handler>
+		
+		<handler chainId="calculateProject">
+			<documentation>
+				This event handler is invoked when a modification is about to occur in an
+				invoice type doc, to update projectid metadata based on projectDocid.
+				This chain is in athento-nx-common-doctypes module.
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+				<condition>Document['projectFile:projectDocid'] != empty</condition>
+			</filters>
+		</handler>
 
 	</extension>
 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:nxs="http://www.nuxeo.org/ecm/project/schemas/athento/S_FACTURA"
+	targetNamespace="http://www.nuxeo.org/ecm/project/schemas/athento/S_FACTURA">
+	<!-- helper XSD definitions for list types -->
+	<xs:complexType name="content">
+		<xs:sequence>
+			<xs:element name="encoding" type="xs:string" />
+			<xs:element name="mime-type" type="xs:string" />
+			<xs:element name="data" type="xs:base64Binary" />
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="length" type="xs:long" />
+			<xs:element name="digest" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="stringList">
+		<xs:list itemType="xs:string" />
+	</xs:simpleType>
+	<xs:simpleType name="doubleList">
+		<xs:list itemType="xs:double" />
+	</xs:simpleType>
+	<xs:simpleType name="dateList">
+		<xs:list itemType="xs:date" />
+	</xs:simpleType>
+	<xs:simpleType name="integerList">
+		<xs:list itemType="xs:integer" />
+	</xs:simpleType>
+	<xs:simpleType name="booleanList">
+		<xs:list itemType="xs:boolean" />
+	</xs:simpleType>
+	<xs:complexType name="blobList">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:content" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<!-- Account -->
+	<xs:element name="account" type="xs:string" />
+	<!-- Account date -->
+	<xs:element name="accountDate" type="xs:date" />
+	<!-- Assigned to -->
+	<xs:element name="assignedTo" type="xs:string" />
+	<!-- Bank -->
+	<xs:element name="bank" type="xs:string" />
+	<!-- Bank Account -->
+	<xs:element name="bankAccount" type="xs:string" />
+	<!-- Included for compatibility -->
+	<xs:element name="bill" type="xs:string" />
+	<!-- Source company, identified by their fiscal identification number -->
+	<xs:element name="company" type="xs:string" />
+	<!-- Source company, identified by an internal ID -->
+	<xs:element name="companyid" type="xs:string" />
+	<!-- Invoice date -->
+	<xs:element name="date" type="xs:date" />
+	<!-- Ledger Account from the Ledger -->
+	<xs:element name="ledgerAccount" type="xs:string" />
+	<!-- Invoice number -->
+	<xs:element name="number" type="xs:string" />
+	<!-- ERP unique number. Reserved for integrations -->
+	<xs:element name="erpNumber" type="xs:string" />
+	<!-- Payment Date -->
+	<xs:element name="paymentDate" type="xs:date" />
+	<!-- Payment Method -->
+	<xs:element name="paymentMethod" type="xs:string" />
+	<!-- Provider company, identified by their fiscal identification number -->
+	<xs:element name="provider" type="xs:string" />
+	<!-- Provider company, identified by an internal ID -->
+	<xs:element name="providerid" type="xs:string" />
+	<!-- Included for compatibility -->
+	<xs:element name="state" type="xs:string" />
+	<!-- Subject -->
+	<xs:element name="subject" type="xs:string" />
+	<!-- Included for compatibility -->
+	<xs:element name="subtotal" type="xs:string" />
+	<!-- Taxable Income -->
+	<xs:element name="taxableIncome" type="xs:double" />
+	<!-- Tax Amout -->
+	<xs:element name="taxAmount" type="xs:double" />
+	<!-- Included for compatibility -->
+	<xs:element name="taxes" type="xs:string" />
+	<!-- Tax Percentage -->
+	<xs:element name="taxPercentage" type="xs:double" />
+	<!-- Included for compatibility -->
+	<xs:element name="total" type="xs:string" />
+	<!-- Total Amount -->
+	<xs:element name="totalAmount" type="xs:double" />
+	<!-- Outgoing or incoming invoice -->
+	<xs:element name="type" type="xs:string" />
+		
+</xs:schema>

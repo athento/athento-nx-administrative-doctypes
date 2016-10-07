@@ -8,7 +8,7 @@
 	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
 		point="layouts">
 
-		<layout name="Invoice_Search_cv@search">
+		<layout name="Invoice_search">
 			<templates>
 				<template mode="any">/layouts/layout_default_template.xhtml
 				</template>
@@ -18,422 +18,419 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_title</widget>
+					<widget>system_currentLifeCycleState</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_observations</widget>
+					<widget>date</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_number</widget>
+					<widget>account</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_locator</widget>
+					<widget>accountDate</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_issuer_id</widget>
-					<widget></widget>
+					<widget>bank</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_issuer_code</widget>
+					<widget>bankAccount</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_billTo_id</widget>
+					<widget>category</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_billTo_code</widget>
+					<widget>company</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_state</widget>
+					<widget>companyid</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_type</widget>
+					<widget>ledgerAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>number</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>paymentDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>paymentMethod</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>projectid</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>provider</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>providerid</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>subject</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
-					<widget>Invoice_subtotal_min</widget>
-					<widget>Invoice_subtotal_max</widget>
+					<widget>taxableIncome_min</widget>
+					<widget>taxableIncome_max</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
-					<widget>Invoice_taxes_min</widget>
-					<widget>Invoice_taxes_max</widget>
+					<widget>taxAmount_min</widget>
+					<widget>taxAmount_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>taxPercentage</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
-					<widget>Invoice_taxes_percent_min</widget>
-					<widget>Invoice_taxes_percent_max</widget>
+					<widget>totalAmount_min</widget>
+					<widget>totalAmount_max</widget>
 				</row>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>Invoice_total_min</widget>
-					<widget>Invoice_total_max</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>Invoice_date_arrived_min</widget>
-					<widget>Invoice_date_arrived_max</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>Invoice_date_issued_min</widget>
-					<widget>Invoice_date_issued_max</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>Invoice_date_paid_min</widget>
-					<widget>Invoice_date_paid_max</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>Invoice_date_created_min</widget>
-					<widget>Invoice_date_created_max</widget>
+					<widget>type</widget>
 				</row>
 			</rows>
 
-			<widget name="Invoice_title" type="text">
+			<widget name="account" type="text">
 				<labels>
-					<label mode="any">label.Invoice.title</label>
+					<label mode="any">label.S_FACTURA.account</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>Invoice_Search_cv:Invoice_title</field>
+					<field>administrative_cv:S_FACTURA_account</field>
 				</fields>
 			</widget>
 
-			<widget name="Invoice_number" type="text">
+			<widget name="accountDate" type="datetimeRange">
 				<labels>
-					<label mode="any">label.Invoice.number</label>
+					<label mode="any">label.S_FACTURA.accountDate</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>Invoice_Search_cv:Invoice_number</field>
+					<field>administrative_cv:S_FACTURA_accountDate_min</field>
+					<field>administrative_cv:S_FACTURA_accountDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="styleClass">dataInputTextDate</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			
+			<widget name="bank" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.bank</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_bank</field>
 				</fields>
 			</widget>
 
-			<widget name="Invoice_locator" type="text">
+			<widget name="bankAccount" type="text">
 				<labels>
-					<label mode="any">label.Invoice.locator</label>
+					<label mode="any">label.S_FACTURA.bankAccount</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>Invoice_Search_cv:Invoice_locator</field>
+					<field>administrative_cv:S_FACTURA_bankAccount</field>
 				</fields>
 			</widget>
-
-			<widget name="Invoice_issuer_code" type="text">
+			
+			<widget name="bankAccount" type="text">
 				<labels>
-					<label mode="any">label.Invoice.issuer.code</label>
+					<label mode="any">label.S_FACTURA.bankAccount</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>Invoice_Search_cv:Invoice_issuer_code</field>
+					<field>administrative_cv:S_FACTURA_bankAccount</field>
 				</fields>
 			</widget>
-
-			<widget name="Invoice_issuer_id" type="text">
+			
+			<widget name="category" type="selectOneDirectory">
 				<labels>
-					<label mode="any">label.Invoice.issuer.id</label>
+					<label mode="any">label.projectFile.category</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>Invoice_Search_cv:Invoice_issuer_id</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_billTo_code" type="text">
-				<labels>
-					<label mode="any">label.Invoice.billTo.code</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_billTo_code</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_billTo_id" type="text">
-				<labels>
-					<label mode="any">label.Invoice.billTo.id</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_billTo_id</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_observations" type="textarea">
-				<labels>
-					<label mode="any">label.Invoice.observations</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_observations</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_state" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.Invoice.state</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_state</field>
+					<field>administrative_cv:projectFile_category</field>
 				</fields>
 				<properties widgetMode="edit">
+					<property name="directoryName">mk_category</property>
+					<property name="ordering">id</property>
 					<property name="localize">true</property>
-					<property name="directoryName">invoiceStates</property>
-					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
 				</properties>
 			</widget>
-
-			<widget name="Invoice_type" type="selectOneDirectory">
+			
+			<widget name="company" type="text">
 				<labels>
-					<label mode="any">label.Invoice.type</label>
+					<label mode="any">label.S_FACTURA.company</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>Invoice_Search_cv:Invoice_type</field>
+					<field>administrative_cv:S_FACTURA_company</field>
+				</fields>
+			</widget>
+			
+			<widget name="companyid" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.companyid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_companyid</field>
+				</fields>
+			</widget>
+			
+			<widget name="date" type="datetimeRange">
+				<labels>
+					<label mode="any">label.S_FACTURA.date</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_date_min</field>
+					<field>administrative_cv:S_FACTURA_date_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="styleClass">dataInputTextDate</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			
+			<widget name="ledgerAccount" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.ledgerAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_ledgerAccount</field>
+				</fields>
+			</widget>
+			
+			<widget name="number" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.number</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_number</field>
+				</fields>
+			</widget>
+			
+			<widget name="paymentDate" type="datetimeRange">
+				<labels>
+					<label mode="any">label.S_FACTURA.paymentDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_paymentDate_min</field>
+					<field>administrative_cv:S_FACTURA_paymentDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="styleClass">dataInputTextDate</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			
+			<widget name="paymentMethod" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.paymentMethod</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_paymentMethod</field>
+				</fields>
+			</widget>
+			
+			<widget name="projectid" type="text">
+				<labels>
+					<label mode="any">label.projectFile.projectid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:projectFile_projectid</field>
+				</fields>
+			</widget>
+			
+			<widget name="provider" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.provider</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_provider</field>
+				</fields>
+			</widget>
+			
+			<widget name="providerid" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.providerid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_providerid</field>
+				</fields>
+			</widget>
+			
+			<widget name="subject" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.subject</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_subject</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxableIncome_min" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxableIncome</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxableIncome_min</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxableIncome_max" type="double">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxableIncome_max</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxAmount_min" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxAmount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxAmount_min</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxAmount_max" type="double">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxAmount_max</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxPercentage" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxPercentage</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxPercentage</field>
+				</fields>
+			</widget>
+			
+			<widget name="totalAmount_min" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.totalAmount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_totalAmount_min</field>
+				</fields>
+			</widget>
+			
+			<widget name="totalAmount_max" type="double">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_totalAmount_max</field>
+				</fields>
+			</widget>
+			
+			<widget name="type" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.S_FACTURA.type</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_type</field>
 				</fields>
 				<properties widgetMode="edit">
+					<property name="directoryName">type</property>
+					<property name="ordering">id</property>
 					<property name="localize">true</property>
-					<property name="directoryName">invoiceTypes</property>
-					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
 				</properties>
 			</widget>
-
-			<widget name="Invoice_subtotal_max" type="double">
-				<labels>
-					<label mode="any">label.Invoice.subtotal.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_subtotal_max</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_subtotal_min" type="double">
-				<labels>
-					<label mode="any">label.Invoice.subtotal.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_subtotal_min</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_taxes_min" type="double">
-				<labels>
-					<label mode="any">label.Invoice.taxes.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_taxes_min</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_taxes_max" type="double">
-				<labels>
-					<label mode="any">label.Invoice.taxes.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_taxes_max</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_taxes_percent_max" type="double">
-				<labels>
-					<label mode="any">label.Invoice.taxes_percent.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_taxes_percent_max</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_taxes_percent_min" type="double">
-				<labels>
-					<label mode="any">label.Invoice.taxes_percent.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_taxes_percent_min</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_total_max" type="double">
-				<labels>
-					<label mode="any">label.Invoice.total.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_total_max</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_total_min" type="double">
-				<labels>
-					<label mode="any">label.Invoice.total.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_total_min</field>
-				</fields>
-			</widget>
-
-			<widget name="Invoice_date_issued_min" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_issued.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_issued_min</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="Invoice_date_issued_max" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_issued.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_issued_max</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="Invoice_date_paid_min" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_paid.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_paid_min</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="Invoice_date_paid_max" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_paid.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_paid_max</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="Invoice_date_arrived_min" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_arrived.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_arrived_min</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="Invoice_date_arrived_max" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_arrived.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_arrived_max</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="Invoice_date_created_min" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_created.min</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_created_min</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="Invoice_date_created_max" type="datetime">
-				<labels>
-					<label mode="any">label.Invoice.date_created.max</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>Invoice_Search_cv:Invoice_date_created_max</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
+			
 		</layout>
 
 		<layout name="administrative_cv@search">
@@ -931,6 +928,504 @@
 				<fields>
 					<field>projectFile_cv:projectFile_projectid</field>
 				</fields>
+			</widget>
+			
+			<widget name="system_currentLifeCycleState" type="suggestManyDirectory">
+				<labels>
+					<label mode="any">label.administrative.system_currentLifeCycleState</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:system_currentLifeCycleState</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="minChars">0</property>
+					<property name="hideHelpLabel">true</property>
+					<property name="directoryName">lifecyclest</property>
+					<property name="localize">true</property>
+				</properties>
+			</widget>
+		</layout>
+		
+		<layout name="Invoice_search">
+			<templates>
+				<template mode="any">/layouts/layout_default_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>system_currentLifeCycleState</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>date</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>account</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>accountDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>bank</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>bankAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>category</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>company</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>companyid</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>erpNumber</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>ledgerAccount</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>number</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>paymentDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>paymentMethod</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>projectid</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>provider</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>providerid</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>subject</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>taxableIncome_min</widget>
+					<widget>taxableIncome_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>taxAmount_min</widget>
+					<widget>taxAmount_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>taxPercentage</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
+					<widget>totalAmount_min</widget>
+					<widget>totalAmount_max</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>type</widget>
+				</row>
+			</rows>
+
+			<widget name="account" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.account</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_account</field>
+				</fields>
+			</widget>
+
+			<widget name="accountDate" type="datetimeRange">
+				<labels>
+					<label mode="any">label.S_FACTURA.accountDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_accountDate_min</field>
+					<field>administrative_cv:S_FACTURA_accountDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="styleClass">dataInputTextDate</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			
+			<widget name="bank" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.bank</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_bank</field>
+				</fields>
+			</widget>
+
+			<widget name="bankAccount" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.bankAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_bankAccount</field>
+				</fields>
+			</widget>
+			
+			<widget name="bankAccount" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.bankAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_bankAccount</field>
+				</fields>
+			</widget>
+			
+			<widget name="category" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.projectFile.category</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:projectFile_category</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="directoryName">mk_category</property>
+					<property name="ordering">id</property>
+					<property name="localize">true</property>
+					<property name="displayIdAndLabel">false</property>
+				</properties>
+			</widget>
+			
+			<widget name="company" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.company</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_company</field>
+				</fields>
+			</widget>
+			
+			<widget name="companyid" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.companyid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_companyid</field>
+				</fields>
+			</widget>
+			
+			<widget name="date" type="datetimeRange">
+				<labels>
+					<label mode="any">label.S_FACTURA.date</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_date_min</field>
+					<field>administrative_cv:S_FACTURA_date_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="styleClass">dataInputTextDate</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			
+			<widget name="erpNumber" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.erpNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_erpNumber</field>
+				</fields>
+			</widget>
+			
+			<widget name="ledgerAccount" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.ledgerAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_ledgerAccount</field>
+				</fields>
+			</widget>
+			
+			<widget name="number" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.number</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_number</field>
+				</fields>
+			</widget>
+			
+			<widget name="paymentDate" type="datetimeRange">
+				<labels>
+					<label mode="any">label.S_FACTURA.paymentDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_paymentDate_min</field>
+					<field>administrative_cv:S_FACTURA_paymentDate_max</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="styleClass">dataInputTextDate</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+			
+			<widget name="paymentMethod" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.paymentMethod</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_paymentMethod</field>
+				</fields>
+			</widget>
+			
+			<widget name="projectid" type="text">
+				<labels>
+					<label mode="any">label.projectFile.projectid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:projectFile_projectid</field>
+				</fields>
+			</widget>
+			
+			<widget name="provider" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.provider</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_provider</field>
+				</fields>
+			</widget>
+			
+			<widget name="providerid" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.providerid</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_providerid</field>
+				</fields>
+			</widget>
+			
+			<widget name="subject" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.subject</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_subject</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxableIncome_min" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxableIncome</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxableIncome_min</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxableIncome_max" type="double">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxableIncome_max</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxAmount_min" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxAmount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxAmount_min</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxAmount_max" type="double">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxAmount_max</field>
+				</fields>
+			</widget>
+			
+			<widget name="taxPercentage" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxPercentage</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_taxPercentage</field>
+				</fields>
+			</widget>
+			
+			<widget name="totalAmount_min" type="double">
+				<labels>
+					<label mode="any">label.S_FACTURA.totalAmount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_totalAmount_min</field>
+				</fields>
+			</widget>
+			
+			<widget name="totalAmount_max" type="double">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_totalAmount_max</field>
+				</fields>
+			</widget>
+			
+			<widget name="type" type="text">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_type</field>
+				</fields>
+			</widget>
+			
+			<widget name="system_currentLifeCycleState" type="suggestManyDirectory">
+				<labels>
+					<label mode="any">label.administrative.system_currentLifeCycleState</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:system_currentLifeCycleState</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="minChars">0</property>
+					<property name="hideHelpLabel">true</property>
+					<property name="directoryName">lifecyclest</property>
+					<property name="localize">true</property>
+				</properties>
+			</widget>
+			
+		</layout>
+
+		<layout name="Invoice_search_listing">
+			<templates>
+				<template mode="any">/layouts/layout_default_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+					</properties>
+					<widget>system_currentLifeCycleState</widget>
+				</row>
+			</rows>
+
+			<widget name="system_currentLifeCycleState" type="suggestManyDirectory">
+				<labels>
+					<label mode="any">label.administrative.system_currentLifeCycleState</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:system_currentLifeCycleState</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="minChars">0</property>
+					<property name="hideHelpLabel">true</property>
+					<property name="directoryName">lifecyclest</property>
+					<property name="localize">true</property>
+				</properties>
 			</widget>
 		</layout>
 
