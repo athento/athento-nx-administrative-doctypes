@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-expenses"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-expenses">
+			<labels>
+				<label>label.athento-nx-common-doctypes.Expenses</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/expenses_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<properties mode="any">
+				<property name="widgetsDisplay">label_top</property>
+			</properties>
+			<rows>>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">4</property>
+						<property name="nxl_colspan_1">4</property>
+					</properties>
+					<widget>administrative_expenseMonth</widget>
+					<widget>userFile_bankName</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_1">2</property>
+						<property name="nxl_colspan_2">1</property>
+						<property name="nxl_colspan_3">1</property>
+						<property name="nxl_colspan_4">1</property>
+						<property name="nxl_colspan_5">1</property>
+					</properties>
+					<widget>administrative_expenseYear</widget>
+					<widget></widget>
+					<widget>userFile_bankCodigo</widget>
+					<widget>userFile_bankOficina</widget>
+					<widget>userFile_bankDC</widget>
+					<widget>userFile_bankNumeroCuenta</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">8</property>
+					</properties>
+					<widget>administrative_expenseDescription</widget>
+				</row>
+			</rows>
+			<widget name="administrative_expenseMonth" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.administrative.expenseMonth</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:expenseMonth</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="localize">true</property>
+					<property name="directoryName">months</property>
+					<property name="ordering">ordering</property>
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="administrative_expenseYear" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.administrative.expenseYear</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:expenseYear</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="localize">true</property>
+					<property name="directoryName">years</property>
+					<property name="ordering">ordering</property>
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="userFile_bankName" type="text">
+				<labels>
+					<label mode="any">label.userFile.bankName</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:bankName</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="userFile_bankCodigo" type="text">
+				<labels>
+					<label mode="any">label.userFile.bankCodigo</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:bankCodigo</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="userFile_bankOficina" type="text">
+				<labels>
+					<label mode="any">label.userFile.bankOficina</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:bankOficina</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="userFile_bankDC" type="text">
+				<labels>
+					<label mode="any">label.userFile.bankDC</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:bankDC</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="userFile_bankNumeroCuenta" type="text">
+				<labels>
+					<label mode="any">label.userFile.bankNumeroCuenta</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:bankNumeroCuenta</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="administrative_expenseDescription" type="textarea">
+				<labels>
+					<label mode="any">label.administrative.expenseDescription</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:expenseDescription</field>
+				</fields>
+			</widget>
+		</layout>
+
+	</extension>
+
+</component>
+		
