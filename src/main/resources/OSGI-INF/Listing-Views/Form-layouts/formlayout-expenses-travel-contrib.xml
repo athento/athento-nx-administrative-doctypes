@@ -1,69 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component
-	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-travelRequest"
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-expenses-travel"
 	version="1.0.0">
 	<require>org.nuxeo.runtime.started</require>
 
 	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
 		point="layouts">
 
-		<layout name="layout@formlayout-travelRequest">
+		<layout name="layout@formlayout-expenses-travel">
 			<labels>
-				<label>label.athento-nx-common-doctypes.TravelRequest</label>
+				<label>label.athento-nx-administrative-doctypes.Expenses</label>
 			</labels>
 			<templates>
-				<template mode="any">/layouts/travelRequest_widget_layout_template.xhtml
+				<template mode="any">/layouts/expenses_travel_widget_layout_template.xhtml
 				</template>
 			</templates>
+			<properties mode="any">
+				<property name="widgetsDisplay">label_top</property>
+			</properties>
 			<rows>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget>travelPurpose</widget>
+					<widget></widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget>drivenTravel</widget>
+					<widget></widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget>carRental</widget>
+					<widget></widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget>hotels</widget>
+					<widget>expenseTravel</widget>
 				</row>
 			</rows>
 
 
-			<widget name="travelPurpose" type="textarea">
+			<widget name="employee" type="text">
 				<labels>
-					<label mode="any">label.administrative.travelPurpose</label>
+					<label mode="any">label.userFile.employee</label>
 				</labels>
 				<translated>true</translated>
-				<fields>
-					<field>administrative:travelPurpose</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="required">true</property>
+				<properties widgetMode="any">
+					<property name="value">#{layoutValue.userFile.name.concat(
+					" ".concat(
+					layoutValue.userFile.surname1.concat(
+					" ".concat(
+					layoutValue.userFile.surname2.concat(
+					" - ".concat(
+					layoutValue.userFile.idNumber
+					))))))
+					}</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
 			</widget>
 
-			<widget name="drivenTravel" type="list">
+			<widget name="userFile_office" type="selectOneDirectory">
 				<labels>
-					<label mode="any">label.administrative.drivenTravel</label>
+					<label mode="any">label.userFile.office</label>
+				</labels>
+				<fields>
+					<field>userFile:office</field>
+				</fields>
+				<translated>true</translated>
+				<properties widgetMode="view">
+					<property name="directoryName">office</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="period" type="text">
+				<labels>
+					<label mode="any">label.userFile.period</label>
+				</labels>
+				<translated>true</translated>
+				<properties widgetMode="any">
+					<property name="value">#{layoutValue.administrative.expenseMonth.concat(
+					" ".concat(
+					layoutValue.administrative.expenseYear
+					))
+					}</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="expenseTravel" type="list">
+				<labels>
+					<label mode="any">label.administrative.expenseTravel</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:drivenTravel</field>
+					<field>administrative:expenseTravel</field>
 				</fields>
 				<properties widgetMode="any">
 					<property name="display">table</property>
@@ -71,11 +120,11 @@
 				<subWidgets>
 					<widget name="sub0" type="datetime">
 						<labels>
-							<label mode="any">label.administrative.drivenTravel.departureDate</label>
+							<label mode="any">label.administrative.expenseTravel.expenseDate</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>departureDate</field>
+							<field>expenseDate</field>
 						</fields>
 						<properties widgetMode="any">
 							<property name="required">true</property>
@@ -84,257 +133,147 @@
 					</widget>
 					<widget name="sub1" type="text">
 						<labels>
-							<label mode="any">label.administrative.drivenTravel.departureTime</label>
+							<label mode="any">label.administrative.expenseTravel.description</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>departureTime</field>
+							<field>description</field>
 						</fields>
 					</widget>
-					<widget name="sub2" type="text">
+					<widget name="sub2" type="selectOneDirectory">
 						<labels>
-							<label mode="any">label.administrative.drivenTravel.departureCity</label>
+							<label mode="any">label.administrative.expenseTravel.category</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>departureCity</field>
+							<field>category</field>
 						</fields>
 						<properties widgetMode="any">
 							<property name="required">true</property>
 						</properties>
-					</widget>
-					<widget name="sub3" type="datetime">
-						<labels>
-							<label mode="any">label.administrative.drivenTravel.arrivalDate</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>arrivalDate</field>
-						</fields>
 						<properties widgetMode="any">
-							<property name="required">true</property>
-							<property name="format">#{nxu:basicDateFormatter()}</property>
-						</properties>
-					</widget>
-					<widget name="sub4" type="text">
-						<labels>
-							<label mode="any">label.administrative.drivenTravel.arrivalTime</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>arrivalTime</field>
-						</fields>
-					</widget>
-					<widget name="sub5" type="text">
-						<labels>
-							<label mode="any">label.administrative.drivenTravel.arrivalCity</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>arrivalCity</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub6" type="selectOneDirectory">
-						<labels>
-							<label mode="any">label.administrative.drivenTravel.transportLine</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>transportLine</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="directoryName">transportLine</property>
-							<property name="displayIdAndLabel">false</property>
+							<property name="directoryName">expenseCat</property>
 							<property name="ordering">ordering</property>
-							<property name="localize">true</property>
-							<property name="required">true</property>
-						</properties>
-					</widget>
-				</subWidgets>
-			</widget>
-
-			<widget name="carRental" type="list">
-				<labels>
-					<label mode="any">label.administrative.carRental</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:carRental</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="display">table</property>
-				</properties>
-				<subWidgets>
-					<widget name="sub0" type="datetime">
-						<labels>
-							<label mode="any">label.administrative.carRental.startDate</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>startDate</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-							<property name="format">#{nxu:basicDateFormatter()}</property>
-						</properties>
-					</widget>
-					<widget name="sub1" type="text">
-						<labels>
-							<label mode="any">label.administrative.carRental.startTime</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>startTime</field>
-						</fields>
-					</widget>
-					<widget name="sub2" type="text">
-						<labels>
-							<label mode="any">label.administrative.carRental.startCity</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>startCity</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub3" type="datetime">
-						<labels>
-							<label mode="any">label.administrative.carRental.endDate</label>
-							<property name="format">#{nxu:basicDateFormatter()}</property>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>endDate</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub4" type="text">
-						<labels>
-							<label mode="any">label.administrative.carRental.endTime</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>endTime</field>
-						</fields>
-					</widget>
-					<widget name="sub5" type="text">
-						<labels>
-							<label mode="any">label.administrative.carRental.endCity</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>endCity</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub6" type="selectOneDirectory">
-						<labels>
-							<label mode="any">label.administrative.carRental.preferedCar</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>preferedCar</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="directoryName">car</property>
 							<property name="displayIdAndLabel">false</property>
-							<property name="ordering">ordering</property>
 							<property name="localize">true</property>
-							<property name="required">true</property>
 						</properties>
 					</widget>
-				</subWidgets>
-			</widget>
-
-			<widget name="hotels" type="list">
-				<labels>
-					<label mode="any">label.administrative.hotels</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:hotels</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="display">table</property>
-				</properties>
-				<subWidgets>
-					<widget name="sub0" type="datetime">
+					<widget name="sub3" type="int">
 						<labels>
-							<label mode="any">label.administrative.hotels.hotelCheckinDate</label>
+							<label mode="any">label.administrative.expenseTravel.invitedNumber</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>hotelCheckinDate</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-							<property name="format">#{nxu:basicDateFormatter()}</property>
-						</properties>
-					</widget>
-					<widget name="sub1" type="datetime">
-						<labels>
-							<label mode="any">label.administrative.hotels.hotelCheckoutDate</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>hotelCheckoutDate</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-							<property name="format">#{nxu:basicDateFormatter()}</property>
-						</properties>
-					</widget>
-					<widget name="sub2" type="text">
-						<labels>
-							<label mode="any">label.administrative.hotels.hotelCity</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>hotelCity</field>
+							<field>invitedNumber</field>
 						</fields>
 						<properties widgetMode="any">
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub3" type="text">
+					<widget name="sub4" type="double">
 						<labels>
-							<label mode="any">label.administrative.hotels.hotelName</label>
+							<label mode="any">label.administrative.expenseTravel.expense</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>hotelName</field>
+							<field>expense</field>
 						</fields>
+						<properties widgetMode="view">
+							<property name="type">currency</property>
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
+						</properties>
+						<properties widgetMode="edit">
+							<property name="required">true</property>
+						</properties>
 					</widget>
-					<widget name="sub4" type="selectOneDirectory">
+					<widget name="sub5" type="checkbox">
 						<labels>
-							<label mode="any">label.administrative.hotels.regimen</label>
+							<label mode="any">label.administrative.expenseNonTravel.maximized</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>regimen</field>
+							<field>maximized</field>
 						</fields>
 						<properties widgetMode="any">
-							<property name="directoryName">regimen</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub6" type="checkbox">
+						<labels>
+							<label mode="any">label.administrative.expenseNonTravel.specialAuthorization</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>specialAuthorization</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub7" type="file">
+						<labels>
+							<label mode="any">label.administrative.expenseNonTravel.docsIncluded</label>
+						</labels>
+						<helpLabels>
+							<label mode="any">label.administrative.expenseNonTravel.docsIncluded</label>
+						</helpLabels>
+						<translated>true</translated>
+						<fields>
+							<field>fil</field>
+							<field>fil/filename</field>
+						</fields>
+					</widget>
+					<widget name="sub8" type="singleDocumentSuggestion">
+						<labels>
+							<label mode="any">label.administrative.expenseTravel.expenseTravelRequest</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>expenseTravelRequest</field>
+						</fields>
+						<properties widgetMode="edit">
+							<property name="minChars">0</property>
+							<property name="hideHelpLabel">true</property>
+							<property name="operationId">TravelRequest-Expense</property>
+							<property name="userFile_idNumber">#{layoutValue.userFile.idNumber}</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub9" type="selectOneDirectory">
+						<labels>
+							<label mode="any">label.administrative.expenseTravel.comments</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>comments</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="directoryName">expensecomment</property>
+							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
-							<property name="ordering">ordering</property>
 							<property name="localize">true</property>
-							<property name="required">true</property>
 						</properties>
+						<widgetModes>
+							<mode value="edit">hidden</mode>
+							<mode value="create">hidden</mode>
+						</widgetModes>
 					</widget>
 				</subWidgets>
 			</widget>
 
 		</layout>
 
+	</extension>
+
+	<extension point="providers" target="org.nuxeo.ecm.platform.query.api.PageProviderService">
+		<coreQueryPageProvider name="TravelRequest-Expense">
+			<pattern escapeParameters="true" quoteParameters="true">SELECT * FROM TravelRequest WHERE ecm:isCheckedInVersion = 0 AND
+				ecm:currentLifeCycleState != 'deleted' AND dc:title ILIKE ? AND AND userFile:idNumber ILIKE '%?%'
+			</pattern>
+			<sort column="dc:title" ascending="true" />
+			<pageSize>20</pageSize>
+		</coreQueryPageProvider>
 	</extension>
 
 </component>

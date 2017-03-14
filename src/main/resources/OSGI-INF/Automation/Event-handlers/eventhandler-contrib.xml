@@ -37,7 +37,8 @@
 				<lifeCycle>Draft</lifeCycle>
 				<condition>Document['S_FACTURA:type'] == "Emitida" || 
 				Document['S_FACTURA:type'] == "02" ||
-				Document['S_FACTURA:type'] == "label.factura.issuedinvoices"</condition>
+				Document['S_FACTURA:type'] == "label.factura.issuedinvoices"
+				</condition>
 			</filters>
 		</handler>
 		
@@ -53,6 +54,66 @@
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>
 				<condition>Document['projectFile:projectDocid'] != empty</condition>
+			</filters>
+		</handler>
+
+		<handler chainId="travelRequest-assignID">
+			<event>documentCreated</event>
+			<filters>
+				<doctype>TravelRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="Expenses-assignID">
+			<event>documentCreated</event>
+			<filters>
+				<doctype>Expenses</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="Opd-assignID">
+			<event>documentCreated</event>
+			<filters>
+				<doctype>Opd</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="travelRequest-travelerInfo">
+			<documentation>
+				If traveler is the same as the requester, info will be updated automatically
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>TravelRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="Athento.rememberLastDocument">
+			<documentation>
+				Autopopulates specific fields from the last Administrative Document by the user
+			</documentation>
+			<event>emptyDocumentModelCreated</event>
+			<filters>
+				<doctype>TravelRequest</doctype>
+				<doctype>Expenses</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="Athento.expensesCalculations">
+			<documentation>
+				Calculations based on the user input
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Expenses</doctype>
+				<attribute>Regular Document</attribute>
 			</filters>
 		</handler>
 

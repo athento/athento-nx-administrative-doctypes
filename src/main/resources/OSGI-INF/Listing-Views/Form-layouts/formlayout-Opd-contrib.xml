@@ -1,174 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component
-	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-Invoice"
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-Opd"
 	version="1.0.0">
 	<require>org.nuxeo.runtime.started</require>
 
 	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
 		point="layouts">
 
-		<layout name="layout@formlayout-Invoice">
+		<layout name="layout@formlayout-Opd">
 			<labels>
-				<label>label.athento-nx-administrative-doctypes.Invoice</label>
+				<label>label.athento-nx-administrative-doctypes.Opd</label>
 			</labels>
 			<templates>
-				<template mode="any">/layouts/Invoice_widget_layout_template.xhtml
+				<template mode="any">/layouts/Opd_widget_layout_template.xhtml
 				</template>
 			</templates>
 			<rows>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget>type</widget>
+					<widget>opd_description</widget>
 				</row>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget>assignedTo</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-						<property name="nxl_colspan_2">1</property>
-					</properties>
-					<widget>companyid</widget>
-					<widget>providerid</widget>
-					<widget>accountDate</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>date</widget>
-					<widget>number</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>subject</widget>
-					<widget>account</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>erpNumber</widget>
+					<widget>dataopd</widget>
 				</row>
 			</rows>	
-			<widget name="account" type="text">
+			<widget name="opd_description" type="textarea">
 				<labels>
-					<label mode="any">label.S_FACTURA.account</label>
+					<label mode="any">label.opd.description</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>S_FACTURA:account</field>
+					<field>opd:description</field>
 				</fields>
 			</widget>
-			<widget name="accountDate" type="datetime">
+
+			<widget name="dataopd" type="list">
 				<labels>
-					<label mode="any">label.S_FACTURA.accountDate</label>
+					<label mode="any">label.opd.dataopd</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>S_FACTURA:accountDate</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-			<widget name="assignedTo" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.S_FACTURA.assignedTo</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:assignedTo</field>
+					<field>opd:dataopd</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="localize">true</property>
-					<property name="directoryName">pivot_users</property>
-					<property name="ordering">ordering</property>
-					<property name="displayIdAndLabel">true</property>
+					<property name="display">table</property>
 				</properties>
+				<subWidgets>
+					<widget name="sub0" type="text">
+						<labels>
+							<label mode="any">label.opd.dataopd.docnumber</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>docnumber</field>
+						</fields>
+					</widget>
+					<widget name="sub1" type="text">
+						<labels>
+							<label mode="any">label.opd.dataopd.account</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>account</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub2" type="text">
+						<labels>
+							<label mode="any">label.opd.dataopd.personalaccount</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>personalaccount</field>
+						</fields>
+					</widget>
+					<widget name="sub3" type="text">
+						<labels>
+							<label mode="any">label.opd.dataopd.accountname</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>accountname</field>
+						</fields>
+					</widget>
+					<widget name="sub4" type="selectOneDirectory">
+						<labels>
+							<label mode="any">label.opd.dataopd.inputoutput</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>inputoutput</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="directoryName">inputoutput</property>
+							<property name="ordering">ordering</property>
+							<property name="displayIdAndLabel">false</property>
+							<property name="localize">true</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub5" type="text">
+						<labels>
+							<label mode="any">label.opd.dataopd.con</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>con</field>
+						</fields>
+					</widget>
+					<widget name="sub6" type="text">
+						<labels>
+							<label mode="any">label.opd.dataopd.description</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>description</field>
+						</fields>
+					</widget>
+					<widget name="sub7" type="text">
+						<labels>
+							<label mode="any">label.opd.dataopd.subject</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>subject</field>
+						</fields>
+					</widget>
+					<widget name="sub8" type="double">
+						<labels>
+							<label mode="any">label.opd.dataopd.amount</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>amount</field>
+						</fields>
+						<properties widgetMode="view">
+							<property name="type">currency</property>
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
+						</properties>
+					</widget>
+				</subWidgets>
 			</widget>
-			<widget name="companyid" type="text">
-				<labels>
-					<label mode="any">label.S_FACTURA.companyid</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:provider</field>
-				</fields>
-			</widget>
-			<widget name="date" type="datetime">
-				<labels>
-					<label mode="any">label.S_FACTURA.date</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:date</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-			<widget name="erpNumber" type="text">
-				<labels>
-					<label mode="any">label.S_FACTURA.erpNumber</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:erpNumber</field>
-				</fields>
-			</widget>
-			<widget name="number" type="text">
-				<labels>
-					<label mode="any">label.factura.number</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:number</field>
-				</fields>
-			</widget>
-			<widget name="providerid" type="text">
-				<labels>
-					<label mode="any">label.S_FACTURA.providerid</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:providerid</field>
-				</fields>
-			</widget>
-			<widget name="subject" type="text">
-				<labels>
-					<label mode="any">label.S_FACTURA.subject</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:subject</field>
-				</fields>
-			</widget>
-			<widget name="type" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.factura.type</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>S_FACTURA:type</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="localize">true</property>
-					<property name="directoryName">type</property>
-					<property name="ordering">ordering</property>
-				</properties>
-			</widget>
+
+
+
+
+
+
+
 		</layout>
 
 	</extension>

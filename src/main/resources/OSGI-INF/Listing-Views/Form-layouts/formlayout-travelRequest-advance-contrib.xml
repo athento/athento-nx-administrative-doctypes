@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component
-	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-travelRequest-traveler"
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-travelRequest-advance"
 	version="1.0.0">
 	<require>org.nuxeo.runtime.started</require>
 
 	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
 		point="layouts">
 
-		<layout name="layout@formlayout-travelRequest-traveler">
+		<layout name="layout@formlayout-travelRequest-advance">
 			<labels>
-				<label>label.athento-nx-common-doctypes.TravelRequest-traveler</label>
+				<label>label.athento-nx-common-doctypes.TravelRequest-advance</label>
 			</labels>
 			<templates>
-				<template mode="any">/layouts/travelRequest-traveler_widget_layout_template.xhtml
+				<template mode="any">/layouts/travelRequest-advance_widget_layout_template.xhtml
 				</template>
 			</templates>
 			<rows>
@@ -21,248 +21,18 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>requesterIsTraveller</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>travel_name</widget>
-					<widget>travel_office</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>travel_surname1</widget>
-					<widget>travel_account</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>travel_surname2</widget>
-					<widget>travel_activity</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>travel_category</widget>
-					<widget>travel_phone</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>travel_idNumber</widget>
-					<widget>travel_mail</widget>
+					<widget>advance</widget>
 				</row>
 			</rows>
 
-			<widget name="requesterIsTraveller" type="dynamicRendererWidget_checkbox">
+			<widget name="advance" type="double">
 				<labels>
-					<label mode="any">label.administrative.requesterIsTraveller</label>
+					<label mode="any">label.administrative.advance</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:requesterIsTraveller</field>
+					<field>administrative:advance</field>
 				</fields>
-				<widgetModes>
-					<mode value="view">hidden</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_account" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_account</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_account</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">hidden</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_activity" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.administrative.travel_activity</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_activity</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-					<property name="directoryName">activity</property>
-					<property name="ordering">id</property>
-					<property name="localize">true</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_category" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_category</label>
-				</labels>
-				<translated>true</translated>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_mail" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_mail</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_mail</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_name" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_name</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_name</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_idNumber" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_idNumber</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_idNumber</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_office" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.administrative.travel_office</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_office</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-					<property name="directoryName">office</property>
-					<property name="ordering">id</property>
-					<property name="displayIdAndLabel">true</property>
-				</properties>
-				<properties widgetMode="view">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-					<property name="directoryName">office</property>
-					<property name="ordering">id</property>
-					<property name="displayIdAndLabel">false</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_phone" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_phone</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_phone</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_surname1" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_surname1</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_surname1</field>
-				</fields>
-				<properties widgetMode="edit">
-					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_surname2" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_surname2</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_surname2</field>
-				</fields>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="travel_location" type="text">
-				<labels>
-					<label mode="any">label.administrative.travel_location</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:travel_location</field>
-				</fields>
-				<widgetModes>
-					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
-				</widgetModes>
 			</widget>
 
 		</layout>

@@ -42,16 +42,16 @@
       <xs:element name="account" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="personalaccount" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="accountname" type="xs:string" minOccurs="0" maxOccurs="1" />
-      <xs:element name="inputoutput" type="xs:vocabulary" minOccurs="0" maxOccurs="1" />
+      <xs:element name="inputoutput" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="con" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="subject" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="amount" type="xs:float" minOccurs="0" maxOccurs="1" />
+      <xs:element name="amount" type="xs:double" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
     
-      <xs:element name="diary" type="xs:string" />
-      <xs:element name="currency" type="xs:string" />
+      <xs:element name="diary" type="xs:string" default = "OPD"/>
+      <xs:element name="currency" type="xs:string" default = "01"/>
       <xs:element name="description" type="xs:string" />
     <xs:complexType name="dataopdTypeList">
      <xs:sequence>

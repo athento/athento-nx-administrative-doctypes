@@ -11,8 +11,8 @@
 		<versioningRule typeName="Expenses">
 			<initialState major="0" minor="0" />
 			<options lifeCycleState="*">
-				<none default="true" />
-				<minor />
+				<none />
+				<minor default="true" />
 				<major />
 			</options>
 		</versioningRule>
@@ -38,8 +38,17 @@
 		<versioningRule typeName="TravelRequest">
 			<initialState major="0" minor="0" />
 			<options lifeCycleState="*">
-				<none default="true" />
-				<minor />
+				<none />
+				<minor default="true" />
+				<major />
+			</options>
+		</versioningRule>
+
+		<versioningRule typeName="Opd">
+			<initialState major="0" minor="0" />
+			<options lifeCycleState="*">
+				<none />
+				<minor default="true" />
 				<major />
 			</options>
 		</versioningRule>

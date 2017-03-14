@@ -11,6 +11,7 @@
 		<schema name="administrative" prefix="administrative"
 			src="data/schemas/administrative.xsd" />
 		<schema name="S_FACTURA" prefix="S_FACTURA" src="data/schemas/S_FACTURA.xsd" />
+		<schema name="opd" prefix="opd" src="data/schemas/opd.xsd" />
 
 	</extension>
 

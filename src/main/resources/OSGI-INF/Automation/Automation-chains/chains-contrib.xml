@@ -1,132 +1,770 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains"
-	version="1.0.0">
-	<require>org.nuxeo.runtime.started</require>
+    version="1.0.0">
+    <require>org.nuxeo.runtime.started</require>
 
-	<extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
-		point="chains">
+    <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
+        point="chains">
 
-		<chain id="calculateProject">
-			<documentation>
-				Invoked when projectDocid exists.
-				This chain does not save results (to be used in abouttocreate or beforemodification)
-			</documentation>
-			<operation id="Context.SetVar">
-				<param type="string" name="name">projectDocid_var</param>
-				<param type="object" name="value">expr:Document["projectFile:projectDocid"]
-				</param>
-			</operation>
-			<operation id="Document.Push" />
-			<operation id="Document.Fetch">
-				<param type="document" name="value">expr:projectDocid_var</param>
-			</operation>
-			<operation id="Context.SetVar">
-				<param type="string" name="name">projectid_var</param>
-				<param type="object" name="value">expr:Document["projectFile:projectid"]
-				</param>
-			</operation>
-			<operation id="Document.Pop" />
-			<operation id="Document.SetProperty">
-				<param type="string" name="xpath">projectFile:projectid</param>
-				<param type="boolean" name="save">false</param>
-				<param type="serializable" name="value">expr:projectid_var
-				</param>
-			</operation>
-		</chain>
-		
-		<chain id="relateDocuments">
-			<operation id="Context.FetchDocument" />
-			<operation id="Context.SetInputAsVar">
-				<param type="string" name="name">documentToRelate</param>
-			</operation>
-			<operation id="Context.RunOperation">
-				<param type="string" name="id">relateDocuments-search
-				</param>
-				<param type="boolean" name="isolate">false</param>
-			</operation>
-		</chain>
+        <chain id="calculateProject">
+            <documentation>
+                Invoked when projectDocid exists.
+                This chain does not save results (to be used in abouttocreate or beforemodification)
+            </documentation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">projectDocid_var</param>
+                <param type="object" name="value">expr:Document["projectFile:projectDocid"]
+                </param>
+            </operation>
+            <operation id="Document.Push" />
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:projectDocid_var</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">projectid_var</param>
+                <param type="object" name="value">expr:Document["projectFile:projectid"]
+                </param>
+            </operation>
+            <operation id="Document.Pop" />
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">projectFile:projectid</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:projectid_var
+                </param>
+            </operation>
+        </chain>
 
-		<chain id="relateDocuments-CreateRelation">
-			<operation id="Document.Fetch">
-				<param type="document" name="value">expr:documentToRelate</param>
-			</operation>
-			<operation id="Relations.CreateRelation">
-				<param type="document" name="object">expr:item.id</param>
-				<param type="string" name="predicate">http://purl.org/dc/terms/References
-				</param>
-				<param type="boolean" name="outgoing">false</param>
-			</operation>
-		</chain>
-		
-		<chain id="relateDocuments-search">
-			<operation id="Context.SetVar">
-				<param type="string" name="name">projectNumber</param>
-				<param type="object" name="value">expr:Document["projectFile:projectid"]
-				</param>
-			</operation>
-			<operation id="Document.Query">
-				<param type="string" name="query">expr:SELECT * FROM ProjectFile WHERE
-					dc:title = '@{projectNumber}' AND
-					ecm:isCheckedInVersion = 0 AND
-					ecm:currentLifeCycleState
-					!= 'deleted'
-				</param>
-				<param type="string" name="language">NXQL</param>
-				<param type="string" name="sortOrder">ASC</param>
-			</operation>
-			<operation id="Context.SetInputAsVar">
-				<param type="string" name="name">candidates</param>
-			</operation>
-			<operation id="Context.SetVar">
-				<param type="string" name="name">len</param>
-				<param type="object" name="value">expr:candidates.size()</param>
-			</operation>
-			<operation id="Context.RunOperationOnList">
-				<param type="string" name="id">expr:len == 0 ? "voidchain" :
-					"relateDocuments-CreateRelation"
-				</param>
-				<param type="string" name="list">candidates</param>
-				<param type="boolean" name="isolate">false</param>
-				<param type="string" name="item">item</param>
-				<param type="boolean" name="newTx">false</param>
-				<param type="boolean" name="rollbackGlobalOnError">true</param>
-			</operation>
-		</chain>
-		
-		<chain id="validateIssuedInvoice">
-			<documentation>
-				Automatically validates and relates with Project
-			</documentation>
-			<operation id="Context.FetchDocument" />
-			<operation id="Auth.LoginAs">
-				<param type="string" name="name">Administrator</param>
-			</operation>
-			<operation id="Document.SetLifeCycle">
-				<param type="string" name="value">to_Validated</param>
-			</operation>
-			<operation id="Auth.Logout" />
-			<operation id="Audit.Log">
-				<param type="string" name="event">LifeCycle: Validated</param>
-				<param type="string" name="category">Document</param>
-				<param type="string" name="comment">expr:@{"Issued: "+Document["dc:title"]+" marked
-					as Validated"}
-				</param>
-			</operation>
-			<operation id="Context.RunOperation">
-				<param type="string" name="id">relateDocuments</param>
-				<param type="boolean" name="isolate">false</param>
-			</operation>
-			<operation id="Document.Save" />
-		</chain>
-		
-		<chain id="voidChain">
-			<documentation>
-				No action
-			</documentation>
-			<operation id="Context.FetchDocument" />
-		</chain>
+        <chain id="travelRequest-assignID">
+            <documentation>
+                Assign ID with the following rules: OMAAAA/MM/XXXXXX Checks
+                in the Document for versioning
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <!-- Year. Used for uniqueness of number id AND the composition of the
+                id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">year_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("yyyy").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Month. Used for uniqueness of number id AND the composition of the
+                id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">month_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Number, which is formatted with 6 digits -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">uniquetrnumber_var</param>
+                <param type="object" name="value">expr:Fn.getNextId("unique-tr-key"+year_var+month_var)
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">uniquetrnumberformatted_var</param>
+                <param type="object" name="value">expr:uniquetrnumber_var.format("%06d",Integer.valueOf(uniquetrnumber_var))
+                </param>
+            </operation>
+            <!-- Final variable id_var with the ID composition. Stored in both title
+                and projectid -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">id_var</param>
+                <param type="object" name="value">expr:@{"OM"+year_var+month_var+uniquetrnumberformatted_var}
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">dc:title</param>
+                <param type="boolean" name="save">true</param>
+                <param type="serializable" name="value">expr:id_var
+                </param>
+            </operation>
+            <operation id="Document.CheckIn">
+                <param type="string" name="version">0.0</param>
+            </operation>
 
-	</extension>
+        </chain>
+
+        <chain id="Expenses-assignID">
+            <documentation>
+                Assign ID with the following rules: NGAAAAMM-IDNUMBER-XX Checks
+                in the Document for versioning
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <!-- Year. Used for uniqueness of number id AND the composition of the
+               id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">year_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("yyyy").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Month. Used for uniqueness of number id AND the composition of the
+                id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">month_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Number ID -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">idNumber_var</param>
+                <param type="object" name="value">expr:Document["userFile:idNumber"]
+                </param>
+            </operation>
+            <!-- Number, which is formatted with 2 digits -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">uniqueexnumber_var</param>
+                <param type="object" name="value">expr:Fn.getNextId("unique-ex-key"+year_var+month_var+idNumber_var)
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">uniqueexnumberformatted_var</param>
+                <param type="object" name="value">expr:uniqueexnumber_var.format("%02d",Integer.valueOf(uniqueexnumber_var))
+                </param>
+            </operation>
+            <!-- Final variable id_var with the ID composition. Stored in both title
+                and projectid -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">id_var</param>
+                <param type="object" name="value">expr:@{"NG"+year_var+month_var+"-"+idNumber_var+"-"+uniqueexnumberformatted_var}
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:expenseYear</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:year_var
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:expenseMonth</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:month_var
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">dc:title</param>
+                <param type="boolean" name="save">true</param>
+                <param type="serializable" name="value">expr:id_var
+                </param>
+            </operation>
+            <operation id="Document.CheckIn">
+                <param type="string" name="version">0.0</param>
+            </operation>
+
+        </chain>
+
+        <chain id="relateDocuments">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">documentToRelate</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">relateDocuments-search
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="relateDocuments-CreateRelation">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:documentToRelate</param>
+            </operation>
+            <operation id="Relations.CreateRelation">
+                <param type="document" name="object">expr:item.id</param>
+                <param type="string" name="predicate">http://purl.org/dc/terms/References
+                </param>
+                <param type="boolean" name="outgoing">false</param>
+            </operation>
+        </chain>
+
+        <chain id="relateDocuments-search">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">projectNumber</param>
+                <param type="object" name="value">expr:Document["projectFile:projectid"]
+                </param>
+            </operation>
+            <operation id="Document.Query">
+                <param type="string" name="query">expr:SELECT * FROM ProjectFile WHERE
+                    dc:title = '@{projectNumber}' AND
+                    ecm:isCheckedInVersion = 0 AND
+                    ecm:currentLifeCycleState
+                    != 'deleted'
+                </param>
+                <param type="string" name="language">NXQL</param>
+                <param type="string" name="sortOrder">ASC</param>
+            </operation>
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">candidates</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">len</param>
+                <param type="object" name="value">expr:candidates.size()</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">expr:len == 0 ? "voidchain" :
+                    "relateDocuments-CreateRelation"
+                </param>
+                <param type="string" name="list">candidates</param>
+                <param type="boolean" name="isolate">false</param>
+                <param type="string" name="item">item</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+        </chain>
+
+        <chain id="validateIssuedInvoice">
+            <documentation>
+                Automatically validates and relates with Project
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Auth.LoginAs">
+                <param type="string" name="name">Administrator</param>
+            </operation>
+            <operation id="Document.SetLifeCycle">
+                <param type="string" name="value">to_Validated</param>
+            </operation>
+            <operation id="Auth.Logout" />
+            <operation id="Audit.Log">
+                <param type="string" name="event">LifeCycle: Validated</param>
+                <param type="string" name="category">Document</param>
+                <param type="string" name="comment">expr:@{"Issued: "+Document["dc:title"]+" marked
+                    as Validated"}
+                </param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">relateDocuments</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Document.Save" />
+        </chain>
+
+        <chain id="travelRequest-travelerInfo">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">requesterIsTraveller</param>
+                <param type="object" name="value">expr:Document["administrative:requesterIsTraveller"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">office</param>
+                <param type="object" name="value">expr:Document["userFile:office"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:office == empty ? empty : office
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_office</param>
+                <param type="object" name="value">expr:Document["administrative:travel_office"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:office == empty ? empty : office
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_office == empty ? empty : travel_office
+                </param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:requesterIsTraveller ? 'travelRequest-updateTravelerInfo' : 'voidChain'
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="travelRequest-updateTravelerInfo">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">idNumber</param>
+                <param type="object" name="value">expr:Document["userFile:idNumber"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">name</param>
+                <param type="object" name="value">expr:Document["userFile:name"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">office</param>
+                <param type="object" name="value">expr:Document["userFile:office"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">surname1</param>
+                <param type="object" name="value">expr:Document["userFile:surname1"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">account</param>
+                <param type="object" name="value">expr:Document["userFile:account"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">surname2</param>
+                <param type="object" name="value">expr:Document["userFile:surname2"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">category</param>
+                <param type="object" name="value">expr:Document["userFile:category"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">activity</param>
+                <param type="object" name="value">expr:Document["userFile:activity"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">mail</param>
+                <param type="object" name="value">expr:Document["userFile:mail"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">phone</param>
+                <param type="object" name="value">expr:Document["userFile:phone"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_idNumber</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:idNumber == empty ? empty : idNumber
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_name</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:name == empty ? empty : name
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_office</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:office == empty ? empty : office
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_surname1</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:surname1 == empty ? empty : surname1
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:account == empty ? empty : account
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_surname2</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:surname2 == empty ? empty : surname2
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_category</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:category == empty ? empty : category
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_activity</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:activity == empty ? empty : activity
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_mail</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:mail == empty ? empty : mail
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_phone</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:phone == empty ? empty : phone
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.rememberLastDocument">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">inCreation</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">user</param>
+                <param type="object" name="value">expr:@{currentUser.name}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">doctype</param>
+                <param type="object" name="value">expr:@{Document.type}
+                </param>
+            </operation>
+            <operation id="Document.Query">
+                <param type="string" name="query">expr:SELECT * FROM @{doctype} WHERE
+                    dc:creator = '@{user}' AND
+                    ecm:isCheckedInVersion = 0 AND
+                    ecm:currentLifeCycleState
+                    != 'deleted'
+                </param>
+                <param type="string" name="language">NXQL</param>
+                <param type="string" name="sortBy">dc:modified</param>
+                <param type="string" name="sortOrder">DES</param>
+            </operation>
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">candidates</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">len</param>
+                <param type="object" name="value">expr:candidates.size()</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:len == 0 ? "voidchain" :
+                    "Athento.rememberLastDocument-update"</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.rememberLastDocument-update">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:candidates[0]</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">idNumber</param>
+                <param type="object" name="value">expr:Document["userFile:idNumber"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">name</param>
+                <param type="object" name="value">expr:Document["userFile:name"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">office</param>
+                <param type="object" name="value">expr:Document["userFile:office"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">surname1</param>
+                <param type="object" name="value">expr:Document["userFile:surname1"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">account</param>
+                <param type="object" name="value">expr:Document["userFile:account"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">surname2</param>
+                <param type="object" name="value">expr:Document["userFile:surname2"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">category</param>
+                <param type="object" name="value">expr:Document["userFile:category"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">activity</param>
+                <param type="object" name="value">expr:Document["userFile:activity"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">mail</param>
+                <param type="object" name="value">expr:Document["userFile:mail"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">phone</param>
+                <param type="object" name="value">expr:Document["userFile:phone"]
+                </param>
+            </operation>
+
+            <!-- *** Here, specific Travel Request *** -->
+
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_idNumber</param>
+                <param type="object" name="value">expr:Document["administrative:travel_idNumber"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_name</param>
+                <param type="object" name="value">expr:Document["administrative:travel_name"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_office</param>
+                <param type="object" name="value">expr:Document["administrative:travel_office"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_surname1</param>
+                <param type="object" name="value">expr:Document["administrative:travel_surname1"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_account</param>
+                <param type="object" name="value">expr:Document["administrative:travel_account"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_surname2</param>
+                <param type="object" name="value">expr:Document["administrative:travel_surname2"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_category</param>
+                <param type="object" name="value">expr:Document["administrative:travel_category"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_activity</param>
+                <param type="object" name="value">expr:Document["administrative:travel_activity"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_mail</param>
+                <param type="object" name="value">expr:Document["administrative:travel_mail"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_phone</param>
+                <param type="object" name="value">expr:Document["administrative:travel_phone"]
+                </param>
+            </operation>
+
+            <!-- *** Here, specific Expense *** -->
+
+            <operation id="Context.SetVar">
+                <param type="string" name="name">administrative_expenseYear</param>
+                <param type="object" name="value">expr:Document["administrative:expenseYear"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">userFile_bankName</param>
+                <param type="object" name="value">expr:Document["userFile:bankName"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">userFile_bankCodigo</param>
+                <param type="object" name="value">expr:Document["userFile:bankCodigo"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">userFile_bankOficina</param>
+                <param type="object" name="value">expr:Document["userFile:bankOficina"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">userFile_bankDC</param>
+                <param type="object" name="value">expr:Document["userFile:bankDC"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">userFile_bankNumeroCuenta</param>
+                <param type="object" name="value">expr:Document["userFile:bankNumeroCuenta"]
+                </param>
+            </operation>
+
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:inCreation</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:idNumber</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:idNumber == empty ? empty : idNumber
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:name</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:name == empty ? empty : name
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:office</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:office == empty ? empty : office
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:surname1</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:surname1 == empty ? empty : surname1
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:account == empty ? empty : account
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:surname2</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:surname2 == empty ? empty : surname2
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:category</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:category == empty ? empty : category
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:activity</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:activity == empty ? empty : activity
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:mail</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:mail == empty ? empty : mail
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:phone</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:phone == empty ? empty : phone
+                </param>
+            </operation>
+
+            <!-- Specific Travel Request -->
+
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_idNumber</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_idNumber == empty ? empty : travel_idNumber
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_name</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_name == empty ? empty : travel_name
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_office</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_office == empty ? empty : travel_office
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_surname1</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_surname1 == empty ? empty : travel_surname1
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_account == empty ? empty : travel_account
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_surname2</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_surname2 == empty ? empty : travel_surname2
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_category</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_category == empty ? empty : travel_category
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_activity</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_activity == empty ? empty : travel_activity
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_mail</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_mail == empty ? empty : travel_mail
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_phone</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_phone == empty ? empty : travel_phone
+                </param>
+            </operation>
+
+            <!-- Here, specific Expense -->
+
+
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:expenseYear</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:administrative_expenseYear == empty ? empty : administrative_expenseYear
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:bankName</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:userFile_bankName == empty ? empty : userFile_bankName
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:bankCodigo</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:userFile_bankCodigo == empty ? empty : userFile_bankCodigo
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:bankOficina</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:userFile_bankOficina == empty ? empty : userFile_bankOficina
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:bankDC</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:userFile_bankDC == empty ? empty : userFile_bankDC
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:bankNumeroCuenta</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:userFile_bankNumeroCuenta == empty ? empty : userFile_bankNumeroCuenta
+                </param>
+            </operation>
+
+        </chain>
+
+        <chain id="TravelRequest-Expense">
+            <operation id="Document.Query">
+                <param type="string" name="query">expr:SELECT * FROM TravelRequest WHERE ecm:isCheckedInVersion = 0 AND
+                    ecm:currentLifeCycleState != 'deleted' AND dc:title ILIKE '%@{searchTerm}%' AND userFile:idNumber ILIKE '@{userFile_idNumber}'
+                </param>
+                <param type="string" name="language">NXQL</param>
+                <param type="string" name="sortOrder">ASC</param>
+            </operation>
+        </chain>
+
+        <chain id="voidChain">
+            <documentation>
+                No action
+            </documentation>
+            <operation id="Context.FetchDocument" />
+        </chain>
+
+    </extension>
 
 </component>

@@ -19,92 +19,100 @@
 			<properties mode="any">
 				<property name="widgetsDisplay">label_top</property>
 			</properties>
-			<rows>
-				>
+			<rows>>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_0">4</property>
+						<property name="nxl_colspan_1">4</property>
 					</properties>
-					<widget>category</widget>
-					<widget>location</widget>
+					<widget>administrative_expenseMonth</widget>
+					<widget>userFile_bankName</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
-						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_1">2</property>
+						<property name="nxl_colspan_2">4</property>
 					</properties>
-					<widget>companyNumber</widget>
-					<widget>expenseDate</widget>
+					<widget>administrative_expenseYear</widget>
+					<widget></widget>
+					<widget>userFile_bankIban</widget>
 				</row>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_0">8</property>
 					</properties>
-					<widget>amount</widget>
-					<widget>signDate</widget>
+					<widget>administrative_expenseDescription</widget>
 				</row>
 			</rows>
-			<widget name="category" type="text">
+			<widget name="administrative_expenseMonth" type="selectOneDirectory">
 				<labels>
-					<label mode="any">label.administrative.category</label>
+					<label mode="any">label.administrative.expenseMonth</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:category</field>
-				</fields>
-			</widget>
-			<widget name="location" type="text">
-				<labels>
-					<label mode="any">label.administrative.location</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:location</field>
-				</fields>
-			</widget>
-			<widget name="companyNumber" type="text">
-				<labels>
-					<label mode="any">label.administrative.companyNumber</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:companyNumber</field>
-				</fields>
-			</widget>
-			<widget name="expenseDate" type="datetime">
-				<labels>
-					<label mode="any">label.administrative.expenseDate</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:expenseDate</field>
+					<field>administrative:expenseMonth</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
+					<property name="localize">true</property>
+					<property name="directoryName">months</property>
+					<property name="ordering">ordering</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
 			</widget>
-			<widget name="amount" type="text">
+			<widget name="administrative_expenseYear" type="selectOneDirectory">
 				<labels>
-					<label mode="any">label.administrative.amount</label>
+					<label mode="any">label.administrative.expenseYear</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:amount</field>
-				</fields>
-			</widget>
-			<widget name="signDate" type="datetime">
-				<labels>
-					<label mode="any">label.administrative.signDate</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:signDate</field>
+					<field>administrative:expenseYear</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
+					<property name="localize">true</property>
+					<property name="directoryName">years</property>
+					<property name="ordering">ordering</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+			<widget name="userFile_bankName" type="text">
+				<labels>
+					<label mode="any">label.userFile.bankName</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:bankName</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="userFile_bankIban" type="text">
+				<labels>
+					<label mode="any">label.userFile.bankIban</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:bankIban</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+			<widget name="administrative_expenseDescription" type="textarea">
+				<labels>
+					<label mode="any">label.administrative.expenseDescription</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:expenseDescription</field>
+				</fields>
 			</widget>
 		</layout>
 

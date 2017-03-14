@@ -66,6 +66,41 @@
 	<!-- Document Expense date -->
 	<xs:element name="administrative_expenseDate_min" type="xs:date" />
 	<xs:element name="administrative_expenseDate_max" type="xs:date" />
+	<!-- Document Expense date -->
+	<xs:element name="administrative_expenseMonth" type="xs:string" />
+	<!-- Document Expense date -->
+	<xs:element name="administrative_expenseYear" type="xs:string" />
+	<!-- Expense overall description -->
+	<xs:element name="administrative_expenseDescription" type="xs:string" />
+	<!-- Document Expense date -->
+	<xs:element name="administrative_expenseDate" type="xs:date" />
+	<!-- Expense overall total -->
+	<xs:element name="administrative_expenseTotal" type="xs:double" />
+	<!-- Total Travel Expenses -->
+	<xs:element name="administrative_expenseTravelTotal" type="xs:double" />
+	<!-- Total Transport Travel Expenses -->
+	<xs:element name="administrative_expenseTransportTravelTotal" type="xs:double" />
+	<!-- Total Lodging Travel Expenses -->
+	<xs:element name="administrative_expenseLodgingTravelTotal" type="xs:double" />
+	<!-- Total Restaurant Travel Expenses -->
+	<xs:element name="administrative_expenseRestaurantTravelTotal" type="xs:double" />
+	<!-- Total Journey Travel Expenses -->
+	<xs:element name="administrative_expenseJourneyTravelTotal" type="xs:double" />
+	<!-- Total Others Travel Expenses -->
+	<xs:element name="administrative_expenseOthersTravelTotal" type="xs:double" />
+	<!-- Total Customer Expenses -->
+	<xs:element name="administrative_expenseCustomerTotal" type="xs:double" />
+	<!-- Total NON-Travel Expenses -->
+	<xs:element name="administrative_expenseNonTravelTotal" type="xs:double" />
+	<!-- Total Kilometers Expenses -->
+	<xs:element name="administrative_expenseKmTotal" type="xs:double" />
+	<!-- Total Km company vehicle Expenses -->
+	<xs:element name="administrative_expenseCompanyKmTotal" type="xs:double" />
+	<!-- Total Km own vehicle Expenses -->
+	<xs:element name="administrative_expenseOwnKmTotal" type="xs:double" />
+	<!-- Total Courses Expenses -->
+	<xs:element name="administrative_expenseCourseTotal" type="xs:double" />
+
 
 	<!-- ** Payment Orders ** -->
 
@@ -97,6 +132,10 @@
 	<xs:element name="administrative_travelStartDate_max" type="xs:date" />
 	<!-- Travel Purpose -->
 	<xs:element name="administrative_travelPurpose" type="xs:string" />
+
+	<xs:element name="administrative_advance" type="xs:double" />
+	<xs:element name="administrative_advance_min" type="xs:double" />
+	<xs:element name="administrative_advance_max" type="xs:double" />
 	
 	<!-- Invoices -->
 	

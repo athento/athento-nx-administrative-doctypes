@@ -8,6 +8,151 @@
 	<extension target="org.nuxeo.ecm.directory.sql.SQLDirectoryFactory"
 		point="directories">
 
+
+		<directory name="activity">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_activity</table>
+			<dataFile>data/vocabularies/activity.csv</dataFile>
+		</directory>
+
+		<directory name="car">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_car</table>
+			<dataFile>data/vocabularies/car.csv</dataFile>
+		</directory>
+
+		<directory name="carkmcost">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_carkmcost</table>
+			<dataFile>data/vocabularies/carkmcost.csv</dataFile>
+		</directory>
+
+		<directory name="carowner">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_carowner</table>
+			<dataFile>data/vocabularies/carowner.csv</dataFile>
+		</directory>
+
+		<directory name="companynumber">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_companynumber</table>
+			<dataFile>data/vocabularies/companynumber.csv</dataFile>
+		</directory>
+
+		<directory name="courseexp">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_courseexp</table>
+			<dataFile>data/vocabularies/courseexp.csv</dataFile>
+		</directory>
+
+		<directory name="courseloc">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_courseloc</table>
+			<dataFile>data/vocabularies/courseloc.csv</dataFile>
+		</directory>
+
+		<directory name="currency">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_currency</table>
+			<dataFile>data/vocabularies/currency.csv</dataFile>
+		</directory>
+
+		<directory name="destination">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_destination</table>
+			<dataFile>data/vocabularies/destination.csv</dataFile>
+		</directory>
+
+		<directory name="expenseCat">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_expenseCat</table>
+			<dataFile>data/vocabularies/expenseCat.csv</dataFile>
+		</directory>
+
+		<directory name="expensecomment">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_expensecomment</table>
+			<dataFile>data/vocabularies/expensecomment.csv</dataFile>
+		</directory>
+
+		<directory name="inputoutput">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_inputoutput</table>
+			<dataFile>data/vocabularies/inputoutput.csv</dataFile>
+		</directory>
+
 		<directory name="invoicestate">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -19,6 +164,102 @@
 			<table>vocabulary_invoicestate</table>
 			<dataFile>data/vocabularies/invoicestate.csv</dataFile>
 		</directory>
+
+		<directory name="goback">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_goback</table>
+			<dataFile>data/vocabularies/goback.csv</dataFile>
+		</directory>
+
+		<directory name="months">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_months</table>
+			<dataFile>data/vocabularies/months.csv</dataFile>
+		</directory>
+
+		<directory name="office">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_office</table>
+			<dataFile>data/vocabularies/office.csv</dataFile>
+		</directory>
+
+		<directory name="regimen">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_regimen</table>
+			<dataFile>data/vocabularies/regimen.csv</dataFile>
+		</directory>
+
+		<directory name="routes">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_routes</table>
+			<dataFile>data/vocabularies/routes.csv</dataFile>
+		</directory>
+
+		<directory name="routescom">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_routescom</table>
+			<dataFile>data/vocabularies/routescom.csv</dataFile>
+		</directory>
+
+		<directory name="routesown">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_routesown</table>
+			<dataFile>data/vocabularies/routesown.csv</dataFile>
+		</directory>
+
+        <directory name="transportLine">
+            <schema>vocabulary</schema>
+            <dataSource>java:/nxsqldirectory</dataSource>
+            <cacheTimeout>3600</cacheTimeout>
+            <cacheMaxSize>1000</cacheMaxSize>
+            <idField>id</idField>
+            <autoincrementIdField>false</autoincrementIdField>
+            <createTablePolicy>on_missing_columns</createTablePolicy>
+            <table>vocabulary_transportLine</table>
+            <dataFile>data/vocabularies/transportLine.csv</dataFile>
+        </directory>
 
 		<directory name="type">
 			<schema>vocabulary</schema>
@@ -32,15 +273,48 @@
 			<dataFile>data/vocabularies/type.csv</dataFile>
 		</directory>
 
+		<directory name="years">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_years</table>
+			<dataFile>data/vocabularies/years.csv</dataFile>
+		</directory>
+
+
 	</extension>
 
-	<extension target="org.nuxeo.ecm.directory.ui.DirectoryUIManager"
-		point="directories">
+    <extension target="org.nuxeo.ecm.directory.ui.DirectoryUIManager"
+        point="directories">
 
-		<directory name="invoicestate" layout="vocabulary"
-			sortField="label" />
-		<directory name="type" layout="vocabulary" sortField="label" />
+		<directory name="activity" layout="vocabulary" sortField="ordering" />
+		<directory name="car" layout="vocabulary" sortField="ordering" />
+		<directory name="carkmcost" layout="vocabulary" sortField="ordering" />
+		<directory name="carowner" layout="vocabulary" sortField="ordering" />
+		<directory name="courseexp" layout="vocabulary" sortField="ordering" />
+		<directory name="courseloc" layout="vocabulary" sortField="ordering" />
+        <directory name="destination" layout="vocabulary" sortField="ordering" />
+		<directory name="expenseCat" layout="vocabulary" sortField="ordering" />
+		<directory name="expensecomment" layout="vocabulary" sortField="ordering" />
+        <directory name="invoicestate" layout="vocabulary" sortField="label" />
+		<directory name="goback" layout="vocabulary" sortField="ordering" />
+		<directory name="office" layout="vocabulary" sortField="ordering" />
+		<directory name="months" layout="vocabulary" sortField="ordering" />
+		<directory name="regimen" layout="vocabulary" sortField="ordering" />
+		<directory name="routes" layout="vocabulary" sortField="ordering" />
+		<directory name="routescom" layout="vocabulary" sortField="ordering" />
+		<directory name="routesown" layout="vocabulary" sortField="ordering" />
+		<directory name="transportLine" layout="vocabulary" sortField="ordering" />
+        <directory name="type" layout="vocabulary" sortField="label" />
+		<directory name="years" layout="vocabulary" sortField="ordering" />
+		<directory name="inputoutput" layout="vocabulary" sortField="ordering" />
+		<directory name="companynumber" layout="vocabulary" sortField="ordering" />
+		<directory name="currency" layout="vocabulary" sortField="ordering" />
 
-	</extension>
+    </extension>
 
 </component>
