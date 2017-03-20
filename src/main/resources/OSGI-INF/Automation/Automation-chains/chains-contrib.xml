@@ -788,7 +788,7 @@
             </operation>
             <operation id="Context.RunOperation">
                 <param type="string" name="id">expr:Document.lifeCycle ==
-                    'Finished' ? 'Athento.ToPaidFromList-individual' :
+                    'Validated' ? 'Athento.ToPaidFromList-individual' :
                     'Athento.ToPaidFromList-not-possible'</param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
@@ -872,7 +872,7 @@
                 <param type="string" name="name">Administrator</param>
             </operation>
             <operation id="Document.SetLifeCycle">
-                <param type="string" name="value">to_Paid</param>
+                <param type="string" name="value">to_Validated</param>
             </operation>
             <operation id="Auth.Logout" />
             <operation id="Audit.Log">

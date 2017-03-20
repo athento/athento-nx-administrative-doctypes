@@ -76,6 +76,12 @@
                 <param type="serializable" name="value">expr:office == empty ? empty : office
                 </param>
             </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:needslocalapproval</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:true
+                </param>
+            </operation>
         </chain>
 
     </extension>
