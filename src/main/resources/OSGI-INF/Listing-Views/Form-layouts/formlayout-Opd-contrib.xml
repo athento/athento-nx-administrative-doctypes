@@ -29,6 +29,10 @@
 					</properties>
 					<widget>dataopd</widget>
 				</row>
+				<row>
+					<widget>opd-totalInput</widget>
+					<widget>opd-totalOutput</widget>
+				</row>
 			</rows>	
 			<widget name="opd_description" type="textarea">
 				<labels>
@@ -37,6 +41,25 @@
 				<translated>true</translated>
 				<fields>
 					<field>opd:description</field>
+				</fields>
+			</widget>
+			<widget name="opd-totalInput" type="text">
+				<labels>
+					<label mode="any">label.opd.totalInput</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>opd:totalInput</field>
+				</fields>
+			</widget>
+
+			<widget name="opd-totalOutput" type="text">
+				<labels>
+					<label mode="any">label.opd.totalOutput</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>opd:totalOutput</field>
 				</fields>
 			</widget>
 

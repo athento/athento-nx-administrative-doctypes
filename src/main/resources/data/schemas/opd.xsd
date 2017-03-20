@@ -61,6 +61,7 @@
   <xs:element name="currency" type="xs:string" default = "01"/>
   <xs:element name="description" type="xs:string" />
   <xs:element name="opddate" type="xs:date" />
-
+  <xs:element name="totalInput" type="xs:double" />
+  <xs:element name="totalOutput" type="xs:double" />
   
 </xs:schema>
