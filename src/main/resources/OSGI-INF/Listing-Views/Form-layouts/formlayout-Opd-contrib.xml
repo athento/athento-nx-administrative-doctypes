@@ -43,7 +43,7 @@
 					<field>opd:description</field>
 				</fields>
 			</widget>
-			<widget name="opd-totalInput" type="text">
+			<widget name="opd-totalInput" type="double">
 				<labels>
 					<label mode="any">label.opd.totalInput</label>
 				</labels>
@@ -51,9 +51,18 @@
 				<fields>
 					<field>opd:totalInput</field>
 				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
 			</widget>
 
-			<widget name="opd-totalOutput" type="text">
+			<widget name="opd-totalOutput" type="double">
 				<labels>
 					<label mode="any">label.opd.totalOutput</label>
 				</labels>
@@ -61,6 +70,15 @@
 				<fields>
 					<field>opd:totalOutput</field>
 				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="dataopd" type="list">
