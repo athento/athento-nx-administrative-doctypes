@@ -40,6 +40,22 @@
 			</filter>
 		</action>
 
+		<action id="startinvoicewf"
+				label="label.athento-nx-administrative-doctypes.startinvoicewf"
+				enabled="true" order="1" type="link" immediate="true"
+				link="#{operationActionBean.doOperation('Athento.StartMassiveInvoiceWF')}">
+			<category>cv_actions@Invoice_listing</category>
+			<filter id="filter@appRequest">
+				<rule grant="true">
+					<permission>Write</permission>
+				</rule>
+				<rule grant="false">
+					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
+						== true}</condition>
+				</rule>
+			</filter>
+		</action>
+
 		<action id="to_paid"
 				label="label.athento-nx-administrative-doctypes.to_Paid" enabled="true"
 				order="1" type="link" immediate="true"

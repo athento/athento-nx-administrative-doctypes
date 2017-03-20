@@ -78,11 +78,11 @@
             <operation id="Context.FetchDocument" />
             <operation id="Context.SetVar">
                 <param type="string" name="name">needslocalapproval_var</param>
-                <param type="object" name="value">false
+                <param type="boolean" name="value">expr:false
                 </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">dataopd_var</param>
+                <param type="string" name="name">dataopdList</param>
                 <param type="object" name="value">expr:Document["opd:dataopd"]
                 </param>
             </operation>
@@ -114,16 +114,16 @@
                 Checks individually
             </documentation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">personalaccount_var</param>
-                <param type="object" name="value">expr:item.get("personalaccount").charAt(0)
+                <param type="string" name="name">account_var</param>
+                <param type="object" name="value">expr:item.get("account").charAt(0)
                 </param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">needslocalapproval_var</param>
-                <param type="object" name="value">expr:needslocalapproval_var ? true :
-                    personalaccount_var == '6' ? true :
-                    personalaccount_var == '7' ? true :
-                    personalaccount_var == '9' ? true :
+                <param type="object" name="value">expr:needslocalapproval_var == true ? true :
+                    account_var == '6' ? true :
+                    account_var == '7' ? true :
+                    account_var == '9' ? true :
                     false</param>
             </operation>
         </chain>

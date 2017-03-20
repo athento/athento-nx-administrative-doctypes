@@ -898,6 +898,72 @@
             </operation>
         </chain>
 
+        <chain id="Athento.StartMassiveInvoiceWF">
+            <operation id="Seam.GetSelectedDocuments">
+            </operation>
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">listToOperate</param>
+            </operation>
+            <operation id="Seam.ClearSelectedDocuments">
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">size</param>
+                <param type="object" name="value">expr:listToOperate.size()</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">expr:size == 0 ?
+                    "Athento.emptylist" :
+                    "Athento.StartMassiveInvoiceWF-check"
+                </param>
+                <param type="string" name="list">listToOperate</param>
+                <param type="string" name="item">item</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.StartMassiveInvoiceWF-check">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:item.id</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document.lifeCycle ==
+                    'PendingValidation' ? Document.type == 'Invoice' ? :
+                    'Athento.StartMassiveInvoiceWF-individual' :
+                    'Athento.StartMassiveInvoiceWF-not-possible' :
+                    'Athento.StartMassiveInvoiceWF-not-possible'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.StartMassiveInvoiceWF-individual">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:item.id</param>
+            </operation>
+            <operation id="Context.StartWorkflow">
+                <param type="string" name="id">extended-wf</param>
+                <param type="boolean" name="start">true</param>
+            </operation>
+            <operation id="Audit.Log">
+                <param type="string" name="event">WF started from Document List</param>
+                <param type="string" name="category">Document</param>
+                <param type="string" name="comment">expr:@{Document["dc:title"]+" Validation started"}
+                </param>
+            </operation>
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">expr:@{Document["dc:title"]+" Validation started"}
+                </param>
+                <param type="string" name="severity">INFO</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.StartMassiveInvoiceWF-not-possible">
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">expr:@{Document["dc:title"]+" not changed"}</param>
+                <param type="string" name="severity">WARN</param>
+            </operation>
+        </chain>
+
         <chain id="Athento.emptylist">
             <operation id="Seam.AddMessage">
                 <param type="string" name="message">Empty selection</param>
