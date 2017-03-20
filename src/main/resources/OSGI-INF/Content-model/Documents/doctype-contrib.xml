@@ -32,6 +32,7 @@
 			<schema name="administrative" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
+			<schema name="transferrequest" />
 			<facet name="HasRelatedText" />
 			<facet name="Versionable" />
 			<facet name="Commentable" />
@@ -192,23 +193,16 @@
 			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
-				<layout>heading</layout>
-				<layout>file</layout>
+				<layout>layout@formlayout-transferRequestHeading</layout>
 				<layout>layout@formlayout-transferRequest</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
 			</layouts>
 			<layouts mode="edit">
-				<layout>heading</layout>
-				<layout>file</layout>
+				<layout>layout@formlayout-transferRequestHeading</layout>
 				<layout>layout@formlayout-transferRequest</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
 			</layouts>
 			<layouts mode="view">
+				<layout>layout@formlayout-transferRequestHeading</layout>
 				<layout>layout@formlayout-transferRequest</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
 			</layouts>
 		</type>
 

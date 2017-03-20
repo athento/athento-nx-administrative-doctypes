@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains-opd"
+<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains-transferrequest"
     version="1.0.0">
     <require>org.nuxeo.runtime.started</require>
 
     <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
         point="chains">
 
-        <chain id="Opd-assignID">
+        <chain id="TransferRequest-assignID">
             <documentation>
                 Sequential ID.
-                2 digits - Company
                 2 digits - Month
                 2 digits - Year
                 6 numbers - Sequential ID
                 Each sequential number starts every month for every company. Example:
-                CC/MMYY/xxxxxx
-                01/0117/000001
+                MMYY/xxxxxx
+                0117/000001
             </documentation>
             <operation id="Context.FetchDocument" />
             <!-- Year. Used for uniqueness of number id AND the composition of the
@@ -35,27 +34,21 @@
                     java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
                 </param>
             </operation>
-            <!-- Company ID -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">company_var</param>
-                <param type="object" name="value">expr:Document["userFile:companyNumber"]
-                </param>
-            </operation>
             <!-- Number, which is formatted with 6 digits -->
             <operation id="Context.SetVar">
-                <param type="string" name="name">uniqueopdnumber_var</param>
-                <param type="object" name="value">expr:Fn.getNextId("unique-opd-key"+year_var+month_var+company_var)
+                <param type="string" name="name">uniquetrnumber_var</param>
+                <param type="object" name="value">expr:Fn.getNextId("unique-tr-key"+year_var+month_var)
                 </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">uniqueopdnumberformatted_var</param>
-                <param type="object" name="value">expr:uniqueopdnumber_var.format("%06d",Integer.valueOf(uniqueopdnumber_var))
+                <param type="string" name="name">uniquetrnumberformatted_var</param>
+                <param type="object" name="value">expr:uniquetrnumber_var.format("%06d",Integer.valueOf(uniquetrnumber_var))
                 </param>
             </operation>
             <!-- Final variable id_var with the ID composition. Stored in both title -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{"OPD-"company_var+"/"+month_var+year_var+"/"+uniqueopdnumberformatted_var}
+                <param type="object" name="value">expr:@{"TR-"+year_var+month_var+"-"+uniquetrnumberformatted_var}
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -68,6 +61,21 @@
                 <param type="string" name="version">0.0</param>
             </operation>
 
+        </chain>
+
+        <chain id="transferRequest-userInfo">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">office</param>
+                <param type="object" name="value">expr:Document["userFile:office"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:office == empty ? empty : office
+                </param>
+            </operation>
         </chain>
 
     </extension>

@@ -54,15 +54,6 @@
 				<subWidgets>
 					<widget name="sub0" type="text">
 						<labels>
-							<label mode="any">label.opd.dataopd.docnumber</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>docnumber</field>
-						</fields>
-					</widget>
-					<widget name="sub1" type="text">
-						<labels>
 							<label mode="any">label.opd.dataopd.account</label>
 						</labels>
 						<translated>true</translated>
@@ -72,8 +63,14 @@
 						<properties widgetMode="any">
 							<property name="required">true</property>
 						</properties>
+						<properties widgetMode="edit">
+							<property name="required">true</property>
+							<property name="regex">^[0-9]{12}$</property>
+							<property name="validator">#{bFieldValidator.validateRegex}</property>
+							<property name="placeholder">123456789123</property>
+						</properties>
 					</widget>
-					<widget name="sub2" type="text">
+					<widget name="sub1" type="text">
 						<labels>
 							<label mode="any">label.opd.dataopd.personalaccount</label>
 						</labels>
@@ -82,16 +79,24 @@
 							<field>personalaccount</field>
 						</fields>
 					</widget>
-					<widget name="sub3" type="text">
+					<widget name="sub2" type="double">
 						<labels>
-							<label mode="any">label.opd.dataopd.accountname</label>
+							<label mode="any">label.opd.dataopd.amount</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>accountname</field>
+							<field>amount</field>
 						</fields>
+						<properties widgetMode="view">
+							<property name="type">currency</property>
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
+						</properties>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
 					</widget>
-					<widget name="sub4" type="selectOneDirectory">
+					<widget name="sub3" type="selectOneDirectory">
 						<labels>
 							<label mode="any">label.opd.dataopd.inputoutput</label>
 						</labels>
@@ -107,25 +112,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub5" type="text">
-						<labels>
-							<label mode="any">label.opd.dataopd.con</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>con</field>
-						</fields>
-					</widget>
-					<widget name="sub6" type="text">
-						<labels>
-							<label mode="any">label.opd.dataopd.description</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>description</field>
-						</fields>
-					</widget>
-					<widget name="sub7" type="text">
+					<widget name="sub4" type="text">
 						<labels>
 							<label mode="any">label.opd.dataopd.subject</label>
 						</labels>
@@ -134,28 +121,8 @@
 							<field>subject</field>
 						</fields>
 					</widget>
-					<widget name="sub8" type="double">
-						<labels>
-							<label mode="any">label.opd.dataopd.amount</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>amount</field>
-						</fields>
-						<properties widgetMode="view">
-							<property name="type">currency</property>
-							<property name="minFractionDigits">2</property>
-							<property name="currencySymbol">€</property>
-						</properties>
-					</widget>
 				</subWidgets>
 			</widget>
-
-
-
-
-
-
 
 		</layout>
 

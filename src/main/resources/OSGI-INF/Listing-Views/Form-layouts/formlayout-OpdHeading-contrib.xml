@@ -25,7 +25,7 @@
 					</properties>
 					<widget>userFile_name</widget>
 					<widget>S_FACTURA_erpNumber</widget>
-					<widget>created</widget>
+					<widget>opd_opddate</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -34,7 +34,7 @@
 						<property name="nxl_colspan_2">1</property>
 					</properties>
 					<widget>userFile_surname1</widget>
-					<widget>userFile_companyNumber</widget>
+					<widget>administrative_companyNumber</widget>
 					<widget>S_FACTURA_accountDate</widget>
 				</row>
 				<row>
@@ -84,13 +84,13 @@
 				</fields>
 			</widget>
 
-			<widget name="userFile_companyNumber" type="selectOneDirectory">
+			<widget name="administrative_companyNumber" type="selectOneDirectory">
 				<labels>
 					<label mode="any">label.userFile.companyNumber</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>userFile:companyNumber</field>
+					<field>administrative:companyNumber</field>
 				</fields>
 				<properties widgetMode="any">
 					<property name="directoryName">companynumber</property>
@@ -119,20 +119,20 @@
 				<fields>
 					<field>opd:diary</field>
 				</fields>
+				<widgetModes>
+					<mode value="create">view</mode>
+					<mode value="edit">view</mode>
+				</widgetModes>
 			</widget>
 
-			<widget name="created" type="datetime">
+			<widget name="opd_opddate" type="datetime">
 				<labels>
-					<label mode="any">label.dublincore.created</label>
+					<label mode="any">label.opd.opddate</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>dc:created</field>
+					<field>opd:opddate</field>
 				</fields>
-				<widgetModes>
-					<mode value="create">hidden</mode>
-					<mode value="edit">view</mode>
-				</widgetModes>
 				<properties widgetMode="any">
 					<property name="required">true</property>
 					<property name="format">#{nxu:basicDateFormatter()}</property>
@@ -148,7 +148,6 @@
 					<field>S_FACTURA:accountDate</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="required">true</property>
 					<property name="format">#{nxu:basicDateFormatter()}</property>
 				</properties>
 			</widget>
@@ -167,6 +166,10 @@
 					<property name="displayIdAndLabel">false</property>
 					<property name="localize">true</property>
 				</properties>
+				<widgetModes>
+					<mode value="create">view</mode>
+					<mode value="edit">view</mode>
+				</widgetModes>
 			</widget>
 
 		</layout>

@@ -16,7 +16,8 @@
                 6 numbers - Sequential ID
                 Each sequential number starts every month for every company. Example:
                 CC/MMYY/xxxxxx
-                01/0117/000001
+                Finished in A (Athento numeration)
+                01/0117/000001-A
             </documentation>
             <operation id="Context.FetchDocument" />
             <!-- Year. Used for uniqueness of number id AND the composition of the
@@ -55,7 +56,7 @@
             <!-- Final variable id_var with the ID composition. Stored in both title -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{company_var+"/"+month_var+year_var+"/"+uniqueopdnumberformatted_var}
+                <param type="object" name="value">expr:@{"OPD-"+company_var+"-"+year_var+month_var+"-"+uniqueopdnumberformatted_var+"-A"}
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -68,6 +69,63 @@
                 <param type="string" name="version">0.0</param>
             </operation>
 
+        </chain>
+
+        <chain id="Opd-NeedsLocalApproval">
+            <documentation>
+                Needs local approval (from the direct manager) when personal account starts with 6, 7 or 9.
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">needslocalapproval_var</param>
+                <param type="object" name="value">false
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">dataopd_var</param>
+                <param type="object" name="value">expr:Document["opd:dataopd"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">len</param>
+                <param type="object" name="value">expr:dataopdList.size()</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">expr:len == 0 ? "voidchain" :
+                    "Opd-NeedsLocalApprovalCheck"
+                </param>
+                <param type="string" name="list">dataopdList</param>
+                <param type="boolean" name="isolate">false</param>
+                <param type="string" name="item">item</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:needslocalapproval</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:needslocalapproval_var
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="Opd-NeedsLocalApprovalCheck">
+            <documentation>
+                Needs local approval (from the direct manager) when personal account starts with 6, 7 or 9.
+                Checks individually
+            </documentation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">personalaccount_var</param>
+                <param type="object" name="value">expr:item.get("personalaccount").charAt(0)
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">needslocalapproval_var</param>
+                <param type="object" name="value">expr:needslocalapproval_var ? true :
+                    personalaccount_var == '6' ? true :
+                    personalaccount_var == '7' ? true :
+                    personalaccount_var == '9' ? true :
+                    false</param>
+            </operation>
         </chain>
 
     </extension>

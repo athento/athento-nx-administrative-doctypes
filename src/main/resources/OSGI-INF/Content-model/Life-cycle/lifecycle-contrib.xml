@@ -12,7 +12,7 @@
 			<type name="PaymentOrder">default</type>
 			<type name="TransferRequest">default</type>
 			<type name="TravelRequest">default</type>
-			<type name="Opd">default</type>
+			<type name="Opd">AdministrativeLC</type>
 			<type name="Invoice">commonLC</type>
 		</types>
 

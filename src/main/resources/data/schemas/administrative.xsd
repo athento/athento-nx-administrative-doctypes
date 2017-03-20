@@ -56,6 +56,8 @@
 	<xs:element name="signDate" type="xs:date" />
 	<!-- Source Account -->
 	<xs:element name="sourceAccount" type="xs:string" />
+	<!-- Needs Local Approval -->
+	<xs:element name="needslocalapproval" type="xs:boolean" />
 
 	<!-- ** Expenses ** -->
 

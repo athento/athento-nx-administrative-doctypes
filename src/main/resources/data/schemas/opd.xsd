@@ -49,16 +49,18 @@
       <xs:element name="amount" type="xs:double" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
-    
-      <xs:element name="diary" type="xs:string" default = "OPD"/>
-      <xs:element name="currency" type="xs:string" default = "01"/>
-      <xs:element name="description" type="xs:string" />
+
     <xs:complexType name="dataopdTypeList">
      <xs:sequence>
        <xs:element name="item" type="nxs:dataopdType" minOccurs="0" maxOccurs="unbounded"/>
      </xs:sequence>
     </xs:complexType>
     <xs:element name="dataopd" type="nxs:dataopdTypeList" />
+
+  <xs:element name="diary" type="xs:string" default = "OPD"/>
+  <xs:element name="currency" type="xs:string" default = "01"/>
+  <xs:element name="description" type="xs:string" />
+  <xs:element name="opddate" type="xs:date" />
 
   
 </xs:schema>

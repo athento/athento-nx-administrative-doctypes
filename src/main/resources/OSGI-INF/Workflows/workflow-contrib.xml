@@ -28,6 +28,10 @@
 			<processDefinition>review_parallel</processDefinition>
 			<processDefinition>review_approbation</processDefinition>
 		</type>
+		<type name="Opd">
+			<processDefinition>review_parallel</processDefinition>
+			<processDefinition>review_approbation</processDefinition>
+		</type>
 
 	</extension>
 

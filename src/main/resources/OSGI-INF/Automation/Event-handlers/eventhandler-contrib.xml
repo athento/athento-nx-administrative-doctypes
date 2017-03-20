@@ -81,6 +81,26 @@
 			</filters>
 		</handler>
 
+		<handler chainId="TransferRequest-assignID">
+			<event>documentCreated</event>
+			<filters>
+				<doctype>TransferRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="transferRequest-userInfo">
+			<documentation>
+				Updates automatic metadata
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>TransferRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 		<handler chainId="travelRequest-travelerInfo">
 			<documentation>
 				If traveler is the same as the requester, info will be updated automatically
@@ -101,6 +121,20 @@
 			<filters>
 				<doctype>TravelRequest</doctype>
 				<doctype>Expenses</doctype>
+				<doctype>Opd</doctype>
+				<doctype>TransferRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="Opd-NeedsLocalApproval">
+			<documentation>
+				Checks if it needs local approval for WF purposes
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Opd</doctype>
 				<attribute>Regular Document</attribute>
 			</filters>
 		</handler>

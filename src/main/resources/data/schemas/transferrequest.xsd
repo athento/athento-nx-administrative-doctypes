@@ -38,17 +38,17 @@
   <!-- Generated with Rhombus -->
   <xs:complexType name="transferrequestdataType">
     <xs:sequence>
-      <xs:element name="erpnumber" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="personalaccount" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="destinationname" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="idpersonalnumber" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="amount" type="xs:float" minOccurs="1" maxOccurs="1" />
-      <xs:element name="duedate" type="xs:date" minOccurs="1" maxOccurs="1" />
+      <xs:element name="amount" type="xs:double" minOccurs="1" maxOccurs="1" />
+      <xs:element name="dueDate" type="xs:date" minOccurs="1" maxOccurs="1" />
       <xs:element name="subject" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="destinationiban" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="sector" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="inputoutput" type="xs:vocabulary" minOccurs="1" maxOccurs="1" />
+      <xs:element name="inputoutput" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="accountnumber" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="Doc_adjunto" type="nxs:content" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="fil" type="nxs:content" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
     
@@ -58,6 +58,8 @@
      </xs:sequence>
     </xs:complexType>
     <xs:element name="transferrequestdata" type="nxs:transferrequestdataTypeList" />
+
+  <xs:element name="transferrequestdate" type="xs:date"/>
 
   
 </xs:schema>

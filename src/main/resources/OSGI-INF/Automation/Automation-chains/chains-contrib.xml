@@ -46,7 +46,7 @@
             <operation id="Context.SetVar">
                 <param type="string" name="name">year_var</param>
                 <param type="object" name="value">expr:new
-                    java.text.SimpleDateFormat("yyyy").format(Document["dc:created"].getTime())
+                    java.text.SimpleDateFormat("yy").format(Document["dc:created"].getTime())
                 </param>
             </operation>
             <!-- Month. Used for uniqueness of number id AND the composition of the
@@ -72,7 +72,7 @@
                 and projectid -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{"OM"+year_var+month_var+uniquetrnumberformatted_var}
+                <param type="object" name="value">expr:@{"OM-"+year_var+month_var+"-"+uniquetrnumberformatted_var}
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -98,7 +98,7 @@
             <operation id="Context.SetVar">
                 <param type="string" name="name">year_var</param>
                 <param type="object" name="value">expr:new
-                    java.text.SimpleDateFormat("yyyy").format(Document["dc:created"].getTime())
+                    java.text.SimpleDateFormat("yy").format(Document["dc:created"].getTime())
                 </param>
             </operation>
             <!-- Month. Used for uniqueness of number id AND the composition of the
@@ -130,7 +130,7 @@
                 and projectid -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{"NG"+year_var+month_var+"-"+idNumber_var+"-"+uniqueexnumberformatted_var}
+                <param type="object" name="value">expr:@{"NG-"+year_var+month_var+"-"+idNumber_var+"-"+uniqueexnumberformatted_var}
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -755,6 +755,83 @@
                 </param>
                 <param type="string" name="language">NXQL</param>
                 <param type="string" name="sortOrder">ASC</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.ToPaidFromList">
+            <operation id="Seam.GetSelectedDocuments">
+            </operation>
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">listToOperate</param>
+            </operation>
+            <operation id="Seam.ClearSelectedDocuments">
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">size</param>
+                <param type="object" name="value">expr:listToOperate.size()</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">expr:size == 0 ?
+                    "Athento.ToPaidFromList-emptylist" :
+                    "Athento.ToPaidFromList-check"
+                </param>
+                <param type="string" name="list">listToOperate</param>
+                <param type="string" name="item">item</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.ToPaidFromList-check">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:item.id</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document.lifeCycle ==
+                    'Finished' ? 'Athento.ToPaidFromList-individual' :
+                    'Athento.ToPaidFromList-not-possible'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.ToPaidFromList-individual">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:item.id</param>
+            </operation>
+            <operation id="Auth.LoginAs">
+                <param type="string" name="name">Administrator</param>
+            </operation>
+            <operation id="Document.SetLifeCycle">
+                <param type="string" name="value">to_Paid</param>
+            </operation>
+            <operation id="Auth.Logout" />
+            <operation id="Audit.Log">
+                <param type="string" name="event">LifeCycle: Paid</param>
+                <param type="string" name="category">Document</param>
+                <param type="string" name="comment">expr:@{Document["dc:title"]+" marked
+                    as Paid"}
+                </param>
+            </operation>
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">expr:@{Document["dc:title"]+" marked
+                    as Paid"}
+                </param>
+                <param type="string" name="severity">INFO</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.ToPaidFromList-not-possible">
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">expr:@{Document["dc:title"]+" not
+                    changed"}</param>
+                <param type="string" name="severity">WARN</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.ToPaidFromList-emptylist">
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">Empty selection</param>
+                <param type="string" name="severity">ERROR</param>
             </operation>
         </chain>
 
