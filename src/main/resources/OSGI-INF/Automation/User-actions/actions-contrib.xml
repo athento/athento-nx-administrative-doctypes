@@ -44,14 +44,16 @@
 				label="label.athento-nx-administrative-doctypes.to_Paid" enabled="true"
 				order="1" type="link" immediate="true"
 				link="#{operationActionBean.doOperation('Athento.ToPaidFromList')}">
-			<category>cv_actions@Opd_listing</category>
-			<filter id="filter@appRequest">
+			<category>CURRENT_SELECTION_LIST</category>
+			<filter id="filter@TransferRequest">
 				<rule grant="true">
 					<permission>Write</permission>
 				</rule>
 				<rule grant="false">
 					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
 						== true}</condition>
+					<condition>#{documentsListsManager.getWorkingListTypes("CURRENT_SELECTION").toString().matches(".*\\bTransferRequest\\b.*")
+						== false}</condition>
 				</rule>
 			</filter>
 		</action>
