@@ -177,9 +177,6 @@
                 <param type="serializable" name="value">expr:totalSumOpdOutput</param>
             </operation>
 
-            <operation id="Document.CheckIn">
-                <param type="string" name="version">0.0</param>
-            </operation>
         </chain>
 
         <chain id="Athento.opd.sumInputOrOutput">
