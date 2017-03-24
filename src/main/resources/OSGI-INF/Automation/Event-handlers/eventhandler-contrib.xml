@@ -148,6 +148,18 @@
 			</filters>
 		</handler>
 
+		<handler chainId="TR-NeedsSectorApproval">
+			<documentation>
+				Checks if it needs sector approval for WF purposes
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>TransferRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 		<handler chainId="Athento.expensesCalculations">
 			<documentation>
 				Calculations based on the user input

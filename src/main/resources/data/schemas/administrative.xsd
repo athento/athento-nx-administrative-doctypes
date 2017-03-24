@@ -57,7 +57,11 @@
 	<!-- Source Account -->
 	<xs:element name="sourceAccount" type="xs:string" />
 	<!-- Needs Local Approval -->
-	<xs:element name="needslocalapproval" type="xs:boolean" />
+	<xs:element name="needslocalapproval" type="xs:boolean" default="false"/>
+	<!-- For RME approval purposes -->
+	<xs:element name="containsVO" type="xs:boolean" default="false"/>
+	<!-- For RME approval purposes -->
+	<xs:element name="containsnotVO" type="xs:boolean" default="false"/>
 
 	<!-- ** Expenses ** -->
 

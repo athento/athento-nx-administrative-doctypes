@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains-administrativewf"
+    version="1.0.0">
+    <require>org.nuxeo.runtime.started</require>
+
+    <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
+        point="chains">
+
+        <chain id="administrativewf-calculateHierarchy">
+            <documentation>
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">len</param>
+                <param type="object" name="value">expr:Document["userFile:office"] == empty ? "0" :
+                    Document["userFile:office"].length()
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">office_var</param>
+                <param type="object" name="value">expr:len == 2 ?
+                    Fn.getVocabularyLabel("officenat",Document["userFile:office"]) :
+                    Document["userFile:office"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">isRME_var</param>
+                <param type="object" name="value">expr:office_var == "0529" ?
+                    true : office_var == "0354" ?
+                    true : office_var == "0475" ?
+                    true : false
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">needslocalapproval_var</param>
+                <param type="object" name="value">expr:Document["administrative:needslocalapproval"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">containsVO_var</param>
+                <param type="object" name="value">expr:Document["administrative:containsVO"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">containsnotVO_var</param>
+                <param type="object" name="value">expr:Document["administrative:containsnotVO"]
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">level25office</param>
+                <param type="object" name="value">expr:isRME_var ?
+                    containsVO ?
+                    :
+                    @{"group:Level25_"+office_var}
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">level25officebis</param>
+                <param type="object" name="value">expr:isRME_var ?
+
+                    :
+                    @{"group:Level25_"+office_var}
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">needslocalapproval</param>
+                <param type="object" name="value">expr:needslocalapproval_var
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">level18</param>
+                <param type="object" name="value">expr:@{"group:Level18"}
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="administrativewf-calculateValidators">
+            <documentation>Based on several properties, calculates all levels'
+                validators
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">category_var</param>
+                <param type="object" name="value">expr:Document["projectFile:category"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">activity_var</param>
+                <param type="object" name="value">expr:Document["invoicing:activity"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">firstLevel_var</param>
+                <param type="object" name="value">expr:@{"group:Level35_"+category_var+"_"+WorkflowVariables["suffix_office"]}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">secondLevel_RME_var</param>
+                <param type="object" name="value">expr:@{"group:RME_"+WorkflowVariables["activity"]}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">secondLevel_standard_var</param>
+                <param type="object" name="value">expr:@{"group:Level25_"+WorkflowVariables["suffix_office"]}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">secondLevel_var</param>
+                <param type="object" name="value">expr:WorkflowVariables["suffix_office"] == "0529" ?
+                    secondLevel_RME_var : WorkflowVariables["suffix_office"] == "0354" ?
+                    secondLevel_RME_var : WorkflowVariables["suffix_office"] == "0475" ?
+                    secondLevel_RME_var : secondLevel_standard_var
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">thirdLevel_var</param>
+                <param type="object" name="value">expr:@{"group:Level20_"+category_var}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">fourthLevel_var</param>
+                <param type="object" name="value">expr:@{"group:Level15"}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">fifthLevel_var</param>
+                <param type="object" name="value">expr:@{"group:Level10"}
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">firstLevel</param>
+                <param type="object" name="value">expr:firstLevel_var
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">secondLevel</param>
+                <param type="object" name="value">expr:secondLevel_var
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">thirdLevel</param>
+                <param type="object" name="value">expr:thirdLevel_var
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">fourthLevel</param>
+                <param type="object" name="value">expr:fourthLevel_var
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">fifthLevel</param>
+                <param type="object" name="value">expr:fifthLevel_var
+                </param>
+            </operation>
+        </chain>
+
+    </extension>
+
+</component>

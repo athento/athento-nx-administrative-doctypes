@@ -201,6 +201,18 @@
 			<dataFile>data/vocabularies/office.csv</dataFile>
 		</directory>
 
+		<directory name="officenat">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_officenat</table>
+			<dataFile>data/vocabularies/officenat.csv</dataFile>
+		</directory>
+
 		<directory name="regimen">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -303,6 +315,7 @@
         <directory name="invoicestate" layout="vocabulary" sortField="label" />
 		<directory name="goback" layout="vocabulary" sortField="ordering" />
 		<directory name="office" layout="vocabulary" sortField="ordering" />
+		<directory name="officenat" layout="vocabulary" sortField="ordering" />
 		<directory name="months" layout="vocabulary" sortField="ordering" />
 		<directory name="regimen" layout="vocabulary" sortField="ordering" />
 		<directory name="routes" layout="vocabulary" sortField="ordering" />

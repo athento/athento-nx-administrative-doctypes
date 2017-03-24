@@ -14,7 +14,7 @@
                 2 digits - Year
                 6 numbers - Sequential ID
                 Each sequential number starts every month for every company. Example:
-                MMYY/xxxxxx
+                TR-MMYY-xxxxxx
                 0117/000001
             </documentation>
             <operation id="Context.FetchDocument" />
@@ -81,6 +81,78 @@
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:true
                 </param>
+            </operation>
+        </chain>
+
+        <chain id="TR-NeedsSectorApproval">
+            <documentation>
+                Needs sector (from the activity manager)
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">containsVO_var</param>
+                <param type="boolean" name="value">expr:false
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">containsnotVO_var</param>
+                <param type="boolean" name="value">expr:false
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">dataopdList</param>
+                <param type="object" name="value">expr:Document["opd:dataopd"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">len</param>
+                <param type="object" name="value">expr:dataopdList.size()</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">expr:len == 0 ? "voidchain" :
+                    "TR-NeedsSectorApprovalCheck"
+                </param>
+                <param type="string" name="list">dataopdList</param>
+                <param type="boolean" name="isolate">false</param>
+                <param type="string" name="item">item</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:containsVO</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:containsVO_var
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:containsnotVO</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:containsnotVO_var
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="TR-NeedsSectorApprovalCheck">
+            <documentation>
+                Needs sector (from the activity manager)
+                Checks individually
+            </documentation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">sector_var</param>
+                <param type="object" name="value">expr:item.get("sector")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">containsVO_var</param>
+                <param type="object" name="value">expr:containsVO_var == true ? true :
+                    sector_var == '01' ? true :
+                    false</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">containsnotVO_var</param>
+                <param type="object" name="value">expr:containsnotVO_var == true ? true :
+                    sector_var != '01' ? true :
+                    false</param>
             </operation>
         </chain>
 

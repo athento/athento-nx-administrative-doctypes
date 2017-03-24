@@ -47,6 +47,12 @@
 					<widget>opd_diary</widget>
 					<widget>opd_currency</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
+					<widget>userFile_office</widget>
+				</row>
 			</rows>	
 			<widget name="userFile_name" type="text">
 				<labels>
@@ -169,6 +175,30 @@
 				<widgetModes>
 					<mode value="create">view</mode>
 					<mode value="edit">view</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="userFile_office" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.userFile.office</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:office</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">org_low</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="view">#{currentUser.isMemberOf('administrators') ?
+					 'view':'hidden'}</mode>
+					<mode value="edit">#{currentUser.isMemberOf('administrators') ?
+					 'edit':'hidden'}</mode>
+					<mode value="create">#{currentUser.isMemberOf('administrators') ?
+					 'edit':'hidden'}</mode>
 				</widgetModes>
 			</widget>
 

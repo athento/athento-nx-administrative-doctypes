@@ -11,13 +11,13 @@
             <documentation>
                 Sequential ID.
                 2 digits - Company
-                2 digits - Month
                 2 digits - Year
+                2 digits - Month
                 6 numbers - Sequential ID
                 Each sequential number starts every month for every company. Example:
-                CC/MMYY/xxxxxx
+                OPD-CC/MMYY/xxxxxx
                 Finished in A (Athento numeration)
-                01/0117/000001-A
+                OPD-01-0117-000001-A
             </documentation>
             <operation id="Context.FetchDocument" />
             <!-- Year. Used for uniqueness of number id AND the composition of the
@@ -39,7 +39,7 @@
             <!-- Company ID -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">company_var</param>
-                <param type="object" name="value">expr:Document["userFile:companyNumber"]
+                <param type="object" name="value">expr:Document["administrative:companyNumber"]
                 </param>
             </operation>
             <!-- Number, which is formatted with 6 digits -->

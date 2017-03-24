@@ -7,6 +7,7 @@ Bundle-ManifestVersion: 2
 Bundle-Vendor: Athento
 Nuxeo-Component: OSGI-INF/Automation/User-actions/actions-contrib.xml,
  OSGI-INF/Automation/Event-handlers/eventhandler-contrib.xml,
+ OSGI-INF/Automation/Automation-chains/chains-administrativewf-contrib.xml,
  OSGI-INF/Automation/Automation-chains/chains-contrib.xml,
  OSGI-INF/Automation/Automation-chains/chains-expenses-contrib.xml,
  OSGI-INF/Automation/Automation-chains/chains-opd-contrib.xml,
