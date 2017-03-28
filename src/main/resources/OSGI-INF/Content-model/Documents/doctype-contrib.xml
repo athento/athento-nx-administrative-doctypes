@@ -32,6 +32,7 @@
 			<schema name="administrative" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
+			<schema name="transferrequest" />
 			<facet name="HasRelatedText" />
 			<facet name="Versionable" />
 			<facet name="Commentable" />
@@ -50,6 +51,16 @@
 
 		<doctype name="Invoice" extends="File" append="true">
 			<schema name="S_FACTURA" />
+			<schema name="administrative" />
+			<schema name="integration" />
+			<schema name="userFile" />
+			<schema name="projectFile" />
+			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
+		</doctype>
+
+		<doctype name="Opd" extends="File" append="true">
+			<schema name="S_FACTURA" />
+			<schema name="opd" />
 			<schema name="administrative" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
@@ -72,23 +83,33 @@
 			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-expenses</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-expenses</layout>
+				<layout>layout@formlayout-expenses-travel</layout>
+				<layout>layout@formlayout-expenses-nontravel</layout>
+				<layout>layout@formlayout-expenses-km</layout>
+				<layout>layout@formlayout-expenses-km-offices</layout>
+				<layout>layout@formlayout-expenses-course</layout>
 			</layouts>
 			<layouts mode="edit">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-expenses</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-expenses</layout>
+				<layout>layout@formlayout-expenses-total</layout>
+				<layout>layout@formlayout-expenses-travel</layout>
+				<layout>layout@formlayout-expenses-nontravel</layout>
+				<layout>layout@formlayout-expenses-km</layout>
+				<layout>layout@formlayout-expenses-km-offices</layout>
+				<layout>layout@formlayout-expenses-course</layout>
 			</layouts>
 			<layouts mode="view">
-				<layout>layout@formlayout-expenses</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-expenses</layout>
+				<layout>layout@formlayout-expenses-total</layout>
+				<layout>layout@formlayout-expenses-travel</layout>
+				<layout>layout@formlayout-expenses-nontravel</layout>
+				<layout>layout@formlayout-expenses-km</layout>
+				<layout>layout@formlayout-expenses-km-offices</layout>
+				<layout>layout@formlayout-expenses-course</layout>
 			</layouts>
 		</type>
 
@@ -108,6 +129,7 @@
 				<layout>layout@formlayout-Invoice</layout>
 				<layout>layout@formlayout-Invoice-details</layout>
 				<layout>layout@formlayout-Invoice-payment</layout>
+				<layout>layout@formlayout-Invoice-lines</layout>
 			</layouts>
 			<layouts mode="edit">
 				<layout>heading</layout>
@@ -116,6 +138,7 @@
 				<layout>layout@formlayout-Invoice</layout>
 				<layout>layout@formlayout-Invoice-details</layout>
 				<layout>layout@formlayout-Invoice-payment</layout>
+				<layout>layout@formlayout-Invoice-lines</layout>
 			</layouts>
 			<layouts mode="view">
 				<layout>heading</layout>
@@ -124,6 +147,7 @@
 				<layout>layout@formlayout-Invoice</layout>
 				<layout>layout@formlayout-Invoice-details</layout>
 				<layout>layout@formlayout-Invoice-payment</layout>
+				<layout>layout@formlayout-Invoice-lines</layout>
 			</layouts>
 		</type>
 
@@ -170,23 +194,16 @@
 			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
-				<layout>heading</layout>
-				<layout>file</layout>
+				<layout>layout@formlayout-transferRequestHeading</layout>
 				<layout>layout@formlayout-transferRequest</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
 			</layouts>
 			<layouts mode="edit">
-				<layout>heading</layout>
-				<layout>file</layout>
+				<layout>layout@formlayout-transferRequestHeading</layout>
 				<layout>layout@formlayout-transferRequest</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
 			</layouts>
 			<layouts mode="view">
+				<layout>layout@formlayout-transferRequestHeading</layout>
 				<layout>layout@formlayout-transferRequest</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
 			</layouts>
 		</type>
 
@@ -201,23 +218,46 @@
 			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-travelRequest</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-travelRequest-traveler</layout>
+				<layout>layout@formlayout-travelRequest</layout>
+				<layout>layout@formlayout-travelRequest-advance</layout>
 			</layouts>
 			<layouts mode="edit">
-				<layout>heading</layout>
-				<layout>file</layout>
-				<layout>layout@formlayout-travelRequest</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-travelRequest-traveler</layout>
+				<layout>layout@formlayout-travelRequest</layout>
+				<layout>layout@formlayout-travelRequest-advance</layout>
 			</layouts>
 			<layouts mode="view">
-				<layout>layout@formlayout-travelRequest</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
-				<layout>layout@formlayout-projectFileHeading</layout>
+				<layout>layout@formlayout-travelRequest-traveler</layout>
+				<layout>layout@formlayout-travelRequest</layout>
+				<layout>layout@formlayout-travelRequest-advance</layout>
+			</layouts>
+		</type>
+
+		<type id="Opd">
+			<label>label.athento-nx-administrative-doctypes.Opd</label>
+			<translated>true</translated>
+			<icon>/img/file_100.png</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>label.athento-nx-administrative-doctypes.Opd.description
+			</description>
+			<category>label.athento-nx-administrative-doctypes.administrativeCategory
+			</category>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>layout@formlayout-OpdHeading</layout>
+				<layout>layout@formlayout-Opd</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>layout@formlayout-OpdHeading</layout>
+				<layout>layout@formlayout-Opd</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout@formlayout-OpdHeading</layout>
+				<layout>layout@formlayout-Opd</layout>
 			</layouts>
 		</type>
 
@@ -229,6 +269,7 @@
 				<type>TransferRequest</type>
 				<type>TravelRequest</type>
 				<type>Invoice</type>
+				<type>Opd</type>
 			</subtypes>
 		</type>
 		<type id="Workspace">
@@ -239,6 +280,7 @@
 				<type>TransferRequest</type>
 				<type>TravelRequest</type>
 				<type>Invoice</type>
+				<type>Opd</type>
 			</subtypes>
 		</type>
 

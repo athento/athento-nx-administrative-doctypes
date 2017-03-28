@@ -85,6 +85,7 @@
 					<field>S_FACTURA:totalAmount</field>
 				</fields>
 			</widget>
+
 		</layout>
 
 	</extension>

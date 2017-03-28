@@ -56,11 +56,246 @@
 	<xs:element name="signDate" type="xs:date" />
 	<!-- Source Account -->
 	<xs:element name="sourceAccount" type="xs:string" />
+	<!-- Needs Local Approval -->
+	<xs:element name="needslocalapproval" type="xs:boolean" default="false"/>
+	<!-- For RME approval purposes -->
+	<xs:element name="containsVO" type="xs:boolean" default="false"/>
+	<!-- For RME approval purposes -->
+	<xs:element name="containsnotVO" type="xs:boolean" default="false"/>
 
 	<!-- ** Expenses ** -->
 
 	<!-- Document Expense date -->
 	<xs:element name="expenseDate" type="xs:date" />
+	<!-- Document Expense date -->
+	<xs:element name="expenseMonth" type="xs:string" />
+	<!-- Document Expense date -->
+	<xs:element name="expenseYear" type="xs:string" />
+	<!-- Expense description -->
+	<xs:element name="expenseDescription" type="xs:string" />
+	<!-- Expense overall total -->
+	<xs:element name="expenseTotal" type="xs:double" />
+	<!-- Total Travel Expenses -->
+	<xs:element name="expenseTravelTotal" type="xs:double" />
+	<!-- Total Transport Travel Expenses -->
+	<xs:element name="expenseTransportTravelTotal" type="xs:double" />
+	<!-- Total Lodging Travel Expenses -->
+	<xs:element name="expenseLodgingTravelTotal" type="xs:double" />
+	<!-- Total Restaurant Travel Expenses -->
+	<xs:element name="expenseRestaurantTravelTotal" type="xs:double" />
+	<!-- Total Journey Travel Expenses -->
+	<xs:element name="expenseJourneyTravelTotal" type="xs:double" />
+	<!-- Total Others Travel Expenses -->
+	<xs:element name="expenseOthersTravelTotal" type="xs:double" />
+	<!-- Total Customer Expenses -->
+	<xs:element name="expenseCustomerTravelTotal" type="xs:double" />
+	<!-- Total NON-Travel Expenses -->
+	<xs:element name="expenseNonTravelTotal" type="xs:double" />
+	<!-- Total Transport Non Travel Expenses -->
+	<xs:element name="expenseTransportNonTravelTotal" type="xs:double" />
+	<!-- Total Lodging Non Travel Expenses -->
+	<xs:element name="expenseLodgingNonTravelTotal" type="xs:double" />
+	<!-- Total Restaurant Non Travel Expenses -->
+	<xs:element name="expenseRestaurantNonTravelTotal" type="xs:double" />
+	<!-- Total Journey Non Travel Expenses -->
+	<xs:element name="expenseJourneyNonTravelTotal" type="xs:double" />
+	<!-- Total Others Non Travel Expenses -->
+	<xs:element name="expenseOthersNonTravelTotal" type="xs:double" />
+	<!-- Total Customer Non  Travel Expenses -->
+	<xs:element name="expenseCustomerNonTravelTotal" type="xs:double" />
+	<!-- Total Kilometers Expenses -->
+	<xs:element name="expenseKmTotal" type="xs:double" />
+	<!-- Total Km company vehicle Expenses -->
+	<xs:element name="expenseCompanyKmTotal" type="xs:double" />
+	<!-- Total Km own vehicle Expenses -->
+	<xs:element name="expenseOwnKmTotal" type="xs:double" />
+	<!-- Total Courses Expenses -->
+	<xs:element name="expenseCourseTotal" type="xs:double" />
+
+	<xs:element name="expensePerDay" type="nxs:expensePerDayType" />
+	<xs:complexType name="expensePerDayType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:expensePerDayItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="expensePerDayItem">
+		<xs:sequence>
+			<!-- Expense Date -->
+			<xs:element name="expenseDate" type="xs:date" />
+			<!-- Total expenses (taxes included) -->
+			<xs:element name="expense" type="xs:double" />
+			<!-- Expense is over the limit and it has been maximized to the current limit -->
+			<xs:element name="expenseMaximized" type="xs:double" />
+			<!-- Travel Expenses -->
+			<xs:element name="expenseTravel" type="xs:double" />
+			<!-- Transport Travel Expenses -->
+			<xs:element name="expenseTransportTravel" type="xs:double" />
+			<!-- Lodging Travel Expenses -->
+			<xs:element name="expenseLodgingTravel" type="xs:double" />
+			<!-- Restaurant Travel Expenses -->
+			<xs:element name="expenseRestaurantTravel" type="xs:double" />
+			<!-- Journey Travel Expenses -->
+			<xs:element name="expenseJourneyTravel" type="xs:double" />
+			<!-- Others Travel Expenses -->
+			<xs:element name="expenseOthersTravel" type="xs:double" />
+			<!-- Customer Expenses -->
+			<xs:element name="expenseCustomerTravel" type="xs:double" />
+			<!-- NON-Travel Expenses -->
+			<xs:element name="expenseNonTravel" type="xs:double" />
+			<!-- Transport Non Travel Expenses -->
+			<xs:element name="expenseTransportNonTravel" type="xs:double" />
+			<!-- Lodging Non Travel Expenses -->
+			<xs:element name="expenseLodgingNonTravel" type="xs:double" />
+			<!-- Restaurant Non Travel Expenses -->
+			<xs:element name="expenseRestaurantNonTravel" type="xs:double" />
+			<!-- Journey Non Travel Expenses -->
+			<xs:element name="expenseJourneyNonTravel" type="xs:double" />
+			<!-- Others Non Travel Expenses -->
+			<xs:element name="expenseOthersNonTravel" type="xs:double" />
+			<!-- Customer Non  Travel Expenses -->
+			<xs:element name="expenseCustomerNonTravel" type="xs:double" />
+			<!-- Kilometers Expenses -->
+			<xs:element name="expenseKm" type="xs:double" />
+			<!-- Km company vehicle Expenses -->
+			<xs:element name="expenseCompanyKm" type="xs:double" />
+			<!-- Km own vehicle Expenses -->
+			<xs:element name="expenseOwnKm" type="xs:double" />
+			<!-- Courses Expenses -->
+			<xs:element name="expenseCourse" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="expenseNonTravel" type="nxs:expenseNonTravelType" />
+	<xs:complexType name="expenseNonTravelType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:expenseNonTravelItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="expenseNonTravelItem">
+		<xs:sequence>
+			<!-- Expense Date -->
+			<xs:element name="expenseDate" type="xs:date" />
+			<!-- Expense description -->
+			<xs:element name="description" type="xs:string" />
+			<!-- Expense category -->
+			<xs:element name="category" type="xs:string" />
+			<!-- People invited (how many of them) -->
+			<xs:element name="invitedNumber" type="xs:double" />
+			<!-- Expense is over the limit and it has been maximized to the current limit -->
+			<xs:element name="maximized" type="xs:boolean" />
+			<!-- Special Authorization from the Company -->
+			<xs:element name="specialAuthorization" type="xs:boolean" />
+			<!-- Documents relative to the expense attached -->
+			<xs:element name="docsIncluded" type="xs:boolean" />
+			<!-- Objections -->
+			<xs:element name="comments" type="xs:string" />
+			<!-- Expense for the whole day. Used internally to manage limits -->
+			<xs:element name="expenseDaily" type="xs:double" />
+			<!-- File Document -->
+			<xs:element name="fil" type="nxs:content" />
+			<!-- Total expenses (taxes included) -->
+			<xs:element name="expense" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="expenseTravel" type="nxs:expenseTravelType" />
+	<xs:complexType name="expenseTravelType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:expenseTravelItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="expenseTravelItem">
+		<xs:sequence>
+			<!-- Expense Date -->
+			<xs:element name="expenseDate" type="xs:date" />
+			<!-- Expense description -->
+			<xs:element name="description" type="xs:string" />
+			<!-- Expense category -->
+			<xs:element name="category" type="xs:string" />
+			<!-- People invited (how many of them) -->
+			<xs:element name="invitedNumber" type="xs:double" />
+			<!-- Expense is over the limit and it has been maximized to the current limit -->
+			<xs:element name="maximized" type="xs:boolean" />
+			<!-- Special Authorization from the Company -->
+			<xs:element name="specialAuthorization" type="xs:boolean" />
+			<!-- Documents relative to the expense attached -->
+			<xs:element name="docsIncluded" type="xs:boolean" />
+			<!-- Expense Travel Request Associated -->
+			<xs:element name="expenseTravelRequest" type="xs:string" />
+			<!-- Objections -->
+			<xs:element name="comments" type="xs:string" />
+			<!-- Expense for the whole day. Used internally to manage limits -->
+			<xs:element name="expenseDaily" type="xs:double" />
+			<!-- File Document -->
+			<xs:element name="fil" type="nxs:content" />
+			<!-- Total expenses (taxes included) -->
+			<xs:element name="expense" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="expenseKm" type="nxs:expenseKmType" />
+	<xs:complexType name="expenseKmType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:expenseKmItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="expenseKmItem">
+		<xs:sequence>
+			<!-- Travel Date -->
+			<xs:element name="expenseDate" type="xs:date" />
+			<!-- Route: from , to -->
+			<xs:element name="route" type="xs:string" />
+			<!-- Route: from , to (not based on vocabulary)-->
+			<xs:element name="userRoute" type="xs:string" />
+			<!-- Expense category -->
+			<xs:element name="category" type="xs:string" />
+			<!-- Car Own, Company -->
+			<xs:element name="carOwner" type="xs:string" />
+			<!-- Return included -->
+			<xs:element name="goback" type="xs:string" />
+			<!-- Type of car -->
+			<xs:element name="carCategory" type="xs:string" />
+			<!-- Trip description -->
+			<xs:element name="description" type="xs:string" />
+			<!-- Kilometers -->
+			<xs:element name="km" type="xs:double" />
+			<!-- Calculated expense based on the entries -->
+			<xs:element name="expense" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="expenseKmOffices" type="nxs:expenseKmType" />
+
+	<xs:element name="expenseCourse" type="nxs:courseType" />
+	<xs:complexType name="courseType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:courseItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="courseItem">
+		<xs:sequence>
+			<!-- Course Date -->
+			<xs:element name="expenseDate" type="xs:date" />
+			<!-- Expense category -->
+			<xs:element name="category" type="xs:string" />
+			<!-- Course name -->
+			<xs:element name="name" type="xs:string" />
+			<!-- Course place -->
+			<xs:element name="place" type="xs:string" />
+			<!-- Course expense -->
+			<xs:element name="expense" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+	<!-- ** Payment Orders ** -->
+
 
 	<!-- ** Payment Orders ** -->
 
@@ -74,8 +309,43 @@
 	<!-- Transfer Request date -->
 	<xs:element name="transferRequestDate" type="xs:date" />
 
-	<!-- ** Travel Requests ** -->
+	<!-- ** Mission Ordering - Travel Request** -->
 
+	<!-- User identification -->
+	<xs:element name="travel_nameid" type="xs:string" />
+	<!-- Complete user Name and Surname -->
+	<xs:element name="travel_nameandsurname" type="xs:string" />
+	<!-- Complete user Name -->
+	<xs:element name="travel_name" type="xs:string" />
+	<!-- Complete user Surname 1 -->
+	<xs:element name="travel_surname1" type="xs:string" />
+	<!-- Complete user Surname 2 -->
+	<xs:element name="travel_surname2" type="xs:string" />
+	<!-- User phone number -->
+	<xs:element name="travel_phone" type="xs:string" />
+	<!-- User Location -->
+	<xs:element name="travel_location" type="xs:string" />
+	<!-- User Company number -->
+	<xs:element name="travel_companyNumber" type="xs:string" />
+	<!-- User Area -->
+	<xs:element name="travel_area" type="xs:string" />
+	<!-- User Activity -->
+	<xs:element name="travel_activity" type="xs:string" />
+	<!-- Identification Number -->
+	<xs:element name="travel_idNumber" type="xs:string" />
+	<!-- User Mail -->
+	<xs:element name="travel_mail" type="xs:string" />
+	<!-- User Address -->
+	<xs:element name="travel_address" type="xs:string" />
+	<!-- User Category -->
+	<xs:element name="travel_category" type="xs:string" />
+	<!-- User Office -->
+	<xs:element name="travel_office" type="xs:string" />
+	<!-- User Ledger Account (from an administrative point of view) -->
+	<xs:element name="travel_account" type="xs:string" />
+
+	<!-- Traveller is equal to the Requester -->
+	<xs:element name="requesterIsTraveller" type="xs:boolean" />
 	<!-- Travel end date -->
 	<xs:element name="travelEndDate" type="xs:date" />
 	<!-- Travel name. Destination usually -->
@@ -86,5 +356,135 @@
 	<xs:element name="travelStartDate" type="xs:date" />
 	<!-- Travel Purpose -->
 	<xs:element name="travelPurpose" type="xs:string" />
+	
+	<xs:element name="drivenTravel" type="nxs:drivenTravelType" />
+	<xs:complexType name="drivenTravelType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:drivenTravelItem" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="drivenTravelItem">
+		<xs:sequence>
+			<!-- Departure Date -->
+			<xs:element name="departureDate" type="xs:date" />
+			<!-- Departure Time, on string format, aproximately -->
+			<xs:element name="departureTime" type="xs:string" />
+			<!-- Departure City -->
+			<xs:element name="departureCity" type="xs:string" />
+			<!-- Arrival Date -->
+			<xs:element name="arrivalDate" type="xs:date" />
+			<!-- Arrival Time, on string format, aproximately -->
+			<xs:element name="arrivalTime" type="xs:string" />
+			<!-- Arrival City -->
+			<xs:element name="arrivalCity" type="xs:string" />
+			<!-- Transport line (whether it is by train, or by plain, etc -->
+			<xs:element name="transportLine" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="carRental" type="nxs:carRentalType" />
+	<xs:complexType name="carRentalType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:carRentalItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="carRentalItem">
+		<xs:sequence>
+			<!-- Start Date -->
+			<xs:element name="startDate" type="xs:date" />
+			<!-- Start Time, on string format, aproximately -->
+			<xs:element name="startTime" type="xs:string" />
+			<!-- Start City -->
+			<xs:element name="startCity" type="xs:string" />
+			<!-- End Date -->
+			<xs:element name="endDate" type="xs:date" />
+			<!-- End Time, on string format, aproximately -->
+			<xs:element name="endTime" type="xs:string" />
+			<!-- End City -->
+			<xs:element name="endCity" type="xs:string" />
+			<!-- Prefered type of car -->
+			<xs:element name="preferedCar" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="carRentalCompanions" type="nxs:carRentalCompanionsType" />
+	<xs:complexType name="carRentalCompanionsType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:carRentalCompanionsItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="carRentalCompanionsItem">
+		<xs:sequence>
+			<!-- Start Date -->
+			<xs:element name="companionId" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="hotels" type="nxs:hotelsType" />
+	<xs:complexType name="hotelsType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:hotelsItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="hotelsItem">
+		<xs:sequence>
+			<!-- Checkin Date -->
+			<xs:element name="hotelCheckinDate" type="xs:date" />
+			<!-- Checkout Date -->
+			<xs:element name="hotelCheckoutDate" type="xs:date" />
+			<!-- Hotel City -->
+			<xs:element name="hotelCity" type="xs:string" />
+			<!-- Hotel Name -->
+			<xs:element name="hotelName" type="xs:string" />
+			<!-- Regimen -->
+			<xs:element name="regimen" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="companyCar" type="nxs:companyCarType" />
+	<xs:complexType name="companyCarType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:companyCarItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="companyCarItem">
+		<xs:sequence>
+			<!-- Start Date -->
+			<xs:element name="startDate" type="xs:date" />
+			<!-- Start Time, on string format, aproximately -->
+			<xs:element name="startTime" type="xs:string" />
+			<!-- Start City -->
+			<xs:element name="startCity" type="xs:string" />
+			<!-- End Date -->
+			<xs:element name="endDate" type="xs:date" />
+			<!-- End Time, on string format, aproximately -->
+			<xs:element name="endTime" type="xs:string" />
+			<!-- End City -->
+			<xs:element name="endCity" type="xs:string" />
+			<!-- Prefered type of car -->
+			<xs:element name="preferedCar" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="companyCarCompanions" type="nxs:companyCarCompanionsType" />
+	<xs:complexType name="companyCarCompanionsType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:companyCarCompanionsItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="companyCarCompanionsItem">
+		<xs:sequence>
+			<!-- Start Date -->
+			<xs:element name="companionId" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="advance" type="xs:double" />
 
 </xs:schema>

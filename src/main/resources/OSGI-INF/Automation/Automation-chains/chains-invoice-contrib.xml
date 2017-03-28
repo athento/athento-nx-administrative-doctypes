@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains-invoice"
+    version="1.0.0">
+    <require>org.nuxeo.runtime.started</require>
+
+    <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
+        point="chains">
+
+        <chain id="Athento.InvoiceCalculations">
+            <documentation>
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Document.RemoveProperty">
+                <param type="string" name="xpath">S_FACTURA:taxesLine</param>
+                <param type="boolean" name="save">false</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">calculatedTotalAmount</param>
+                <param type="object" name="value">expr:0
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">calculatedTaxableIncome</param>
+                <param type="object" name="value">expr:0
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">subjectLine_var</param>
+                <param type="object" name="value">expr:Document["S_FACTURA:subjectLine"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">subjectlinelen</param>
+                <param type="object" name="value">expr:subjectLine_var.size()</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">expr:subjectlinelen == 0 ? "voidchain" :
+                    "Athento.InvoiceCalculations-SumEachLine"
+                </param>
+                <param type="string" name="list">subjectLine_var</param>
+                <param type="boolean" name="isolate">false</param>
+                <param type="string" name="item">item</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine">
+            <documentation>
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">subjectLineAmount_var</param>
+                <param type="integer" name="value">expr:item.get("subjectLineAmount")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">subjectLineTax_var</param>
+                <param type="integer" name="value">expr:item.get("subjectLineTax")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">subjectLineTaxPercentage_var</param>
+                <param type="integer" name="value">expr:item.get("subjectLineTaxPercentage")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">totalInvoice_var</param>
+                <param type="integer" name="value">expr:subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxesLine_var</param>
+                <param type="object" name="value">expr:Document["S_FACTURA:taxesLine"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxeslen</param>
+                <param type="object" name="value">expr:taxesLine_var == empty ? 0 : taxesLine_var.size()</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:taxeslen == 0 ? "Athento.InvoiceCalculations-SumEachLine-addnewline" :
+                    "Athento.InvoiceCalculations-SumEachLine-checkExists"
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine-checkExists">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">found</param>
+                <param type="boolean" name="value">expr:false</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxlineindex</param>
+                <param type="integer" name="value">0</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">Athento.InvoiceCalculations-SumEachLine-checkExists-Individually
+                </param>
+                <param type="string" name="list">taxesLine_var</param>
+                <param type="boolean" name="isolate">false</param>
+                <param type="string" name="item">taxitem</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:found ? "voidChain" :
+                    "Athento.InvoiceCalculations-SumEachLine-addnewline"
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine-checkExists-Individually">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">type_var</param>
+                <param type="integer" name="value">expr:taxitem.get("type_")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">percentage_var</param>
+                <param type="integer" name="value">expr:taxitem.get("percentage")
+                </param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:found ? "voidChain" :
+                    type_var == subjectLineTax_var ?
+                    percentage_var == subjectLineTaxPercentage_var ?
+                    "Athento.InvoiceCalculations-SumEachLine-addtoexisting" :
+                    "voidChain" :
+                    "voidChain"
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxlineindex</param>
+                <param type="integer" name="value">expr:taxlineindex + 1</param>
+            </operation>
+        </chain>
+
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine-addnewline">
+            <operation id="Athento.SetComplexProperty">
+                <param type="string" name="xpath">S_FACTURA:taxesLine</param>
+                <param type="boolean" name="save">false</param>
+                <param type="properties" name="properties">expr:type_=@{subjectLineTax_var}
+                    taxBase=@{subjectLineAmount_var}
+                    percentage=@{subjectLineTaxPercentage_var}
+                    totalInvoice=@{totalInvoice_var}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">found</param>
+                <param type="boolean" name="value">expr:true
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine-addtoexisting">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxBase_var</param>
+                <param type="integer" name="value">expr:taxitem.get("taxBase")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxBase_var</param>
+                <param type="integer" name="value">expr: taxBase_var + subjectLineAmount_var
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">totalInvoice_var</param>
+                <param type="integer" name="value">expr:taxitem.get("totalInvoice")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">totalInvoice_var</param>
+                <param type="integer" name="value">expr:totalInvoice_var + subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">expr:@{"S_FACTURA:taxesLine/" + taxlineindex+"/taxBase"}</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:taxBase_var
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">expr:@{"S_FACTURA:taxesLine/" + taxlineindex+"/totalInvoice"}</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:totalInvoice_var
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">found</param>
+                <param type="boolean" name="value">expr:true
+                </param>
+            </operation>
+        </chain>
+        
+    </extension>
+
+</component>

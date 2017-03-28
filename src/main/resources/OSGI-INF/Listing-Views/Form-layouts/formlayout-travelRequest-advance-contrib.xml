@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-travelRequest-advance"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-travelRequest-advance">
+			<labels>
+				<label>label.athento-nx-common-doctypes.TravelRequest-advance</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/travelRequest-advance_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>advance</widget>
+				</row>
+			</rows>
+
+			<widget name="advance" type="double">
+				<labels>
+					<label mode="any">label.administrative.advance</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:advance</field>
+				</fields>
+			</widget>
+
+		</layout>
+
+	</extension>
+
+</component>
+		

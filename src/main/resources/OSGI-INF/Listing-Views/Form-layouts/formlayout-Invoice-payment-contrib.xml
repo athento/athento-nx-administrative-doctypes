@@ -41,7 +41,7 @@
 					<field>S_FACTURA:bank</field>
 				</fields>
 			</widget>
-			<widget name="paymentMethod" type="text">
+			<widget name="paymentMethod" type="selectOneDirectory">
 				<labels>
 					<label mode="any">label.S_FACTURA.paymentMethod</label>
 				</labels>
@@ -49,6 +49,12 @@
 				<fields>
 					<field>S_FACTURA:paymentMethod</field>
 				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">paymentmethod</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">true</property>
+				</properties>
 			</widget>
 			<widget name="paymentDate" type="datetime">
 				<labels>

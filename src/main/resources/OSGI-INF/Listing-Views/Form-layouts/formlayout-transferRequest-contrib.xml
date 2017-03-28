@@ -10,7 +10,7 @@
 
 		<layout name="layout@formlayout-transferRequest">
 			<labels>
-				<label>label.athento-nx-common-doctypes.TransferRequest</label>
+				<label>label.athento-nx-administrative-doctypes.TransferRequest</label>
 			</labels>
 			<templates>
 				<template mode="any">/layouts/transferRequest_widget_layout_template.xhtml
@@ -19,115 +19,180 @@
 			<rows>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget>concept</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>transferRequestDate</widget>
-					<widget>transferDoneDate</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>amount</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>sourceAccount</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>destinationAccount</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>signDate</widget>
+					<widget>transferrequestdata</widget>
 				</row>
 			</rows>
-			<widget name="concept" type="text">
+
+			<widget name="transferrequestdata" type="list">
 				<labels>
-					<label mode="any">label.administrative.concept</label>
+					<label mode="any">label.transferrequest.transferrequestdata</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:concept</field>
-				</fields>
-			</widget>
-			<widget name="transferRequestDate" type="datetime">
-				<labels>
-					<label mode="any">label.administrative.transferRequestDate</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:transferRequestDate</field>
+					<field>transferrequest:transferrequestdata</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
+					<property name="display">table</property>
 				</properties>
-			</widget>
-			<widget name="transferDoneDate" type="datetime">
-				<labels>
-					<label mode="any">label.administrative.transferDoneDate</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:transferDoneDate</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
+				<properties widgetMode="view">
+					<property name="display">block</property>
 				</properties>
+				<subWidgets>
+					<widget name="sub0" type="text">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.personalaccount</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>personalaccount</field>
+						</fields>
+						<properties widgetMode="edit">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub1" type="text">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.destinationname</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>destinationname</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub2" type="text">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.idpersonalnumber</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>idpersonalnumber</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub3" type="double">
+						<labels>
+							<label mode="any">label.opd.transferrequest.transferrequestdata.amount</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>amount</field>
+						</fields>
+						<properties widgetMode="view">
+							<property name="type">currency</property>
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
+						</properties>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub4" type="datetime">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.dueDate</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>dueDate</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+							<property name="format">#{nxu:basicDateFormatter()}</property>
+						</properties>
+					</widget>
+					<widget name="sub5" type="text">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.subject</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>subject</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub6" type="text">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.destinationiban</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>destinationiban</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub7" type="selectOneDirectory">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.sector</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>sector</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="directoryName">activity</property>
+							<property name="ordering">ordering</property>
+							<property name="displayIdAndLabel">false</property>
+							<property name="localize">true</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub8" type="selectOneDirectory">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.inputoutput</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>inputoutput</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="directoryName">inputoutput</property>
+							<property name="ordering">ordering</property>
+							<property name="displayIdAndLabel">false</property>
+							<property name="localize">true</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub9" type="text">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.accountnumber</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>accountnumber</field>
+						</fields>
+						<properties widgetMode="edit">
+							<property name="required">true</property>
+							<property name="regex">^[A-Za-z]{2}[0-9]{12}$</property>
+							<property name="validator">#{bFieldValidator.validateRegex}</property>
+							<property name="placeholder">ES123123123123</property>
+						</properties>
+					</widget>
+					<widget name="sub10" type="file">
+						<labels>
+							<label mode="any">label.transferrequest.transferrequestdata.fil</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>fil</field>
+							<field>fil/filename</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+				</subWidgets>
 			</widget>
-			<widget name="amount" type="text">
-				<labels>
-					<label mode="any">label.administrative.amount</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:amount</field>
-				</fields>
-			</widget>
-			<widget name="sourceAccount" type="text">
-				<labels>
-					<label mode="any">label.administrative.sourceAccount</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:sourceAccount</field>
-				</fields>
-			</widget>
-			<widget name="destinationAccount" type="text">
-				<labels>
-					<label mode="any">label.administrative.destinationAccount</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:destinationAccount</field>
-				</fields>
-			</widget>
-			<widget name="signDate" type="datetime">
-				<labels>
-					<label mode="any">label.administrative.signDate</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:signDate</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
+
 		</layout>
 
 	</extension>

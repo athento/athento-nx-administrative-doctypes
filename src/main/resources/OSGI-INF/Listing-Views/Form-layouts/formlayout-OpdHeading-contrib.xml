@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-OpdHeading"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-OpdHeading">
+			<labels>
+				<label>label.athento-nx-administrative-doctypes.OpdHeading</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/OpdHeading_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_2">1</property>
+					</properties>
+					<widget>userFile_name</widget>
+					<widget>S_FACTURA_erpNumber</widget>
+					<widget>opd_opddate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_2">1</property>
+					</properties>
+					<widget>userFile_surname1</widget>
+					<widget>administrative_companyNumber</widget>
+					<widget>S_FACTURA_accountDate</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_2">1</property>
+					</properties>
+					<widget>userFile_surname2</widget>
+					<widget>opd_diary</widget>
+					<widget>opd_currency</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
+					<widget>userFile_office</widget>
+				</row>
+			</rows>	
+			<widget name="userFile_name" type="text">
+				<labels>
+					<label mode="any">label.userFile.name</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:name</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+
+			<widget name="userFile_surname1" type="text">
+				<labels>
+					<label mode="any">label.userFile.surname1</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:surname1</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+			</widget>
+
+			<widget name="userFile_surname2" type="text">
+				<labels>
+					<label mode="any">label.userFile.surname2</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:surname2</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_companyNumber" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.userFile.companyNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:companyNumber</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">companynumber</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">true</property>
+					<property name="required">true</property>
+				</properties>
+			</widget>
+
+			<widget name="S_FACTURA_erpNumber" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.erpNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:erpNumber</field>
+				</fields>
+			</widget>
+
+			<widget name="opd_diary" type="text">
+				<labels>
+					<label mode="any">label.opd.diary</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>opd:diary</field>
+				</fields>
+				<widgetModes>
+					<mode value="create">view</mode>
+					<mode value="edit">view</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="opd_opddate" type="datetime">
+				<labels>
+					<label mode="any">label.opd.opddate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>opd:opddate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="S_FACTURA_accountDate" type="datetime">
+				<labels>
+					<label mode="any">label.S_FACTURA.accountDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:accountDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+			</widget>
+
+			<widget name="opd_currency" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.opd.currency</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>opd:currency</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">currency</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="create">view</mode>
+					<mode value="edit">view</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="userFile_office" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.userFile.office</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>userFile:office</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">org_low</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="view">#{currentUser.isMemberOf('administrators') ?
+					 'view':'hidden'}</mode>
+					<mode value="edit">#{currentUser.isMemberOf('administrators') ?
+					 'edit':'hidden'}</mode>
+					<mode value="create">#{currentUser.isMemberOf('administrators') ?
+					 'edit':'hidden'}</mode>
+				</widgetModes>
+			</widget>
+
+		</layout>
+
+	</extension>
+
+</component>
+		
