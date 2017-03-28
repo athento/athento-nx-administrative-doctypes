@@ -100,19 +100,19 @@
                 </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">dataopdList</param>
-                <param type="object" name="value">expr:Document["opd:dataopd"]
+                <param type="string" name="name">transferrequestdataList</param>
+                <param type="object" name="value">expr:Document["transferrequest:transferrequestdata"]
                 </param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">len</param>
-                <param type="object" name="value">expr:dataopdList.size()</param>
+                <param type="object" name="value">expr:transferrequestdataList.size()</param>
             </operation>
             <operation id="Context.RunOperationOnList">
                 <param type="string" name="id">expr:len == 0 ? "voidchain" :
                     "TR-NeedsSectorApprovalCheck"
                 </param>
-                <param type="string" name="list">dataopdList</param>
+                <param type="string" name="list">transferrequestdataList</param>
                 <param type="boolean" name="isolate">false</param>
                 <param type="string" name="item">item</param>
                 <param type="boolean" name="newTx">false</param>
