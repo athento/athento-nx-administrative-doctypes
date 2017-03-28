@@ -4,7 +4,7 @@
 	<groupId>athento-nx-administrative-doctypes</groupId>
 	<artifactId>athento-nx-administrative-doctypes</artifactId>
 
-	<version>1.5-SNAPSHOT</version>
+	<version>1.5</version>
 
 	<name>Athento NX Administrative Doctypes</name>
 	<description>Athento NX Administrative Doctypes</description>
