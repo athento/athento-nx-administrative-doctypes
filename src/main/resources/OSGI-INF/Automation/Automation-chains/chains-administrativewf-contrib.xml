@@ -47,20 +47,22 @@
                 <param type="object" name="value">expr:Document["administrative:containsnotVO"]
                 </param>
             </operation>
-            <operation id="Context.SetWorkflowVar">
-                <param type="string" name="name">level25office</param>
-                <param type="object" name="value">expr:isRME_var ?
-                    containsVO ?
-                    :
-                    @{"group:Level25_"+office_var}
+            <operation id="Context.SetVar">
+                <param type="string" name="name">RME_VO</param>
+                <param type="object" name="value">expr:@{"group:RME_VO"}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">level25</param>
+                <param type="object" name="value">expr:@{"group:Level25_"+office_var}
                 </param>
             </operation>
             <operation id="Context.SetWorkflowVar">
-                <param type="string" name="name">level25officebis</param>
+                <param type="string" name="name">level25office</param>
                 <param type="object" name="value">expr:isRME_var ?
-
-                    :
-                    @{"group:Level25_"+office_var}
+                    containsVO ? RME_VO :
+                    level25 :
+                    level25
                 </param>
             </operation>
             <operation id="Context.SetWorkflowVar">

@@ -43,6 +43,12 @@
 			</rule>
 		</filter>
 
+		<filter id="filter@wf@Validacion" append="true">
+			<rule grant="false">
+				<condition>document.currentLifeCycleState != "Draft"</condition>
+			</rule>
+		</filter>
+
 	</extension>
 
 </component>
