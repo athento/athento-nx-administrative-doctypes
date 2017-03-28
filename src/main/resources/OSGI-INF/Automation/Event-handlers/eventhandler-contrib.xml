@@ -172,6 +172,18 @@
 			</filters>
 		</handler>
 
+		<handler chainId="Athento.InvoiceCalculations">
+			<documentation>
+
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 	</extension>
 
 </component>

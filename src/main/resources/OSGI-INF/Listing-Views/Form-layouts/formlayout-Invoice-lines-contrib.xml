@@ -23,6 +23,12 @@
 					</properties>
 					<widget>subjectLine</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>taxesLine</widget>
+				</row>
 			</rows>	
 			<widget name="subjectLine" type="list">
 				<labels>
@@ -44,6 +50,9 @@
 						<fields>
 							<field>subjectLineSubject</field>
 						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
 					</widget>
 					<widget name="sub1" type="double">
 						<labels>
@@ -53,8 +62,16 @@
 						<fields>
 							<field>subjectLineAmount</field>
 						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+						<properties widgetMode="view">
+							<property name="type">currency</property>
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
+						</properties>
 					</widget>
-					<widget name="sub2" type="text">
+					<widget name="sub2" type="selectOneDirectory">
 						<labels>
 							<label mode="any">label.S_FACTURA.subjectLineTax</label>
 						</labels>
@@ -62,6 +79,141 @@
 						<fields>
 							<field>subjectLineTax</field>
 						</fields>
+						<properties widgetMode="any">
+							<property name="directoryName">taxtype</property>
+							<property name="ordering">ordering</property>
+							<property name="displayIdAndLabel">false</property>
+							<property name="localize">true</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub3" type="selectOneDirectory">
+						<labels>
+							<label mode="any">label.S_FACTURA.subjectLineTaxPercentage</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>subjectLineTaxPercentage</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="directoryName">taxpercentage</property>
+							<property name="ordering">ordering</property>
+							<property name="displayIdAndLabel">false</property>
+							<property name="localize">true</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub4" type="text">
+						<labels>
+							<label mode="any">label.S_FACTURA.subjectLineAccount</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>subjectLineAccount</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+				</subWidgets>
+			</widget>
+
+			<widget name="taxesLine" type="list">
+				<labels>
+					<label mode="any">label.S_FACTURA.taxesLine</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:taxesLine</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="display">table</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">view</mode>
+				</widgetModes>
+				<subWidgets>
+					<widget name="sub0" type="selectOneDirectory">
+						<labels>
+							<label mode="any">label.S_FACTURA.taxesLine.type_</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>type_</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+						<properties widgetMode="any">
+							<property name="directoryName">taxtype</property>
+							<property name="ordering">ordering</property>
+							<property name="displayIdAndLabel">false</property>
+							<property name="localize">true</property>
+							<property name="required">true</property>
+						</properties>
+						<widgetModes>
+							<mode value="edit">view</mode>
+							<mode value="create">view</mode>
+						</widgetModes>
+					</widget>
+					<widget name="sub1" type="double">
+						<labels>
+							<label mode="any">label.S_FACTURA.taxesLine.taxBase</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>taxBase</field>
+						</fields>
+						<properties widgetMode="view">
+							<property name="type">currency</property>
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
+						</properties>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+						<widgetModes>
+							<mode value="edit">view</mode>
+							<mode value="create">view</mode>
+						</widgetModes>
+					</widget>
+					<widget name="sub2" type="selectOneDirectory">
+						<labels>
+							<label mode="any">label.S_FACTURA.taxesLine.percentage</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>percentage</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="directoryName">taxpercentage</property>
+							<property name="ordering">ordering</property>
+							<property name="displayIdAndLabel">false</property>
+							<property name="localize">true</property>
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub3" type="double">
+						<labels>
+							<label mode="any">label.S_FACTURA.taxesLine.totalInvoice</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>totalInvoice</field>
+						</fields>
+						<properties widgetMode="view">
+							<property name="type">currency</property>
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
+						</properties>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+						<widgetModes>
+							<mode value="edit">view</mode>
+							<mode value="create">view</mode>
+						</widgetModes>
 					</widget>
 				</subWidgets>
 			</widget>

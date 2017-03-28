@@ -52,6 +52,7 @@
 		<doctype name="Invoice" extends="File" append="true">
 			<schema name="S_FACTURA" />
 			<schema name="administrative" />
+			<schema name="integration" />
 			<schema name="userFile" />
 			<schema name="projectFile" />
 			<prefetch>dc:title, dc:modified, uid.uid</prefetch>
@@ -185,7 +186,7 @@
 			<label>label.athento-nx-administrative-doctypes.TransferRequest
 			</label>
 			<translated>true</translated>
-			<icon>/img/file_100.png</icon>
+			<icon>/icons/file.gif</icon>
 			<bigIcon>/img/file_100.png</bigIcon>
 			<description>label.athento-nx-administrative-doctypes.TransferRequest.description
 			</description>

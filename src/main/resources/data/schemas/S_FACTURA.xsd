@@ -77,6 +77,8 @@
 	<xs:element name="subtotal" type="xs:string" />
 	<!-- Taxable Income -->
 	<xs:element name="taxableIncome" type="xs:double" />
+	<!-- Calculated Taxable Income via subjects, for validation purposes-->
+	<xs:element name="calculatedTaxableIncome" type="xs:double" />
 	<!-- Tax Amout -->
 	<xs:element name="taxAmount" type="xs:double" />
 	<!-- Included for compatibility -->
@@ -87,6 +89,8 @@
 	<xs:element name="total" type="xs:string" />
 	<!-- Total Amount -->
 	<xs:element name="totalAmount" type="xs:double" />
+	<!-- Calculated total Amount, for validation purposes -->
+	<xs:element name="calculatedTotalAmount" type="xs:double" />
 	<!-- Outgoing or incoming invoice -->
 	<xs:element name="type" type="xs:string" />
 	<!-- Invoice lines -->
@@ -106,10 +110,31 @@
 			<!-- Subject Line Tax -->
 			<xs:element name="subjectLineTax" type="xs:string" />
 			<!-- Subject Line Tax Percentage -->
-			<xs:element name="subjectLineTaxPercentage" type="xs:double" />
+			<xs:element name="subjectLineTaxPercentage" type="xs:string" />
 			<!-- Subject Line account -->
 			<xs:element name="subjectLineAccount" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
+
+	<xs:element name="taxesLine" type="nxs:taxesLineType" />
+	<xs:complexType name="taxesLineType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:taxesLineItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="taxesLineItem">
+		<xs:sequence>
+			<!-- Tax Line -->
+			<xs:element name="type_" type="xs:string" />
+			<!-- Tax Line -->
+			<xs:element name="taxBase" type="xs:double" />
+			<!-- Tax Line -->
+			<xs:element name="percentage" type="xs:string" />
+			<!-- Tax Line -->
+			<xs:element name="totalInvoice" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+
 		
 </xs:schema>

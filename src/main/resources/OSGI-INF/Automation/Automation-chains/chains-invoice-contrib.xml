@@ -1,215 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains-opd"
+<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains-invoice"
     version="1.0.0">
     <require>org.nuxeo.runtime.started</require>
 
     <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
         point="chains">
 
-        <chain id="Opd-assignID">
+        <chain id="Athento.InvoiceCalculations">
             <documentation>
-                Sequential ID.
-                2 digits - Company
-                2 digits - Year
-                2 digits - Month
-                6 numbers - Sequential ID
-                Each sequential number starts every month for every company. Example:
-                OPD-CC/MMYY/xxxxxx
-                Finished in A (Athento numeration)
-                OPD-01-0117-000001-A
             </documentation>
             <operation id="Context.FetchDocument" />
-            <!-- Year. Used for uniqueness of number id AND the composition of the
-               id -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">year_var</param>
-                <param type="object" name="value">expr:new
-                    java.text.SimpleDateFormat("yy").format(Document["dc:created"].getTime())
-                </param>
+            <operation id="Document.RemoveProperty">
+                <param type="string" name="xpath">S_FACTURA:taxesLine</param>
+                <param type="boolean" name="save">false</param>
             </operation>
-            <!-- Month. Used for uniqueness of number id AND the composition of the
-                id -->
             <operation id="Context.SetVar">
-                <param type="string" name="name">month_var</param>
-                <param type="object" name="value">expr:new
-                    java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
-                </param>
-            </operation>
-            <!-- Company ID -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">company_var</param>
-                <param type="object" name="value">expr:Document["administrative:companyNumber"]
-                </param>
-            </operation>
-            <!-- Number, which is formatted with 6 digits -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">uniqueopdnumber_var</param>
-                <param type="object" name="value">expr:Fn.getNextId("unique-opd-key"+year_var+month_var+company_var)
+                <param type="string" name="name">calculatedTotalAmount</param>
+                <param type="object" name="value">expr:0
                 </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">uniqueopdnumberformatted_var</param>
-                <param type="object" name="value">expr:uniqueopdnumber_var.format("%06d",Integer.valueOf(uniqueopdnumber_var))
-                </param>
-            </operation>
-            <!-- Final variable id_var with the ID composition. Stored in both title -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{"OPD-"+company_var+"-"+year_var+month_var+"-"+uniqueopdnumberformatted_var+"-A"}
-                </param>
-            </operation>
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">dc:title</param>
-                <param type="boolean" name="save">true</param>
-                <param type="serializable" name="value">expr:id_var
-                </param>
-            </operation>
-            <operation id="Document.CheckIn">
-                <param type="string" name="version">0.0</param>
-            </operation>
-
-        </chain>
-
-        <chain id="Opd-NeedsLocalApproval">
-            <documentation>
-                Needs local approval (from the direct manager) when personal account starts with 6, 7 or 9.
-            </documentation>
-            <operation id="Context.FetchDocument" />
-            <operation id="Context.SetVar">
-                <param type="string" name="name">needslocalapproval_var</param>
-                <param type="boolean" name="value">expr:false
+                <param type="string" name="name">calculatedTaxableIncome</param>
+                <param type="object" name="value">expr:0
                 </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">dataopdList</param>
-                <param type="object" name="value">expr:Document["opd:dataopd"]
+                <param type="string" name="name">subjectLine_var</param>
+                <param type="object" name="value">expr:Document["S_FACTURA:subjectLine"]
                 </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">len</param>
-                <param type="object" name="value">expr:dataopdList.size()</param>
+                <param type="string" name="name">subjectlinelen</param>
+                <param type="object" name="value">expr:subjectLine_var.size()</param>
             </operation>
             <operation id="Context.RunOperationOnList">
-                <param type="string" name="id">expr:len == 0 ? "voidchain" :
-                    "Opd-NeedsLocalApprovalCheck"
+                <param type="string" name="id">expr:subjectlinelen == 0 ? "voidchain" :
+                    "Athento.InvoiceCalculations-SumEachLine"
                 </param>
-                <param type="string" name="list">dataopdList</param>
+                <param type="string" name="list">subjectLine_var</param>
                 <param type="boolean" name="isolate">false</param>
                 <param type="string" name="item">item</param>
                 <param type="boolean" name="newTx">false</param>
                 <param type="boolean" name="rollbackGlobalOnError">true</param>
             </operation>
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">administrative:needslocalapproval</param>
-                <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:needslocalapproval_var
-                </param>
-            </operation>
         </chain>
 
-        <chain id="Opd-NeedsLocalApprovalCheck">
+        <chain id="Athento.InvoiceCalculations-SumEachLine">
             <documentation>
-                Needs local approval (from the direct manager) when personal account starts with 6, 7 or 9.
-                Checks individually
-            </documentation>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">account_var</param>
-                <param type="object" name="value">expr:item.get("account").charAt(0)
-                </param>
-            </operation>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">needslocalapproval_var</param>
-                <param type="object" name="value">expr:needslocalapproval_var == true ? true :
-                    account_var == '6' ? true :
-                    account_var == '7' ? true :
-                    account_var == '9' ? true :
-                    false</param>
-            </operation>
-        </chain>
-
-
-        <chain id="Opd-sumTotalInputOutput">
-            <documentation>
-                Sums each amount specified inside amount field in opd data, depending on field.
             </documentation>
             <operation id="Context.FetchDocument" />
-
-            <!--Represents the list of entries of data opd -->
             <operation id="Context.SetVar">
-                <param type="string" name="name">opdDataList</param>
-                <param type="object" name="value">expr:Document["opd:dataopd"]</param>
+                <param type="string" name="name">subjectLineAmount_var</param>
+                <param type="integer" name="value">expr:item.get("subjectLineAmount")
+                </param>
             </operation>
-
-            <!-- Variable which holds the sum of all the amounts specified in dataopd:debe -->
             <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumOpdInput</param>
-                <param type="integer" name="value">0</param>
+                <param type="string" name="name">subjectLineTax_var</param>
+                <param type="integer" name="value">expr:item.get("subjectLineTax")
+                </param>
             </operation>
-
-            <!-- Variable which holds the sum of all the amounts specified in dataopd:haber -->
             <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumOpdOutput</param>
-                <param type="integer" name="value">0</param>
+                <param type="string" name="name">subjectLineTaxPercentage_var</param>
+                <param type="integer" name="value">expr:item.get("subjectLineTaxPercentage")
+                </param>
             </operation>
-
-            <!-- Executes an operation to sum each entry of dataopdlist -->
-            <operation id="Context.RunOperationOnList">
-                <param type="string" name="id">Athento.opd.sumInputOrOutput</param>
-                <param type="string" name="list">opdDataList</param>
-                <param type="boolean" name="isolate">false</param>
-                <param type="string" name="item">item</param>
-                <param type="boolean" name="newTx">false</param>
-                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">totalInvoice_var</param>
+                <param type="integer" name="value">expr:subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
             </operation>
-
-            <!--Saves totalSumOpdInput property -->
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">opd:totalInput</param>
-                <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:totalSumOpdInput</param>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxesLine_var</param>
+                <param type="object" name="value">expr:Document["S_FACTURA:taxesLine"]
+                </param>
             </operation>
-
-            <!--Saves totalSumOpdOutput property -->
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">opd:totalOutput</param>
-                <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:totalSumOpdOutput</param>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxeslen</param>
+                <param type="object" name="value">expr:taxesLine_var == empty ? 0 : taxesLine_var.size()</param>
             </operation>
-
-        </chain>
-
-        <chain id="Athento.opd.sumInputOrOutput">
             <operation id="Context.RunOperation">
-                <param type="string" name="id">
-                    expr:item.get("inputoutput") == '01' ? 'Athento.opd.itemSumOpdInput' :
-                    item.get("inputoutput") == '02' ? 'Athento.opd.itemSumOpdOutput' : "voidChain"
+                <param type="string" name="id">expr:taxeslen == 0 ? "Athento.InvoiceCalculations-SumEachLine-addnewline" :
+                    "Athento.InvoiceCalculations-SumEachLine-checkExists"
                 </param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
+        </chain>
 
+        <chain id="Athento.InvoiceCalculations-SumEachLine-checkExists">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">found</param>
+                <param type="boolean" name="value">expr:false</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxlineindex</param>
+                <param type="integer" name="value">0</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">Athento.InvoiceCalculations-SumEachLine-checkExists-Individually
+                </param>
+                <param type="string" name="list">taxesLine_var</param>
+                <param type="boolean" name="isolate">false</param>
+                <param type="string" name="item">taxitem</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:found ? "voidChain" :
+                    "Athento.InvoiceCalculations-SumEachLine-addnewline"
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
         </chain>
-        <!-- Chain executed for each entry, extracts the amount of the item and sums it.-->
-        <chain id="Athento.opd.itemSumOpdInput">
-            <operation id="Context.FetchDocument"/>
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine-checkExists-Individually">
             <operation id="Context.SetVar">
-                <param type="string" name="name">itemValue</param>
-                <param type="object" name="value">expr:item.get("amount")</param>
+                <param type="string" name="name">type_var</param>
+                <param type="integer" name="value">expr:taxitem.get("type_")
+                </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumOpdInput</param>
-                <param type="object" name="value">expr:totalSumOpdInput +item.get("amount")</param>
+                <param type="string" name="name">percentage_var</param>
+                <param type="integer" name="value">expr:taxitem.get("percentage")
+                </param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:found ? "voidChain" :
+                    type_var == subjectLineTax_var ?
+                    percentage_var == subjectLineTaxPercentage_var ?
+                    "Athento.InvoiceCalculations-SumEachLine-addtoexisting" :
+                    "voidChain" :
+                    "voidChain"
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxlineindex</param>
+                <param type="integer" name="value">expr:taxlineindex + 1</param>
             </operation>
         </chain>
-        <chain id="Athento.opd.itemSumOpdOutput">
-            <operation id="Context.FetchDocument"/>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">itemValue</param>
-                <param type="object" name="value">expr:item.get("amount")</param>
+
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine-addnewline">
+            <operation id="Athento.SetComplexProperty">
+                <param type="string" name="xpath">S_FACTURA:taxesLine</param>
+                <param type="boolean" name="save">false</param>
+                <param type="properties" name="properties">expr:type_=@{subjectLineTax_var}
+                    taxBase=@{subjectLineAmount_var}
+                    percentage=@{subjectLineTaxPercentage_var}
+                    totalInvoice=@{totalInvoice_var}
+                </param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumOpdOutput</param>
-                <param type="object" name="value">expr:totalSumOpdOutput +item.get("amount")</param>
+                <param type="string" name="name">found</param>
+                <param type="boolean" name="value">expr:true
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.InvoiceCalculations-SumEachLine-addtoexisting">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxBase_var</param>
+                <param type="integer" name="value">expr:taxitem.get("taxBase")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">taxBase_var</param>
+                <param type="integer" name="value">expr: taxBase_var + subjectLineAmount_var
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">totalInvoice_var</param>
+                <param type="integer" name="value">expr:taxitem.get("totalInvoice")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">totalInvoice_var</param>
+                <param type="integer" name="value">expr:totalInvoice_var + subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">expr:@{"S_FACTURA:taxesLine/" + taxlineindex+"/taxBase"}</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:taxBase_var
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">expr:@{"S_FACTURA:taxesLine/" + taxlineindex+"/totalInvoice"}</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:totalInvoice_var
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">found</param>
+                <param type="boolean" name="value">expr:true
+                </param>
             </operation>
         </chain>
         

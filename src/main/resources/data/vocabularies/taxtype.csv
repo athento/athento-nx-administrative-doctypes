@@ -1,3 +1,4 @@
 "id","label","obsolete","ordering"
-"01","label.goback.01","0","0"
-"02","label.goback.02","0","10"
+"1","label.taxtype.1","0","0"
+"2","label.taxtype.2","0","10"
+"21","label.taxtype.21","0","20"

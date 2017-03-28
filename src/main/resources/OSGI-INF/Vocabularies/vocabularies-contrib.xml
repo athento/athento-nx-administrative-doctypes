@@ -213,6 +213,18 @@
 			<dataFile>data/vocabularies/officenat.csv</dataFile>
 		</directory>
 
+		<directory name="paymentmethod">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_paymentmethod</table>
+			<dataFile>data/vocabularies/paymentmethod.csv</dataFile>
+		</directory>
+
 		<directory name="regimen">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -273,6 +285,30 @@
             <dataFile>data/vocabularies/transportLine.csv</dataFile>
         </directory>
 
+		<directory name="taxtype">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_taxtype</table>
+			<dataFile>data/vocabularies/taxtype.csv</dataFile>
+		</directory>
+
+		<directory name="taxpercentage">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_taxpercentage</table>
+			<dataFile>data/vocabularies/taxpercentage.csv</dataFile>
+		</directory>
+
 		<directory name="type">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -307,26 +343,29 @@
 		<directory name="car" layout="vocabulary" sortField="ordering" />
 		<directory name="carkmcost" layout="vocabulary" sortField="ordering" />
 		<directory name="carowner" layout="vocabulary" sortField="ordering" />
+		<directory name="companynumber" layout="vocabulary" sortField="ordering" />
 		<directory name="courseexp" layout="vocabulary" sortField="ordering" />
 		<directory name="courseloc" layout="vocabulary" sortField="ordering" />
+		<directory name="currency" layout="vocabulary" sortField="ordering" />
         <directory name="destination" layout="vocabulary" sortField="ordering" />
 		<directory name="expenseCat" layout="vocabulary" sortField="ordering" />
 		<directory name="expensecomment" layout="vocabulary" sortField="ordering" />
+		<directory name="inputoutput" layout="vocabulary" sortField="ordering" />
         <directory name="invoicestate" layout="vocabulary" sortField="label" />
 		<directory name="goback" layout="vocabulary" sortField="ordering" />
 		<directory name="office" layout="vocabulary" sortField="ordering" />
 		<directory name="officenat" layout="vocabulary" sortField="ordering" />
+		<directory name="paymentmethod" layout="vocabulary" sortField="ordering" />
 		<directory name="months" layout="vocabulary" sortField="ordering" />
 		<directory name="regimen" layout="vocabulary" sortField="ordering" />
 		<directory name="routes" layout="vocabulary" sortField="ordering" />
 		<directory name="routescom" layout="vocabulary" sortField="ordering" />
 		<directory name="routesown" layout="vocabulary" sortField="ordering" />
+		<directory name="taxpercentage" layout="vocabulary" sortField="ordering" />
+		<directory name="taxtype" layout="vocabulary" sortField="ordering" />
 		<directory name="transportLine" layout="vocabulary" sortField="ordering" />
         <directory name="type" layout="vocabulary" sortField="label" />
 		<directory name="years" layout="vocabulary" sortField="ordering" />
-		<directory name="inputoutput" layout="vocabulary" sortField="ordering" />
-		<directory name="companynumber" layout="vocabulary" sortField="ordering" />
-		<directory name="currency" layout="vocabulary" sortField="ordering" />
 
     </extension>
 
