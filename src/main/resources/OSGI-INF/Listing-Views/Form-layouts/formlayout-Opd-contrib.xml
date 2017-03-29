@@ -97,6 +97,9 @@
 						<labels>
 							<label mode="any">label.opd.dataopd.account</label>
 						</labels>
+						<helpLabels>
+							<label mode="edit">label.helplabel.opd.dataopd.account</label>
+						</helpLabels>
 						<translated>true</translated>
 						<fields>
 							<field>account</field>
