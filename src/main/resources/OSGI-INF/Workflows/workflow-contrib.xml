@@ -12,23 +12,11 @@
 			<processDefinition>review_parallel</processDefinition>
 			<processDefinition>review_approbation</processDefinition>
 		</type>
-		<type name="Invoice">
-			<processDefinition>review_parallel</processDefinition>
-			<processDefinition>review_approbation</processDefinition>
-		</type>
 		<type name="PaymentOrder">
-			<processDefinition>review_parallel</processDefinition>
-			<processDefinition>review_approbation</processDefinition>
-		</type>	
-		<type name="TransferRequest">
 			<processDefinition>review_parallel</processDefinition>
 			<processDefinition>review_approbation</processDefinition>
 		</type>
 		<type name="TravelRequest">
-			<processDefinition>review_parallel</processDefinition>
-			<processDefinition>review_approbation</processDefinition>
-		</type>
-		<type name="Opd">
 			<processDefinition>review_parallel</processDefinition>
 			<processDefinition>review_approbation</processDefinition>
 		</type>

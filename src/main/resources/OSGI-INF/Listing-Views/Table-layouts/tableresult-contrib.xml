@@ -74,7 +74,127 @@
 					</properties>
 					<widget>listing_title_link</widget>
 				</column>
-				<column name="type">
+				<column name="date">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.S_FACTURA.date</property>
+						<property name="sortPropertyName">S_FACTURA:date</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>date</widget>
+				</column>
+				<column name="number">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.S_FACTURA.number</property>
+						<property name="sortPropertyName">S_FACTURA:number</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>number</widget>
+				</column>
+				<column name="projectid">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.projectFile.projectid</property>
+						<property name="sortPropertyName">projectFile:projectid</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>projectid</widget>
+				</column>
+				<column name="totalAmount">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.S_FACTURA.totalAmount</property>
+						<property name="sortPropertyName">S_FACTURA:totalAmount</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>totalAmount</widget>
+				</column>
+				<column name="lifecycle">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="sortPropertyName">
+							ecm:currentLifeCycleState
+						</property>
+						<property name="label">
+							label.content.header.currentLifecycleState
+						</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>listing_lifecycle</widget>
+				</column>
+				<column name="company">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.S_FACTURA.company</property>
+						<property name="sortPropertyName">S_FACTURA:company</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>company</widget>
+				</column>
+				<column name="category">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.projectFile.category</property>
+						<property name="sortPropertyName">projectFile:category</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>category</widget>
+				</column>
+				<column name="erpNumber">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.S_FACTURA.erpNumber</property>
+						<property name="sortPropertyName">S_FACTURA:erpNumber</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>erpNumber</widget>
+				</column>
+				<column name="type" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
@@ -163,36 +283,6 @@
 					</properties>
 					<widget>bankAccount</widget>
 				</column>
-				<column name="category" selectedByDefault="false">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="columnStyleClass"></property>
-						<property name="label">label.projectFile.category</property>
-						<property name="sortPropertyName">projectFile:category</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<properties mode="edit_sort_infos_map">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>category</widget>
-				</column>
-				<column name="company" selectedByDefault="false">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="columnStyleClass"></property>
-						<property name="label">label.S_FACTURA.company</property>
-						<property name="sortPropertyName">S_FACTURA:company</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<properties mode="edit_sort_infos_map">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>company</widget>
-				</column>
 				<column name="companyid" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
@@ -207,36 +297,6 @@
 						<property name="showInSortInfoSelection">true</property>
 					</properties>
 					<widget>companyid</widget>
-				</column>
-				<column name="date">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="columnStyleClass"></property>
-						<property name="label">label.S_FACTURA.date</property>
-						<property name="sortPropertyName">S_FACTURA:date</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<properties mode="edit_sort_infos_map">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>date</widget>
-				</column>
-				<column name="erpNumber" selectedByDefault="false">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="columnStyleClass"></property>
-						<property name="label">label.S_FACTURA.erpNumber</property>
-						<property name="sortPropertyName">S_FACTURA:erpNumber</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<properties mode="edit_sort_infos_map">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>erpNumber</widget>
 				</column>
 				<column name="ledgerAccount" selectedByDefault="false">
 					<properties mode="any">
@@ -253,22 +313,7 @@
 					</properties>
 					<widget>ledgerAccount</widget>
 				</column>
-				<column name="number">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="columnStyleClass"></property>
-						<property name="label">label.S_FACTURA.number</property>
-						<property name="sortPropertyName">S_FACTURA:number</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<properties mode="edit_sort_infos_map">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>number</widget>
-				</column>
-				<column name="paymentDate">
+				<column name="paymentDate" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
@@ -328,21 +373,6 @@
 					</properties>
 					<widget>providerid</widget>
 				</column>
-				<column name="projectid">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="columnStyleClass"></property>
-						<property name="label">label.projectFile.projectid</property>
-						<property name="sortPropertyName">projectFile:projectid</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<properties mode="edit_sort_infos_map">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>projectid</widget>
-				</column>
 				<column name="subject" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
@@ -388,7 +418,7 @@
 					</properties>
 					<widget>taxAmount</widget>
 				</column>
-				<column name="taxPercentage">
+				<column name="taxPercentage" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
@@ -402,36 +432,6 @@
 						<property name="showInSortInfoSelection">true</property>
 					</properties>
 					<widget>taxPercentage</widget>
-				</column>
-				<column name="totalAmount">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="columnStyleClass"></property>
-						<property name="label">label.S_FACTURA.totalAmount</property>
-						<property name="sortPropertyName">S_FACTURA:totalAmount</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<properties mode="edit_sort_infos_map">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>totalAmount</widget>
-				</column>
-				<column name="lifecycle">
-					<properties mode="any">
-						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
-						<property name="sortPropertyName">
-							ecm:currentLifeCycleState
-						</property>
-						<property name="label">
-							label.content.header.currentLifecycleState
-						</property>
-					</properties>
-					<properties mode="edit_sort_infos">
-						<property name="showInSortInfoSelection">true</property>
-					</properties>
-					<widget>listing_lifecycle</widget>
 				</column>
 			</columns>
 			<widget name="account" type="text">
