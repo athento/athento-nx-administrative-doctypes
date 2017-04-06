@@ -145,6 +145,8 @@
 			<xs:element name="expenseOthersTravel" type="xs:double" />
 			<!-- Customer Expenses -->
 			<xs:element name="expenseCustomerTravel" type="xs:double" />
+			<!-- Diet Expenses -->
+			<xs:element name="expenseDietTravelTotal" type="xs:double" />
 			<!-- NON-Travel Expenses -->
 			<xs:element name="expenseNonTravel" type="xs:double" />
 			<!-- Transport Non Travel Expenses -->
@@ -159,6 +161,8 @@
 			<xs:element name="expenseOthersNonTravel" type="xs:double" />
 			<!-- Customer Non  Travel Expenses -->
 			<xs:element name="expenseCustomerNonTravel" type="xs:double" />
+			<!-- Diet Expenses -->
+			<xs:element name="expenseDietNonTravelTotal" type="xs:double" />
 			<!-- Kilometers Expenses -->
 			<xs:element name="expenseKm" type="xs:double" />
 			<!-- Km company vehicle Expenses -->

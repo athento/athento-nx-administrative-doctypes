@@ -571,12 +571,6 @@
                 <param type="serializable" name="value">expr:Document["administrative:expense" + expenseSubcategory + expenseCategory+"Total"] + expense
                 </param>
             </operation>
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">expr:@{"administrative:expense" + expenseSubcategory + expenseCategory+"Total"}</param>
-                <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:Document["administrative:expense" + expenseSubcategory + expenseCategory+"Total"] + expense
-                </param>
-            </operation>
         </chain>
 
         <chain id="Athento.expensesKm">

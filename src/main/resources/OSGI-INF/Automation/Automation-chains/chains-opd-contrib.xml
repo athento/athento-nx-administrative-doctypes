@@ -164,25 +164,25 @@
             </operation>
 
             <!--Saves totalSumOpdInput property -->
-            <operation id="Document.SetProperty">
+            <!--<operation id="Document.SetProperty">
                 <param type="string" name="xpath">opd:totalInput</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:totalSumOpdInput</param>
-            </operation>
+            </operation>-->
 
             <!--Saves totalSumOpdOutput property -->
-            <operation id="Document.SetProperty">
+            <!--<operation id="Document.SetProperty">
                 <param type="string" name="xpath">opd:totalOutput</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:totalSumOpdOutput</param>
-            </operation>
+            </operation>-->
 
             <!-- Saves difference -->
-            <operation id="Document.SetProperty">
+            <!--<operation id="Document.SetProperty">
                 <param type="string" name="xpath">administrative:difference</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:totalSumOpdOutput - totalSumOpdInput</param>
-            </operation>
+            </operation>-->
 
         </chain>
 

@@ -52,7 +52,7 @@
 					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
 				</widgetModes>
 			</widget>
-			<widget name="opd_totalInput" type="currency">
+			<widget name="opd_totalInput" type="template">
 				<labels>
 					<label mode="any">label.opd.totalInput</label>
 				</labels>
@@ -61,14 +61,19 @@
 					<field>opd:totalInput</field>
 				</fields>
 				<properties widgetMode="view">
-					<property name="type">currency</property>
-					<property name="minFractionDigits">2</property>
-					<property name="currencySymbol">€</property>
+					<property name="template">
+						/widgets/currencyWidget.xhtml
+					</property>
 				</properties>
-				<widgetModes>
+				<properties widgetMode="edit">
+					<property name="template">
+						/widgets/currencyWidget.xhtml
+					</property>
+				</properties>
+				<!--<widgetModes>
 					<mode value="edit">hidden</mode>
 					<mode value="create">hidden</mode>
-				</widgetModes>
+				</widgetModes>-->
 			</widget>
 
 			<widget name="opd_totalOutput" type="currency">
@@ -149,6 +154,7 @@
 							<property name="currencySymbol">€</property>
 						</properties>
 						<properties widgetMode="any">
+							<!--<property name="type">currency</property>-->
 							<property name="required">true</property>
 						</properties>
 					</widget>
