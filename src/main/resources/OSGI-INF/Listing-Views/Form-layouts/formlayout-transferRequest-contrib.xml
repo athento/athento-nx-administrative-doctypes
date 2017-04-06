@@ -39,7 +39,7 @@
 					<widget>transferrequest_dueDate</widget>
 					<widget>transferrequest_subject</widget>
 					<widget>transferrequest_destinationiban</widget>
-					<widget>transferrequest_sector</widget>
+					<widget>administrative_sector</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -185,13 +185,13 @@
 				</widgetModes>
 			</widget>
 
-			<widget name="transferrequest_sector" type="selectOneDirectory">
+			<widget name="administrative_sector" type="selectOneDirectory">
 				<labels>
-					<label mode="any">label.transferrequest.sector</label>
+					<label mode="any">label.administrative.sector</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>transferrequest:sector</field>
+					<field>administrative:sector</field>
 				</fields>
 				<properties widgetMode="any">
 					<property name="directoryName">activity</property>

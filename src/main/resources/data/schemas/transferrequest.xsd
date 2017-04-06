@@ -58,7 +58,6 @@
   <xs:element name="dueDate" type="xs:date"/>
   <xs:element name="subject" type="xs:string"/>
   <xs:element name="destinationiban" type="xs:string"/>
-  <xs:element name="sector" type="xs:string"/>
   <xs:element name="totalInput" type="xs:double" />
   <xs:element name="totalOutput" type="xs:double" />
 
