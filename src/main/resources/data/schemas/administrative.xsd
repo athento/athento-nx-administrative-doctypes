@@ -111,6 +111,8 @@
 	<xs:element name="expenseOwnKmTotal" type="xs:double" />
 	<!-- Total Courses Expenses -->
 	<xs:element name="expenseCourseTotal" type="xs:double" />
+	<!-- difference: for validation purposes, difference between input and output -->
+	<xs:element name="difference" type="xs:double" />
 
 	<xs:element name="expensePerDay" type="nxs:expensePerDayType" />
 	<xs:complexType name="expensePerDayType">

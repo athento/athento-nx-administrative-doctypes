@@ -90,6 +90,15 @@
 			</filters>
 		</handler>
 
+		<handler chainId="TR-sumTotalInputOutput">
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>TransferRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 		<handler chainId="TransferRequest-assignID">
 			<event>documentCreated</event>
 			<filters>

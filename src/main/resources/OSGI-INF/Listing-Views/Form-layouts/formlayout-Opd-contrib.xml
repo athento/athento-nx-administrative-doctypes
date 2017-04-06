@@ -30,8 +30,14 @@
 					<widget>dataopd</widget>
 				</row>
 				<row>
-					<widget>opd-totalInput</widget>
-					<widget>opd-totalOutput</widget>
+					<widget>opd_totalInput</widget>
+					<widget>opd_totalOutput</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
+					<widget>opd_message</widget>
 				</row>
 			</rows>	
 			<widget name="opd_description" type="textarea">
@@ -42,8 +48,11 @@
 				<fields>
 					<field>opd:description</field>
 				</fields>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
-			<widget name="opd-totalInput" type="double">
+			<widget name="opd_totalInput" type="currency">
 				<labels>
 					<label mode="any">label.opd.totalInput</label>
 				</labels>
@@ -62,7 +71,7 @@
 				</widgetModes>
 			</widget>
 
-			<widget name="opd-totalOutput" type="double">
+			<widget name="opd_totalOutput" type="currency">
 				<labels>
 					<label mode="any">label.opd.totalOutput</label>
 				</labels>
@@ -92,6 +101,9 @@
 				<properties widgetMode="any">
 					<property name="display">table</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 				<subWidgets>
 					<widget name="sub0" type="text">
 						<labels>
@@ -123,7 +135,7 @@
 							<field>personalaccount</field>
 						</fields>
 					</widget>
-					<widget name="sub2" type="double">
+					<widget name="sub2" type="currency">
 						<labels>
 							<label mode="any">label.opd.dataopd.amount</label>
 						</labels>
@@ -132,7 +144,7 @@
 							<field>amount</field>
 						</fields>
 						<properties widgetMode="view">
-							<property name="type">currency</property>
+							<!--<property name="type">currency</property>-->
 							<property name="minFractionDigits">2</property>
 							<property name="currencySymbol">€</property>
 						</properties>
@@ -166,6 +178,20 @@
 						</fields>
 					</widget>
 				</subWidgets>
+			</widget>
+
+			<widget name="opd_message" type="text">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<properties widgetMode="view">
+					<property name="value">#{layoutValue.administrative.difference == 0 ? '' : 'Por favor, revise la información. Debe y Haber no suman lo mismo, por lo que no puede solicitar aprobación'}</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
 			</widget>
 
 		</layout>

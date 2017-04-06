@@ -59,6 +59,9 @@
 				<properties widgetMode="any">
 					<property name="required">true</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="userFile_surname1" type="text">
@@ -72,6 +75,9 @@
 				<properties widgetMode="any">
 					<property name="required">true</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="userFile_surname2" type="text">
@@ -82,6 +88,9 @@
 				<fields>
 					<field>userFile:surname2</field>
 				</fields>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="userFile_account" type="text">
@@ -118,6 +127,9 @@
 					<property name="ordering">id</property>
 					<property name="displayIdAndLabel">false</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="transferrequest_transferrequestdate" type="datetime">
@@ -132,6 +144,9 @@
 					<property name="required">true</property>
 					<property name="format">#{nxu:basicDateFormatter()}</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 		</layout>

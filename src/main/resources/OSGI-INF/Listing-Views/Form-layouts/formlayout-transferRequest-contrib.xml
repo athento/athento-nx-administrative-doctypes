@@ -19,11 +19,191 @@
 			<rows>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">3</property>
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_2">1</property>
+						<property name="nxl_colspan_3">1</property>
+					</properties>
+					<widget>transferrequest_personalaccount</widget>
+					<widget>transferrequest_destinationname</widget>
+					<widget>transferrequest_idpersonalnumber</widget>
+					<widget>transferrequest_totalOutput</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+						<property name="nxl_colspan_2">1</property>
+						<property name="nxl_colspan_3">1</property>
+					</properties>
+					<widget>transferrequest_dueDate</widget>
+					<widget>transferrequest_subject</widget>
+					<widget>transferrequest_destinationiban</widget>
+					<widget>transferrequest_sector</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">4</property>
 					</properties>
 					<widget>transferrequestdata</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_1">2</property>
+					</properties>
+					<widget>transferrequest_totalInput</widget>
+					<widget>transferrequest_totalOutput</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">4</property>
+					</properties>
+					<widget>transferrequest_message</widget>
+				</row>
 			</rows>
+
+			<widget name="transferrequest_personalaccount" type="text">
+				<labels>
+					<label mode="any">label.transferrequest.personalaccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:personalaccount</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="required">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_destinationname" type="text">
+				<labels>
+					<label mode="any">label.transferrequest.destinationname</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:destinationname</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_idpersonalnumber" type="text">
+				<labels>
+					<label mode="any">label.transferrequest.idpersonalnumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:idpersonalnumber</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_totalOutput" type="currency">
+				<labels>
+					<label mode="any">label.transferrequest.total</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:totalOutput</field>
+				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">view</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_dueDate" type="datetime">
+				<labels>
+					<label mode="any">label.transferrequest.dueDate</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:dueDate</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+					<property name="format">#{nxu:basicDateFormatter()}</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_subject" type="text">
+				<labels>
+					<label mode="any">label.transferrequest.subject</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:subject</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_destinationiban" type="text">
+				<labels>
+					<label mode="any">label.transferrequest.destinationiban</label>
+				</labels>
+				<helpLabels>
+					<label mode="edit">label.helplabel.transferrequest.destinationiban</label>
+				</helpLabels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:destinationiban</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+					<property name="placeholder">ES123123123123</property>
+					<property name="regex">^[A-Za-z]{2}[0-9]{12}$</property>
+					<property name="validator">#{bFieldValidator.validateRegex}</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_sector" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.transferrequest.sector</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:sector</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">activity</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">true</property>
+					<property name="required">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
 
 			<widget name="transferrequestdata" type="list">
 				<labels>
@@ -34,119 +214,50 @@
 					<field>transferrequest:transferrequestdata</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="display">block</property>
+					<property name="display">table</property>
 				</properties>
 				<properties widgetMode="view">
-					<property name="display">block</property>
+					<property name="display">table</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 				<subWidgets>
 					<widget name="sub0" type="text">
 						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.personalaccount</label>
+							<label mode="any">label.transferrequest.transferrequestdata.accountnumber</label>
 						</labels>
+						<helpLabels>
+							<label mode="edit">label.helplabel.transferrequest.transferrequestdata.accountnumber</label>
+						</helpLabels>
 						<translated>true</translated>
 						<fields>
-							<field>personalaccount</field>
+							<field>accountnumber</field>
 						</fields>
-						<properties widgetMode="edit">
+						<properties widgetMode="any">
 							<property name="required">true</property>
+							<property name="placeholder">ES123123123123</property>
+							<property name="regex">^[0-9]{12}$</property>
+							<property name="validator">#{bFieldValidator.validateRegex}</property>
 						</properties>
 					</widget>
 					<widget name="sub1" type="text">
 						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.destinationname</label>
+							<label mode="any">label.transferrequest.transferrequestdata.personalaccountnumber</label>
 						</labels>
+						<helpLabels>
+							<label mode="edit">label.helplabel.transferrequest.transferrequestdata.personalaccountnumber</label>
+						</helpLabels>
 						<translated>true</translated>
 						<fields>
-							<field>destinationname</field>
+							<field>personalaccountnumber</field>
 						</fields>
 						<properties widgetMode="any">
-							<property name="required">true</property>
+							<property name="regex">^[0-9]{8}$</property>
+							<property name="validator">#{bFieldValidator.validateRegex}</property>
 						</properties>
 					</widget>
-					<widget name="sub2" type="text">
-						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.idpersonalnumber</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>idpersonalnumber</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub3" type="double">
-						<labels>
-							<label mode="any">label.opd.transferrequest.transferrequestdata.amount</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>amount</field>
-						</fields>
-						<properties widgetMode="view">
-							<property name="type">currency</property>
-							<property name="minFractionDigits">2</property>
-							<property name="currencySymbol">€</property>
-						</properties>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub4" type="datetime">
-						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.dueDate</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>dueDate</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-							<property name="format">#{nxu:basicDateFormatter()}</property>
-						</properties>
-					</widget>
-					<widget name="sub5" type="text">
-						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.subject</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>subject</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub6" type="text">
-						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.destinationiban</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>destinationiban</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub7" type="selectOneDirectory">
-						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.sector</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>sector</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="directoryName">activity</property>
-							<property name="ordering">ordering</property>
-							<property name="displayIdAndLabel">false</property>
-							<property name="localize">true</property>
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub8" type="selectOneDirectory">
+					<widget name="sub2" type="selectOneDirectory">
 						<labels>
 							<label mode="any">label.transferrequest.transferrequestdata.inputoutput</label>
 						</labels>
@@ -162,38 +273,73 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub9" type="text">
+					<widget name="sub3" type="currency">
 						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.accountnumber</label>
-						</labels>
-						<helpLabels>
-							<label mode="edit">label.helplabel.transferrequest.transferrequestdata.accountnumber</label>
-						</helpLabels>
-						<translated>true</translated>
-						<fields>
-							<field>accountnumber</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-							<property name="placeholder">ES123123123123</property>
-							<property name="regex">^[A-Za-z]{2}[0-9]{12}$</property>
-							<property name="validator">#{bFieldValidator.validateRegex}</property>
-						</properties>
-					</widget>
-					<widget name="sub10" type="file">
-						<labels>
-							<label mode="any">label.transferrequest.transferrequestdata.fil</label>
+							<label mode="any">label.transferrequest.transferrequestdata.amount</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>fil</field>
-							<field>fil/filename</field>
+							<field>amount</field>
 						</fields>
-						<properties widgetMode="any">
+						<properties widgetMode="view">
+							<!--<property name="type">currency</property>-->
+							<property name="minFractionDigits">2</property>
+							<property name="currencySymbol">€</property>
 							<property name="required">true</property>
 						</properties>
 					</widget>
 				</subWidgets>
+			</widget>
+
+			<widget name="transferrequest_totalInput" type="currency">
+				<labels>
+					<label mode="any">label.transferrequest.totalInput</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:totalInput</field>
+				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_totalOutput" type="currency">
+				<labels>
+					<label mode="any">label.transferrequest.totalOutput</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:totalOutput</field>
+				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+			<widget name="transferrequest_message" type="text">
+				<labels>
+					<label mode="any"></label>
+				</labels>
+				<translated>true</translated>
+				<properties widgetMode="view">
+					<property name="value">#{layoutValue.administrative.difference == 0 ? '' : 'Revise la información: Debe y Haber no suman lo mismo, por lo que no puede solicitar aprobación'}</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">hidden</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
 			</widget>
 
 		</layout>

@@ -65,6 +65,9 @@
 				<properties widgetMode="any">
 					<property name="required">true</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="userFile_surname1" type="text">
@@ -78,6 +81,9 @@
 				<properties widgetMode="any">
 					<property name="required">true</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="userFile_surname2" type="text">
@@ -88,6 +94,9 @@
 				<fields>
 					<field>userFile:surname2</field>
 				</fields>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="administrative_companyNumber" type="selectOneDirectory">
@@ -105,6 +114,9 @@
 					<property name="localize">true</property>
 					<property name="required">true</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="S_FACTURA_erpNumber" type="text">
@@ -143,6 +155,9 @@
 					<property name="required">true</property>
 					<property name="format">#{nxu:basicDateFormatter()}</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="S_FACTURA_accountDate" type="datetime">
@@ -156,6 +171,9 @@
 				<properties widgetMode="any">
 					<property name="format">#{nxu:basicDateFormatter()}</property>
 				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
 			</widget>
 
 			<widget name="opd_currency" type="selectOneDirectory">
@@ -191,14 +209,10 @@
 					<property name="ordering">ordering</property>
 					<property name="displayIdAndLabel">false</property>
 					<property name="localize">true</property>
+					<property name="required">true</property>
 				</properties>
 				<widgetModes>
-					<mode value="view">#{currentUser.isMemberOf('administrators') ?
-					 'view':'hidden'}</mode>
-					<mode value="edit">#{currentUser.isMemberOf('administrators') ?
-					 'edit':'hidden'}</mode>
-					<mode value="create">#{currentUser.isMemberOf('administrators') ?
-					 'edit':'hidden'}</mode>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
 				</widgetModes>
 			</widget>
 

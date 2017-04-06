@@ -25,7 +25,7 @@
 				</row>
 			</rows>
 
-			<widget name="advance" type="double">
+			<widget name="advance" type="currency">
 				<labels>
 					<label mode="any">label.administrative.advance</label>
 				</labels>
@@ -33,6 +33,14 @@
 				<fields>
 					<field>administrative:advance</field>
 				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
 			</widget>
 
 		</layout>

@@ -13,11 +13,12 @@
 				<permission>ReadWrite</permission>
 				<type>Expense</type>
 				<type>PaymentOrder</type>
-				<type>TransferRequest</type>
 				<type>TravelRequest</type>
 			</rule>
 			<rule grant="false">
 				<condition>document.isImmutable()</condition>
+				<type>Opd</type>
+				<type>TransferRequest</type>
 			</rule>
 		</filter>
 
@@ -26,11 +27,12 @@
 				<permission>ReadWrite</permission>
 				<type>Expense</type>
 				<type>PaymentOrder</type>
-				<type>TransferRequest</type>
 				<type>TravelRequest</type>
 			</rule>
 			<rule grant="false">
 				<condition>document.isImmutable()</condition>
+				<type>Opd</type>
+				<type>TransferRequest</type>
 			</rule>
 		</filter>
 
@@ -44,8 +46,16 @@
 		</filter>
 
 		<filter id="filter@wf@Validacion" append="true">
+			<rule grant="true">
+				<permission>ReadWrite</permission>
+				<type>Opd</type>
+				<type>TransferRequest</type>
+				<group>validacion_initiators</group>
+			</rule>
 			<rule grant="false">
 				<condition>document.currentLifeCycleState != "Draft"</condition>
+				<condition>#{currentDocument.administrative.difference != 0}</condition>
+				<condition>document.isImmutable() || document.isProxy()</condition>
 			</rule>
 		</filter>
 

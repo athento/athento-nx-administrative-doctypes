@@ -177,6 +177,13 @@
                 <param type="serializable" name="value">expr:totalSumOpdOutput</param>
             </operation>
 
+            <!-- Saves difference -->
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:difference</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:totalSumOpdOutput - totalSumOpdInput</param>
+            </operation>
+
         </chain>
 
         <chain id="Athento.opd.sumInputOrOutput">
