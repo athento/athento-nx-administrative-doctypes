@@ -16,6 +16,9 @@
 				<template mode="any">/layouts/Opd_widget_layout_template.xhtml
 				</template>
 			</templates>
+			<properties mode="any">
+				<property name="widgetsDisplay">label_top</property>
+			</properties>
 			<rows>
 				<row>
 					<properties mode="any">
@@ -64,6 +67,7 @@
 					<property name="type">currency</property>
 					<property name="minFractionDigits">2</property>
 					<property name="currencySymbol">€</property>
+					<property name="locale">es_ES</property>
 				</properties>
 				<widgetModes>
 					<mode value="edit">hidden</mode>
@@ -83,6 +87,7 @@
 					<property name="type">currency</property>
 					<property name="minFractionDigits">2</property>
 					<property name="currencySymbol">€</property>
+					<property name="locale">es_ES</property>
 				</properties>
 				<widgetModes>
 					<mode value="edit">hidden</mode>
@@ -149,6 +154,7 @@
 							<property name="currencySymbol">€</property>
 						</properties>
 						<properties widgetMode="any">
+							<!--<property name="type">currency</property>-->
 							<property name="required">true</property>
 						</properties>
 					</widget>
@@ -168,7 +174,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub4" type="text">
+					<widget name="sub4" type="textarea">
 						<labels>
 							<label mode="any">label.opd.dataopd.subject</label>
 						</labels>
