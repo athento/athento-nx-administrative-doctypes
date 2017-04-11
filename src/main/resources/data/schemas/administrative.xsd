@@ -85,8 +85,8 @@
 	<xs:element name="expenseLodgingTravelTotal" type="xs:double" />
 	<!-- Total Restaurant Travel Expenses -->
 	<xs:element name="expenseRestaurantTravelTotal" type="xs:double" />
-	<!-- Total Journey Travel Expenses -->
-	<xs:element name="expenseJourneyTravelTotal" type="xs:double" />
+	<!-- Total Diets Travel Expenses -->
+	<xs:element name="expenseDietsTravelTotal" type="xs:double" />
 	<!-- Total Others Travel Expenses -->
 	<xs:element name="expenseOthersTravelTotal" type="xs:double" />
 	<!-- Total Customer Expenses -->
@@ -99,8 +99,8 @@
 	<xs:element name="expenseLodgingNonTravelTotal" type="xs:double" />
 	<!-- Total Restaurant Non Travel Expenses -->
 	<xs:element name="expenseRestaurantNonTravelTotal" type="xs:double" />
-	<!-- Total Journey Non Travel Expenses -->
-	<xs:element name="expenseJourneyNonTravelTotal" type="xs:double" />
+	<!-- Total Diets Non Travel Expenses -->
+	<xs:element name="expenseDietsNonTravelTotal" type="xs:double" />
 	<!-- Total Others Non Travel Expenses -->
 	<xs:element name="expenseOthersNonTravelTotal" type="xs:double" />
 	<!-- Total Customer Non  Travel Expenses -->
@@ -111,6 +111,12 @@
 	<xs:element name="expenseCompanyKmTotal" type="xs:double" />
 	<!-- Total Km own vehicle Expenses -->
 	<xs:element name="expenseOwnKmTotal" type="xs:double" />
+	<!-- Total Kilometers Expenses -->
+	<xs:element name="expenseKmOfficesTotal" type="xs:double" />
+	<!-- Total Km company vehicle Expenses -->
+	<xs:element name="expenseCompanyKmOfficesTotal" type="xs:double" />
+	<!-- Total Km own vehicle Expenses -->
+	<xs:element name="expenseOwnKmOfficesTotal" type="xs:double" />
 	<!-- Total Courses Expenses -->
 	<xs:element name="expenseCourseTotal" type="xs:double" />
 	<!-- difference: for validation purposes, difference between input and output -->
@@ -141,6 +147,8 @@
 			<xs:element name="expenseRestaurantTravel" type="xs:double" />
 			<!-- Journey Travel Expenses -->
 			<xs:element name="expenseJourneyTravel" type="xs:double" />
+			<!-- Diets Travel Expenses -->
+			<xs:element name="expenseDietsTravel" type="xs:double" />
 			<!-- Others Travel Expenses -->
 			<xs:element name="expenseOthersTravel" type="xs:double" />
 			<!-- Customer Expenses -->
@@ -157,6 +165,8 @@
 			<xs:element name="expenseRestaurantNonTravel" type="xs:double" />
 			<!-- Journey Non Travel Expenses -->
 			<xs:element name="expenseJourneyNonTravel" type="xs:double" />
+			<!-- Diets Non Travel Expenses -->
+			<xs:element name="expenseDietsNonTravel" type="xs:double" />
 			<!-- Others Non Travel Expenses -->
 			<xs:element name="expenseOthersNonTravel" type="xs:double" />
 			<!-- Customer Non  Travel Expenses -->
@@ -169,6 +179,12 @@
 			<xs:element name="expenseCompanyKm" type="xs:double" />
 			<!-- Km own vehicle Expenses -->
 			<xs:element name="expenseOwnKm" type="xs:double" />
+			<!-- Kilometers Expenses -->
+			<xs:element name="expenseKmOffices" type="xs:double" />
+			<!-- Km company vehicle Expenses between offices -->
+			<xs:element name="expenseCompanyKmOffices" type="xs:double" />
+			<!-- Km own vehicle Expenses between offices -->
+			<xs:element name="expenseOwnKmOffices" type="xs:double" />
 			<!-- Courses Expenses -->
 			<xs:element name="expenseCourse" type="xs:double" />
 		</xs:sequence>
@@ -276,7 +292,37 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:element name="expenseKmOffices" type="nxs:expenseKmType" />
+	<xs:element name="expenseKmOffices" type="nxs:expenseKmOfficesType" />
+	<xs:complexType name="expenseKmOfficesType">
+		<xs:sequence>
+			<xs:element name="item" type="nxs:expenseKmOfficesItem" minOccurs="0"
+						maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="expenseKmOfficesItem">
+		<xs:sequence>
+			<!-- Travel Date -->
+			<xs:element name="expenseDate" type="xs:date" />
+			<!-- Route: from , to -->
+			<xs:element name="route" type="xs:string" />
+			<!-- Route: from , to (not based on vocabulary)-->
+			<xs:element name="userRoute" type="xs:string" />
+			<!-- Expense category -->
+			<xs:element name="category" type="xs:string" />
+			<!-- Car Own, Company -->
+			<xs:element name="carOwner" type="xs:string" />
+			<!-- Return included -->
+			<xs:element name="goback" type="xs:string" />
+			<!-- Type of car -->
+			<xs:element name="carCategory" type="xs:string" />
+			<!-- Trip description -->
+			<xs:element name="description" type="xs:string" />
+			<!-- Kilometers -->
+			<xs:element name="km" type="xs:double" />
+			<!-- Calculated expense based on the entries -->
+			<xs:element name="expense" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
 
 	<xs:element name="expenseCourse" type="nxs:courseType" />
 	<xs:complexType name="courseType">

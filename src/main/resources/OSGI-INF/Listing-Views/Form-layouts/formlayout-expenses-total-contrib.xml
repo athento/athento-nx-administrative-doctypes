@@ -73,9 +73,9 @@
 						<property name="nxl_colspan_3">2</property>
 					</properties>
 					<widget></widget>
-					<widget>administrative_expenseJourneyTravelTotal</widget>
+					<widget>administrative_expenseDietsTravelTotal</widget>
 					<widget></widget>
-					<widget>administrative_expenseJourneyNonTravelTotal</widget>
+					<widget>administrative_expenseDietsNonTravelTotal</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -208,13 +208,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseJourneyTravelTotal" type="currency">
+			<widget name="administrative_expenseDietsTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseJourneyTravelTotal</label>
+					<label mode="any">label.administrative.expenseDietsTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseJourneyTravelTotal</field>
+					<field>administrative:expenseDietsTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -334,13 +334,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseJourneyNonTravelTotal" type="currency">
+			<widget name="administrative_expenseDietsNonTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseJourneyNonTravelTotal</label>
+					<label mode="any">label.administrative.expenseDietsNonTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseJourneyNonTravelTotal</field>
+					<field>administrative:expenseDietsNonTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>

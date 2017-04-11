@@ -66,6 +66,13 @@
                 <param type="boolean" name="isolate">false</param>
             </operation>
             <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document["administrative:expenseKmOffices"] == empty ?
+                    "Athento.InitializeZeroTotalsByCategory" :
+                    "Athento.expensesPerDayByCategory"</param>
+                <param type="properties" name="parameters">expenseCategory = KmOffices</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Context.RunOperation">
                 <param type="string" name="id">expr:Document["administrative:expenseCourse"] == empty ?
                     "Athento.InitializeZeroTotalsByCategory" :
                     "Athento.expensesPerDayByCategory"</param>
@@ -75,7 +82,7 @@
             <operation id="Context.SetVar">
                 <param type="string" name="name">expenseTotal</param>
                 <param type="integer" name="value">expr:expenseTravelTotal+
-                    expenseNonTravelTotal+expenseKmTotal+expenseCourseTotal
+                    expenseNonTravelTotal+expenseKmTotal+expenseKmOfficesTotal+expenseCourseTotal
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -121,18 +128,20 @@
                 expenseCustomerTravelTotal
                 expenseOthersTravelTotal
                 expenseTransportTravelTotal
-                expenseJourneyTravelTotal
+                expenseDietsTravelTotal
                 expenseLodgingTravelTotal
 
                 expenseRestaurantNonTravelTotal
                 expenseCustomerNonTravelTotal
                 expenseOthersNonTravelTotal
                 expenseTransportNonTravelTotal
-                expenseJourneyNonTravelTotal
+                expenseDietsNonTravelTotal
                 expenseLodgingNonTravelTotal
 
                 expenseCompanyKmTotal
                 expenseOwnKmTotal
+
+                expenseCourseTotal
 
             </documentation>
             <operation id="Context.FetchDocument" />
@@ -187,7 +196,7 @@
                 </param>
             </operation>
             <operation id="Document.SetProperty">
-                <param type="string" name="xpath">administrative:expenseJourneyTravelTotal</param>
+                <param type="string" name="xpath">administrative:expenseDietsTravelTotal</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">0
                 </param>
@@ -223,7 +232,7 @@
                 </param>
             </operation>
             <operation id="Document.SetProperty">
-                <param type="string" name="xpath">administrative:expenseJourneyNonTravelTotal</param>
+                <param type="string" name="xpath">administrative:expenseDietsNonTravelTotal</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">0
                 </param>
@@ -242,6 +251,12 @@
             </operation>
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">administrative:expenseOwnKmTotal</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">0
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:expenseCourseTotal</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">0
                 </param>
@@ -362,7 +377,7 @@
 
         <chain id="Athento.expensesPreformatExpense">
             <documentation>
-                Specific precalculations based on the specific category of the expense.
+                Specific precalculations based on the specific category of the expense or any exception.
             </documentation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">expenseSubcategoryInd</param>
@@ -371,7 +386,9 @@
             </operation>
             <operation id="Context.RunOperation">
                 <param type="string" name="id">expr:expenseSubcategoryInd == '80' ? "Athento.expensesKm" :
-                    expenseSubcategoryInd == '90' ? "Athento.expensesKm" : 'voidChain'</param>
+                    expenseSubcategoryInd == '90' ? "Athento.expensesKm" :
+                    expenseSubcategoryInd == '70' ? "Athento.expensesCourses" :
+                    'voidChain'</param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
         </chain>
@@ -506,7 +523,7 @@
                     expenseSubcategoryInd == '10' ? 'Customer' :
                     expenseSubcategoryInd == '20' ? 'Others' :
                     expenseSubcategoryInd == '30' ? 'Transport' :
-                    expenseSubcategoryInd == '40' ? 'Journey' :
+                    expenseSubcategoryInd == '40' ? 'Diets' :
                     expenseSubcategoryInd == '50' ? 'Lodging' :
                     expenseSubcategoryInd == '80' ? 'Company' :
                     expenseSubcategoryInd == '90' ? 'Own' :
@@ -519,11 +536,6 @@
                 <param type="properties" name="parameters">expr:expenseSubcategoryInd = @{expenseSubcategoryInd}
                     expenseSubcategory = @{expenseSubcategoryAssociated}</param>
                 <param type="boolean" name="isolate">false</param>
-            </operation>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">logTesting</param>
-                <param type="string" name="value">logTesting
-                </param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">expr:@{"expense" + expenseCategory}</param>
@@ -592,9 +604,9 @@
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">routescom</param>
-                <param type="object" name="value">expr:route == empty ?
-                    Document["administrative:expense" + expenseCategory + "/["+expensePerDayIndExpenseCategory+"]/km"] :
-                    new java.lang.Double(Fn.getVocabularyLabel("routescom", route))
+                <param type="object" name="value">expr:Document["administrative:expense" + expenseCategory + "/["+expensePerDayIndExpenseCategory+"]/km"] == empty ?
+                    new java.lang.Double(Fn.getVocabularyLabel("routescom", route)) :
+                    Document["administrative:expense" + expenseCategory + "/["+expensePerDayIndExpenseCategory+"]/km"]
                 </param>
             </operation>
             <operation id="Context.SetVar">
@@ -625,7 +637,26 @@
                 <param type="serializable" name="value">expr:expense
                 </param>
             </operation>
+        </chain>
 
+        <chain id="Athento.expensesCourses">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">expense</param>
+                <param type="object" name="value">expr:new java.lang.Double(Fn.getVocabularyLabel("courseexp", category))
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">expr:"expense" + expenseCategory + "Total"</param>
+                <param type="integer" name="value">expr:Context["expense" + expenseCategory + "Total"] + expense
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">expr:@{"administrative:expense" + expenseCategory + "/["+expensePerDayIndExpenseCategory+"]/expense"}</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:expense
+                </param>
+            </operation>
         </chain>
 
 

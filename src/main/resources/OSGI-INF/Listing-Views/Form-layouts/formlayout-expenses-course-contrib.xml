@@ -145,11 +145,11 @@
 					</widget>
 					<widget name="sub2" type="selectOneDirectory">
 						<labels>
-							<label mode="any">label.administrative.expenseCourse.place</label>
+							<label mode="any">label.administrative.expenseCourse.category</label>
 						</labels>
 						<translated>true</translated>
 						<fields>
-							<field>place</field>
+							<field>category</field>
 						</fields>
 						<properties widgetMode="any">
 							<property name="directoryName">courseloc</property>
