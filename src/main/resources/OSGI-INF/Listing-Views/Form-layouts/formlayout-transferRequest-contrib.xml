@@ -179,8 +179,8 @@
 				</fields>
 				<properties widgetMode="any">
 					<property name="required">true</property>
-					<property name="placeholder">ES123123123123</property>
-					<property name="regex">^[A-Za-z]{2}[0-9]{12}$</property>
+					<property name="placeholder">ES1231231231233213213211</property>
+					<property name="regex">^[A-Za-z]{2}[0-9]{22}$</property>
 					<property name="validator">#{bFieldValidator.validateRegex}</property>
 				</properties>
 				<widgetModes>
@@ -239,7 +239,7 @@
 						</fields>
 						<properties widgetMode="any">
 							<property name="required">true</property>
-							<property name="placeholder">ES123123123123</property>
+							<property name="placeholder">123123123123</property>
 							<property name="regex">^[0-9]{12}$</property>
 							<property name="validator">#{bFieldValidator.validateRegex}</property>
 						</properties>
@@ -256,7 +256,7 @@
 							<field>personalaccountnumber</field>
 						</fields>
 						<properties widgetMode="any">
-							<property name="regex">^[0-9]{8}$</property>
+							<property name="regex">^[0-9]*$</property>
 							<property name="validator">#{bFieldValidator.validateRegex}</property>
 						</properties>
 					</widget>
