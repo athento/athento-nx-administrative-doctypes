@@ -48,6 +48,12 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">4</property>
 					</properties>
+					<widget>transferrequest_content</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">4</property>
+					</properties>
 					<widget>transferrequestdata</widget>
 				</row>
 				<row>
@@ -89,6 +95,23 @@
 				<translated>true</translated>
 				<fields>
 					<field>transferrequest:destinationname</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_content" type="file">
+				<labels>
+					<label mode="any">label.transferrequest.content</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>file:content</field>
+					<field>file:content/filename</field>
 				</fields>
 				<properties widgetMode="any">
 					<property name="required">true</property>
