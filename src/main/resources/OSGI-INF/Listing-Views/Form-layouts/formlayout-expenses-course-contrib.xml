@@ -159,7 +159,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub7" type="double">
+					<widget name="sub7" type="currency">
 						<labels>
 							<label mode="any">label.administrative.expenseCourse.expense</label>
 						</labels>
@@ -168,7 +168,7 @@
 							<field>expense</field>
 						</fields>
 						<properties widgetMode="view">
-							<property name="type">currency</property>
+							<!--<property name="type">currency</property>-->
 							<property name="minFractionDigits">2</property>
 							<property name="currencySymbol">€</property>
 						</properties>

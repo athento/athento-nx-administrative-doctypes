@@ -337,8 +337,7 @@
                 </param>
             </operation>
             <operation id="Context.RunOperation">
-                <param type="string" name="id">expr:category == empty ? "voidChain" :
-                    "Athento.expensesPreformatExpense"
+                <param type="string" name="id">Athento.expensesPreformatExpense
                 </param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
@@ -468,15 +467,15 @@
                 <param type="integer" name="value">expr:expensePerDay+expense
                 </param>
             </operation>
-            <operation id="Context.RunOperation">
-                <param type="string" name="id">expr:category == empty ? 'voidChain' : 'Athento.expensesPerDaySumCategorized'</param>
-                <param type="boolean" name="isolate">false</param>
-            </operation>
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">expr:@{"administrative:expensePerDay/["+expensePerDayInd+"]/expense"}</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:expensePerDay
                 </param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">Athento.expensesPerDaySumCategorized</param>
+                <param type="boolean" name="isolate">false</param>
             </operation>
         </chain>
 
@@ -538,8 +537,14 @@
                 <param type="boolean" name="isolate">false</param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">expensePerDayCategorized</param>
+                <param type="integer" name="value">expr:Document["administrative:expensePerDay/["+expensePerDayInd+"]/expense" + expenseCategory] == empty ?
+                    0 : Document["administrative:expensePerDay/["+expensePerDayInd+"]/expense" + expenseCategory]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">expr:@{"expense" + expenseCategory}</param>
-                <param type="integer" name="value">expr:Context["expense" + expenseCategory] + expense
+                <param type="integer" name="value">expr:expensePerDayCategorized + expense
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -565,16 +570,20 @@
             </operation>
             <operation id="Context.FetchDocument" />
             <operation id="Context.SetVar">
-                <param type="string" name="name">@{"expense" + expenseSubcategory + expenseCategory}</param>
-                <param type="integer" name="value">expr:expenseSubcategory == 'expenseSubcategoryInd'  ?
-                    Context["expense" + expenseSubcategory + expenseCategory] + expense :
-                    Context["expense" + expenseSubcategory + expenseCategory]
+                <param type="string" name="name">expr:@{"expense" + expenseSubcategory + expenseCategory}</param>
+                <param type="integer" name="value">expr:Document["administrative:expensePerDay/["+expensePerDayInd+"]/expense" + expenseSubcategory + expenseCategory] == empty  ?
+                    0 : Document["administrative:expensePerDay/["+expensePerDayInd+"]/expense" + expenseSubcategory + expenseCategory]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">expr:@{"expense" + expenseSubcategory + expenseCategory}</param>
+                <param type="integer" name="value">expr:Context["expense" + expenseSubcategory + expenseCategory] + expense
                 </param>
             </operation>
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">expr:@{"administrative:expensePerDay/["+expensePerDayInd+"]/expense" + expenseSubcategory + expenseCategory}</param>
                 <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:expensePerDay
+                <param type="serializable" name="value">expr:Context["expense" + expenseSubcategory + expenseCategory]
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -644,11 +653,6 @@
             <operation id="Context.SetVar">
                 <param type="string" name="name">expense</param>
                 <param type="object" name="value">expr:new java.lang.Double(Fn.getVocabularyLabel("courseexp", category))
-                </param>
-            </operation>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">expr:"expense" + expenseCategory + "Total"</param>
-                <param type="integer" name="value">expr:Context["expense" + expenseCategory + "Total"] + expense
                 </param>
             </operation>
             <operation id="Document.SetProperty">
