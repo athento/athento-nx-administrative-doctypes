@@ -24,87 +24,9 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget></widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">3</property>
-					</properties>
-					<widget></widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">3</property>
-					</properties>
-					<widget></widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">3</property>
-					</properties>
 					<widget>expenseTravel</widget>
 				</row>
 			</rows>
-
-
-			<widget name="employee" type="text">
-				<labels>
-					<label mode="any">label.userFile.employee</label>
-				</labels>
-				<translated>true</translated>
-				<properties widgetMode="any">
-					<property name="value">#{layoutValue.userFile.name.concat(
-					" ".concat(
-					layoutValue.userFile.surname1.concat(
-					" ".concat(
-					layoutValue.userFile.surname2.concat(
-					" - ".concat(
-					layoutValue.userFile.idNumber
-					))))))
-					}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">view</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="userFile_office" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.userFile.office</label>
-				</labels>
-				<fields>
-					<field>userFile:office</field>
-				</fields>
-				<translated>true</translated>
-				<properties widgetMode="view">
-					<property name="directoryName">office</property>
-					<property name="ordering">ordering</property>
-					<property name="displayIdAndLabel">false</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">view</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="period" type="text">
-				<labels>
-					<label mode="any">label.userFile.period</label>
-				</labels>
-				<translated>true</translated>
-				<properties widgetMode="any">
-					<property name="value">#{layoutValue.administrative.expenseMonth.concat(
-					" ".concat(
-					layoutValue.administrative.expenseYear
-					))
-					}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">view</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
 
 			<widget name="expenseTravel" type="list">
 				<labels>

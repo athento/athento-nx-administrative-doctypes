@@ -40,6 +40,30 @@
                 <param type="string" name="xpath">administrative:expensePerDay</param>
                 <param type="boolean" name="save">false</param>
             </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:message</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:empty
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:needsmanagingapproval</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">false
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:needsmaximization</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">false
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:specialAuthorization</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">false
+                </param>
+            </operation>
             <operation id="Context.RunOperation">
                 <param type="string" name="id">Athento.InitializeZeroTotalsBySubcategory</param>
                 <param type="boolean" name="isolate">false</param>
@@ -611,6 +635,14 @@
                 <param type="serializable" name="value">expr:Document["administrative:expense" + expenseSubcategory + expenseCategory+"Total"] + expense
                 </param>
             </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">Athento.expensesChecksEscalation</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">Athento.expensesChecksMaximization</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
         </chain>
 
         <chain id="Athento.expensesKm">
@@ -750,6 +782,134 @@
                 <param type="string" name="xpath">administrative:expenseCompanyKmTotal</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:expenseCompanyKmTotal == 0 ? empty : expenseCompanyKmTotal
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.expensesChecksEscalation">
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:expenseCategory != 'NonTravel' ? 'voidChain' :
+                    expenseSubcategory != 'Restaurant' ? 'voidChain' :
+                    Document["administrative:needsmanagingapproval"] == true ? 'voidChain' :
+                    'Athento.expensesNeedsEscalation'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:expenseCategory != 'NonTravel' ? 'voidChain' :
+                    expenseSubcategory != 'Customer' ? 'voidChain' :
+                    Document["administrative:needsmanagingapproval"] == true ? 'voidChain' :
+                    'Athento.expensesNeedsEscalation'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.expensesChecksMaximization">
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:expenseCategory != 'Travel' ? 'voidChain' :
+                    expenseSubcategory != 'Restaurant' ? 'voidChain' :
+                    Document["administrative:needsmaximization"] == true ? 'voidChain' :
+                    'Athento.expensesNeedsMaximization'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:expenseCategory != 'Travel' ? 'voidChain' :
+                    expenseSubcategory != 'Customer' ? 'voidChain' :
+                    Document["administrative:needsmaximization"] == true ? 'voidChain' :
+                    'Athento.expensesNeedsMaximization'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:expenseCategory != 'Travel' ? 'voidChain' :
+                    expenseSubcategory != 'Diets' ? 'voidChain' :
+                    Document["administrative:needsmaximization"] == true ? 'voidChain' :
+                    'Athento.expensesNeedsMaximization'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.expensesNeedsEscalation">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">threshold</param>
+                <param type="integer" name="value">28
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">curval</param>
+                <param type="integer" name="value">expr:Context["expense" + expenseSubcategory + expenseCategory]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">inviteds</param>
+                <param type="integer" name="value">expr:Document["administrative:expense" + expenseCategory + "/[" + expensePerDayIndExpenseCategory + "]/invitedNumber"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">evaluation</param>
+                <param type="boolean" name="value">expr:(curval / inviteds) > threshold ?
+                    true : false
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:needsmanagingapproval</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:evaluation
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:message</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:evaluation ? Document["administrative:message"] + "Al menos un día supera el gasto máximo diario por comensal permitido. Por favor, revise la solicitud, o seleccione que efectivamente es correcto y solicita aprobación de Dirección General. \n" :
+                    Document["administrative:message"]
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.expensesNeedsMaximization">
+            <operation id="Context.SetVar">
+                <param type="string" name="name">threshold</param>
+                <param type="integer" name="value">28
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">restaurant</param>
+                <param type="integer" name="value">expr:Document["administrative:expensePerDay/[" + expensePerDayInd + "]/expenseRestaurantTravel"] == empty ?
+                    0 : Document["administrative:expensePerDay/[" + expensePerDayInd + "]/expenseRestaurantTravel"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">customer</param>
+                <param type="integer" name="value">expr:Document["administrative:expensePerDay/[" + expensePerDayInd + "]/expenseCustomerTravel"] == empty ?
+                    0 : Document["administrative:expensePerDay/[" + expensePerDayInd + "]/expenseCustomerTravel"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">diets</param>
+                <param type="integer" name="value">expr:Document["administrative:expensePerDay/[" + expensePerDayInd + "]/expenseDietsTravel"] == empty ?
+                    0 : Document["administrative:expensePerDay/[" + expensePerDayInd + "]/expenseDietsTravel"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">curval</param>
+                <param type="integer" name="value">expr:restaurant + customer + diets
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">evaluation</param>
+                <param type="boolean" name="value">expr:curval > threshold ?
+                    true : false
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:needsmaximization</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:evaluation
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:message</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:evaluation ? Document["administrative:message"] + "Los gastos de viaje diarios superan el límite en algún día. Puedes revisarlos para ajustarlos, o bien marcar que solicitas que se abone el importe máximo allá donde se supere. \n" :
+                    Document["administrative:message"]
                 </param>
             </operation>
         </chain>

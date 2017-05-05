@@ -135,6 +135,24 @@
 					</properties>
 					<widget>administrative_expenseTotal</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">8</property>
+					</properties>
+					<widget>administrative_message</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">8</property>
+					</properties>
+					<widget>administrative_specialAuthorization</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">8</property>
+					</properties>
+					<widget>administrative_asksmaximization</widget>
+				</row>
 			</rows>
 			<widget name="administrative_expenseTravelTotal" type="currency">
 				<labels>
@@ -476,6 +494,47 @@
 				<widgetModes>
 					<mode value="edit">view</mode>
 					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+			<widget name="administrative_message" type="textarea">
+				<labels>
+					<label mode="any">label.administrative.message</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:message</field>
+				</fields>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+			<widget name="administrative_specialAuthorization" type="checkbox">
+				<labels>
+					<label mode="any">label.administrative.specialAuthorization</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:specialAuthorization</field>
+				</fields>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.administrative.needsmanagingapproval == true ? 'edit' : 'hidden'}</mode>
+					<mode value="create">hidden</mode>
+					<mode value="view">#{layoutValue.administrative.needsmanagingapproval == true ? 'view' : 'hidden'}</mode>
+				</widgetModes>
+			</widget>
+			<widget name="administrative_asksmaximization" type="checkbox">
+				<labels>
+					<label mode="any">label.administrative.asksmaximization</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:asksmaximization</field>
+				</fields>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.administrative.needsmaximization == true ? 'edit' : 'hidden'}</mode>
+					<mode value="create">hidden</mode>
+					<mode value="view">#{layoutValue.administrative.needsmaximization == true ? 'view' : 'hidden'}</mode>
 				</widgetModes>
 			</widget>
 		</layout>

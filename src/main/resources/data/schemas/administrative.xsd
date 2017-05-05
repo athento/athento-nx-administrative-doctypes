@@ -58,12 +58,22 @@
 	<xs:element name="sourceAccount" type="xs:string" />
 	<!-- Needs Local Approval -->
 	<xs:element name="needslocalapproval" type="xs:boolean" default="false"/>
+	<!-- Needs Managing Approval -->
+	<xs:element name="needsmanagingapproval" type="xs:boolean" default="false"/>
+	<!-- Asks for Managing Approval -->
+	<xs:element name="specialAuthorization" type="xs:boolean" default="false"/>
+	<!-- Needs Managing Approval -->
+	<xs:element name="needsmaximization" type="xs:boolean" default="false"/>
+	<!-- Asks maximization -->
+	<xs:element name="asksmaximization" type="xs:boolean" default="false"/>
 	<!-- For RME approval purposes -->
 	<xs:element name="containsVO" type="xs:boolean" default="false"/>
 	<!-- For RME approval purposes -->
 	<xs:element name="containsnotVO" type="xs:boolean" default="false"/>
 	<!-- For RME approval purposes -->
 	<xs:element name="sector" type="xs:string"/>
+	<!-- For notification purposes -->
+	<xs:element name="message" type="xs:string"/>
 
 	<!-- ** Expenses ** -->
 
@@ -183,6 +193,10 @@
 			<xs:element name="expenseOwnKmOffices" type="xs:double" />
 			<!-- Courses Expenses -->
 			<xs:element name="expenseCourse" type="xs:double" />
+			<!-- Needs Managing Approval -->
+			<xs:element name="needsmanagingapproval" type="xs:boolean" default="false"/>
+			<!-- Needs Managing Approval -->
+			<xs:element name="needsmaximization" type="xs:boolean" default="false"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -203,6 +217,8 @@
 			<xs:element name="category" type="xs:string" />
 			<!-- People invited (how many of them) -->
 			<xs:element name="invitedNumber" type="xs:double" />
+			<!-- People invited -->
+			<xs:element name="invitedNames" type="xs:string" />
 			<!-- Expense is over the limit and it has been maximized to the current limit -->
 			<xs:element name="maximized" type="xs:boolean" />
 			<!-- Special Authorization from the Company -->

@@ -24,87 +24,9 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
-					<widget></widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">3</property>
-					</properties>
-					<widget></widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">3</property>
-					</properties>
-					<widget></widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">3</property>
-					</properties>
 					<widget>expenseNonTravel</widget>
 				</row>
 			</rows>
-
-
-			<widget name="employee" type="text">
-				<labels>
-					<label mode="any">label.userFile.employee</label>
-				</labels>
-				<translated>true</translated>
-				<properties widgetMode="any">
-					<property name="value">#{layoutValue.userFile.name.concat(
-					" ".concat(
-					layoutValue.userFile.surname1.concat(
-					" ".concat(
-					layoutValue.userFile.surname2.concat(
-					" - ".concat(
-					layoutValue.userFile.idNumber
-					))))))
-					}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">view</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="userFile_office" type="selectOneDirectory">
-				<labels>
-					<label mode="any">label.userFile.office</label>
-				</labels>
-				<fields>
-					<field>userFile:office</field>
-				</fields>
-				<translated>true</translated>
-				<properties widgetMode="view">
-					<property name="directoryName">office</property>
-					<property name="ordering">ordering</property>
-					<property name="displayIdAndLabel">false</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">view</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
-
-			<widget name="period" type="text">
-				<labels>
-					<label mode="any">label.userFile.period</label>
-				</labels>
-				<translated>true</translated>
-				<properties widgetMode="any">
-					<property name="value">#{layoutValue.administrative.expenseMonth.concat(
-					" ".concat(
-					layoutValue.administrative.expenseYear
-					))
-					}</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">view</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
 
 			<widget name="expenseNonTravel" type="list">
 				<labels>
@@ -170,7 +92,19 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub4" type="double">
+					<widget name="sub4" type="textarea">
+						<labels>
+							<label mode="any">label.administrative.expenseNonTravel.invitedNames</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>invitedNames</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
+					<widget name="sub5" type="double">
 						<labels>
 							<label mode="any">label.administrative.expenseNonTravel.expense</label>
 						</labels>
@@ -187,61 +121,15 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub5" type="checkbox">
-						<labels>
-							<label mode="any">label.administrative.expenseNonTravel.maximized</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>maximized</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub6" type="checkbox">
-						<labels>
-							<label mode="any">label.administrative.expenseNonTravel.specialAuthorization</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>specialAuthorization</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub7" type="file">
+					<widget name="sub6" type="file">
 						<labels>
 							<label mode="any">label.administrative.expenseNonTravel.docsIncluded</label>
 						</labels>
-						<helpLabels>
-							<label mode="any">label.administrative.expenseNonTravel.docsIncluded</label>
-						</helpLabels>
 						<translated>true</translated>
 						<fields>
 							<field>fil</field>
 							<field>fil/filename</field>
 						</fields>
-					</widget>
-					<widget name="sub8" type="selectOneDirectory">
-						<labels>
-							<label mode="any">label.administrative.expenseNonTravel.comments</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>comments</field>
-						</fields>
-						<widgetModes>
-							<mode value="edit">hidden</mode>
-							<mode value="create">hidden</mode>
-						</widgetModes>
-						<properties widgetMode="any">
-							<property name="directoryName">expensecomment</property>
-							<property name="ordering">ordering</property>
-							<property name="displayIdAndLabel">false</property>
-							<property name="localize">true</property>
-						</properties>
 					</widget>
 				</subWidgets>
 			</widget>
