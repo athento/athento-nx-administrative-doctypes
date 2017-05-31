@@ -44,6 +44,18 @@
                 <param type="boolean" name="newTx">false</param>
                 <param type="boolean" name="rollbackGlobalOnError">true</param>
             </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">S_FACTURA:totalAmount</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:calculatedTotalAmount
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">S_FACTURA:taxableIncome</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:calculatedTaxableIncome
+                </param>
+            </operation>
         </chain>
 
         <chain id="Athento.InvoiceCalculations-SumEachLine">
@@ -84,6 +96,15 @@
                 </param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">calculatedTotalAmount</param>
+                <param type="integer" name="value">expr:calculatedTotalAmount+subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">calculatedTaxableIncome</param>
+                <param type="integer" name="value">expr:calculatedTaxableIncome+subjectLineAmount_var</param>
+            </operation>
+
         </chain>
 
         <chain id="Athento.InvoiceCalculations-SumEachLine-checkExists">
@@ -195,7 +216,151 @@
                 </param>
             </operation>
         </chain>
+
+        <chain id="Athento.SendInvoiceToQuiter-list">
+            <documentation>
+                TODO: Change from individual to check in production
+            </documentation>
+            <operation id="Seam.GetSelectedDocuments">
+            </operation>
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">listToOperate</param>
+            </operation>
+            <operation id="Seam.ClearSelectedDocuments">
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">size</param>
+                <param type="object" name="value">expr:listToOperate.size()</param>
+            </operation>
+            <operation id="Context.RunOperationOnList">
+                <param type="string" name="id">expr:size == 0 ?
+                    "Athento.emptylist" :
+                    "Athento.SendInvoiceToQuiter-check"
+                </param>
+                <param type="string" name="list">listToOperate</param>
+                <param type="string" name="item">item</param>
+                <param type="boolean" name="newTx">false</param>
+                <param type="boolean" name="rollbackGlobalOnError">true</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.SendInvoiceToQuiter-check">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:item.id</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document.lifeCycle ==
+                    'Validated' ? 'Athento.SendInvoiceToQuiter-individual' :
+                    Document.lifeCycle == 'NoFinished' ? 'Athento.SendInvoiceToQuiter-individual' :
+                    'Athento.SendInvoiceToQuiter-not-possible'</param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.SendInvoiceToQuiter-not-possible">
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">expr:@{Document["dc:title"]+" not
+                    changed"}</param>
+                <param type="string" name="severity">WARN</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.SendInvoiceToQuiter-individual">
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:item.id</param>
+            </operation>
+            <operation id="Quiter.SaveInvoice">
+                <param type="string" name="dealerCode">123</param>
+                <param type="string" name="user">athento</param>
+                <param type="string" name="password">12345</param>
+                <param type="boolean" name="debug">true</param>
+            </operation>
+            <operation id="Document.SetLifeCycle">
+                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'to_Finished' :
+                'to_NoFinished'</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.SendInvoiceToQuiter">
+            <operation id="Context.FetchDocument" />
+            <operation id="Quiter.SaveInvoice">
+                <param type="string" name="dealerCode">123</param>
+                <param type="string" name="user">athento</param>
+                <param type="string" name="password">12345</param>
+                <param type="boolean" name="debug">true</param>
+            </operation>
+            <operation id="Document.SetLifeCycle">
+                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'to_Finished' :
+                    'to_NoFinished'</param>
+            </operation>
+        </chain>
+
+        <chain id="calculateDepartment">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">category_var</param>
+                <param type="boolean" name="value">expr:Document["projectFile:category"] == empty ? empty : Document["projectFile:category"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">S_FACTURA:department</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:category_var == empty ? empty :
+                    category_var == '01' ? '7' :
+                    category_var == '02' ? '1' :
+                    category_var == '03' ? '2' :
+                    category_var == '04' ? '3' :
+                    category_var == '05' ? '4' :
+                    category_var == '06' ? '5' :
+                    category_var == '07' ? '6' :
+                    category_var == '00' ? '6' : category_var
+                </param>
+            </operation>
+        </chain>
+
+        <chain id="calculateNumERP">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">documentID_var</param>
+                <param type="boolean" name="value">expr:Document["integration:documentID"] == empty ? empty : Document["integration:documentID"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">S_FACTURA:erpNumber</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:documentID_var == empty ? empty :
+                    documentID_var
+                </param>
+            </operation>
+        </chain>
         
+    </extension>
+
+    <extension point="chainException"
+               target="org.nuxeo.ecm.core.operation.OperationServiceComponent">
+        <documentation>
+            Exception control chains.
+        </documentation>
+        <catchChain id="Athento.InvoiceCalculationsExceptionChain"
+                    onChainId="Athento.InvoiceCalculations">
+            <run chainId="voidchain" priority="0" rollBack="false"/>
+        </catchChain>
+        <catchChain id="Athento.InvoiceCalculations-SumEachLineExceptionChain"
+                    onChainId="Athento.InvoiceCalculations-SumEachLine">
+            <run chainId="voidchain" priority="0" rollBack="false"/>
+        </catchChain>
+        <catchChain id="Athento.InvoiceCalculations-SumEachLine-checkExistsExceptionChain"
+                    onChainId="Athento.InvoiceCalculations-SumEachLine-checkExists">
+            <run chainId="voidchain" priority="0" rollBack="false"/>
+        </catchChain>
+        <catchChain id="calculateDepartmentExceptionChain"
+                    onChainId="calculateDepartment">
+            <run chainId="voidchain" priority="0" rollBack="false"/>
+        </catchChain>
+        <catchChain id="calculateNumERPExceptionChain"
+                    onChainId="calculateNumERP">
+            <run chainId="voidchain" priority="0" rollBack="false"/>
+        </catchChain>
     </extension>
 
 </component>

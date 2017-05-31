@@ -55,6 +55,8 @@
 	<xs:element name="companyid" type="xs:string" />
 	<!-- Invoice date -->
 	<xs:element name="date" type="xs:date" />
+	<!-- Department -->
+	<xs:element name="department" type="xs:string" />
 	<!-- Ledger Account from the Ledger -->
 	<xs:element name="ledgerAccount" type="xs:string" />
 	<!-- Invoice number -->

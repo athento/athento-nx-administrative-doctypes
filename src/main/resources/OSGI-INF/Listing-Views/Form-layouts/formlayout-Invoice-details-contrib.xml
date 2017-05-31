@@ -30,8 +30,8 @@
 						<property name="nxl_colspan_2">1</property>
 					</properties>
 					<widget>taxableIncome</widget>
-					<widget>taxPercentage</widget>
-					<widget>taxAmount</widget>
+					<widget></widget>
+					<widget></widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -66,6 +66,14 @@
 				<fields>
 					<field>S_FACTURA:taxableIncome</field>
 				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
 			</widget>
 			<widget name="taxPercentage" type="double">
 				<labels>
@@ -84,6 +92,14 @@
 				<fields>
 					<field>S_FACTURA:totalAmount</field>
 				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
 			</widget>
 
 		</layout>

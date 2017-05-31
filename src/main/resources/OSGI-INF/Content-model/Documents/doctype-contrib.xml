@@ -148,6 +148,7 @@
 				<layout>layout@formlayout-Invoice-details</layout>
 				<layout>layout@formlayout-Invoice-payment</layout>
 				<layout>layout@formlayout-Invoice-lines</layout>
+				<layout>layout@formlayout-Invoice-integration</layout>
 			</layouts>
 		</type>
 

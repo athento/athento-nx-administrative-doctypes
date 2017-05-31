@@ -46,7 +46,7 @@
 			<documentation>
 				This event handler is invoked when a modification is about to occur in an
 				invoice type doc, to update projectid metadata based on projectDocid.
-				This chain is in athento-nx-common-doctypes module.
+				This chain is in athento-nx-administrative-doctypes module.
 			</documentation>
 			<event>beforeDocumentModification</event>
 			<event>aboutToCreate</event>
@@ -54,6 +54,31 @@
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>
 				<condition>Document['projectFile:projectDocid'] != empty</condition>
+			</filters>
+		</handler>
+
+		<handler chainId="calculateDepartment">
+			<documentation>
+				For integration purpose. Takes the equivalence between projectFile:category and
+				S_FACTURA:department, when S_FACTURA:department is the metadata sent.
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="calculateNumERP">
+			<documentation>
+				For integration purpose. Takes the integration schema DocumentID value and put it into erpNumber in invoice.
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
 			</filters>
 		</handler>
 
@@ -186,7 +211,6 @@
 
 			</documentation>
 			<event>beforeDocumentModification</event>
-			<event>aboutToCreate</event>
 			<filters>
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>

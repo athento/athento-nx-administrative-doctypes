@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component
+	name="org.athento.nuxeo.athento-nx-administrative-doctypes.formlayout-Invoice-integration"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+
+		<layout name="layout@formlayout-Invoice-integration">
+			<labels>
+				<label>label.athento-nx-administrative-doctypes.Invoice-integration</label>
+			</labels>
+			<templates>
+				<template mode="any">/layouts/Invoice-integration_widget_layout_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>result</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>description</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>documentID</widget>
+				</row>
+			</rows>	
+			<widget name="result" type="text">
+				<labels>
+					<label mode="any">label.integration.result</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>integration:result</field>
+				</fields>
+			</widget>
+
+			<widget name="description" type="text">
+				<labels>
+					<label mode="any">label.integration.description</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>integration:description</field>
+				</fields>
+			</widget>
+
+			<widget name="documentID" type="text">
+				<labels>
+					<label mode="any">label.integration.documentID</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>integration:documentID</field>
+				</fields>
+			</widget>
+
+		</layout>
+
+	</extension>
+
+</component>
+		
