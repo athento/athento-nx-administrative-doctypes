@@ -318,6 +318,21 @@
             </operation>
         </chain>
 
+        <chain id="calculateCompanyid">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">company_var</param>
+                <param type="boolean" name="value">expr:Document["S_FACTURA:company"] == empty ? '0' : Document["S_FACTURA:company"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">S_FACTURA:companyid</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:Fn.getVocabularyLabel("company_nat",company_var)
+                </param>
+            </operation>
+        </chain>
+
         <chain id="calculateNumERP">
             <operation id="Context.FetchDocument" />
             <operation id="Context.SetVar">
@@ -361,6 +376,11 @@
                     onChainId="calculateNumERP">
             <run chainId="voidchain" priority="0" rollBack="false"/>
         </catchChain>
+        <catchChain id="Athento.SendInvoiceToQuiterExceptionChain"
+                    onChainId="Athento.SendInvoiceToQuiter">
+            <run chainId="voidchain" priority="0" rollBack="false"/>
+        </catchChain>
+
     </extension>
 
 </component>

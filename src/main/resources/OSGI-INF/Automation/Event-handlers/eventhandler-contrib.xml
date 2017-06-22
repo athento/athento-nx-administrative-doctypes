@@ -70,6 +70,19 @@
 			</filters>
 		</handler>
 
+		<handler chainId="calculateCompanyid">
+			<documentation>
+				For integration purpose. Calculates companyid in terms of company, based on
+				vocabulary called "company_nat"
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Invoice</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 		<handler chainId="calculateNumERP">
 			<documentation>
 				For integration purpose. Takes the integration schema DocumentID value and put it into erpNumber in invoice.

@@ -69,6 +69,18 @@
 			<dataFile>data/vocabularies/companynumber.csv</dataFile>
 		</directory>
 
+		<directory name="company_nat">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_company_nat</table>
+			<dataFile>data/vocabularies/company_nat.csv</dataFile>
+		</directory>
+
 		<directory name="courseexp">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -344,6 +356,7 @@
 		<directory name="carkmcost" layout="vocabulary" sortField="ordering" />
 		<directory name="carowner" layout="vocabulary" sortField="ordering" />
 		<directory name="companynumber" layout="vocabulary" sortField="ordering" />
+		<directory name="company_nat" layout="vocabulary" sortField="ordering" />
 		<directory name="courseexp" layout="vocabulary" sortField="ordering" />
 		<directory name="courseloc" layout="vocabulary" sortField="ordering" />
 		<directory name="currency" layout="vocabulary" sortField="ordering" />
