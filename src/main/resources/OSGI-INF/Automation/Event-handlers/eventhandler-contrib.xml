@@ -83,7 +83,7 @@
 			</filters>
 		</handler>
 
-		<handler chainId="calculateNumERP">
+		<!--<handler chainId="calculateNumERP">
 			<documentation>
 				For integration purpose. Takes the integration schema DocumentID value and put it into erpNumber in invoice.
 			</documentation>
@@ -93,7 +93,7 @@
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>
 			</filters>
-		</handler>
+		</handler>-->
 
 		<handler chainId="travelRequest-assignID">
 			<event>documentCreated</event>
@@ -219,7 +219,7 @@
 			</filters>
 		</handler>
 
-		<handler chainId="Athento.InvoiceCalculations">
+		<!--<handler chainId="Athento.InvoiceCalculations">
 			<documentation>
 
 			</documentation>
@@ -228,7 +228,7 @@
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>
 			</filters>
-		</handler>
+		</handler>-->
 
 	</extension>
 
