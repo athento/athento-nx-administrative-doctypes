@@ -59,9 +59,6 @@
 						<fields>
 							<field>subjectLineAmount</field>
 						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
 						<properties widgetMode="view">
 							<property name="type">currency</property>
 							<property name="minFractionDigits">2</property>
