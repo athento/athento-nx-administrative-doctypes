@@ -50,9 +50,6 @@
 						<fields>
 							<field>subjectLineSubject</field>
 						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
 					</widget>
 					<widget name="sub1" type="double">
 						<labels>
@@ -84,7 +81,6 @@
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
 							<property name="localize">true</property>
-							<property name="required">true</property>
 						</properties>
 					</widget>
 					<widget name="sub3" type="selectOneDirectory">
@@ -100,7 +96,6 @@
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
 							<property name="localize">true</property>
-							<property name="required">true</property>
 						</properties>
 					</widget>
 					<widget name="sub4" type="text">
@@ -111,9 +106,6 @@
 						<fields>
 							<field>subjectLineAccount</field>
 						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
 					</widget>
 				</subWidgets>
 			</widget>
@@ -143,14 +135,10 @@
 							<field>type_</field>
 						</fields>
 						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-						<properties widgetMode="any">
 							<property name="directoryName">taxtype</property>
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
 							<property name="localize">true</property>
-							<property name="required">true</property>
 						</properties>
 						<widgetModes>
 							<mode value="edit">view</mode>
@@ -170,9 +158,6 @@
 							<property name="minFractionDigits">2</property>
 							<property name="currencySymbol">€</property>
 						</properties>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
 						<widgetModes>
 							<mode value="edit">view</mode>
 							<mode value="create">view</mode>
@@ -191,7 +176,6 @@
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
 							<property name="localize">true</property>
-							<property name="required">true</property>
 						</properties>
 					</widget>
 					<widget name="sub3" type="double">
@@ -206,9 +190,6 @@
 							<property name="type">currency</property>
 							<property name="minFractionDigits">2</property>
 							<property name="currencySymbol">€</property>
-						</properties>
-						<properties widgetMode="any">
-							<property name="required">true</property>
 						</properties>
 						<widgetModes>
 							<mode value="edit">view</mode>
