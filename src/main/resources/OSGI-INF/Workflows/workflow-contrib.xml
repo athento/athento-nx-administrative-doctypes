@@ -23,4 +23,25 @@
 
 	</extension>
 
+	<extension target="org.nuxeo.ecm.platform.actions.ActionService"
+			   point="filters">
+
+		<filter id="filter@wf@Aprobacion_2_0">
+			<rule grant="true">
+				<permission>Write</permission>
+				<type>Invoice</type>
+				<group>extended_wf_initiators</group>
+			</rule>
+			<rule grant="false">
+				<condition>document.currentLifeCycleState != "Draft"</condition>
+				<condition>#{currentDocument.S_FACTURA.type == 'Emitidas'}</condition>
+				<condition>#{currentDocument.S_FACTURA.type == '02'}</condition>
+				<condition>#{currentDocument.S_FACTURA.type == 'label.factura.issuedinvoices'}</condition>
+				<condition>#{currentDocument.projectFile.category != '01'}</condition>
+				<condition>document.isImmutable() || document.isProxy()</condition>
+			</rule>
+		</filter>
+
+	</extension>
+
 </component>
