@@ -17,6 +17,15 @@
 			</options>
 		</versioningRule>
 
+		<versioningRule typeName="Invoice">
+			<initialState major="0" minor="0" />
+			<options lifeCycleState="*">
+				<none />
+				<minor default="true" />
+				<major />
+			</options>
+		</versioningRule>
+
 		<versioningRule typeName="PaymentOrder">
 			<initialState major="0" minor="0" />
 			<options lifeCycleState="*">
