@@ -44,6 +44,7 @@
 						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
+					<widget>tipoDocumento</widget>
 					<widget>date</widget>
 					<widget>number</widget>
 				</row>
@@ -54,6 +55,7 @@
 					</properties>
 					<widget>subject</widget>
 					<widget>account</widget>
+					<widget>providerAccount</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -146,6 +148,15 @@
 					<field>S_FACTURA:provider</field>
 				</fields>
 			</widget>
+			<widget name="providerAccount" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.providerAccount</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:providerAccount</field>
+				</fields>
+			</widget>
 			<widget name="subject" type="text">
 				<labels>
 					<label mode="any">label.S_FACTURA.subject</label>
@@ -154,6 +165,20 @@
 				<fields>
 					<field>S_FACTURA:subject</field>
 				</fields>
+			</widget>
+			<widget name="tipoDocumento" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.S_FACTURA.tipoDocumento</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:tipoDocumento</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="localize">true</property>
+					<property name="directoryName">tipoDocumento</property>
+					<property name="ordering">ordering</property>
+				</properties>
 			</widget>
 			<widget name="type" type="selectOneDirectory">
 				<labels>

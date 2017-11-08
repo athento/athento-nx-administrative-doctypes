@@ -321,6 +321,18 @@
 			<dataFile>data/vocabularies/taxpercentage.csv</dataFile>
 		</directory>
 
+		<directory name="tipoDocumento">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_type</table>
+			<dataFile>data/vocabularies/tipoDocumento.csv</dataFile>
+		</directory>
+
 		<directory name="type">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -377,6 +389,7 @@
 		<directory name="taxpercentage" layout="vocabulary" sortField="ordering" />
 		<directory name="taxtype" layout="vocabulary" sortField="ordering" />
 		<directory name="transportLine" layout="vocabulary" sortField="ordering" />
+		<directory name="tipoDocumento" layout="vocabulary" sortField="ordering" />
         <directory name="type" layout="vocabulary" sortField="label" />
 		<directory name="years" layout="vocabulary" sortField="ordering" />
 
