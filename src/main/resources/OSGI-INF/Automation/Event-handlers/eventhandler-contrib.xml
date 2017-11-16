@@ -83,6 +83,7 @@
 			</filters>
 		</handler>
 
+		<!-- Calculated Num ERP Exclusively on service call
 		<handler chainId="calculateNumERP">
 			<documentation>
 				For integration purpose. Takes the integration schema DocumentID value and put it into erpNumber in invoice.
@@ -93,7 +94,7 @@
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>
 			</filters>
-		</handler>
+		</handler>-->
 
 		<handler chainId="travelRequest-assignID">
 			<event>documentCreated</event>

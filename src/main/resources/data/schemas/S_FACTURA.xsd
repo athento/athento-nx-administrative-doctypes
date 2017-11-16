@@ -44,6 +44,8 @@
 	<xs:element name="accountDate" type="xs:date" />
 	<!-- Assigned to -->
 	<xs:element name="assignedTo" type="xs:string" />
+	<!-- Assigned to -->
+	<xs:element name="assignedToSecond" type="xs:string" />
 	<!-- Bank -->
 	<xs:element name="bank" type="xs:string" />
 	<!-- Bank Account -->

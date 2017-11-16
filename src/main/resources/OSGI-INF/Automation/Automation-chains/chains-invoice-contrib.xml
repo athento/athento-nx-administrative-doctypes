@@ -293,6 +293,12 @@
                 <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'to_Finished' :
                 'to_NoFinished'</param>
             </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'calculateNumERP' :
+                    'voidchain'
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
         </chain>
 
         <chain id="Athento.SendInvoiceToQuiter">
@@ -306,6 +312,12 @@
             <operation id="Document.SetLifeCycle">
                 <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'to_Finished' :
                     'to_NoFinished'</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'calculateNumERP' :
+                    'voidchain'
+                </param>
+                <param type="boolean" name="isolate">false</param>
             </operation>
         </chain>
 
@@ -356,7 +368,7 @@
             </operation>
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">S_FACTURA:erpNumber</param>
-                <param type="boolean" name="save">false</param>
+                <param type="boolean" name="save">true</param>
                 <param type="serializable" name="value">expr:documentID_var == empty ? empty :
                     documentID_var
                 </param>

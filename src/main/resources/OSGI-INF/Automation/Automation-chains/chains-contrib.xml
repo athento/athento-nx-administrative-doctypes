@@ -941,7 +941,7 @@
                 <param type="document" name="value">expr:item.id</param>
             </operation>
             <operation id="Context.StartWorkflow">
-                <param type="string" name="id">extended-wf</param>
+                <param type="string" name="id">Aprobacion_2_0</param>
                 <param type="boolean" name="start">true</param>
             </operation>
             <operation id="Audit.Log">
