@@ -928,9 +928,9 @@
             </operation>
             <operation id="Context.RunOperation">
                 <param type="string" name="id">expr:Document.lifeCycle ==
-                    'PendingValidation' ? Document.type == 'Invoice' ? :
+                    'Draft' ? (Document.type == 'Invoice' ?
                     'Athento.StartMassiveInvoiceWF-individual' :
-                    'Athento.StartMassiveInvoiceWF-not-possible' :
+                    'Athento.StartMassiveInvoiceWF-not-possible') :
                     'Athento.StartMassiveInvoiceWF-not-possible'</param>
                 <param type="boolean" name="isolate">false</param>
             </operation>

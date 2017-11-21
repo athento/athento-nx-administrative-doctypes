@@ -279,6 +279,13 @@
             </operation>
         </chain>
 
+        <chain id="Athento.SendInvoiceToQuiter-not-success">
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">expr:@{Document["dc:title"]+" no se ha integrado. Revisar."}</param>
+                <param type="string" name="severity">WARN</param>
+            </operation>
+        </chain>
+
         <chain id="Athento.SendInvoiceToQuiter-individual">
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:item.id</param>
@@ -290,8 +297,13 @@
                 <param type="boolean" name="debug">true</param>
             </operation>
             <operation id="Document.SetLifeCycle">
-                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'to_Finished' :
-                'to_NoFinished'</param>
+                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'toFinished' :
+                'toNoFinished'</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'voidchain' :
+                    'Athento.SendInvoiceToQuiter-not-success'</param>
+                <param type="boolean" name="isolate">false</param>
             </operation>
             <operation id="Context.RunOperation">
                 <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'calculateNumERP' :
@@ -310,8 +322,13 @@
                 <param type="boolean" name="debug">true</param>
             </operation>
             <operation id="Document.SetLifeCycle">
-                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'to_Finished' :
-                    'to_NoFinished'</param>
+                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'toFinished' :
+                    'toNoFinished'</param>
+            </operation>
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'voidchain' :
+                    'Athento.SendInvoiceToQuiter-not-success'</param>
+                <param type="boolean" name="isolate">false</param>
             </operation>
             <operation id="Context.RunOperation">
                 <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'calculateNumERP' :
@@ -406,6 +423,11 @@
                     onChainId="Athento.SendInvoiceToQuiter">
             <run chainId="voidchain" priority="0" rollBack="false"/>
         </catchChain>
+        <catchChain id="Athento.SendInvoiceToQuiter-not-successExceptionChain"
+                    onChainId="Athento.SendInvoiceToQuiter-not-success">
+            <run chainId="voidchain" priority="0" rollBack="false"/>
+        </catchChain>
+
 
     </extension>
 
