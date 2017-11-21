@@ -432,6 +432,10 @@
                     onChainId="Athento.SendInvoiceToQuiter-list">
             <run chainId="Athento.SendInvoiceToQuiter-not-success" priority="0" rollBack="false"/>
         </catchChain>
+        <catchChain id="Athento.SendInvoiceToQuiterExceptionChain"
+                    onChainId="Athento.SendInvoiceToQuiter">
+            <run chainId="Athento.SendInvoiceToQuiter-not-success" priority="0" rollBack="false"/>
+        </catchChain>
 
 
     </extension>
