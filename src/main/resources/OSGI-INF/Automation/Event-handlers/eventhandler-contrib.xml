@@ -228,6 +228,7 @@
 			<filters>
 				<doctype>Invoice</doctype>
 				<attribute>Regular Document</attribute>
+				<condition>Document['dc:source'] != "intracomunitario"</condition>
 			</filters>
 		</handler>
 
