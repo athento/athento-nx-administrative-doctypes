@@ -392,6 +392,10 @@
             </operation>
         </chain>
 
+        <chain id="Athento.InvoiceCalculationsLogError">
+            <operation id="Context.FetchDocument" />
+        </chain>
+
     </extension>
 
     <extension point="chainException"
