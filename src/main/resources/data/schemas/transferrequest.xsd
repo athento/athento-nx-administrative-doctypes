@@ -53,6 +53,7 @@
 
   <xs:element name="transferrequestdate" type="xs:date"/>
   <xs:element name="personalaccount" type="xs:string"/>
+  <xs:element name="cobropago" type="xs:string"/>
   <xs:element name="destinationname" type="xs:string"/>
   <xs:element name="idpersonalnumber" type="xs:string"/>
   <xs:element name="dueDate" type="xs:date"/>

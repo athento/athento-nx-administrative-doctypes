@@ -57,6 +57,18 @@
 			<dataFile>data/vocabularies/carowner.csv</dataFile>
 		</directory>
 
+		<directory name="cobropago">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_cobropago</table>
+			<dataFile>data/vocabularies/cobropago.csv</dataFile>
+		</directory>
+
 		<directory name="companynumber">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -208,7 +220,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<createTablePolicy>always</createTablePolicy>
 			<table>vocabulary_office</table>
 			<dataFile>data/vocabularies/office.csv</dataFile>
 		</directory>
@@ -220,7 +232,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<createTablePolicy>always</createTablePolicy>
 			<table>vocabulary_officenat</table>
 			<dataFile>data/vocabularies/officenat.csv</dataFile>
 		</directory>
@@ -367,6 +379,7 @@
 		<directory name="car" layout="vocabulary" sortField="ordering" />
 		<directory name="carkmcost" layout="vocabulary" sortField="ordering" />
 		<directory name="carowner" layout="vocabulary" sortField="ordering" />
+		<directory name="cobropago" layout="vocabulary" sortField="ordering" />
 		<directory name="companynumber" layout="vocabulary" sortField="ordering" />
 		<directory name="company_nat" layout="vocabulary" sortField="ordering" />
 		<directory name="courseexp" layout="vocabulary" sortField="ordering" />
