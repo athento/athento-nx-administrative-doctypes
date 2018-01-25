@@ -108,7 +108,7 @@
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>S_FACTURA:assignedToSecond</field>
+					<field>S_FACTURA:assignedToSecondVocabulary</field>
 				</fields>
 				<properties widgetMode="any">
 					<property name="localize">true</property>
