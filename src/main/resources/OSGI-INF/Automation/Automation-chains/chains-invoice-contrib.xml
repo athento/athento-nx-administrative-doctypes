@@ -254,7 +254,7 @@
                 <param type="string" name="list">listToOperate</param>
                 <param type="string" name="item">item</param>
                 <param type="boolean" name="newTx">false</param>
-                <param type="boolean" name="rollbackGlobalOnError">true</param>
+                <param type="boolean" name="rollbackGlobalOnError">false</param>
             </operation>
         </chain>
 
@@ -441,3 +441,6 @@
     </extension>
 
 </component>
+
+
+
