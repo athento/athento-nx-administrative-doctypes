@@ -24,6 +24,18 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
+					<widget>S_FACTURA_assignedTo</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>S_FACTURA_assignedToSecondVocabulary</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
 					<widget>date</widget>
 				</row>
 				<row>
@@ -332,6 +344,26 @@
 				<translated>true</translated>
 				<fields>
 					<field>administrative_cv:S_FACTURA_providerid</field>
+				</fields>
+			</widget>
+
+			<widget name="S_FACTURA_assignedTo" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.assignedTo</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_assignedTo</field>
+				</fields>
+			</widget>
+
+			<widget name="S_FACTURA_assignedToSecondVocabulary" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.assignedToSecondVocabulary</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_assignedToSecondVocabulary</field>
 				</fields>
 			</widget>
 			
@@ -963,6 +995,18 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
+					<widget>S_FACTURA_assignedTo</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>S_FACTURA_assignedToSecondVocabulary</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
 					<widget>date</widget>
 				</row>
 				<row>
@@ -1289,7 +1333,27 @@
 					<field>administrative_cv:S_FACTURA_providerid</field>
 				</fields>
 			</widget>
-			
+
+			<widget name="S_FACTURA_assignedTo" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.assignedTo</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_assignedTo</field>
+				</fields>
+			</widget>
+
+			<widget name="S_FACTURA_assignedToSecondVocabulary" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.assignedToSecondVocabulary</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_assignedToSecondVocabulary</field>
+				</fields>
+			</widget>
+
 			<widget name="subject" type="text">
 				<labels>
 					<label mode="any">label.S_FACTURA.subject</label>

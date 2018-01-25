@@ -106,9 +106,6 @@
 				<fields>
 					<field>transferrequest:personalaccount</field>
 				</fields>
-				<properties widgetMode="edit">
-					<property name="required">true</property>
-				</properties>
 				<widgetModes>
 					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
 				</widgetModes>
@@ -287,6 +284,7 @@
 							<field>accountnumber</field>
 						</fields>
 						<properties widgetMode="any">
+							<property name="required">true</property>
 							<property name="placeholder">123123123123</property>
 							<property name="regex">^[0-9]{12}$</property>
 							<property name="validator">#{bFieldValidator.validateRegex}</property>
@@ -321,6 +319,7 @@
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
 							<property name="localize">true</property>
+							<property name="required">true</property>
 						</properties>
 					</widget>
 					<widget name="sub3" type="currency">
