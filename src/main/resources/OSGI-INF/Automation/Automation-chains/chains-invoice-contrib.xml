@@ -286,6 +286,24 @@
             </operation>
         </chain>
 
+        <chain id="Athento.SendInvoiceToQuiter-not-success-change-state">
+            <operation id="Seam.AddMessage">
+                <param type="string" name="message">expr:@{Document["dc:title"]+" no se ha integrado. Revisar."}</param>
+                <param type="string" name="severity">WARN</param>
+            </operation>
+            <operation id="Document.SetLifeCycle">
+                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'toFinished' :
+                    'toNoFinished'</param>
+            </operation>
+        </chain>
+
+        <chain id="Athento.SendInvoiceToQuiter-success-change-state">
+            <operation id="Document.SetLifeCycle">
+                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'toFinished' :
+                    'toNoFinished'</param>
+            </operation>
+        </chain>
+
         <chain id="Athento.SendInvoiceToQuiter-individual">
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:item.id</param>
@@ -296,13 +314,11 @@
                 <param type="string" name="password">12345</param>
                 <param type="boolean" name="debug">true</param>
             </operation>
-            <operation id="Document.SetLifeCycle">
-                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'toFinished' :
-                'toNoFinished'</param>
-            </operation>
             <operation id="Context.RunOperation">
-                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'voidchain' :
-                    'Athento.SendInvoiceToQuiter-not-success'</param>
+                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ?
+                    'Athento.SendInvoiceToQuiter-success-change-state' :
+                    Document.lifeCycle == 'NoFinished' ? 'Athento.SendInvoiceToQuiter-not-success' :
+                    'Athento.SendInvoiceToQuiter-not-success-change-state'</param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
             <operation id="Context.RunOperation">
