@@ -195,6 +195,9 @@
 	<xs:element name="S_FACTURA_totalAmount_max" type="xs:double" />
 	<!-- Outgoing or incoming invoice -->
 	<xs:element name="S_FACTURA_type" type="xs:string" />
+	<!-- Assigned -->
+	<xs:element name="S_FACTURA_assignedTo" type="xs:string" />
+	<xs:element name="S_FACTURA_assignedToSecondVocabulary" type="xs:string" />
 	<!-- Project binded to -->
 	<xs:element name="projectFile_projectid" type="xs:string" />
 	<xs:element name="projectFile_category" type="xs:string" />

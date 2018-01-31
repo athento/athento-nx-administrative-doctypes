@@ -297,6 +297,13 @@
             </operation>
         </chain>
 
+        <chain id="Athento.SendInvoiceToQuiter-success-change-state">
+            <operation id="Document.SetLifeCycle">
+                <param type="string" name="value">expr:Document["integration:result"] == 'SUCCESS' ? 'toFinished' :
+                    'toNoFinished'</param>
+            </operation>
+        </chain>
+
         <chain id="Athento.SendInvoiceToQuiter-individual">
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:item.id</param>
@@ -308,7 +315,8 @@
                 <param type="boolean" name="debug">true</param>
             </operation>
             <operation id="Context.RunOperation">
-                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ? 'voidchain' :
+                <param type="string" name="id">expr:Document["integration:result"] == 'SUCCESS' ?
+                    'Athento.SendInvoiceToQuiter-success-change-state' :
                     Document.lifeCycle == 'NoFinished' ? 'Athento.SendInvoiceToQuiter-not-success' :
                     'Athento.SendInvoiceToQuiter-not-success-change-state'</param>
                 <param type="boolean" name="isolate">false</param>
