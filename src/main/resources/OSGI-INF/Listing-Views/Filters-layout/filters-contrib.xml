@@ -54,7 +54,6 @@
 			</rule>
 			<rule grant="false">
 				<condition>document.currentLifeCycleState != "Draft"</condition>
-				<condition>#{currentDocument.administrative.difference != 0}</condition>
 				<condition>document.isImmutable() || document.isProxy()</condition>
 			</rule>
 		</filter>
