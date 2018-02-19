@@ -343,6 +343,8 @@
 	<xs:element name="travel_idNumber" type="xs:string" />
 	<!-- User Mail -->
 	<xs:element name="travel_mail" type="xs:string" />
+	<!-- User IPN -->
+	<xs:element name="travel_ipn" type="xs:string" />
 	<!-- User Address -->
 	<xs:element name="travel_address" type="xs:string" />
 	<!-- User Category -->
