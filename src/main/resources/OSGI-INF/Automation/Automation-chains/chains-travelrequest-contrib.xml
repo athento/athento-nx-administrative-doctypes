@@ -22,7 +22,7 @@
                 </param>
             </operation>
             <operation id="Document.SetProperty">
-                <param type="string" name="xpath">administrative:travel_ipn</param>
+                <param type="string" name="xpath">administrative:travel_companyNumber</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:company_var
                 </param>
