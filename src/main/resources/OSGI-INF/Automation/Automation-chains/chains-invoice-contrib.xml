@@ -50,7 +50,6 @@
                 </param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
-
         </chain>
 
         <chain id="Athento.updateTotals">
