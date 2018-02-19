@@ -208,7 +208,7 @@
 			</filters>
 		</handler>
 
-		<handler chainId="Athento.expensesCalculations">
+		<!--handler chainId="Athento.expensesCalculations">
 			<documentation>
 				Calculations based on the user input
 			</documentation>
@@ -218,7 +218,7 @@
 				<doctype>Expenses</doctype>
 				<attribute>Regular Document</attribute>
 			</filters>
-		</handler>
+		</handler-->
 
 		<handler chainId="Athento.InvoiceCalculations">
 			<documentation>

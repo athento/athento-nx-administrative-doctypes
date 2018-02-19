@@ -131,7 +131,7 @@
 							<property name="format">#{nxu:basicDateFormatter()}</property>
 						</properties>
 					</widget>
-					<widget name="sub1" type="text">
+					<widget name="sub1" type="textarea">
 						<labels>
 							<label mode="any">label.administrative.expenseTravel.description</label>
 						</labels>

@@ -175,7 +175,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub4" type="text">
+					<widget name="sub4" type="textarea">
 						<labels>
 							<label mode="any">label.administrative.expenseKm.description</label>
 						</labels>

@@ -131,7 +131,7 @@
 							<property name="format">#{nxu:basicDateFormatter()}</property>
 						</properties>
 					</widget>
-					<widget name="sub1" type="text">
+					<widget name="sub1" type="textarea">
 						<labels>
 							<label mode="any">label.administrative.expenseNonTravel.description</label>
 						</labels>
@@ -186,31 +186,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub5" type="checkbox">
-						<labels>
-							<label mode="any">label.administrative.expenseNonTravel.maximized</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>maximized</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub6" type="checkbox">
-						<labels>
-							<label mode="any">label.administrative.expenseNonTravel.specialAuthorization</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>specialAuthorization</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub7" type="file">
+					<widget name="sub5" type="file">
 						<labels>
 							<label mode="any">label.administrative.expenseNonTravel.docsIncluded</label>
 						</labels>
@@ -223,7 +199,7 @@
 							<field>fil/filename</field>
 						</fields>
 					</widget>
-					<widget name="sub8" type="selectOneDirectory">
+					<widget name="sub6" type="selectOneDirectory">
 						<labels>
 							<label mode="any">label.administrative.expenseNonTravel.comments</label>
 						</labels>

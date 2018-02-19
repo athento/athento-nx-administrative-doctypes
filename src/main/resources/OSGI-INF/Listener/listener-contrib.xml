@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.listener-contrib">
+
+    <extension target="org.nuxeo.ecm.core.event.EventServiceComponent"
+               point="listener">
+
+        <listener name="expensesCalculations" async="false"
+                  enabled="true"
+                  postCommit="true" priority="100"
+                  class="org.athento.nuxeo.admindoctype.ExpensesCalculationsListener">
+            <event>beforeDocumentModification</event>
+            <event>aboutToCreate</event>
+        </listener>
+
+
+    </extension>
+
+</component>
