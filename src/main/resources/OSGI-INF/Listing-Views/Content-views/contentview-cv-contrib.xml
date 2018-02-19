@@ -127,7 +127,7 @@
 			<actions category="CURRENT_SELECTION_LIST" />
 			<actions category="cv_actions@administrative_cv" />
 			<resultLayouts>
-				<layout name="document_listing_ajax" title="document_listing"
+				<layout name="Travel_listing" title="Travel_listing"
 					translateTitle="true" iconPath="/icons/document_listing_icon.png"
 					showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
 			</resultLayouts>

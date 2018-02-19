@@ -232,6 +232,17 @@
 			</filters>
 		</handler>
 
+		<handler chainId="calculateTravelRequestCompany">
+			<documentation>
+
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<filters>
+				<doctype>TravelRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 	</extension>
 
 </component>

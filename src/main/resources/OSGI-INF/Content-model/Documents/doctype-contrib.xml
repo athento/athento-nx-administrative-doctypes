@@ -222,19 +222,16 @@
 				<layout>layout@formlayout-userFileHeading</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
-				<layout>layout@formlayout-travelRequest-advance</layout>
 			</layouts>
 			<layouts mode="edit">
 				<layout>layout@formlayout-userFileHeading</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
-				<layout>layout@formlayout-travelRequest-advance</layout>
 			</layouts>
 			<layouts mode="view">
 				<layout>layout@formlayout-userFileHeading</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
-				<layout>layout@formlayout-travelRequest-advance</layout>
 			</layouts>
 		</type>
 
