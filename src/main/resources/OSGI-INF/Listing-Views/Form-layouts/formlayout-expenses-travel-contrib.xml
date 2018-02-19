@@ -115,7 +115,7 @@
 					<field>administrative:expenseTravel</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="display">table</property>
+					<property name="display">list</property>
 				</properties>
 				<subWidgets>
 					<widget name="sub0" type="datetime">
@@ -152,10 +152,9 @@
 							<property name="required">true</property>
 						</properties>
 						<properties widgetMode="any">
-							<property name="directoryName">expenseCat</property>
+							<property name="directoryName">expenseCatViajes</property>
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
-							<property name="localize">true</property>
 						</properties>
 					</widget>
 					<widget name="sub3" type="int">
@@ -187,31 +186,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub5" type="checkbox">
-						<labels>
-							<label mode="any">label.administrative.expenseNonTravel.maximized</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>maximized</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub6" type="checkbox">
-						<labels>
-							<label mode="any">label.administrative.expenseNonTravel.specialAuthorization</label>
-						</labels>
-						<translated>true</translated>
-						<fields>
-							<field>specialAuthorization</field>
-						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
-					</widget>
-					<widget name="sub7" type="file">
+					<widget name="sub5" type="file">
 						<labels>
 							<label mode="any">label.administrative.expenseNonTravel.docsIncluded</label>
 						</labels>
@@ -224,7 +199,7 @@
 							<field>fil/filename</field>
 						</fields>
 					</widget>
-					<widget name="sub8" type="singleDocumentSuggestion">
+					<widget name="sub6" type="singleDocumentSuggestion">
 						<labels>
 							<label mode="any">label.administrative.expenseTravel.expenseTravelRequest</label>
 						</labels>
@@ -240,7 +215,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub9" type="selectOneDirectory">
+					<widget name="sub7" type="selectOneDirectory">
 						<labels>
 							<label mode="any">label.administrative.expenseTravel.comments</label>
 						</labels>

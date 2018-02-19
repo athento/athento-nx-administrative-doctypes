@@ -115,7 +115,7 @@
 					<field>administrative:expenseNonTravel</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="display">table</property>
+					<property name="display">list</property>
 				</properties>
 				<subWidgets>
 					<widget name="sub0" type="datetime">
@@ -152,10 +152,9 @@
 							<property name="required">true</property>
 						</properties>
 						<properties widgetMode="any">
-							<property name="directoryName">expenseCat</property>
+							<property name="directoryName">expenseCatNoViajes</property>
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>
-							<property name="localize">true</property>
 						</properties>
 					</widget>
 					<widget name="sub3" type="int">

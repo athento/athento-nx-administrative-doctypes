@@ -1,0 +1,18 @@
+"id","label","obsolete","ordering"
+"001","Dieta completa nacional con pernocta:60","0","001"
+"002","Dieta media nacional sin pernocta:30","0","002"
+"003","Dieta completa extranjero con pernocta:72","0","003"
+"004","Dieta media extranjero sin pernocta:36","0","004"
+"102","Invitacion a terceros y actos internos de reconocimiento nacional:30","0","102"
+"103","Invitacion a terceros y actos internos de reconocimiento internacional:36","0","103"
+"201","Billetes transporte:100000","0","201"
+"202","Peaje:100000","0","202"
+"203","Parking:100000","0","203"
+"204","Taxis:100000","0","204"
+"205","Combustible:100000","0","205"
+"206","Telefono:100000","0","206"
+"207","Internet:100000","0","207"
+"208","Lavanderia:100000","0","208"
+"209","Kilometraje:0.33","0","209"
+
+

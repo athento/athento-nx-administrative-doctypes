@@ -115,7 +115,7 @@
 					<field>administrative:expenseKmOffices</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="display">table</property>
+					<property name="display">list</property>
 				</properties>
 				<subWidgets>
 					<widget name="sub0" type="datetime">

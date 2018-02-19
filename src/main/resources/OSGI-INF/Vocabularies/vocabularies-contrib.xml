@@ -8,7 +8,6 @@
 	<extension target="org.nuxeo.ecm.directory.sql.SQLDirectoryFactory"
 		point="directories">
 
-
 		<directory name="activity">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -369,6 +368,54 @@
 			<dataFile>data/vocabularies/years.csv</dataFile>
 		</directory>
 
+        <directory name="expenseCatViajes">
+            <schema>vocabulary</schema>
+            <dataSource>java:/nxsqldirectory</dataSource>
+            <cacheTimeout>3600</cacheTimeout>
+            <cacheMaxSize>1000</cacheMaxSize>
+            <idField>id</idField>
+            <autoincrementIdField>false</autoincrementIdField>
+            <createTablePolicy>on_missing_columns</createTablePolicy>
+            <table>vocabulary_expensecatviajes</table>
+            <dataFile>data/vocabularies/expenseCatViajes.csv</dataFile>
+        </directory>
+
+		<directory name="expenseCatNoViajes">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_expensecatnoviajes</table>
+			<dataFile>data/vocabularies/expenseCatNoViajes.csv</dataFile>
+		</directory>
+
+        <directory name="expenseexention">
+            <schema>vocabulary</schema>
+            <dataSource>java:/nxsqldirectory</dataSource>
+            <cacheTimeout>3600</cacheTimeout>
+            <cacheMaxSize>1000</cacheMaxSize>
+            <idField>id</idField>
+            <autoincrementIdField>false</autoincrementIdField>
+            <createTablePolicy>always</createTablePolicy>
+            <table>vocabulary_expenseexention</table>
+            <dataFile>data/vocabularies/expenseexention.csv</dataFile>
+        </directory>
+
+		<directory name="expenselimits">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_expenselimits</table>
+			<dataFile>data/vocabularies/expenselimits.csv</dataFile>
+		</directory>
+
 
 	</extension>
 
@@ -405,6 +452,10 @@
 		<directory name="tipoDocumento" layout="vocabulary" sortField="ordering" />
         <directory name="type" layout="vocabulary" sortField="label" />
 		<directory name="years" layout="vocabulary" sortField="ordering" />
+		<directory name="expenseexention" layout="vocabulary" sortField="ordering" />
+		<directory name="expenselimits" layout="vocabulary" sortField="ordering" />
+        <directory name="expenseCatViajes" layout="vocabulary" sortField="ordering" />
+        <directory name="expenseCatNoViajes" layout="vocabulary" sortField="ordering" />
 
     </extension>
 

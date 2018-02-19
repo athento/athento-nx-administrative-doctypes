@@ -116,6 +116,11 @@
 	<!-- difference: for validation purposes, difference between input and output -->
 	<xs:element name="difference" type="xs:double" />
 
+	<!-- Expense is over the limit and it has been maximized to the current limit -->
+	<xs:element name="maximized" type="xs:boolean" />
+	<!-- Special Authorization from the Company -->
+	<xs:element name="specialAuthorization" type="xs:boolean" />
+
 	<xs:element name="expensePerDay" type="nxs:expensePerDayType" />
 	<xs:complexType name="expensePerDayType">
 		<xs:sequence>
@@ -225,10 +230,6 @@
 			<xs:element name="category" type="xs:string" />
 			<!-- People invited (how many of them) -->
 			<xs:element name="invitedNumber" type="xs:double" />
-			<!-- Expense is over the limit and it has been maximized to the current limit -->
-			<xs:element name="maximized" type="xs:boolean" />
-			<!-- Special Authorization from the Company -->
-			<xs:element name="specialAuthorization" type="xs:boolean" />
 			<!-- Documents relative to the expense attached -->
 			<xs:element name="docsIncluded" type="xs:boolean" />
 			<!-- Expense Travel Request Associated -->

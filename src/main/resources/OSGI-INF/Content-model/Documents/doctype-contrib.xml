@@ -89,7 +89,6 @@
 				<layout>layout@formlayout-expenses-nontravel</layout>
 				<layout>layout@formlayout-expenses-km</layout>
 				<layout>layout@formlayout-expenses-km-offices</layout>
-				<layout>layout@formlayout-expenses-course</layout>
 			</layouts>
 			<layouts mode="edit">
 				<layout>layout@formlayout-userFileHeading</layout>
@@ -99,7 +98,6 @@
 				<layout>layout@formlayout-expenses-nontravel</layout>
 				<layout>layout@formlayout-expenses-km</layout>
 				<layout>layout@formlayout-expenses-km-offices</layout>
-				<layout>layout@formlayout-expenses-course</layout>
 			</layouts>
 			<layouts mode="view">
 				<layout>layout@formlayout-userFileHeading</layout>
@@ -109,7 +107,6 @@
 				<layout>layout@formlayout-expenses-nontravel</layout>
 				<layout>layout@formlayout-expenses-km</layout>
 				<layout>layout@formlayout-expenses-km-offices</layout>
-				<layout>layout@formlayout-expenses-course</layout>
 			</layouts>
 		</type>
 
