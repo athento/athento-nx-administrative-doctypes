@@ -690,6 +690,166 @@
 			</widget>
 		</layout>
 
+		<layout name="Travel_listing">
+			<templates>
+				<template mode="any">/layouts/layout_listing_ajax_template.xhtml
+				</template>
+				<template mode="edit_columns">/layouts/layout_column_selection_template.xhtml
+				</template>
+				<template mode="edit_sort_infos">/layouts/layout_sort_infos_template.xhtml
+				</template>
+				<template mode="edit_sort_infos_map">/layouts/layout_sort_infos_template.xhtml
+				</template>
+				<template mode="csv">/layouts/layout_listing_csv_template.xhtml
+				</template>
+				<template mode="pdf">/layouts/layout_listing_pdf_template.xhtml
+				</template>
+			</templates>
+			<properties mode="any">
+				<property name="showListingHeader">true</property>
+				<property name="showRowEvenOddClass">true</property>
+			</properties>
+			<properties mode="edit_columns">
+				<property name="availableElementsLabel">label.selection.availableColumns</property>
+				<property name="selectedElementsLabel">label.selection.selectedColumns</property>
+				<property name="selectedElementsHelp"></property>
+				<property name="selectSize">10</property>
+				<property name="displayAlwaysSelectedColumns">false</property>
+			</properties>
+			<properties mode="edit_sort_infos">
+				<property name="newSortInfoTemplate">#{documentSearchActions.newSortInfo}
+				</property>
+				<property name="required">false</property>
+			</properties>
+			<properties mode="edit_sort_infos_map">
+				<property name="newSortInfoTemplate">#{documentSearchActions.newSortInfoMap}
+				</property>
+				<property name="required">false</property>
+			</properties>
+			<columns>
+				<column name="ipn">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">IPN</property>
+						<property name="sortPropertyName">administrative:travel_ipn</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>ipn</widget>
+				</column>
+				<column name="departureDate">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">Fecha Salida</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem:departureDate</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>departureDate</widget>
+				</column>
+				<column name="departureCity">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">Ciudad Salida</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem:departureCity</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>departureCity</widget>
+				</column>
+				<column name="arrivalDate">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">Fecha Llegada</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem:arrivalDate</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>arrivalDate</widget>
+				</column>
+				<column name="arrivalCity">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">Ciudad Llegada</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem:arrivalCity</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>arrivalCity</widget>
+				</column>
+			</columns>
+			<widget name="ipn" type="text">
+				<labels>
+					<label mode="any">IPN</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>data['administrative']['travel_ipn']</field>
+				</fields>
+			</widget>
+			<widget name="departureDate" type="text">
+				<labels>
+					<label mode="any">Fecha Salida</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>data['administrative']['drivenTravelItem']['departureDate']</field>
+				</fields>
+			</widget>
+			<widget name="departureCity" type="text">
+				<labels>
+					<label mode="any">Ciudad Salida</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>data['administrative']['drivenTravelItem']['departureCity']</field>
+				</fields>
+			</widget>
+			<widget name="arrivalDate" type="text">
+				<labels>
+					<label mode="any">Fecha Llegada</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>data['administrative']['drivenTravelItem']['arrivalDate']</field>
+				</fields>
+			</widget>
+			<widget name="arrivalCity" type="text">
+				<labels>
+					<label mode="any">Ciudad Llegada</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>data['administrative']['drivenTravelItem']['arrivalCity']</field>
+				</fields>
+			</widget>
+		</layout>
+
 	</extension>
 
 </component>

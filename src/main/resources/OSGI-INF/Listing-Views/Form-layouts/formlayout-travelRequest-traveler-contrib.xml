@@ -63,6 +63,12 @@
 					<widget>travel_idNumber</widget>
 					<widget>travel_mail</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+					</properties>
+					<widget>travel_ipn</widget>
+				</row>
 			</rows>
 
 			<widget name="requesterIsTraveller" type="dynamicRendererWidget_checkbox">
@@ -133,6 +139,23 @@
 				<translated>true</translated>
 				<fields>
 					<field>administrative:travel_mail</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
+					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="travel_ipn" type="text">
+				<labels>
+					<label mode="any">IPN</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:travel_ipn</field>
 				</fields>
 				<properties widgetMode="edit">
 					<property name="required">#{layoutValue.administrative.requesterIsTraveller ? false : true}</property>

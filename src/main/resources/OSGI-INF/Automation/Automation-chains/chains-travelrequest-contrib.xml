@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="org.athento.nuxeo.athento-nx-administrative-doctypes.chains-travelrequest"
+           version="1.0.0">
+    <require>org.nuxeo.runtime.started</require>
+
+    <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
+               point="chains">
+
+        <chain id="calculateTravelRequestCompany">
+            <documentation>
+                Company to invoice depending on the center attached.
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">company_var</param>
+                <param type="object" name="value">expr:Document["administrative:travel_office"].charAt(0) == '0' ? '01 Renault Retail Group Madrid' :
+                                                Document["administrative:travel_office"].charAt(0) == '1' ? '01 Renault Retail Group Madrid' :
+                                                Document["administrative:travel_office"].charAt(0) == '2' ? '01 Renault Retail Group Madrid' :
+                                                Document["administrative:travel_office"].charAt(0) == '5' ? '50 Renault Retail Group Barcelona' :
+                                                '70 Renault Retail Group Levante'
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_ipn</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:company_var
+                </param>
+            </operation>
+        </chain>
+
+
+    </extension>
+
+</component>
