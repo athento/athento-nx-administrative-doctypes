@@ -55,16 +55,11 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Calculate Kms
                 kmsSecondary(doc, accumulated);
                 kmsRRGOffices(doc, accumulated);
-                try {
-                    // Sum all expenses by category
-                    travelExpenses(doc, accumulated);
-                    noTravelExpenses(doc, accumulated);
-                    String msg = Utils.getI18nLabel("label.expense.rrg.ok", null, Locale.getDefault());
-                    doc.setPropertyValue("administrative:lastMessage", msg);
-                } catch (ExpenseLimitException e) {
-                    LOG.info("Exponses exceeded with error: " + e.getMessage());
-                    // Write error message
-                    Expense expenseErr = e.getLimitExceeded();
+                // Sum all expenses by category
+                travelExpenses(doc, accumulated);
+                noTravelExpenses(doc, accumulated);
+                if (accumulated.isLimitExceeded()) {
+                    Expense expenseErr = accumulated.getLimitExceededExpense();
                     // Get label for category
                     String categoryLabel = Utils.getVocabularyLabel(expenseErr.getCategory(), "expenselimits");
                     if (categoryLabel.contains(":")) {
@@ -74,8 +69,12 @@ public class ExpensesCalculationsListener implements EventListener {
                             new Object [] {expenseErr.getDate(), categoryLabel}, Locale.getDefault());
                     doc.setPropertyValue("administrative:lastMessage", msg);
                     FacesMessages.instance().add(StatusMessage.Severity.INFO, msg);
+                } else {
+                    String msg = Utils.getI18nLabel("label.expense.rrg.ok", null, Locale.getDefault());
+                    doc.setPropertyValue("administrative:lastMessage", msg);
                 }
-                // Calculamos totales
+                LOG.info("Accumu" + accumulated);
+                // Calculate totals
                 calcularTotales(doc, accumulated);
             }
         }
@@ -91,19 +90,144 @@ public class ExpensesCalculationsListener implements EventListener {
         double travelTotal = 0.0;
         double nonTravelTotal = 0.0;
         double kmsTotal = 0.0;
+        double dietaCompletaNacionalConPernoctaTravel = 0.0;
+        double dietaMediaNacionalConPernoctaTravel = 0.0;
+        double dietaCompletaInternacionalConPernoctaTravel = 0.0;
+        double dietaMediaInternacionalSinPernoctaTravel = 0.0;
+        double invitacionTercerosNacionalTravel = 0.0;
+        double invitacionTercerosInternacionalTravel = 0.0;
+        double billetesTransporteTravel = 0.0;
+        double peajeTravel = 0.0;
+        double parkingTravel = 0.0;
+        double taxisTravel = 0.0;
+        double combustibleTravel = 0.0;
+        double telefonoTravel = 0.0;
+        double internetTravel = 0.0;
+        double lavanderiaTravel = 0.0;
+        double invitacionTercerosNacionalNonTravel = 0.0;
+        double billetesTransporteNonTravel = 0.0;
+        double peajeNonTravel = 0.0;
+        double parkingNonTravel = 0.0;
+        double taxisNonTravel = 0.0;
+        double combustibleNonTravel = 0.0;
+        double telefonoNonTravel = 0.0;
+        double internetNonTravel = 0.0;
+        double lavanderiaNonTravel = 0.0;
+        double ownKms = 0.0;
+        double expenseCompanyKmTotal = 0.0;
         for (Expense expense : accumulated) {
             double total = expense.getTotal();
             if (TRAVEL_PARENT_CATEGORY.equals(expense.getParentCategory())) {
                 travelTotal += total;
+                if ("001".equals(expense.getCategory())) {
+                    dietaCompletaNacionalConPernoctaTravel += total;
+                    doc.setPropertyValue("administrative:expenseDietaCompletaNacionalPernoctaTravelTotal", dietaCompletaNacionalConPernoctaTravel);
+                }
+                if ("002".equals(expense.getCategory())) {
+                    dietaMediaNacionalConPernoctaTravel += total;
+                    doc.setPropertyValue("administrative:expenseDietaMediaNacionalSinPernoctaTravelTotal", dietaMediaNacionalConPernoctaTravel);
+                }
+                if ("003".equals(expense.getCategory())) {
+                    dietaCompletaInternacionalConPernoctaTravel += total;
+                    doc.setPropertyValue("administrative:expenseDietaCompletaExtranjeroPernoctaTravelTotal", dietaCompletaInternacionalConPernoctaTravel);
+                }
+                if ("004".equals(expense.getCategory())) {
+                    dietaMediaInternacionalSinPernoctaTravel += total;
+                    doc.setPropertyValue("administrative:expenseDietaMediaExtranjeroSinPernoctaTravelTotal", dietaMediaInternacionalSinPernoctaTravel);
+                }
+                if ("102".equals(expense.getCategory())) {
+                    invitacionTercerosNacionalTravel += total;
+                    doc.setPropertyValue("administrative:expenseInvitacionTercersoNacionalTravelTotal", invitacionTercerosNacionalTravel);
+                }
+                if ("103".equals(expense.getCategory())) {
+                    invitacionTercerosInternacionalTravel += total;
+                    doc.setPropertyValue("administrative:expenseInvitacionTercersoInternacionalTravelTotal", invitacionTercerosInternacionalTravel);
+                }
+                if ("201".equals(expense.getCategory())) {
+                    billetesTransporteTravel += total;
+                    doc.setPropertyValue("administrative:expenseBilletesTransporteTravelTotal", billetesTransporteTravel);
+                }
+                if ("202".equals(expense.getCategory())) {
+                    peajeTravel += total;
+                    doc.setPropertyValue("administrative:expensePeajeTravelTotal", peajeTravel);
+                }
+                if ("203".equals(expense.getCategory())) {
+                    parkingTravel += total;
+                    doc.setPropertyValue("administrative:expenseParkingTravelTotal", parkingTravel);
+                }
+                if ("204".equals(expense.getCategory())) {
+                    taxisTravel += total;
+                    doc.setPropertyValue("administrative:expenseTaxisTravelTotal", taxisTravel);
+                }
+                if ("205".equals(expense.getCategory())) {
+                    combustibleTravel += total;
+                    doc.setPropertyValue("administrative:expenseCombustibleTravelTotal", combustibleTravel);
+                }
+                if ("206".equals(expense.getCategory())) {
+                    telefonoTravel += total;
+                    doc.setPropertyValue("administrative:expenseTelefonoTravelTotal", telefonoTravel);
+                }
+                if ("207".equals(expense.getCategory())) {
+                    internetTravel += total;
+                    doc.setPropertyValue("administrative:expenseInternetTravelTotal", internetTravel);
+                }
+                if ("208".equals(expense.getCategory())) {
+                    lavanderiaTravel += total;
+                    doc.setPropertyValue("administrative:expenseLavanderiaTravelTotal", lavanderiaTravel);
+                }
             } else if (NONTRAVEL_PARENT_CATEGORY.equals(expense.getParentCategory())) {
                 nonTravelTotal += total;
+                if ("102".equals(expense.getCategory())) {
+                    invitacionTercerosNacionalNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseInvitacionTercersoNacionalNonTravelTotal", invitacionTercerosNacionalNonTravel);
+                }
+                if ("201".equals(expense.getCategory())) {
+                    billetesTransporteNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseBilletesTransporteNonTravelTotal", billetesTransporteNonTravel);
+                }
+                if ("202".equals(expense.getCategory())) {
+                    peajeNonTravel += total;
+                    doc.setPropertyValue("administrative:expensePeajeNonTravelTotal", peajeNonTravel);
+                }
+                if ("203".equals(expense.getCategory())) {
+                    parkingNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseParkingNonTravelTotal", parkingNonTravel);
+                }
+                if ("204".equals(expense.getCategory())) {
+                    taxisNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseTaxisNonTravelTotal", taxisNonTravel);
+                }
+                if ("205".equals(expense.getCategory())) {
+                    combustibleNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseCombustibleNonTravelTotal", combustibleNonTravel);
+                }
+                if ("206".equals(expense.getCategory())) {
+                    telefonoNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseTelefonoNonTravelTotal", telefonoNonTravel);
+                }
+                if ("207".equals(expense.getCategory())) {
+                    internetNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseInternetNonTravelTotal", internetNonTravel);
+                }
+                if ("208".equals(expense.getCategory())) {
+                    lavanderiaNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseLavanderiaNonTravelTotal", lavanderiaNonTravel);
+                }
             } else if (KMS_PARENT_CATEGORY.equals(expense.getParentCategory())) {
                 kmsTotal += total;
+                if ("9001".equals(expense.getCategory())) {
+                    ownKms += total;
+                    doc.setPropertyValue("administrative:expenseOwnKmTotal", ownKms);
+                } else {
+                    expenseCompanyKmTotal += total;
+                    doc.setPropertyValue("administrative:expenseCompanyKmTotal", expenseCompanyKmTotal);
+                }
             }
         }
         doc.setPropertyValue("administrative:expenseTravelTotal", travelTotal);
         doc.setPropertyValue("administrative:expenseNonTravelTotal", nonTravelTotal);
-        doc.setPropertyValue("administrative:expenseKmsTotal", kmsTotal);
+        doc.setPropertyValue("administrative:expenseKmTotal", kmsTotal);
+        doc.setPropertyValue("administrative:expenseTotal", (travelTotal + nonTravelTotal + kmsTotal));
     }
 
     /**
@@ -113,7 +237,7 @@ public class ExpensesCalculationsListener implements EventListener {
      * @param accumulated
      * @throws ExpenseLimitException
      */
-    private void travelExpenses(DocumentModel doc, ExpenseList<Expense> accumulated) throws ExpenseLimitException {
+    private void travelExpenses(DocumentModel doc, ExpenseList<Expense> accumulated) {
         List<Map<String, Serializable>> expenses = (List) doc.getPropertyValue("administrative:expenseTravel");
         for (Map<String, Serializable> expense : expenses) {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
@@ -125,22 +249,24 @@ public class ExpensesCalculationsListener implements EventListener {
                 double expenseTotal = (Double) expense.get("expense") / invitedNumber;
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
-                LOG.info("Expense total for travel with date " + date + " is " + expenseTotal);
+                LOG.info("Expense total for travel for " + category + " with date " + date + " is " + expenseTotal);
                 if (accumulated.hasExpense(date, category)) {
                     Expense currentExpense = accumulated.getExpense(date, category);
-                    currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     double subtotal = currentExpense.getTotal();
                     double accumulatedTotal = subtotal + expenseTotal;
                     if (accumulatedTotal > limitForCategory) {
-                        throw new ExpenseLimitException("Expense travel limit exceeded for " + category + " with " + accumulatedTotal, currentExpense);
-                    } else {
-                        accumulated.add(currentExpense);
+                        accumulated.setLimitExceeded(true);
+                        accumulated.setLimitExceededExpense(currentExpense);
                     }
+                    currentExpense = new Expense(date, category, expenseTotal);
+                    currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
+                    accumulated.add(currentExpense);
                 } else {
                     Expense currentExpense = new Expense(date, category, expenseTotal);
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     if (expenseTotal > limitForCategory) {
-                        throw new ExpenseLimitException("Expense travel limit exceeded for " + category + "with " + expenseTotal, currentExpense);
+                        accumulated.setLimitExceeded(true);
+                        accumulated.setLimitExceededExpense(currentExpense);
                     }
                     accumulated.add(currentExpense);
                 }
@@ -155,7 +281,7 @@ public class ExpensesCalculationsListener implements EventListener {
      * @param accumulated
      * @throws ExpenseLimitException
      */
-    private void noTravelExpenses(DocumentModel doc, ExpenseList<Expense> accumulated) throws ExpenseLimitException {
+    private void noTravelExpenses(DocumentModel doc, ExpenseList<Expense> accumulated) {
         List<Map<String, Serializable>> expenses = (List) doc.getPropertyValue("administrative:expenseNonTravel");
         for (Map<String, Serializable> expense : expenses) {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
@@ -168,21 +294,23 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 if (accumulated.hasExpense(date, category)) {
-                    LOG.info("Expense total for Non travel with date " + date + " is " + expenseTotal);
+                    LOG.info("Expense total for Non travel for category " + category + " with date " + date + " is " + expenseTotal);
                     Expense currentExpense = accumulated.getExpense(date, category);
-                    currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     double subtotal = currentExpense.getTotal();
                     double accumulatedTotal = subtotal + expenseTotal;
                     if (accumulatedTotal > limitForCategory) {
-                        throw new ExpenseLimitException("Expense non travel limit exceeded for " + category + " with " + accumulatedTotal, currentExpense);
-                    } else {
-                        accumulated.add(currentExpense);
+                        accumulated.setLimitExceeded(true);
+                        accumulated.setLimitExceededExpense(currentExpense);
                     }
+                    currentExpense = new Expense(date, category, expenseTotal);
+                    currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
+                    accumulated.add(currentExpense);
                 } else {
                     Expense currentExpense = new Expense(date, category, expenseTotal);
                     currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     if (expenseTotal > limitForCategory) {
-                        throw new ExpenseLimitException("Expense travel limit exceeded with for " + category + " " + expenseTotal, currentExpense);
+                        accumulated.setLimitExceeded(true);
+                        accumulated.setLimitExceededExpense(currentExpense);
                     }
                     accumulated.add(currentExpense);
                 }

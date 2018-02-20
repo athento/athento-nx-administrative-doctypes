@@ -42,9 +42,9 @@
 						<property name="nxl_colspan_3">2</property>
 					</properties>
 					<widget></widget>
-					<widget>administrative_expenseTransportTravelTotal</widget>
+					<widget>expenseDietaCompletaNacionalPernoctaTravelTotal</widget>
 					<widget></widget>
-					<widget>administrative_expenseTransportNonTravelTotal</widget>
+					<widget>expenseInvitacionTercersoNacionalNonTravelTotal</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -54,9 +54,9 @@
 						<property name="nxl_colspan_3">2</property>
 					</properties>
 					<widget></widget>
-					<widget>administrative_expenseLodgingTravelTotal</widget>
+					<widget>expenseDietaMediaNacionalSinPernoctaTravelTotal</widget>
 					<widget></widget>
-					<widget>administrative_expenseLodgingNonTravelTotal</widget>
+					<widget>expenseBilletesTransporteNonTravelTotal</widget>
 
 				</row>
 				<row>
@@ -67,9 +67,9 @@
 						<property name="nxl_colspan_3">2</property>
 					</properties>
 					<widget></widget>
-					<widget>administrative_expenseRestaurantTravelTotal</widget>
+					<widget>expenseDietaCompletaExtranjeroPernoctaTravelTotal</widget>
 					<widget></widget>
-					<widget>administrative_expenseRestaurantNonTravelTotal</widget>
+					<widget>expensePeajeNonTravelTotal</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -79,9 +79,9 @@
 						<property name="nxl_colspan_3">2</property>
 					</properties>
 					<widget></widget>
-					<widget>administrative_expenseJourneyTravelTotal</widget>
+					<widget>expenseDietaMediaExtranjeroSinPernoctaTravelTotal</widget>
 					<widget></widget>
-					<widget>administrative_expenseJourneyNonTravelTotal</widget>
+					<widget>expenseParkingNonTravelTotal</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -91,9 +91,9 @@
 						<property name="nxl_colspan_3">2</property>
 					</properties>
 					<widget></widget>
-					<widget>administrative_expenseOthersTravelTotal</widget>
+					<widget>expenseInvitacionTercersoNacionalTravelTotal</widget>
 					<widget></widget>
-					<widget>administrative_expenseOthersNonTravelTotal</widget>
+					<widget>expenseTaxisNonTravelTotal</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -103,17 +103,113 @@
 						<property name="nxl_colspan_3">2</property>
 					</properties>
 					<widget></widget>
-					<widget>administrative_expenseCustomerTravelTotal</widget>
+					<widget>expenseInvitacionTercersoInternacionalTravelTotal</widget>
 					<widget></widget>
-					<widget>administrative_expenseCustomerNonTravelTotal</widget>
+					<widget>expenseCombustibleNonTravelTotal</widget>
 				</row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expenseBilletesTransporteTravelTotal</widget>
+                    <widget></widget>
+                    <widget>expenseTelefonoNonTravelTotal</widget>
+                </row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expensePeajeTravelTotal</widget>
+                    <widget></widget>
+                    <widget>expenseInternetNonTravelTotal</widget>
+                </row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expenseParkingTravelTotal</widget>
+                    <widget></widget>
+                    <widget>expenseLavanderiaNonTravelTotal</widget>
+                </row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expenseTaxisTravelTotal</widget>
+                    <widget></widget>
+                    <widget></widget>
+                </row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expenseCombustibleTravelTotal</widget>
+                    <widget></widget>
+                    <widget></widget>
+                </row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expenseTelefonoTravelTotal</widget>
+                    <widget></widget>
+                    <widget></widget>
+                </row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expenseInternetTravelTotal</widget>
+                    <widget></widget>
+                    <widget></widget>
+                </row>
+                <row>
+                    <properties mode="any">
+                        <property name="nxl_colspan_0">2</property>
+                        <property name="nxl_colspan_1">2</property>
+                        <property name="nxl_colspan_2">2</property>
+                        <property name="nxl_colspan_3">2</property>
+                    </properties>
+                    <widget></widget>
+                    <widget>expenseLavanderiaTravelTotal</widget>
+                    <widget></widget>
+                    <widget></widget>
+                </row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">4</property>
 						<property name="nxl_colspan_1">4</property>
 					</properties>
 					<widget>administrative_expenseKmTotal</widget>
-					<widget>administrative_expenseCourseTotal</widget>
+					<widget></widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -150,6 +246,10 @@
                 <fields>
                     <field>administrative:lastMessage</field>
                 </fields>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
             </widget>
 			<widget name="administrative_expenseTravelTotal" type="currency">
 				<labels>
@@ -169,13 +269,31 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseTransportTravelTotal" type="currency">
+            <widget name="administrative_expenseNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+			<widget name="expenseDietaCompletaNacionalPernoctaTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseTransportTravelTotal</label>
+					<label mode="any">label.administrative.expenseDietaCompletaNacionalPernoctaTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseTransportTravelTotal</field>
+					<field>administrative:expenseDietaCompletaNacionalPernoctaTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -187,13 +305,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseLodgingTravelTotal" type="currency">
+			<widget name="expenseDietaMediaNacionalSinPernoctaTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseLodgingTravelTotal</label>
+					<label mode="any">label.administrative.expenseDietaMediaNacionalSinPernoctaTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseLodgingTravelTotal</field>
+					<field>administrative:expenseDietaMediaNacionalSinPernoctaTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -205,13 +323,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseRestaurantTravelTotal" type="currency">
+			<widget name="expenseDietaCompletaExtranjeroPernoctaTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseRestaurantTravelTotal</label>
+					<label mode="any">label.administrative.expenseDietaCompletaExtranjeroPernoctaTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseRestaurantTravelTotal</field>
+					<field>administrative:expenseDietaCompletaExtranjeroPernoctaTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -223,13 +341,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseJourneyTravelTotal" type="currency">
+			<widget name="expenseDietaMediaExtranjeroSinPernoctaTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseJourneyTravelTotal</label>
+					<label mode="any">label.administrative.expenseDietaMediaExtranjeroSinPernoctaTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseJourneyTravelTotal</field>
+					<field>administrative:expenseDietaMediaExtranjeroSinPernoctaTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -241,13 +359,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseOthersTravelTotal" type="currency">
+			<widget name="expenseInvitacionTercersoNacionalTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseOthersTravelTotal</label>
+					<label mode="any">label.administrative.expenseInvitacionTercersoNacionalTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseOthersTravelTotal</field>
+					<field>administrative:expenseInvitacionTercersoNacionalTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -259,13 +377,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseCustomerTravelTotal" type="currency">
+			<widget name="expenseInvitacionTercersoInternacionalTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseCustomerTravelTotal</label>
+					<label mode="any">label.administrative.expenseInvitacionTercersoInternacionalTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseCustomerTravelTotal</field>
+					<field>administrative:expenseInvitacionTercersoInternacionalTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -277,13 +395,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseNonTravelTotal" type="currency">
+			<widget name="expenseBilletesTransporteTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseNonTravelTotal</label>
+					<label mode="any">label.administrative.expenseBilletesTransporteTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseNonTravelTotal</field>
+					<field>administrative:expenseBilletesTransporteTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -295,13 +413,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseTransportNonTravelTotal" type="currency">
+			<widget name="expensePeajeTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseTransportNonTravelTotal</label>
+					<label mode="any">label.administrative.expensePeajeTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseTransportNonTravelTotal</field>
+					<field>administrative:expensePeajeTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -313,13 +431,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseLodgingNonTravelTotal" type="currency">
+			<widget name="expenseParkingTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseLodgingNonTravelTotal</label>
+					<label mode="any">label.administrative.expenseParkingTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseLodgingNonTravelTotal</field>
+					<field>administrative:expenseParkingTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -331,13 +449,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseRestaurantNonTravelTotal" type="currency">
+			<widget name="expenseTaxisTravelTotal" type="currency">
 				<labels>
 					<label mode="any">label.administrative.expenseRestaurantNonTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseRestaurantNonTravelTotal</field>
+					<field>administrative:expenseTaxisTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -349,13 +467,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseJourneyNonTravelTotal" type="currency">
+			<widget name="expenseCombustibleTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseJourneyNonTravelTotal</label>
+					<label mode="any">label.administrative.expenseCombustibleTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseJourneyNonTravelTotal</field>
+					<field>administrative:expenseCombustibleTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -367,13 +485,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseOthersNonTravelTotal" type="currency">
+			<widget name="expenseTelefonoTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseOthersNonTravelTotal</label>
+					<label mode="any">label.administrative.expenseTelefonoTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseOthersNonTravelTotal</field>
+					<field>administrative:expenseTelefonoTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -385,13 +503,13 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseCustomerNonTravelTotal" type="currency">
+			<widget name="expenseInternetTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseCustomerNonTravelTotal</label>
+					<label mode="any">label.administrative.expenseInternetTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative:expenseCustomerNonTravelTotal</field>
+					<field>administrative:expenseInternetTravelTotal</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -403,6 +521,24 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
+            <widget name="expenseLavanderiaTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseLavanderiaTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseLavanderiaTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
 			<widget name="administrative_expenseKmTotal" type="currency">
 				<labels>
 					<label mode="any">label.administrative.expenseKmTotal</label>
@@ -457,24 +593,170 @@
 					<mode value="create">hidden</mode>
 				</widgetModes>
 			</widget>
-			<widget name="administrative_expenseCourseTotal" type="currency">
-				<labels>
-					<label mode="any">label.administrative.expenseCourseTotal</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:expenseCourseTotal</field>
-				</fields>
-				<properties widgetMode="view">
-					<property name="type">currency</property>
-					<property name="minFractionDigits">2</property>
-					<property name="currencySymbol">€</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">view</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
+
+            <widget name="expenseInvitacionTercersoNacionalNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseInvitacionTercersoNacionalNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseInvitacionTercersoNacionalNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expenseBilletesTransporteNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseBilletesTransporteNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseBilletesTransporteNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expensePeajeNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expensePeajeNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expensePeajeNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expenseParkingNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseParkingNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseParkingNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expenseTaxisNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseTaxisNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseTaxisNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expenseCombustibleNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseCombustibleNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseCombustibleNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expenseTelefonoNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseTelefonoNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseTelefonoNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expenseInternetNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseInternetNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseInternetNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+            <widget name="expenseLavanderiaNonTravelTotal" type="currency">
+                <labels>
+                    <label mode="any">label.administrative.expenseLavanderiaNonTravelTotal</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:expenseLavanderiaNonTravelTotal</field>
+                </fields>
+                <properties widgetMode="view">
+                    <property name="type">currency</property>
+                    <property name="minFractionDigits">2</property>
+                    <property name="currencySymbol">€</property>
+                </properties>
+                <widgetModes>
+                    <mode value="edit">view</mode>
+                    <mode value="create">hidden</mode>
+                </widgetModes>
+            </widget>
+
 			<widget name="administrative_expenseTotal" type="currency">
 				<labels>
 					<label mode="any">label.administrative.expenseTotal</label>

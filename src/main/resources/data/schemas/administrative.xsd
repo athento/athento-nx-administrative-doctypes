@@ -79,6 +79,34 @@
 	<xs:element name="expenseTotal" type="xs:double" />
 	<!-- Total Travel Expenses -->
 	<xs:element name="expenseTravelTotal" type="xs:double" />
+
+    <!-- New metadata 2018-02-20 -->
+    <xs:element name="expenseDietaCompletaNacionalPernoctaTravelTotal" type="xs:double" />
+    <xs:element name="expenseDietaMediaNacionalSinPernoctaTravelTotal" type="xs:double" />
+    <xs:element name="expenseDietaCompletaExtranjeroPernoctaTravelTotal" type="xs:double" />
+    <xs:element name="expenseDietaMediaExtranjeroSinPernoctaTravelTotal" type="xs:double" />
+    <xs:element name="expenseInvitacionTercersoNacionalTravelTotal" type="xs:double" />
+    <xs:element name="expenseInvitacionTercersoInternacionalTravelTotal" type="xs:double" />
+    <xs:element name="expenseBilletesTransporteTravelTotal" type="xs:double" />
+    <xs:element name="expensePeajeTravelTotal" type="xs:double" />
+    <xs:element name="expenseParkingTravelTotal" type="xs:double" />
+    <xs:element name="expenseTaxisTravelTotal" type="xs:double" />
+    <xs:element name="expenseCombustibleTravelTotal" type="xs:double" />
+    <xs:element name="expenseTelefonoTravelTotal" type="xs:double" />
+    <xs:element name="expenseInternetTravelTotal" type="xs:double" />
+    <xs:element name="expenseLavanderiaTravelTotal" type="xs:double" />
+
+    <xs:element name="expenseInvitacionTercersoNacionalNonTravelTotal" type="xs:double" />
+    <xs:element name="expenseBilletesTransporteNonTravelTotal" type="xs:double" />
+    <xs:element name="expensePeajeNonTravelTotal" type="xs:double" />
+    <xs:element name="expenseParkingNonTravelTotal" type="xs:double" />
+    <xs:element name="expenseTaxisNonTravelTotal" type="xs:double" />
+    <xs:element name="expenseCombustibleNonTravelTotal" type="xs:double" />
+    <xs:element name="expenseTelefonoNonTravelTotal" type="xs:double" />
+    <xs:element name="expenseInternetNonTravelTotal" type="xs:double" />
+    <xs:element name="expenseLavanderiaNonTravelTotal" type="xs:double" />
+
+
 	<!-- Total Transport Travel Expenses -->
 	<xs:element name="expenseTransportTravelTotal" type="xs:double" />
 	<!-- Total Lodging Travel Expenses -->
