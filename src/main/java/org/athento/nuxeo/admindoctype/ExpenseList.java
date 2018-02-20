@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public class ExpenseList<T extends Expense> extends ArrayList<T> {
 
+    private boolean limitExceeded = false;
+    private Expense limitExceededExpense;
+
     /**
      * Check exists an expense by date.
      *
@@ -35,5 +38,21 @@ public class ExpenseList<T extends Expense> extends ArrayList<T> {
             }
         }
         return null;
+    }
+
+    public Expense getLimitExceededExpense() {
+        return limitExceededExpense;
+    }
+
+    public void setLimitExceededExpense(Expense limitExceededExpense) {
+        this.limitExceededExpense = limitExceededExpense;
+    }
+
+    public boolean isLimitExceeded() {
+        return limitExceeded;
+    }
+
+    public void setLimitExceeded(boolean limitExceeded) {
+        this.limitExceeded = limitExceeded;
     }
 }

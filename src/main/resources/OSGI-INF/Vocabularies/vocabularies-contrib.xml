@@ -387,7 +387,7 @@
             <cacheMaxSize>1000</cacheMaxSize>
             <idField>id</idField>
             <autoincrementIdField>false</autoincrementIdField>
-            <createTablePolicy>on_missing_columns</createTablePolicy>
+            <createTablePolicy>always</createTablePolicy>
             <table>vocabulary_expensecatviajes</table>
             <dataFile>data/vocabularies/expenseCatViajes.csv</dataFile>
         </directory>
@@ -399,7 +399,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<createTablePolicy>always</createTablePolicy>
 			<table>vocabulary_expensecatnoviajes</table>
 			<dataFile>data/vocabularies/expenseCatNoViajes.csv</dataFile>
 		</directory>
