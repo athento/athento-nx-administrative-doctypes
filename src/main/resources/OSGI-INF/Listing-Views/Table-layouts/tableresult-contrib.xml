@@ -747,7 +747,7 @@
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
 						<property name="label">Fecha Salida</property>
-						<property name="sortPropertyName">administrative:drivenTravelItem:departureDate</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem/0/departureDate</property>
 					</properties>
 					<properties mode="edit_sort_infos">
 						<property name="showInSortInfoSelection">true</property>
@@ -762,7 +762,7 @@
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
 						<property name="label">Ciudad Salida</property>
-						<property name="sortPropertyName">administrative:drivenTravelItem:departureCity</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem/0/departureCity</property>
 					</properties>
 					<properties mode="edit_sort_infos">
 						<property name="showInSortInfoSelection">true</property>
@@ -777,7 +777,7 @@
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
 						<property name="label">Fecha Llegada</property>
-						<property name="sortPropertyName">administrative:drivenTravelItem:arrivalDate</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem/0/arrivalDate</property>
 					</properties>
 					<properties mode="edit_sort_infos">
 						<property name="showInSortInfoSelection">true</property>
@@ -792,7 +792,7 @@
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
 						<property name="label">Ciudad Llegada</property>
-						<property name="sortPropertyName">administrative:drivenTravelItem:arrivalCity</property>
+						<property name="sortPropertyName">administrative:drivenTravelItem/0/arrivalCity</property>
 					</properties>
 					<properties mode="edit_sort_infos">
 						<property name="showInSortInfoSelection">true</property>
@@ -812,7 +812,7 @@
 					<field>data['administrative']['travel_ipn']</field>
 				</fields>
 			</widget>
-			<widget name="departureDate" type="text">
+			<widget name="departureDate" type="datetime">
 				<labels>
 					<label mode="any">Fecha Salida</label>
 				</labels>
@@ -830,7 +830,7 @@
 					<field>data['administrative']['drivenTravelItem']['departureCity']</field>
 				</fields>
 			</widget>
-			<widget name="arrivalDate" type="text">
+			<widget name="arrivalDate" type="datetime">
 				<labels>
 					<label mode="any">Fecha Llegada</label>
 				</labels>

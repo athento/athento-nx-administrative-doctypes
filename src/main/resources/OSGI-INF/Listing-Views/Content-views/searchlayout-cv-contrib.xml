@@ -521,6 +521,131 @@
 				</properties>
 			</widget>
 		</layout>
+
+		<layout name="Travel_search@search">
+			<templates>
+				<template mode="any">/layouts/layout_default_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_category</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_company</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_companyNumber</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>administrative_travelPurpose</widget>
+				</row>
+			</rows>
+
+			<widget name="administrative_category" type="text">
+				<labels>
+					<label mode="any">label.administrative.concept</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_category</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_company" type="text">
+				<labels>
+					<label mode="any">label.administrative.company</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_company</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_companyNumber" type="text">
+				<labels>
+					<label mode="any">label.administrative.companyNumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_companyNumber</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_travelPurpose" type="text">
+				<labels>
+					<label mode="any">label.administrative.travelPurpose</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travelPurpose</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_travel_idNumber" type="text">
+				<labels>
+					<label mode="any">Num empleado</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_idNumber</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_travel_ipn" type="text">
+				<labels>
+					<label mode="any">IPN</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travel_ipn</field>
+				</fields>
+			</widget>
+
+			<widget name="administrative_travel_office" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.administrative.travel_office</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:administrative_travel_office</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="directoryName">office</property>
+					<property name="ordering">id</property>
+					<property name="localize">true</property>
+					<property name="displayIdAndLabel">false</property>
+				</properties>
+			</widget>
+
+			<widget name="system_currentLifeCycleState" type="suggestManyDirectory">
+				<labels>
+					<label mode="any">label.administrative.system_currentLifeCycleState</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:system_currentLifeCycleState</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="minChars">0</property>
+					<property name="hideHelpLabel">true</property>
+					<property name="directoryName">lifecyclest</property>
+					<property name="localize">true</property>
+				</properties>
+			</widget>
+		</layout>
 		
 		<layout name="Invoice_search">
 			<templates>

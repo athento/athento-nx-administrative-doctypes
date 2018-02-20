@@ -136,6 +136,11 @@
 	<xs:element name="administrative_advance" type="xs:double" />
 	<xs:element name="administrative_advance_min" type="xs:double" />
 	<xs:element name="administrative_advance_max" type="xs:double" />
+
+	<xs:element name="administrative_travel_idNumber" type="xs:string" />
+	<xs:element name="administrative_travel_ipn" type="xs:string" />
+	<xs:element name="administrative_travel_name" type="xs:string" />
+	<xs:element name="administrative_travel_office" type="xs:string" />
 	
 	<!-- Invoices -->
 	
