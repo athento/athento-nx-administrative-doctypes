@@ -93,6 +93,18 @@
 			<dataFile>data/vocabularies/company_nat.csv</dataFile>
 		</directory>
 
+		<directory name="config-om">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<table>vocabulary_config-om</table>
+			<dataFile>data/vocabularies/config-om.csv</dataFile>
+		</directory>
+
 		<directory name="courseexp">
 			<schema>vocabulary</schema>
 			<dataSource>java:/nxsqldirectory</dataSource>
@@ -382,6 +394,7 @@
 		<directory name="cobropago" layout="vocabulary" sortField="ordering" />
 		<directory name="companynumber" layout="vocabulary" sortField="ordering" />
 		<directory name="company_nat" layout="vocabulary" sortField="ordering" />
+		<directory name="config-om" layout="vocabulary" sortField="ordering" />
 		<directory name="courseexp" layout="vocabulary" sortField="ordering" />
 		<directory name="courseloc" layout="vocabulary" sortField="ordering" />
 		<directory name="currency" layout="vocabulary" sortField="ordering" />

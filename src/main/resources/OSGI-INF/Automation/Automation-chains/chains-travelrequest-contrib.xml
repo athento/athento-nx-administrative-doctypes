@@ -28,7 +28,36 @@
                 </param>
             </operation>
         </chain>
-
+        <chain id="Renault.OM-EnviarEmailConAdjuntos">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">email_var</param>
+                <param type="object" name="value">expr:Fn.getVocabularyLabel("config-om","email-OM")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">from_var</param>
+                <param type="object" name="value">expr:Fn.getVocabularyLabel("config-om","from-OM")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">message_var</param>
+                <param type="object" name="value">expr:Fn.getVocabularyLabel("config-om","message-OM")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">subject_var</param>
+                <param type="object" name="value">expr:Fn.getVocabularyLabel("config-om","subject-OM")
+                </param>
+            </operation>
+            <operation id="Document.Mail">
+                <param type="string" name="from">expr:from_var</param>
+                <param type="string" name="message">expr:message_var</param>
+                <param type="string" name="subject">expr:subject_var</param>
+                <param type="string" name="to">expr:email_var</param>
+                <param type="stringlist" name="files">file:content</param>
+            </operation>
+        </chain>
 
     </extension>
 
