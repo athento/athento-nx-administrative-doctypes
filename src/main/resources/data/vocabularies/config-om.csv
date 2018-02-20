@@ -1,0 +1,5 @@
+"id","label","obsolete","ordering"
+"email-OM","admin@athento.com","0","0"
+"from-OM","admin@athento.com","0","1"
+"message-OM","Body message","0","2"
+"subject-OM","Subject","0","3"
