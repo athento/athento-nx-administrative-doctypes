@@ -982,6 +982,16 @@
             </operation>
         </chain>
 
+        <chain id="Athento.SendFinalNotifications">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:currentDocument.type == 'TravelRequest' ?
+                    'Athento.OM-EnviarEmailAgencia' : 'voidChain'
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
         <chain id="voidChain">
             <documentation>
                 No action

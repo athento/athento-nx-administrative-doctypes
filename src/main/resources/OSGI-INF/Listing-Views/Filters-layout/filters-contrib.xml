@@ -50,6 +50,8 @@
 				<permission>ReadWrite</permission>
 				<type>Opd</type>
 				<type>TransferRequest</type>
+				<type>TravelRequest</type>
+				<type>Expense</type>
 				<group>validacion_initiators</group>
 			</rule>
 			<rule grant="false">
