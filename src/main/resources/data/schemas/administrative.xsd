@@ -352,8 +352,11 @@
 	<!-- User Office -->
 	<xs:element name="travel_office" type="xs:string" />
 	<!-- User Ledger Account (from an administrative point of view) -->
-	<xs:element name="travel_account" type="xs:string" />
+	<xs:element name="travel_agency_template" type="nxs:content" />
 
+
+
+	<xs:element name="travel_account" type="xs:string" />
 	<!-- Traveller is equal to the Requester -->
 	<xs:element name="requesterIsTraveller" type="xs:boolean" />
 	<!-- Travel end date -->
