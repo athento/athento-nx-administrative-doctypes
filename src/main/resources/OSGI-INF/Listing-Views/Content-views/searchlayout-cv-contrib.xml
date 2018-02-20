@@ -97,22 +97,6 @@
 						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
-					<widget>administrative_transferDoneDate_min</widget>
-					<widget>administrative_transferDoneDate_max</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
-					<widget>administrative_transferRequestDate_min</widget>
-					<widget>administrative_transferRequestDate_max</widget>
-				</row>
-				<row>
-					<properties mode="any">
-						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_1">1</property>
-					</properties>
 					<widget>administrative_travelEndDate_min</widget>
 					<widget>administrative_travelEndDate_max</widget>
 				</row>
@@ -321,62 +305,6 @@
 				<translated>true</translated>
 				<fields>
 					<field>administrative_cv:administrative_paymentOrderDate_max
-					</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="administrative_transferDoneDate_min" type="datetime">
-				<labels>
-					<label mode="any">label.administrative.transferDoneDate</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative_cv:administrative_transferDoneDate_min
-					</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="administrative_transferDoneDate_max" type="datetime">
-				<labels>
-					<label mode="any"></label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative_cv:administrative_transferDoneDate_max
-					</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="administrative_transferRequestDate_min" type="datetime">
-				<labels>
-					<label mode="any">label.administrative.transferRequestDate</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative_cv:administrative_transferRequestDate_min
-					</field>
-				</fields>
-				<properties widgetMode="any">
-					<property name="format">#{nxu:basicDateFormatter()}</property>
-				</properties>
-			</widget>
-
-			<widget name="administrative_transferRequestDate_max" type="datetime">
-				<labels>
-					<label mode="any"></label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative_cv:administrative_transferRequestDate_max
 					</field>
 				</fields>
 				<properties widgetMode="any">
