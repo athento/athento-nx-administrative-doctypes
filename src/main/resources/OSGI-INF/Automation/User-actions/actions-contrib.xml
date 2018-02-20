@@ -138,6 +138,19 @@
 			</filter>
 		</action>
 
+		<action id="to_agency"
+				label="Enviar a Agencia" enabled="true"
+				order="10000" type="link" immediate="true"
+				link="#{operationActionBean.doOperation('Athento.OM-EnviarEmailAgencia')}">
+			<category>DOCUMENT_SUMMARY_CUSTOM_ACTIONS</category>
+			<filter id="filter@agencia">
+				<rule grant="true">
+					<group>administrators</group>
+					<type>TravelRequest</type>
+				</rule>
+			</filter>
+		</action>
+
 	</extension>
 
 </component>
