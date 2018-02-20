@@ -224,6 +224,22 @@
 							   operator="LIKE">
 						<field schema="administrative_cv" name="administrative_travelPurpose" />
 					</predicate>
+					<predicate parameter="administrative:travel_idNumber"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_idNumber" />
+					</predicate>
+					<predicate parameter="administrative:travel_ipn"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_ipn" />
+					</predicate>
+					<predicate parameter="administrative:travel_name"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_name" />
+					</predicate>
+					<predicate parameter="administrative:travel_office"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_office" />
+					</predicate>
 					<predicate parameter="userFile:nameid" operator="LIKE">
 						<field schema="userFile_cv" name="userFile_nameid" />
 					</predicate>
@@ -232,17 +248,14 @@
 					</predicate>
 					<fixedPart>ecm:mixinType != 'HiddenInNavigation' AND
 						ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
-						'deleted' AND (ecm:primaryType = 'Expenses' OR ecm:primaryType =
-						'Invoice' OR ecm:primaryType = 'PaymentOrder' OR ecm:primaryType =
-						'TravelRequest' OR
-						ecm:primaryType = 'TransferRequest')
+						'deleted' AND ecm:primaryType =	'TravelRequest'
 					</fixedPart>
 				</whereClause>
 				<searchDocumentType>administrative_cv</searchDocumentType>
 				<sort column="dc:modified" ascending="false" />
 				<pageSize>10</pageSize>
 			</genericPageProvider>
-			<searchLayout name="Travel_search" />
+			<searchLayout name="Travel_search@search" />
 			<useGlobalPageSize>true</useGlobalPageSize>
 			<refresh>
 				<event>documentChanged</event>
@@ -258,7 +271,7 @@
 			<actions category="CURRENT_SELECTION_LIST" />
 			<actions category="cv_actions@administrative_cv" />
 			<resultLayouts>
-				<layout name="Travel_listing" title="Travel_listing"
+				<layout name="document_listing_ajax" title="document_listing"
 						translateTitle="true" iconPath="/icons/document_listing_icon.png"
 						showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
 			</resultLayouts>
