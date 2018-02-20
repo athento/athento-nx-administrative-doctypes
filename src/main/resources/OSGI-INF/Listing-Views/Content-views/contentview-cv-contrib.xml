@@ -127,9 +127,153 @@
 			<actions category="CURRENT_SELECTION_LIST" />
 			<actions category="cv_actions@administrative_cv" />
 			<resultLayouts>
-				<layout name="Travel_listing" title="Travel_listing"
+				<layout name="document_listing_ajax" title="document_listing"
 					translateTitle="true" iconPath="/icons/document_listing_icon.png"
 					showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+			</resultLayouts>
+			<resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+			</resultColumns>
+			<resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+			<flags>
+				<flag>SEARCH</flag>
+			</flags>
+		</contentView>
+
+		<contentView name="Travel_listing">
+			<title>Busqueda de OM
+			</title>
+			<translateTitle>true</translateTitle>
+			<genericPageProvider
+					class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+				<property name="coreSession">#{documentManager}</property>
+				<whereClause>
+					<predicate parameter="administrative:amount" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_amount" />
+					</predicate>
+					<predicate parameter="administrative:concept" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_concept" />
+					</predicate>
+					<predicate parameter="administrative:category" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_category" />
+					</predicate>
+					<predicate parameter="administrative:company" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_company" />
+					</predicate>
+					<predicate parameter="administrative:companyNumber"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_companyNumber" />
+					</predicate>
+					<predicate parameter="administrative:destinationAccount"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_destinationAccount" />
+					</predicate>
+					<predicate parameter="administrative:sourceAccount"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_sourceAccount" />
+					</predicate>
+					<predicate parameter="administrative:location" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_location" />
+					</predicate>
+					<predicate parameter="administrative:number" operator="LIKE">
+						<field schema="administrative_cv" name="administrative_number" />
+					</predicate>
+					<predicate parameter="administrative:signDate" operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_signDate_min" />
+						<field schema="administrative_cv" name="administrative_signDate_max" />
+					</predicate>
+					<predicate parameter="administrative:expenseDate"
+							   operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_expenseDate_min" />
+						<field schema="administrative_cv" name="administrative_expenseDate_max" />
+					</predicate>
+					<predicate parameter="administrative:paymentOrderDate"
+							   operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_paymentOrderDate_min" />
+						<field schema="administrative_cv" name="administrative_paymentOrderDate_max" />
+					</predicate>
+					<predicate parameter="administrative:transferDoneDate"
+							   operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_transferDoneDate_min" />
+						<field schema="administrative_cv" name="administrative_transferDoneDate_max" />
+					</predicate>
+					<predicate parameter="administrative:transferRequestDate"
+							   operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_transferRequestDate_min" />
+						<field schema="administrative_cv" name="administrative_transferRequestDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelEndDate"
+							   operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_travelEndDate_min" />
+						<field schema="administrative_cv" name="administrative_travelEndDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelName"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travelName" />
+					</predicate>
+					<predicate parameter="administrative:travelRequestDate"
+							   operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_travelRequestDate_min" />
+						<field schema="administrative_cv" name="administrative_travelRequestDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelStartDate"
+							   operator="BETWEEN">
+						<field schema="administrative_cv" name="administrative_travelStartDate_min" />
+						<field schema="administrative_cv" name="administrative_travelStartDate_max" />
+					</predicate>
+					<predicate parameter="administrative:travelPurpose"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travelPurpose" />
+					</predicate>
+					<predicate parameter="administrative:travel_idNumber"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_idNumber" />
+					</predicate>
+					<predicate parameter="administrative:travel_ipn"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_ipn" />
+					</predicate>
+					<predicate parameter="administrative:travel_name"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_name" />
+					</predicate>
+					<predicate parameter="administrative:travel_office"
+							   operator="LIKE">
+						<field schema="administrative_cv" name="administrative_travel_office" />
+					</predicate>
+					<predicate parameter="userFile:nameid" operator="LIKE">
+						<field schema="userFile_cv" name="userFile_nameid" />
+					</predicate>
+					<predicate parameter="projectFile:nameid" operator="LIKE">
+						<field schema="projectFile_cv" name="projectFile_projectid" />
+					</predicate>
+					<fixedPart>ecm:mixinType != 'HiddenInNavigation' AND
+						ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+						'deleted' AND ecm:primaryType =	'TravelRequest'
+					</fixedPart>
+				</whereClause>
+				<searchDocumentType>administrative_cv</searchDocumentType>
+				<sort column="dc:modified" ascending="false" />
+				<pageSize>10</pageSize>
+			</genericPageProvider>
+			<searchLayout name="Travel_search@search" />
+			<useGlobalPageSize>true</useGlobalPageSize>
+			<refresh>
+				<event>documentChanged</event>
+				<event>documentChildrenChanged</event>
+			</refresh>
+			<cacheKey>#{currentDocument.id}</cacheKey>
+			<cacheSize>10</cacheSize>
+			<selectionList>CURRENT_SELECTION</selectionList>
+			<showTitle>false</showTitle>
+			<showFilterForm>true</showFilterForm>
+			<showPageSizeSelector>true</showPageSizeSelector>
+			<showRefreshCommand>true</showRefreshCommand>
+			<actions category="CURRENT_SELECTION_LIST" />
+			<actions category="cv_actions@administrative_cv" />
+			<resultLayouts>
+				<layout name="document_listing_ajax" title="document_listing"
+						translateTitle="true" iconPath="/icons/document_listing_icon.png"
+						showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
 			</resultLayouts>
 			<resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
 			</resultColumns>
