@@ -56,6 +56,70 @@
             <!-- Final variable id_var with the ID composition. Stored in both title -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">id_var</param>
+                <param type="object" name="value">expr:@{"OPD-"+company_var+"-"+year_var+month_var+"-"+uniqueopdnumberformatted_var+"-A-Pendiente Aprobacion"}
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">dc:title</param>
+                <param type="boolean" name="save">true</param>
+                <param type="serializable" name="value">expr:id_var
+                </param>
+            </operation>
+            <operation id="Document.CheckIn">
+                <param type="string" name="version">0.0</param>
+            </operation>
+
+        </chain>
+
+        <chain id="Opd-assignID-approved">
+            <documentation>
+                Sequential ID.
+                2 digits - Company
+                2 digits - Year
+                2 digits - Month
+                6 numbers - Sequential ID
+                Each sequential number starts every month for every company. Example:
+                OPD-CC/MMYY/xxxxxx
+                Finished in A (Athento numeration)
+                OPD-01-0117-000001-A
+            </documentation>
+            <operation id="Context.FetchDocument" />
+            <!-- Year. Used for uniqueness of number id AND the composition of the
+               id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">year_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("yy").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Month. Used for uniqueness of number id AND the composition of the
+                id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">month_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Company ID -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">company_var</param>
+                <param type="object" name="value">expr:Document["administrative:companyNumber"]
+                </param>
+            </operation>
+            <!-- Number, which is formatted with 6 digits -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">uniqueopdnumber_var</param>
+                <param type="object" name="value">expr:Fn.getNextId("unique-opd-key-aprobado"+year_var+month_var+company_var)
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">uniqueopdnumberformatted_var</param>
+                <param type="object" name="value">expr:uniqueopdnumber_var.format("%06d",Integer.valueOf(uniqueopdnumber_var))
+                </param>
+            </operation>
+            <!-- Final variable id_var with the ID composition. Stored in both title -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">id_var</param>
                 <param type="object" name="value">expr:@{"OPD-"+company_var+"-"+year_var+month_var+"-"+uniqueopdnumberformatted_var+"-A"}
                 </param>
             </operation>

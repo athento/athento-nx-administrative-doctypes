@@ -971,6 +971,17 @@
             </operation>
         </chain>
 
+        <chain id="Athento.SetDefinitiveTitle">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.RunOperation">
+                <param type="string" name="id">expr:currentDocument.type == 'TransferRequest' ?
+                    'TransferRequest-assignID-approved' :
+                    (currentDocument.type == 'Opd' ? 'Opd-assignID-approved' : 'voidChain')
+                </param>
+                <param type="boolean" name="isolate">false</param>
+            </operation>
+        </chain>
+
         <chain id="voidChain">
             <documentation>
                 No action
