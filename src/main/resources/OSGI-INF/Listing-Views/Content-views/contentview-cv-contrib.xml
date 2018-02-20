@@ -139,7 +139,7 @@
 			</flags>
 		</contentView>
 
-		<contentView name="Travel_listing">
+		<contentView name="Travel_search">
 			<title>Busqueda de OM
 			</title>
 			<translateTitle>true</translateTitle>
