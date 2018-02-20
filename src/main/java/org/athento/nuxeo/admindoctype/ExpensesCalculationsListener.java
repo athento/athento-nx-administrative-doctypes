@@ -30,8 +30,10 @@ public class ExpensesCalculationsListener implements EventListener {
 
     /** Document type name. */
     private static final String EXPENSE_TYPE = "Expenses";
+    private static final String TRAVEL_PARENT_CATEGORY = "travel";
+    private static final String NONTRAVEL_PARENT_CATEGORY = "nonTravel";
+    private static final String KMS_PARENT_CATEGORY = "kms";
     private static final String GOBACK_ID = "02";
-    private static final String KM_LIMIT_ID = "209" ;
 
     /**
      * Manage event.
@@ -51,12 +53,14 @@ public class ExpensesCalculationsListener implements EventListener {
                 }
                 ExpenseList<Expense> accumulated = new ExpenseList<>();
                 // Calculate Kms
-                kmsSecondary(doc);
-                kmsRRGOffices(doc);
+                kmsSecondary(doc, accumulated);
+                kmsRRGOffices(doc, accumulated);
                 try {
                     // Sum all expenses by category
-                    travelExpenses(doc);
-                    noTravelExpenses(doc);
+                    travelExpenses(doc, accumulated);
+                    noTravelExpenses(doc, accumulated);
+                    String msg = Utils.getI18nLabel("label.expense.rrg.ok", null, Locale.getDefault());
+                    doc.setPropertyValue("administrative:lastMessage", msg);
                 } catch (ExpenseLimitException e) {
                     LOG.info("Exponses exceeded with error: " + e.getMessage());
                     // Write error message
@@ -66,22 +70,50 @@ public class ExpensesCalculationsListener implements EventListener {
                     if (categoryLabel.contains(":")) {
                         categoryLabel = categoryLabel.split(":")[0];
                     }
-                    FacesMessages.instance().add(StatusMessage.Severity.INFO, Utils.getI18nLabel("label.expense.rrg",
-                            new Object [] {expenseErr.getDate(), categoryLabel}, Locale.getDefault()));
+                    String msg = Utils.getI18nLabel("label.expense.rrg",
+                            new Object [] {expenseErr.getDate(), categoryLabel}, Locale.getDefault());
+                    doc.setPropertyValue("administrative:lastMessage", msg);
+                    FacesMessages.instance().add(StatusMessage.Severity.INFO, msg);
                 }
-                LOG.info(accumulated);
+                // Calculamos totales
+                calcularTotales(doc, accumulated);
             }
         }
+    }
+
+    /**
+     * Calcular totales.
+     *
+     * @param doc
+     * @param accumulated
+     */
+    private void calcularTotales(DocumentModel doc, ExpenseList<Expense> accumulated) {
+        double travelTotal = 0.0;
+        double nonTravelTotal = 0.0;
+        double kmsTotal = 0.0;
+        for (Expense expense : accumulated) {
+            double total = expense.getTotal();
+            if (TRAVEL_PARENT_CATEGORY.equals(expense.getParentCategory())) {
+                travelTotal += total;
+            } else if (NONTRAVEL_PARENT_CATEGORY.equals(expense.getParentCategory())) {
+                nonTravelTotal += total;
+            } else if (KMS_PARENT_CATEGORY.equals(expense.getParentCategory())) {
+                kmsTotal += total;
+            }
+        }
+        doc.setPropertyValue("administrative:expenseTravelTotal", travelTotal);
+        doc.setPropertyValue("administrative:expenseNonTravelTotal", nonTravelTotal);
+        doc.setPropertyValue("administrative:expenseKmsTotal", kmsTotal);
     }
 
     /**
      * Calculate travel expenses.
      *
      * @param doc
+     * @param accumulated
      * @throws ExpenseLimitException
      */
-    private void travelExpenses(DocumentModel doc) throws ExpenseLimitException {
-        ExpenseList<Expense> accumulated = new ExpenseList<>();
+    private void travelExpenses(DocumentModel doc, ExpenseList<Expense> accumulated) throws ExpenseLimitException {
         List<Map<String, Serializable>> expenses = (List) doc.getPropertyValue("administrative:expenseTravel");
         for (Map<String, Serializable> expense : expenses) {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
@@ -96,6 +128,7 @@ public class ExpensesCalculationsListener implements EventListener {
                 LOG.info("Expense total for travel with date " + date + " is " + expenseTotal);
                 if (accumulated.hasExpense(date, category)) {
                     Expense currentExpense = accumulated.getExpense(date, category);
+                    currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     double subtotal = currentExpense.getTotal();
                     double accumulatedTotal = subtotal + expenseTotal;
                     if (accumulatedTotal > limitForCategory) {
@@ -105,6 +138,7 @@ public class ExpensesCalculationsListener implements EventListener {
                     }
                 } else {
                     Expense currentExpense = new Expense(date, category, expenseTotal);
+                    currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     if (expenseTotal > limitForCategory) {
                         throw new ExpenseLimitException("Expense travel limit exceeded for " + category + "with " + expenseTotal, currentExpense);
                     }
@@ -118,10 +152,10 @@ public class ExpensesCalculationsListener implements EventListener {
      * Calculate no travel expenses.
      *
      * @param doc
+     * @param accumulated
      * @throws ExpenseLimitException
      */
-    private void noTravelExpenses(DocumentModel doc) throws ExpenseLimitException {
-        ExpenseList<Expense> accumulated = new ExpenseList<>();
+    private void noTravelExpenses(DocumentModel doc, ExpenseList<Expense> accumulated) throws ExpenseLimitException {
         List<Map<String, Serializable>> expenses = (List) doc.getPropertyValue("administrative:expenseNonTravel");
         for (Map<String, Serializable> expense : expenses) {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
@@ -136,6 +170,7 @@ public class ExpensesCalculationsListener implements EventListener {
                 if (accumulated.hasExpense(date, category)) {
                     LOG.info("Expense total for Non travel with date " + date + " is " + expenseTotal);
                     Expense currentExpense = accumulated.getExpense(date, category);
+                    currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     double subtotal = currentExpense.getTotal();
                     double accumulatedTotal = subtotal + expenseTotal;
                     if (accumulatedTotal > limitForCategory) {
@@ -145,6 +180,7 @@ public class ExpensesCalculationsListener implements EventListener {
                     }
                 } else {
                     Expense currentExpense = new Expense(date, category, expenseTotal);
+                    currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     if (expenseTotal > limitForCategory) {
                         throw new ExpenseLimitException("Expense travel limit exceeded with for " + category + " " + expenseTotal, currentExpense);
                     }
@@ -158,9 +194,10 @@ public class ExpensesCalculationsListener implements EventListener {
      * Calculate kms in secondary.
      *
      * @param doc
+     * @param accumulated
      * @throws ExpenseLimitException
      */
-    private void kmsSecondary(DocumentModel doc) {
+    private void kmsSecondary(DocumentModel doc, ExpenseList<Expense> accumulated) {
         ArrayList<Map<String, Serializable>> expenses = (ArrayList) doc.getPropertyValue("administrative:expenseKm");
         for (Map<String, Serializable> expense : expenses) {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
@@ -182,6 +219,10 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 LOG.info("Expense total for Km red secundaria with date " + date + " is " + expenseTotal);
+                Expense currentExpense = new Expense(date, car, expenseTotal);
+                currentExpense.setParentCategory(KMS_PARENT_CATEGORY);
+                // Add expense to accumulated
+                accumulated.add(currentExpense);
                 // Add totalCost to expense
                 expense.put("expense", expenseTotal);
             }
@@ -193,9 +234,10 @@ public class ExpensesCalculationsListener implements EventListener {
      * Calculate kms in RRG offices.
      *
      * @param doc
+     * @param accumulated
      * @throws ExpenseLimitException
      */
-    private void kmsRRGOffices(DocumentModel doc) {
+    private void kmsRRGOffices(DocumentModel doc, ExpenseList<Expense> accumulated) {
         ArrayList<Map<String, Serializable>> expenses = (ArrayList) doc.getPropertyValue("administrative:expenseKmOffices");
         for (Map<String, Serializable> expense : expenses) {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
@@ -218,6 +260,10 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 LOG.info("Expense total for Km red secundaria with date " + date + " is " + expenseTotal);
+                Expense currentExpense = new Expense(date, car, expenseTotal);
+                currentExpense.setParentCategory(KMS_PARENT_CATEGORY);
+                // Add expense to accumulated
+                accumulated.add(currentExpense);
                 // Add totalCost to expense
                 expense.put("km", kms);
                 expense.put("expense", expenseTotal);

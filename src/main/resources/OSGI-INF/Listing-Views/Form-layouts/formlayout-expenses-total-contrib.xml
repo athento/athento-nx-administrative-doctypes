@@ -19,7 +19,13 @@
 			<properties mode="any">
 				<property name="widgetsDisplay">label_top</property>
 			</properties>
-			<rows>>
+			<rows>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">8</property>
+					</properties>
+					<widget>administrative_expenseMessage</widget>
+				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">4</property>
@@ -136,6 +142,15 @@
 					<widget>administrative_expenseTotal</widget>
 				</row>
 			</rows>
+            <widget name="administrative_expenseMessage" type="text">
+                <labels>
+                    <label mode="any">label.administrative.expenseMessage</label>
+                </labels>
+                <translated>true</translated>
+                <fields>
+                    <field>administrative:lastMessage</field>
+                </fields>
+            </widget>
 			<widget name="administrative_expenseTravelTotal" type="currency">
 				<labels>
 					<label mode="any">label.administrative.expenseTravelTotal</label>

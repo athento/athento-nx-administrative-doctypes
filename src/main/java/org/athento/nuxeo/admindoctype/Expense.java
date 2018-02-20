@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public class Expense implements Serializable {
 
+
+    String parentCategory;
     String date;
     String category;
     double total = 0.0;
@@ -15,6 +17,14 @@ public class Expense implements Serializable {
         this.date = date;
         this.category = category;
         this.total = total;
+    }
+
+    public String getParentCategory() {
+        return parentCategory;
+    }
+
+    public void setParentCategory(String parentCategory) {
+        this.parentCategory = parentCategory;
     }
 
     public String getDate() {

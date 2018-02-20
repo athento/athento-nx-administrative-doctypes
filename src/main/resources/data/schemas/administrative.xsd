@@ -121,6 +121,8 @@
 	<!-- Special Authorization from the Company -->
 	<xs:element name="specialAuthorization" type="xs:boolean" />
 
+	<xs:element name="lastMessage" type="xs:string" />
+
 	<xs:element name="expensePerDay" type="nxs:expensePerDayType" />
 	<xs:complexType name="expensePerDayType">
 		<xs:sequence>
