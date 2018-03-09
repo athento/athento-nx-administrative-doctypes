@@ -1,4 +1,4 @@
 "id","label","obsolete","ordering"
-"transport.0","label.transport.0","0","0"
-"transport.10","label.transport.10","0","10"
-"transport.20","label.transport.20","0","20"
+"transport.0","Avion","0","0"
+"transport.10","Ferrocarril","0","10"
+"transport.20","Avion o Ferrocarril","0","20"
