@@ -27,7 +27,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_car</table>
 			<dataFile>data/vocabularies/car.csv</dataFile>
 		</directory>
