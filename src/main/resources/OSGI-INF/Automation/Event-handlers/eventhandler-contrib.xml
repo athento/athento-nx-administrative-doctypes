@@ -243,6 +243,39 @@
 			</filters>
 		</handler>
 
+		<handler chainId="Template-OM-Agencia-de-Viajes-before-save">
+			<documentation>
+
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<filters>
+				<doctype>TravelRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="Template-Solicitud-Transferencia-before-save">
+			<documentation>
+
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<filters>
+				<doctype>TransferRequest</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
+		<handler chainId="Template-Liquidacion-de-gastos-before-save">
+			<documentation>
+
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<filters>
+				<doctype>Expenses</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 	</extension>
 
 </component>

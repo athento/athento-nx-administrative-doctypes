@@ -292,6 +292,11 @@
                 </param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">ipn</param>
+                <param type="object" name="value">expr:Document["userFile:ipn"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">name</param>
                 <param type="object" name="value">expr:Document["userFile:name"]
                 </param>
@@ -340,6 +345,12 @@
                 <param type="string" name="xpath">administrative:travel_idNumber</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:idNumber == empty ? empty : idNumber
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_ipn</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:ipn == empty ? empty : ipn
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -448,6 +459,11 @@
                 </param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">ipn</param>
+                <param type="object" name="value">expr:Document["userFile:ipn"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">name</param>
                 <param type="object" name="value">expr:Document["userFile:name"]
                 </param>
@@ -498,6 +514,11 @@
             <operation id="Context.SetVar">
                 <param type="string" name="name">travel_idNumber</param>
                 <param type="object" name="value">expr:Document["administrative:travel_idNumber"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_ipn</param>
+                <param type="object" name="value">expr:Document["administrative:travel_ipn"]
                 </param>
             </operation>
             <operation id="Context.SetVar">
@@ -578,6 +599,11 @@
                 <param type="object" name="value">expr:Document["userFile:bankNumeroCuenta"]
                 </param>
             </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">userFile_bankIban</param>
+                <param type="object" name="value">expr:Document["userFile:bankIban"]
+                </param>
+            </operation>
 
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:inCreation</param>
@@ -586,6 +612,12 @@
                 <param type="string" name="xpath">userFile:idNumber</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:idNumber == empty ? empty : idNumber
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:ipn</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:ipn == empty ? empty : ipn
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -649,6 +681,12 @@
                 <param type="string" name="xpath">administrative:travel_idNumber</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:travel_idNumber == empty ? empty : travel_idNumber
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:travel_ipn</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:travel_ipn == empty ? empty : travel_ipn
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -745,13 +783,19 @@
                 <param type="serializable" name="value">expr:userFile_bankNumeroCuenta == empty ? empty : userFile_bankNumeroCuenta
                 </param>
             </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:bankIban</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:userFile_bankIban == empty ? empty : userFile_bankIban
+                </param>
+            </operation>
 
         </chain>
 
         <chain id="TravelRequest-Expense">
             <operation id="Document.Query">
-                <param type="string" name="query">expr:SELECT * FROM TravelRequest WHERE ecm:isCheckedInVersion = 0 AND
-                    ecm:currentLifeCycleState != 'deleted' AND dc:title ILIKE '%@{searchTerm}%' AND userFile:idNumber ILIKE '@{userFile_idNumber}'
+                <param type="string" name="query">expr:SELECT * FROM Document WHERE ecm:primaryType = @{"TravelRequest"} AND
+                    ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState != 'deleted' AND dc:title LIKE ?
                 </param>
                 <param type="string" name="language">NXQL</param>
                 <param type="string" name="sortOrder">ASC</param>
@@ -974,9 +1018,9 @@
         <chain id="Athento.SetDefinitiveTitle">
             <operation id="Context.FetchDocument" />
             <operation id="Context.RunOperation">
-                <param type="string" name="id">expr:currentDocument.type == 'TransferRequest' ?
+                <param type="string" name="id">expr:Document.type == 'TransferRequest' ?
                     'TransferRequest-assignID-approved' :
-                    (currentDocument.type == 'Opd' ? 'Opd-assignID-approved' : 'voidChain')
+                    (Document.type == 'Opd' ? 'Opd-assignID-approved' : 'voidChain')
                 </param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
@@ -985,7 +1029,7 @@
         <chain id="Athento.SendFinalNotifications">
             <operation id="Context.FetchDocument" />
             <operation id="Context.RunOperation">
-                <param type="string" name="id">expr:currentDocument.type == 'TravelRequest' ?
+                <param type="string" name="id">expr:Document.type == 'TravelRequest' ?
                     'Athento.OM-EnviarEmailAgencia' : 'voidChain'
                 </param>
                 <param type="boolean" name="isolate">false</param>

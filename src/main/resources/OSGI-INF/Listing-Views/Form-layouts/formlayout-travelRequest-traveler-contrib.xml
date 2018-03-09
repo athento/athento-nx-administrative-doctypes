@@ -126,6 +126,9 @@
 					<label mode="any">label.administrative.travel_category</label>
 				</labels>
 				<translated>true</translated>
+				<fields>
+					<field>administrative:travel_category</field>
+				</fields>
 				<widgetModes>
 					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
 					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>

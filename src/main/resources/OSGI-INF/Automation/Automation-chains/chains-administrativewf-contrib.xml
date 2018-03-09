@@ -25,6 +25,15 @@
                 </param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">company_var</param>
+                <param type="object" name="value">expr:office_var.charAt(1) == '1' ? '01' :
+                    office_var.charAt(1) == '2' ? '01' :
+                    office_var.charAt(1) == '5' ? '01' :
+                    office_var.charAt(1) == '3' ? '50' :
+                    '70'
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">isRME_var</param>
                 <param type="object" name="value">expr:office_var == "0529" ?
                     true : office_var == "0354" ?
@@ -84,6 +93,67 @@
                 <param type="object" name="value">expr:@{"group:Level25_"+office_var}
                 </param>
             </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">dsNumber</param>
+                <param type="object" name="value">expr:
+                    Document["administrative:travel_ipn"] != empty ? Document["administrative:travel_ipn"] :
+                    Document["userFile:ipn"] != empty ? Document["userFile:ipn"] :
+                    Document["dc:creator"]</param>
+            </operation>
+            <operation id="Athento.GetUsersByFilter">
+                <param type="string" name="filtername">dsNumber</param>
+                <param type="string" name="filtervalue">expr:dsNumber</param>
+                <param type="string" name="output">users</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">usuario</param>
+                <param type="object" name="value">expr:users.isEmpty()?dsNumber:users.get(0).getPropertyValue("user:username")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">manager</param>
+                <param type="object" name="value">expr:users.isEmpty()?dsNumber:users.get(0).getPropertyValue("user:manager")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">director_var</param>
+                <param type="object" name="value">director</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">isDirector</param>
+                <param type="boolean" name="value">
+                    expr:org.nuxeo.runtime.api.Framework.getService(org.nuxeo.ecm.platform.usermanager.UserManager).getUsersInGroupAndSubGroups(director_var).contains(usuario)
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">DG</param>
+                <param type="object" name="value">Level10</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">isDG</param>
+                <param type="boolean" name="value">
+                    expr:org.nuxeo.runtime.api.Framework.getService(org.nuxeo.ecm.platform.usermanager.UserManager).getUsersInGroupAndSubGroups(DG).contains(usuario)
+                </param>
+            </operation>
+
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">isDirector</param>
+                <param type="object" name="value">expr:isDirector
+                </param>
+            </operation>
+
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">isDG</param>
+                <param type="object" name="value">expr:isDG
+                </param>
+            </operation>
+
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">manager</param>
+                <param type="object" name="value">expr:manager
+                </param>
+            </operation>
+
             <operation id="Context.SetWorkflowVar">
                 <param type="string" name="name">level25office</param>
                 <param type="object" name="value">expr:isRME_var ?
@@ -104,6 +174,25 @@
             <operation id="Context.SetWorkflowVar">
                 <param type="string" name="name">level18</param>
                 <param type="object" name="value">expr:@{"group:Level18"}
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">tesoreria</param>
+                <param type="object" name="value">expr:company_var == '70' ? 'group:Tesoreria-Levante' :
+                    company_var == '50' ? 'group:Tesoreria-Barcelona' :
+                    'group:Tesoreria-Madrid'
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">control</param>
+                <param type="object" name="value">expr:company_var == '70' ? 'group:Control-Levante' :
+                    company_var == '50' ? 'group:Control-Barcelona' :
+                    'group:Control-Madrid'
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">sede</param>
+                <param type="object" name="value">expr:isCentral_var
                 </param>
             </operation>
         </chain>

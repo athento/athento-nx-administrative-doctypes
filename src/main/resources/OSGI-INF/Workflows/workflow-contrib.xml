@@ -8,15 +8,7 @@
 	<extension target="org.nuxeo.ecm.platform.jbpm.core.JbpmService"
 		point="typeFilter">
 
-		<type name="Expense">
-			<processDefinition>review_parallel</processDefinition>
-			<processDefinition>review_approbation</processDefinition>
-		</type>
 		<type name="PaymentOrder">
-			<processDefinition>review_parallel</processDefinition>
-			<processDefinition>review_approbation</processDefinition>
-		</type>
-		<type name="TravelRequest">
 			<processDefinition>review_parallel</processDefinition>
 			<processDefinition>review_approbation</processDefinition>
 		</type>

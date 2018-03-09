@@ -210,8 +210,9 @@
 						<properties widgetMode="edit">
 							<property name="minChars">0</property>
 							<property name="hideHelpLabel">true</property>
-							<property name="operationId">TravelRequest-Expense</property>
-							<property name="userFile_idNumber">#{layoutValue.userFile.idNumber}</property>
+                            <property name="query">SELECT * FROM Document WHERE ecm:primaryType = 'TravelRequest' AND
+                                    ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState != 'deleted' AND dc:title ILIKE '%?%'
+                            </property>
 							<property name="required">true</property>
 						</properties>
 					</widget>
