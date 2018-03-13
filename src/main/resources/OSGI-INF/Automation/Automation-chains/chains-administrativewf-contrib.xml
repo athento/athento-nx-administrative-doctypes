@@ -191,6 +191,13 @@
                 </param>
             </operation>
             <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">jefeContabilidadPlaca</param>
+                <param type="object" name="value">expr:company_var == '70' ? 'group:jefeContabilidadPlaca-Levante' :
+                    company_var == '50' ? 'group:jefeContabilidadPlaca-Barcelona' :
+                    'group:jefeContabilidadPlaca-Madrid'
+                </param>
+            </operation>
+            <operation id="Context.SetWorkflowVar">
                 <param type="string" name="name">sede</param>
                 <param type="object" name="value">expr:isCentral_var
                 </param>

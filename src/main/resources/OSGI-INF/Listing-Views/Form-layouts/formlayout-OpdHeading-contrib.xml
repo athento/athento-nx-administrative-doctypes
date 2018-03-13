@@ -112,10 +112,10 @@
 					<property name="ordering">ordering</property>
 					<property name="displayIdAndLabel">false</property>
 					<property name="localize">true</property>
-					<property name="required">true</property>
 				</properties>
 				<widgetModes>
-					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+					<mode value="edit">view</mode>
+					<mode value="create">view</mode>
 				</widgetModes>
 			</widget>
 

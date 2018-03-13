@@ -63,5 +63,7 @@
   <xs:element name="opddate" type="xs:date" />
   <xs:element name="totalInput" type="xs:double" />
   <xs:element name="totalOutput" type="xs:double" />
+  <xs:element name="tipo" type="xs:string"/>
+
   
 </xs:schema>

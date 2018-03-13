@@ -276,6 +276,17 @@
 			</filters>
 		</handler>
 
+		<handler chainId="Template-Opd-before-save">
+			<documentation>
+
+			</documentation>
+			<event>beforeDocumentModification</event>
+			<filters>
+				<doctype>Opd</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 	</extension>
 
 </component>

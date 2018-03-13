@@ -48,7 +48,6 @@
 		<filter id="filter@wf@Validacion" append="true">
 			<rule grant="true">
 				<permission>ReadWrite</permission>
-				<type>Opd</type>
 				<type>TransferRequest</type>
 				<group>validacion_initiators</group>
 			</rule>
@@ -62,6 +61,17 @@
 			<rule grant="true">
 				<permission>ReadWrite</permission>
 				<type>TravelRequest</type>
+			</rule>
+			<rule grant="false">
+				<condition>document.currentLifeCycleState != "Draft"</condition>
+				<condition>document.isImmutable() || document.isProxy()</condition>
+			</rule>
+		</filter>
+
+		<filter id="filter@wf@Validacion_OPD" append="true">
+			<rule grant="true">
+				<permission>ReadWrite</permission>
+				<type>Opd</type>
 			</rule>
 			<rule grant="false">
 				<condition>document.currentLifeCycleState != "Draft"</condition>
