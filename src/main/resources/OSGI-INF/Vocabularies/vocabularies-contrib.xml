@@ -279,9 +279,21 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<createTablePolicy>always</createTablePolicy>
 			<table>vocabulary_routes</table>
 			<dataFile>data/vocabularies/routes.csv</dataFile>
+		</directory>
+
+		<directory name="routes_secondary">
+			<schema>vocabulary</schema>
+			<dataSource>java:/nxsqldirectory</dataSource>
+			<cacheTimeout>3600</cacheTimeout>
+			<cacheMaxSize>1000</cacheMaxSize>
+			<idField>id</idField>
+			<autoincrementIdField>false</autoincrementIdField>
+			<createTablePolicy>always</createTablePolicy>
+			<table>vocabulary_routes_secondary</table>
+			<dataFile>data/vocabularies/routes_secondary.csv</dataFile>
 		</directory>
 
 		<directory name="routescom">
@@ -291,10 +303,22 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>on_missing_columns</createTablePolicy>
+			<createTablePolicy>always</createTablePolicy>
 			<table>vocabulary_routescom</table>
 			<dataFile>data/vocabularies/routescom.csv</dataFile>
 		</directory>
+
+        <directory name="routescom_secondary">
+            <schema>vocabulary</schema>
+            <dataSource>java:/nxsqldirectory</dataSource>
+            <cacheTimeout>3600</cacheTimeout>
+            <cacheMaxSize>1000</cacheMaxSize>
+            <idField>id</idField>
+            <autoincrementIdField>false</autoincrementIdField>
+            <createTablePolicy>always</createTablePolicy>
+            <table>vocabulary_routescom_secondary</table>
+            <dataFile>data/vocabularies/routescom_secondary.csv</dataFile>
+        </directory>
 
 		<directory name="routesown">
 			<schema>vocabulary</schema>
@@ -457,7 +481,9 @@
 		<directory name="months" layout="vocabulary" sortField="ordering" />
 		<directory name="regimen" layout="vocabulary" sortField="ordering" />
 		<directory name="routes" layout="vocabulary" sortField="ordering" />
+		<directory name="routes_secondary" layout="vocabulary" sortField="ordering" />
 		<directory name="routescom" layout="vocabulary" sortField="ordering" />
+        <directory name="routescom_secondary" layout="vocabulary" sortField="ordering" />
 		<directory name="routesown" layout="vocabulary" sortField="ordering" />
 		<directory name="taxpercentage" layout="vocabulary" sortField="ordering" />
 		<directory name="taxtype" layout="vocabulary" sortField="ordering" />

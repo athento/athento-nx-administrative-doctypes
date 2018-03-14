@@ -150,8 +150,6 @@
 						</fields>
 						<properties widgetMode="any">
 							<property name="required">true</property>
-						</properties>
-						<properties widgetMode="any">
 							<property name="directoryName">expenseCatNoViajes</property>
 							<property name="ordering">ordering</property>
 							<property name="displayIdAndLabel">false</property>

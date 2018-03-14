@@ -135,6 +135,8 @@
 	<xs:element name="expenseCustomerNonTravelTotal" type="xs:double" />
 	<!-- Total Kilometers Expenses -->
 	<xs:element name="expenseKmTotal" type="xs:double" />
+	<!-- Total Kilometers secondary Expenses -->
+	<xs:element name="expenseKmSecondaryTotal" type="xs:double" />
 	<!-- Total Km company vehicle Expenses -->
 	<xs:element name="expenseCompanyKmTotal" type="xs:double" />
 	<!-- Total Km own vehicle Expenses -->
@@ -200,6 +202,8 @@
 			<xs:element name="expenseDietNonTravelTotal" type="xs:double" />
 			<!-- Kilometers Expenses -->
 			<xs:element name="expenseKm" type="xs:double" />
+			<!-- Kilometers secondary Expenses -->
+			<xs:element name="expenseKmSecondary" type="xs:double" />
 			<!-- Km company vehicle Expenses -->
 			<xs:element name="expenseCompanyKm" type="xs:double" />
 			<!-- Km own vehicle Expenses -->
@@ -308,6 +312,7 @@
 	</xs:complexType>
 
 	<xs:element name="expenseKmOffices" type="nxs:expenseKmType" />
+    <xs:element name="expenseKmSecondary" type="nxs:expenseKmType" />
 
 	<xs:element name="expenseCourse" type="nxs:courseType" />
 	<xs:complexType name="courseType">

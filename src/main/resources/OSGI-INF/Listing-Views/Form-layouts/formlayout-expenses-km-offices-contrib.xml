@@ -179,7 +179,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub4" type="text">
+					<widget name="sub4" type="textarea">
 						<labels>
 							<label mode="any">label.administrative.expenseKmOffices.description</label>
 						</labels>
@@ -203,8 +203,7 @@
 							<property name="localize">true</property>
 						</properties>
 						<widgetModes>
-							<mode value="edit">hidden</mode>
-							<mode value="create">hidden</mode>
+							<mode value="any">hidden</mode>
 						</widgetModes>
 					</widget>
 					<widget name="sub6" type="double">

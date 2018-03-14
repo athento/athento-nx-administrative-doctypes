@@ -53,7 +53,8 @@ public class ExpensesCalculationsListener implements EventListener {
                 }
                 ExpenseList<Expense> accumulated = new ExpenseList<>();
                 // Calculate Kms
-                kmsSecondary(doc, accumulated);
+                kmsRRGSecondary(doc, accumulated);
+                kmsOthers(doc, accumulated);
                 kmsRRGOffices(doc, accumulated);
                 // Sum all expenses by category
                 travelExpenses(doc, accumulated);
@@ -258,11 +259,11 @@ public class ExpensesCalculationsListener implements EventListener {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
-                    currentExpense = new Expense(date, category, expenseTotal);
+                    currentExpense = new Expense(date, category, (Double) expense.get("expense"));
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     accumulated.add(currentExpense);
                 } else {
-                    Expense currentExpense = new Expense(date, category, expenseTotal);
+                    Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"));
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     if (expenseTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
@@ -302,11 +303,11 @@ public class ExpensesCalculationsListener implements EventListener {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
-                    currentExpense = new Expense(date, category, expenseTotal);
+                    currentExpense = new Expense(date, category, (Double) expense.get("expense"));
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     accumulated.add(currentExpense);
                 } else {
-                    Expense currentExpense = new Expense(date, category, expenseTotal);
+                    Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"));
                     currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     if (expenseTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
@@ -319,13 +320,13 @@ public class ExpensesCalculationsListener implements EventListener {
     }
 
     /**
-     * Calculate kms in secondary.
+     * Calculate kms in others.
      *
      * @param doc
      * @param accumulated
      * @throws ExpenseLimitException
      */
-    private void kmsSecondary(DocumentModel doc, ExpenseList<Expense> accumulated) {
+    private void kmsOthers(DocumentModel doc, ExpenseList<Expense> accumulated) {
         ArrayList<Map<String, Serializable>> expenses = (ArrayList) doc.getPropertyValue("administrative:expenseKm");
         for (Map<String, Serializable> expense : expenses) {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
@@ -335,6 +336,48 @@ public class ExpensesCalculationsListener implements EventListener {
                 String goBack = (String) expense.get("goback");
                 // Manage kms
                 double kms = (Double) expense.get("km");
+                if (GOBACK_ID.equals(goBack)) {
+                    kms = kms * 2;
+                }
+                LOG.info("Expense for others Km RS " + car + " with goBack: " + goBack + " with kms: " + kms);
+                String carCostStr = Utils.getVocabularyLabel(car, "carkmcost");
+                // Calculate cost
+                double carCost = Double.valueOf(carCostStr);
+                LOG.info("Car cost is " + carCost);
+                double expenseTotal = kms * carCost;
+                // Manage date
+                String date = Utils.getStringDate(expenseDate);
+                LOG.info("Expense total for Km others with date " + date + " is " + expenseTotal);
+                Expense currentExpense = new Expense(date, car, expenseTotal);
+                currentExpense.setParentCategory(KMS_PARENT_CATEGORY);
+                // Add expense to accumulated
+                accumulated.add(currentExpense);
+                // Add totalCost to expense
+                expense.put("expense", expenseTotal);
+            }
+        }
+        doc.setPropertyValue("administrative:expenseKm", expenses);
+    }
+
+    /**
+     * Calculate kms in secondary.
+     *
+     * @param doc
+     * @param accumulated
+     * @throws ExpenseLimitException
+     */
+    private void kmsRRGSecondary(DocumentModel doc, ExpenseList<Expense> accumulated) {
+        ArrayList<Map<String, Serializable>> expenses = (ArrayList) doc.getPropertyValue("administrative:expenseKmSecondary");
+        for (Map<String, Serializable> expense : expenses) {
+            GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
+            if (expenseDate != null) {
+                LOG.info("Secondary route: " + expense.get("route"));
+                // Get category
+                String car = (String) expense.get("category");
+                String goBack = (String) expense.get("goback");
+                String routeStr = Utils.getVocabularyLabel((String) expense.get("route"), "routescom_secondary");
+                // Manage kms
+                double kms = Double.valueOf(routeStr);
                 if (GOBACK_ID.equals(goBack)) {
                     kms = kms * 2;
                 }
@@ -352,10 +395,11 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Add expense to accumulated
                 accumulated.add(currentExpense);
                 // Add totalCost to expense
+                expense.put("km", kms);
                 expense.put("expense", expenseTotal);
             }
         }
-        doc.setPropertyValue("administrative:expenseKm", expenses);
+        doc.setPropertyValue("administrative:expenseKmSecondary", expenses);
     }
 
     /**
@@ -371,6 +415,7 @@ public class ExpensesCalculationsListener implements EventListener {
             GregorianCalendar expenseDate = (GregorianCalendar) expense.get("expenseDate");
             if (expenseDate != null) {
                 // Get category
+                LOG.info("Offices route: " + expense.get("route"));
                 String car = (String) expense.get("category");
                 String goBack = (String) expense.get("goback");
                 String routeStr = Utils.getVocabularyLabel((String) expense.get("route"), "routescom");
