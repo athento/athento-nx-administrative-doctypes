@@ -8,6 +8,283 @@
 	<extension target="org.nuxeo.ecm.platform.ui.web.ContentViewService"
 		point="contentViews">
 
+        <contentView name="orden_de_mision">
+            <title>orden_de_mision
+            </title>
+            <translateTitle>true</translateTitle>
+            <genericPageProvider
+                    class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+                <property name="coreSession">#{documentManager}</property>
+                <whereClause>
+                    <predicate operator="FULLTEXT" parameter="ecm:fulltext">
+                        <field name="fulltext_all" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="FULLTEXT" parameter="dc:title">
+                        <field name="title" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="BETWEEN" parameter="dc:modified">
+                        <field name="modified_min" schema="advanced_search"/>
+                        <field name="modified_max" schema="advanced_search"/>
+                    </predicate>
+                    <fixedPart>ecm:mixinType != 'HiddenInNavigation' AND ecm:primaryType = 'TravelRequest' AND
+                        ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+                        'deleted'
+                    </fixedPart>
+                </whereClause>
+                <searchDocumentType>administrative_cv</searchDocumentType>
+                <!--<sort column="dc:modified" ascending="false" />-->
+                <pageSize>10</pageSize>
+            </genericPageProvider>
+            <searchLayout name="document_content_filter" />
+            <useGlobalPageSize>true</useGlobalPageSize>
+            <refresh>
+                <event>documentChanged</event>
+                <event>documentChildrenChanged</event>
+            </refresh>
+            <cacheKey>#{currentDocument.id}</cacheKey>
+            <cacheSize>10</cacheSize>
+            <selectionList>CURRENT_SELECTION</selectionList>
+            <showTitle>false</showTitle>
+            <showFilterForm>true</showFilterForm>
+            <showPageSizeSelector>true</showPageSizeSelector>
+            <showRefreshCommand>true</showRefreshCommand>
+            <actions category="CURRENT_SELECTION_LIST" />
+            <actions category="cv_actions@administrative_cv" />
+            <resultLayouts>
+                <layout name="document_listing_ajax" title="document_listing"
+                        translateTitle="true" iconPath="/icons/document_listing_icon.png"
+                        showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+            </resultLayouts>
+            <resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+            </resultColumns>
+            <resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+            <flags>
+                <flag>DOCUMENT_CONTENT</flag>
+            </flags>
+        </contentView>
+
+        <contentView name="liquidacion_de_gastos">
+            <title>liquidacion_de_gastos
+            </title>
+            <translateTitle>true</translateTitle>
+            <genericPageProvider
+                    class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+                <property name="coreSession">#{documentManager}</property>
+                <whereClause>
+                    <predicate operator="FULLTEXT" parameter="ecm:fulltext">
+                        <field name="fulltext_all" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="FULLTEXT" parameter="dc:title">
+                        <field name="title" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="BETWEEN" parameter="dc:modified">
+                        <field name="modified_min" schema="advanced_search"/>
+                        <field name="modified_max" schema="advanced_search"/>
+                    </predicate>
+                    <fixedPart>ecm:mixinType != 'HiddenInNavigation' AND ecm:primaryType = 'Expenses' AND
+                        ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+                        'deleted'
+                    </fixedPart>
+                </whereClause>
+                <searchDocumentType>administrative_cv</searchDocumentType>
+                <!--<sort column="dc:modified" ascending="false" />-->
+                <pageSize>10</pageSize>
+            </genericPageProvider>
+            <searchLayout name="document_content_filter" />
+            <useGlobalPageSize>true</useGlobalPageSize>
+            <refresh>
+                <event>documentChanged</event>
+                <event>documentChildrenChanged</event>
+            </refresh>
+            <cacheKey>#{currentDocument.id}</cacheKey>
+            <cacheSize>10</cacheSize>
+            <selectionList>CURRENT_SELECTION</selectionList>
+            <showTitle>false</showTitle>
+            <showFilterForm>true</showFilterForm>
+            <showPageSizeSelector>true</showPageSizeSelector>
+            <showRefreshCommand>true</showRefreshCommand>
+            <actions category="CURRENT_SELECTION_LIST" />
+            <actions category="cv_actions@administrative_cv" />
+            <resultLayouts>
+                <layout name="document_listing_ajax" title="document_listing"
+                        translateTitle="true" iconPath="/icons/document_listing_icon.png"
+                        showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+            </resultLayouts>
+            <resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+            </resultColumns>
+            <resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+            <flags>
+                <flag>DOCUMENT_CONTENT</flag>
+            </flags>
+        </contentView>
+
+        <contentView name="Solicitud_de_transferencia">
+            <title>Solicitud_de_transferencia
+            </title>
+            <translateTitle>true</translateTitle>
+            <genericPageProvider
+                    class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+                <property name="coreSession">#{documentManager}</property>
+                <whereClause>
+                    <predicate operator="FULLTEXT" parameter="ecm:fulltext">
+                        <field name="fulltext_all" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="FULLTEXT" parameter="dc:title">
+                        <field name="title" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="BETWEEN" parameter="dc:modified">
+                        <field name="modified_min" schema="advanced_search"/>
+                        <field name="modified_max" schema="advanced_search"/>
+                    </predicate>
+                    <fixedPart>ecm:mixinType != 'HiddenInNavigation' AND ecm:primaryType = 'TransferRequest' AND
+                        ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+                        'deleted'
+                    </fixedPart>
+                </whereClause>
+                <searchDocumentType>administrative_cv</searchDocumentType>
+                <!--<sort column="dc:modified" ascending="false" />-->
+                <pageSize>10</pageSize>
+            </genericPageProvider>
+            <searchLayout name="document_content_filter" />
+            <useGlobalPageSize>true</useGlobalPageSize>
+            <refresh>
+                <event>documentChanged</event>
+                <event>documentChildrenChanged</event>
+            </refresh>
+            <cacheKey>#{currentDocument.id}</cacheKey>
+            <cacheSize>10</cacheSize>
+            <selectionList>CURRENT_SELECTION</selectionList>
+            <showTitle>false</showTitle>
+            <showFilterForm>true</showFilterForm>
+            <showPageSizeSelector>true</showPageSizeSelector>
+            <showRefreshCommand>true</showRefreshCommand>
+            <actions category="CURRENT_SELECTION_LIST" />
+            <actions category="cv_actions@administrative_cv" />
+            <resultLayouts>
+                <layout name="document_listing_ajax" title="document_listing"
+                        translateTitle="true" iconPath="/icons/document_listing_icon.png"
+                        showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+            </resultLayouts>
+            <resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+            </resultColumns>
+            <resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+            <flags>
+                <flag>DOCUMENT_CONTENT</flag>
+            </flags>
+        </contentView>
+
+        <contentView name="Opd">
+            <title>Opd
+            </title>
+            <translateTitle>true</translateTitle>
+            <genericPageProvider
+                    class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+                <property name="coreSession">#{documentManager}</property>
+                <whereClause>
+                    <predicate operator="FULLTEXT" parameter="ecm:fulltext">
+                        <field name="fulltext_all" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="FULLTEXT" parameter="dc:title">
+                        <field name="title" schema="advanced_search"/>
+                    </predicate>
+                    <predicate operator="BETWEEN" parameter="dc:modified">
+                        <field name="modified_min" schema="advanced_search"/>
+                        <field name="modified_max" schema="advanced_search"/>
+                    </predicate>
+                    <fixedPart>ecm:mixinType != 'HiddenInNavigation' AND ecm:primaryType = 'Opd' AND
+                        ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+                        'deleted'
+                    </fixedPart>
+                </whereClause>
+                <searchDocumentType>administrative_cv</searchDocumentType>
+                <!--<sort column="dc:modified" ascending="false" />-->
+                <pageSize>10</pageSize>
+            </genericPageProvider>
+            <searchLayout name="document_content_filter" />
+            <useGlobalPageSize>true</useGlobalPageSize>
+            <refresh>
+                <event>documentChanged</event>
+                <event>documentChildrenChanged</event>
+            </refresh>
+            <cacheKey>#{currentDocument.id}</cacheKey>
+            <cacheSize>10</cacheSize>
+            <selectionList>CURRENT_SELECTION</selectionList>
+            <showTitle>false</showTitle>
+            <showFilterForm>true</showFilterForm>
+            <showPageSizeSelector>true</showPageSizeSelector>
+            <showRefreshCommand>true</showRefreshCommand>
+            <actions category="CURRENT_SELECTION_LIST" />
+            <actions category="cv_actions@administrative_cv" />
+            <resultLayouts>
+                <layout name="document_listing_ajax" title="document_listing"
+                        translateTitle="true" iconPath="/icons/document_listing_icon.png"
+                        showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+            </resultLayouts>
+            <resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+            </resultColumns>
+            <resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+            <flags>
+                <flag>DOCUMENT_CONTENT</flag>
+            </flags>
+        </contentView>
+
+        <contentView name="created_by_user">
+			<title>created_by_user
+			</title>
+			<translateTitle>true</translateTitle>
+			<genericPageProvider
+					class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+				<property name="coreSession">#{documentManager}</property>
+				<parameter>#{currentUser.name}</parameter>
+				<parameter>#{currentDocument.id}</parameter>
+				<whereClause>
+					<predicate operator="FULLTEXT" parameter="ecm:fulltext">
+						<field name="fulltext_all" schema="advanced_search"/>
+					</predicate>
+					<predicate operator="FULLTEXT" parameter="dc:title">
+						<field name="title" schema="advanced_search"/>
+					</predicate>
+					<predicate operator="BETWEEN" parameter="dc:modified">
+						<field name="modified_min" schema="advanced_search"/>
+						<field name="modified_max" schema="advanced_search"/>
+					</predicate>
+					<fixedPart>ecm:mixinType != 'HiddenInNavigation' AND
+						ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !=
+						'deleted' AND dc:creator = ? AND ecm:parentId = ?
+					</fixedPart>
+				</whereClause>
+				<searchDocumentType>administrative_cv</searchDocumentType>
+				<!--<sort column="dc:modified" ascending="false" />-->
+				<pageSize>10</pageSize>
+			</genericPageProvider>
+			<searchLayout name="document_content_filter" />
+			<useGlobalPageSize>true</useGlobalPageSize>
+			<refresh>
+				<event>documentChanged</event>
+				<event>documentChildrenChanged</event>
+			</refresh>
+			<cacheKey>#{currentDocument.id}</cacheKey>
+			<cacheSize>10</cacheSize>
+			<selectionList>CURRENT_SELECTION</selectionList>
+			<showTitle>false</showTitle>
+			<showFilterForm>true</showFilterForm>
+			<showPageSizeSelector>true</showPageSizeSelector>
+			<showRefreshCommand>true</showRefreshCommand>
+			<actions category="CURRENT_SELECTION_LIST" />
+			<actions category="cv_actions@administrative_cv" />
+			<resultLayouts>
+				<layout name="document_listing_ajax" title="document_listing"
+						translateTitle="true" iconPath="/icons/document_listing_icon.png"
+						showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+			</resultLayouts>
+			<resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+			</resultColumns>
+			<resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+			<flags>
+				<flag>DOCUMENT_CONTENT</flag>
+			</flags>
+		</contentView>
+
 		<contentView name="administrative_cv">
 			<title>label.athento-nx-administrative-doctypes.administrative_cv
 			</title>

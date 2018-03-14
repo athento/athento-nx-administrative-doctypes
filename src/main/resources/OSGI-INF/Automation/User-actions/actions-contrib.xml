@@ -16,7 +16,7 @@
 			<filter id="filter@appRequest">
 				<rule grant="true">
 					<group>administrators</group>
-					<group>accounting</group>
+					<group>Contabilidad</group>
 				</rule>
 				<rule grant="false">
 					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
@@ -35,7 +35,7 @@
 			<filter id="filter@appRequest">
 				<rule grant="true">
 					<group>administrators</group>
-					<group>accounting</group>
+					<group>Contabilidad</group>
 				</rule>
 				<rule grant="false">
 					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
@@ -54,7 +54,7 @@
 			<filter id="filter@appRequest">
 				<rule grant="true">
 					<group>administrators</group>
-					<group>accounting</group>
+					<group>Contabilidad</group>
 				</rule>
 				<rule grant="false">
 					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
@@ -73,7 +73,7 @@
 			<filter id="filter@TransferRequest">
 				<rule grant="true">
 					<group>administrators</group>
-					<group>accounting</group>
+					<group>Contabilidad</group>
 				</rule>
 				<rule grant="false">
 					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
@@ -92,7 +92,7 @@
 			<filter id="filter@TransferRequest">
 				<rule grant="true">
 					<group>administrators</group>
-					<group>accounting</group>
+					<group>Contabilidad</group>
 				</rule>
 				<rule grant="false">
 					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
@@ -111,7 +111,7 @@
 			<filter id="filter@quiter-list">
 				<rule grant="true">
 					<group>administrators</group>
-					<group>accounting</group>
+					<group>Contabilidad</group>
 				</rule>
 				<rule grant="false">
 					<condition>#{documentsListsManager.isWorkingListEmpty("CURRENT_SELECTION")
@@ -131,7 +131,7 @@
 				<rule grant="true">
 					<permission>Write</permission>
 					<group>administrators</group>
-					<group>accounting</group>
+					<group>Contabilidad</group>
 					<type>Invoice</type>
 					<lifeCycle>Validated</lifeCycle>
 				</rule>

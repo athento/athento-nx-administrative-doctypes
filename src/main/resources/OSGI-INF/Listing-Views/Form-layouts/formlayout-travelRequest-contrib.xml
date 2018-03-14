@@ -252,7 +252,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub6" type="selectOneDirectory">
+					<widget name="sub6" type="text">
 						<labels>
 							<label mode="any">label.administrative.carRental.preferedCar</label>
 						</labels>
@@ -260,13 +260,13 @@
 						<fields>
 							<field>preferedCar</field>
 						</fields>
-						<properties widgetMode="any">
+						<!--<properties widgetMode="any">
 							<property name="directoryName">car</property>
 							<property name="displayIdAndLabel">false</property>
 							<property name="ordering">ordering</property>
 							<property name="localize">true</property>
 							<property name="required">true</property>
-						</properties>
+						</properties>-->
 					</widget>
 				</subWidgets>
 			</widget>

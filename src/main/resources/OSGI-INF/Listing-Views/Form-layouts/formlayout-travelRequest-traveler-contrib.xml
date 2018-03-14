@@ -19,12 +19,6 @@
 			<rows>
 				<row>
 					<properties mode="any">
-						<property name="nxl_colspan_0">2</property>
-					</properties>
-					<widget>requesterIsTraveller</widget>
-				</row>
-				<row>
-					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
@@ -71,19 +65,6 @@
 				</row>
 			</rows>
 
-			<widget name="requesterIsTraveller" type="dynamicRendererWidget_checkbox">
-				<labels>
-					<label mode="any">label.administrative.requesterIsTraveller</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>administrative:requesterIsTraveller</field>
-				</fields>
-				<widgetModes>
-					<mode value="view">hidden</mode>
-				</widgetModes>
-			</widget>
-
 			<widget name="travel_account" type="text">
 				<labels>
 					<label mode="any">label.administrative.travel_account</label>
@@ -126,6 +107,9 @@
 					<label mode="any">label.administrative.travel_category</label>
 				</labels>
 				<translated>true</translated>
+				<fields>
+					<field>administrative:travel_category</field>
+				</fields>
 				<widgetModes>
 					<mode value="edit">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>
 					<mode value="create">#{layoutValue.administrative.requesterIsTraveller ? 'hidden':'edit'}</mode>

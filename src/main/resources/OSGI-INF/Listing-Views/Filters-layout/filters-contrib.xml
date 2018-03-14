@@ -11,28 +11,28 @@
 		<filter id="filter@wf@ParallelDocumentReview" append="true">
 			<rule grant="true">
 				<permission>ReadWrite</permission>
-				<type>Expense</type>
 				<type>PaymentOrder</type>
-				<type>TravelRequest</type>
 			</rule>
 			<rule grant="false">
 				<condition>document.isImmutable()</condition>
 				<type>Opd</type>
 				<type>TransferRequest</type>
+				<type>Expense</type>
+				<type>TravelRequest</type>
 			</rule>
 		</filter>
 
 		<filter id="filter@SerialDocumentReview" append="true">
 			<rule grant="true">
 				<permission>ReadWrite</permission>
-				<type>Expense</type>
 				<type>PaymentOrder</type>
-				<type>TravelRequest</type>
 			</rule>
 			<rule grant="false">
 				<condition>document.isImmutable()</condition>
 				<type>Opd</type>
 				<type>TransferRequest</type>
+				<type>Expense</type>
+				<type>TravelRequest</type>
 			</rule>
 		</filter>
 
@@ -48,9 +48,41 @@
 		<filter id="filter@wf@Validacion" append="true">
 			<rule grant="true">
 				<permission>ReadWrite</permission>
-				<type>Opd</type>
 				<type>TransferRequest</type>
 				<group>validacion_initiators</group>
+			</rule>
+			<rule grant="false">
+				<condition>document.currentLifeCycleState != "Draft"</condition>
+				<condition>document.isImmutable() || document.isProxy()</condition>
+			</rule>
+		</filter>
+
+		<filter id="filter@wf@Validacion_OM" append="true">
+			<rule grant="true">
+				<permission>ReadWrite</permission>
+				<type>TravelRequest</type>
+			</rule>
+			<rule grant="false">
+				<condition>document.currentLifeCycleState != "Draft"</condition>
+				<condition>document.isImmutable() || document.isProxy()</condition>
+			</rule>
+		</filter>
+
+		<filter id="filter@wf@Validacion_OPD" append="true">
+			<rule grant="true">
+				<permission>ReadWrite</permission>
+				<type>Opd</type>
+			</rule>
+			<rule grant="false">
+				<condition>document.currentLifeCycleState != "Draft"</condition>
+				<condition>document.isImmutable() || document.isProxy()</condition>
+			</rule>
+		</filter>
+
+		<filter id="filter@wf@Validacion_LG" append="true">
+			<rule grant="true">
+				<permission>ReadWrite</permission>
+				<type>Expense</type>
 			</rule>
 			<rule grant="false">
 				<condition>document.currentLifeCycleState != "Draft"</condition>

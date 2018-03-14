@@ -219,16 +219,19 @@
 			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
+				<layout>layout@formlayout-travelRequest-requester_is_traveler</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
 			</layouts>
 			<layouts mode="edit">
+				<layout>layout@formlayout-travelRequest-requester_is_traveler</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
 			</layouts>
 			<layouts mode="view">
+				<layout>layout@formlayout-travelRequest-requester_is_traveler</layout>
 				<layout>layout@formlayout-userFileHeading</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>

@@ -30,13 +30,44 @@
         </chain>
 
         <chain id="Athento.OM-EnviarEmailAgencia">
-            <operation id="Context.FetchDocument" />
+            <operation id="Context.FetchDocument"/>
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">documents</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">clase</param>
+                <param type="object" name="value">expr:@{documents.getClass()}</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">essimple</param>
+                <param type="boolean" name="value">expr:clase == 'class org.nuxeo.ecm.core.api.impl.DocumentModelImpl'</param>
+            </operation>
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:essimple ? documents : documents[0]</param>
+            </operation>
             <operation id="Context.SetInputAsVar">
                 <param type="string" name="name">documento</param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">email_var</param>
                 <param type="object" name="value">expr:Fn.getVocabularyLabel("config-om","email-OM")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">email_agencia_var</param>
+                <param type="object" name="value">expr:Fn.getVocabularyLabel("config-om","email-OM")
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">email_con_solicitante_var</param>
+                <param type="object" name="value">expr:@{Document["userFile:mail"] == empty ? email_agencia_var :
+                    email_agencia_var + "," + Document["userFile:mail"]}
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">email_var</param>
+                <param type="object" name="value">expr:@{Document["administrative:travel_mail"] == empty ? email_con_solicitante_var :
+                    email_con_solicitante_var + "," + Document["administrative:travel_mail"]}
                 </param>
             </operation>
             <operation id="Context.SetVar">
@@ -71,6 +102,32 @@
                 <param type="string" name="subject">expr:subject_var</param>
                 <param type="string" name="to">expr:email_var</param>
                 <param type="stringlist" name="files">administrative:travel_agency_template</param>
+            </operation>
+        </chain>
+
+        <chain id="Template-OM-Agencia-de-Viajes-before-save">
+            <operation id="Context.FetchDocument"/>
+            <operation id="Context.SetInputAsVar">
+                <param type="string" name="name">documents</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">clase</param>
+                <param type="object" name="value">expr:@{documents.getClass()}</param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">essimple</param>
+                <param type="boolean" name="value">expr:clase == 'class org.nuxeo.ecm.core.api.impl.DocumentModelImpl'</param>
+            </operation>
+            <operation id="Document.Fetch">
+                <param type="document" name="value">expr:essimple ? documents : documents[0]</param>
+            </operation>
+            <operation id="TemplateProcessor.Render">
+                <param type="string" name="templateName">OM - Agencia de Viajes</param>
+            </operation>
+            <operation id="Blob.AttachOnDocument">
+                <param type="document" name="document">expr:essimple ? documents : documents[0]</param>
+                <param type="boolean" name="save">false</param>
+                <param type="string" name="xpath">file:content</param>
             </operation>
         </chain>
 
