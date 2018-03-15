@@ -69,10 +69,12 @@ public class ExpensesCalculationsListener implements EventListener {
                     String msg = Utils.getI18nLabel("label.expense.rrg",
                             new Object [] {expenseErr.getDate(), categoryLabel}, Locale.getDefault());
                     doc.setPropertyValue("administrative:lastMessage", msg);
+                    doc.setPropertyValue("administrative:specialAuthorization", true);
                     FacesMessages.instance().add(StatusMessage.Severity.INFO, msg);
                 } else {
                     String msg = Utils.getI18nLabel("label.expense.rrg.ok", null, Locale.getDefault());
                     doc.setPropertyValue("administrative:lastMessage", msg);
+                    doc.setPropertyValue("administrative:specialAuthorization", false);
                 }
                 LOG.info("Accumu" + accumulated);
                 // Calculate totals
