@@ -146,6 +146,7 @@
 			<filter id="filter@agencia">
 				<rule grant="true">
 					<group>administrators</group>
+					<group>Level18</group>
 					<type>TravelRequest</type>
 				</rule>
 			</filter>
