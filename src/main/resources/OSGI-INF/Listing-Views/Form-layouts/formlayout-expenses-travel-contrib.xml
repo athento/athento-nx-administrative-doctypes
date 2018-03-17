@@ -167,7 +167,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub4" type="double">
+					<widget name="sub4" type="currency">
 						<labels>
 							<label mode="any">label.administrative.expenseTravel.expense</label>
 						</labels>
@@ -207,7 +207,9 @@
 							<property name="minChars">0</property>
 							<property name="hideHelpLabel">true</property>
                             <property name="query">SELECT * FROM Document WHERE ecm:primaryType = 'TravelRequest' AND
-                                    ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState != 'deleted' AND dc:title ILIKE '%?%'
+                                    ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState IN ('Finished','Closed',
+								    'Validated') AND administrative:travel_ipn = '#{currentUser.name}'
+								    AND dc:title ILIKE '%?%'
                             </property>
 							<property name="required">true</property>
 						</properties>

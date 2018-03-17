@@ -214,7 +214,7 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
-					<widget name="sub7" type="double">
+					<widget name="sub7" type="currency">
 						<labels>
 							<label mode="any">label.administrative.expenseKm.expense</label>
 						</labels>

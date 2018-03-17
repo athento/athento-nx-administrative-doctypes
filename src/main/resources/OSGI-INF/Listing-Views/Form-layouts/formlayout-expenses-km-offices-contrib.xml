@@ -222,7 +222,7 @@
 							<mode value="create">hidden</mode>
 						</widgetModes>
 					</widget>
-					<widget name="sub7" type="double">
+					<widget name="sub7" type="currency">
 						<labels>
 							<label mode="any">label.administrative.expenseKmOffices.expense</label>
 						</labels>
