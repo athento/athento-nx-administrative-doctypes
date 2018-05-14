@@ -373,6 +373,21 @@
 					</properties>
 					<widget>providerid</widget>
 				</column>
+				<column name="providerIdIntegration" selectedByDefault="false">
+					<properties mode="any">
+						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
+						<property name="columnStyleClass"></property>
+						<property name="label">label.S_FACTURA.providerIdIntegration</property>
+						<property name="sortPropertyName">S_FACTURA:providerIdIntegration</property>
+					</properties>
+					<properties mode="edit_sort_infos">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<properties mode="edit_sort_infos_map">
+						<property name="showInSortInfoSelection">true</property>
+					</properties>
+					<widget>providerIdIntegration</widget>
+				</column>
 				<column name="S_FACTURA_assignedTo" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
@@ -610,6 +625,15 @@
 				<translated>true</translated>
 				<fields>
 					<field>data['S_FACTURA']['providerid']</field>
+				</fields>
+			</widget>
+			<widget name="providerIdIntegration" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.providerIdIntegration</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>data['S_FACTURA']['providerIdIntegration']</field>
 				</fields>
 			</widget>
 			<widget name="S_FACTURA_assignedTo" type="text">

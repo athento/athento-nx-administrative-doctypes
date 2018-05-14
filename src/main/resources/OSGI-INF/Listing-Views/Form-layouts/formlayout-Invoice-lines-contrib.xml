@@ -115,6 +115,18 @@
 							<property name="required">true</property>
 						</properties>
 					</widget>
+					<widget name="sub5" type="text">
+						<labels>
+							<label mode="any">label.S_FACTURA.subjectLinePersonalAccount</label>
+						</labels>
+						<translated>true</translated>
+						<fields>
+							<field>subjectLinePersonalAccount</field>
+						</fields>
+						<properties widgetMode="any">
+							<property name="required">true</property>
+						</properties>
+					</widget>
 				</subWidgets>
 			</widget>
 

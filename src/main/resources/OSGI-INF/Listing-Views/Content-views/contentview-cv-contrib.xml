@@ -665,6 +665,9 @@
 					<predicate parameter="S_FACTURA:providerid" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_providerid" />
 					</predicate>
+					<predicate parameter="S_FACTURA:providerIdIntegration" operator="LIKE">
+						<field schema="administrative_cv" name="S_FACTURA_providerIdIntegration" />
+					</predicate>
 					<predicate parameter="S_FACTURA:subject" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_subject" />
 					</predicate>
