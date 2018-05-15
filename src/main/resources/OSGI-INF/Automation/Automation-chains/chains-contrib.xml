@@ -450,6 +450,8 @@
         </chain>
 
         <chain id="Athento.rememberLastDocument-update">
+            <!-- *** *** GET VALUES *** *** -->
+
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:candidates[0]</param>
             </operation>
@@ -605,6 +607,47 @@
                 </param>
             </operation>
 
+            <!-- *** Here, specific Transfer Request *** -->
+
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_personalaccount</param>
+                <param type="object" name="value">expr:Document["transferrequest:personalaccount"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_destinationname</param>
+                <param type="object" name="value">expr:Document["transferrequest:destinationname"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_idpersonalnumber</param>
+                <param type="object" name="value">expr:Document["transferrequest:idpersonalnumber"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_dueDate</param>
+                <param type="object" name="value">expr:Document["transferrequest:dueDate"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_subject</param>
+                <param type="object" name="value">expr:Document["transferrequest:subject"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">administrative_sector</param>
+                <param type="object" name="value">expr:Document["administrative:sector"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_cobropago</param>
+                <param type="object" name="value">expr:Document["transferrequest:cobropago"]
+                </param>
+            </operation>
+
+
+            <!-- *** *** UPDATE VALUES *** *** -->
+
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:inCreation</param>
             </operation>
@@ -746,7 +789,6 @@
 
             <!-- Here, specific Expense -->
 
-
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">administrative:expenseYear</param>
                 <param type="boolean" name="save">false</param>
@@ -790,6 +832,43 @@
                 </param>
             </operation>
 
+            <!-- *** Here, specific Transfer Request *** -->
+
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:personalaccount</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_personalaccount == empty ? empty : transferrequest_personalaccount</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:destinationname</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_destinationname == empty ? empty : transferrequest_destinationname</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:idpersonalnumber</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_idpersonalnumber == empty ? empty : transferrequest_idpersonalnumber</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:dueDate</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_dueDate == empty ? empty : transferrequest_dueDate</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:subject</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_subject == empty ? empty : transferrequest_subject</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:sector</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:administrative_sector == empty ? empty : administrative_sector</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:cobropago</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_cobropago == empty ? empty : transferrequest_cobropago</param>
+            </operation>
         </chain>
 
         <chain id="TravelRequest-Expense">
