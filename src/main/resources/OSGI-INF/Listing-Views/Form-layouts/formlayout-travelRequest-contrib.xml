@@ -39,13 +39,33 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
+					<widget>drivenTravelObservations</widget>
+				</row>
+
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
 					<widget>carRental</widget>
 				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">3</property>
 					</properties>
+					<widget>carRentalObservations</widget>
+				</row>
+
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
 					<widget>hotels</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
+					<widget>hotelsObservations</widget>
 				</row>
 			</rows>
 
@@ -172,6 +192,19 @@
 				</subWidgets>
 			</widget>
 
+			<widget name="drivenTravelObservations" type="textarea">
+				<labels>
+					<label mode="any">label.administrative.drivenTravelObservations</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:drivenTravelObservations</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="required">false</property>
+				</properties>
+			</widget>
+
 			<widget name="carRental" type="list">
 				<labels>
 					<label mode="any">label.administrative.carRental</label>
@@ -271,6 +304,19 @@
 				</subWidgets>
 			</widget>
 
+			<widget name="carRentalObservations" type="textarea">
+				<labels>
+					<label mode="any">label.administrative.carRentalObservations</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:carRentalObservations</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="required">false</property>
+				</properties>
+			</widget>
+
 			<widget name="hotels" type="list">
 				<labels>
 					<label mode="any">label.administrative.hotels</label>
@@ -347,6 +393,19 @@
 						</properties>
 					</widget>
 				</subWidgets>
+			</widget>
+
+			<widget name="hotelsObservations" type="textarea">
+				<labels>
+					<label mode="any">label.administrative.hotelsObservations</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:hotelsObservations</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="required">false</property>
+				</properties>
 			</widget>
 
 		</layout>
