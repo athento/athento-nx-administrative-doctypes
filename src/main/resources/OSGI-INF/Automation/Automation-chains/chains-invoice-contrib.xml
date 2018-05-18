@@ -91,10 +91,14 @@
                 </param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">subjectLineTaxPercentageRestaIRPF_var</param>
+                <param type="integer" name="value">-1*expr:item.get("subjectLineTaxPercentage")</param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">subjectLineCalculatedAmount</param>
                 <param type="integer" name="value">expr:subjectLineTax_var != 2 ?
                     subjectLineAmount_var*subjectLineTaxPercentage_var/100+subjectLineAmount_var :
-                    subjectLineAmount_var*-subjectLineTaxPercentage_var/100
+                    subjectLineAmount_var*subjectLineTaxPercentageRestaIRPF_var/100
                 </param>
             </operation>
             <operation id="Context.SetVar">
