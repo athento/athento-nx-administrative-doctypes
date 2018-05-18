@@ -44,6 +44,13 @@
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_2">1</property>
+					</properties>
+					<widget>providerIdIntegration</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
 					<widget>tipoDocumento</widget>
@@ -163,6 +170,15 @@
 				<translated>true</translated>
 				<fields>
 					<field>S_FACTURA:provider</field>
+				</fields>
+			</widget>
+			<widget name="providerIdIntegration" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.providerIdIntegration</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:providerIdIntegration</field>
 				</fields>
 			</widget>
 			<widget name="providerAccount" type="text">

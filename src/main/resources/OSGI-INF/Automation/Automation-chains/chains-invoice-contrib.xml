@@ -91,8 +91,15 @@
                 </param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">subjectLineCalculatedAmount</param>
+                <param type="integer" name="value">expr:subjectLineTax_var != 2 ?
+                    subjectLineAmount_var*subjectLineTaxPercentage_var/100+subjectLineAmount_var :
+                    subjectLineAmount_var*-subjectLineTaxPercentage_var/100
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">totalInvoice_var</param>
-                <param type="integer" name="value">expr:subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
+                <param type="integer" name="value">expr:subjectLineCalculatedAmount</param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">taxesLine_var</param>
@@ -111,11 +118,14 @@
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">calculatedTotalAmount</param>
-                <param type="integer" name="value">expr:calculatedTotalAmount+subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
+                <param type="integer" name="value">expr:calculatedTotalAmount+subjectLineCalculatedAmount</param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">calculatedTaxableIncome</param>
-                <param type="integer" name="value">expr:calculatedTaxableIncome+subjectLineAmount_var</param>
+                <param type="integer" name="value">expr: subjectLineTax_var != 2 ?
+                    calculatedTaxableIncome+subjectLineAmount_var :
+                    calculatedTaxableIncome
+                </param>
             </operation>
 
         </chain>
@@ -209,7 +219,7 @@
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">totalInvoice_var</param>
-                <param type="integer" name="value">expr:totalInvoice_var + subjectLineAmount_var*item.get("subjectLineTaxPercentage")/100+subjectLineAmount_var</param>
+                <param type="integer" name="value">expr:totalInvoice_var + subjectLineCalculatedAmount</param>
             </operation>
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">expr:@{"S_FACTURA:taxesLine/" + taxlineindex+"/taxBase"}</param>

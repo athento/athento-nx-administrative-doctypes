@@ -78,6 +78,8 @@
 	<xs:element name="providerAccount" type="xs:string" />
 	<!-- Provider company, identified by an internal ID -->
 	<xs:element name="providerid" type="xs:string" />
+	<!-- Provider ID, for Quiter integration -->
+	<xs:element name="providerIdIntegration" type="xs:string" />
 	<!-- Included for compatibility -->
 	<xs:element name="state" type="xs:string" />
 	<!-- Subject -->
@@ -124,6 +126,8 @@
 			<xs:element name="subjectLineTaxPercentage" type="xs:string" />
 			<!-- Subject Line account -->
 			<xs:element name="subjectLineAccount" type="xs:string" />
+			<!-- Subject Line Personal account -->
+			<xs:element name="subjectLinePersonalAccount" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 

@@ -432,6 +432,9 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Driven Travel Observations -->
+	<xs:element name="drivenTravelObservations" type="xs:string" />
+
 	<xs:element name="carRental" type="nxs:carRentalType" />
 	<xs:complexType name="carRentalType">
 		<xs:sequence>
@@ -457,6 +460,9 @@
 			<xs:element name="preferedCar" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
+
+	<!-- Car Rental Observations -->
+	<xs:element name="carRentalObservations" type="xs:string" />
 
 	<xs:element name="carRentalCompanions" type="nxs:carRentalCompanionsType" />
 	<xs:complexType name="carRentalCompanionsType">
@@ -493,6 +499,9 @@
 			<xs:element name="regimen" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
+
+	<!-- Hotels Observations -->
+	<xs:element name="hotelsObservations" type="xs:string" />
 
 	<xs:element name="companyCar" type="nxs:companyCarType" />
 	<xs:complexType name="companyCarType">
