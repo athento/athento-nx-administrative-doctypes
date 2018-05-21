@@ -96,7 +96,7 @@
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">subjectLineCalculatedAmount</param>
-                <param type="integer" name="value">expr:subjectLineTax_var != 2 ?
+                <param type="integer" name="value">expr:subjectLineTax_var == 1 ?
                     subjectLineAmount_var*subjectLineTaxPercentage_var/100+subjectLineAmount_var :
                     subjectLineAmount_var*subjectLineTaxPercentageRestaIRPF_var/100
                 </param>
@@ -126,7 +126,7 @@
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">calculatedTaxableIncome</param>
-                <param type="integer" name="value">expr: subjectLineTax_var != 2 ?
+                <param type="integer" name="value">expr: subjectLineTax_var == 1 ?
                     calculatedTaxableIncome+subjectLineAmount_var :
                     calculatedTaxableIncome
                 </param>
