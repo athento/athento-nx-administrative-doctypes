@@ -123,9 +123,6 @@
 						<fields>
 							<field>subjectLinePersonalAccount</field>
 						</fields>
-						<properties widgetMode="any">
-							<property name="required">true</property>
-						</properties>
 					</widget>
 				</subWidgets>
 			</widget>
