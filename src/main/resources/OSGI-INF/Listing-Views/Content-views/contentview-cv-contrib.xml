@@ -659,6 +659,9 @@
 					<predicate parameter="S_FACTURA:paymentMethod" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_paymentMethod" />
 					</predicate>
+					<predicate parameter="S_FACTURA:observations" operator="LIKE">
+						<field schema="administrative_cv" name="S_FACTURA_observations" />
+					</predicate>
 					<predicate parameter="S_FACTURA:provider" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_provider" />
 					</predicate>

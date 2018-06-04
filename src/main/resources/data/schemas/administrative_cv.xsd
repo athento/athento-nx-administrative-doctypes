@@ -173,6 +173,8 @@
 	<xs:element name="S_FACTURA_paymentDate_max" type="xs:date" />
 	<!-- Payment Method -->
 	<xs:element name="S_FACTURA_paymentMethod" type="xs:string" />
+	<!-- Observations -->
+	<xs:element name="S_FACTURA_observations" type="xs:string" />
 	<!-- Provider company, identified by their fiscal identification number -->
 	<xs:element name="S_FACTURA_provider" type="xs:string" />
 	<!-- Provider company, identified by an internal ID -->

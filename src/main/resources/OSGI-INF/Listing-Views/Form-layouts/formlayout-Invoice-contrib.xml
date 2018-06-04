@@ -72,6 +72,12 @@
 					</properties>
 					<widget>erpNumber</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
+					<widget>observations</widget>
+				</row>
 			</rows>	
 			<widget name="account" type="text">
 				<labels>
@@ -162,6 +168,18 @@
 				<fields>
 					<field>S_FACTURA:number</field>
 				</fields>
+			</widget>
+			<widget name="observations" type="textarea">
+				<labels>
+					<label mode="any">label.S_FACTURA.observations</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:observations</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="required">false</property>
+				</properties>
 			</widget>
 			<widget name="providerid" type="text">
 				<labels>
