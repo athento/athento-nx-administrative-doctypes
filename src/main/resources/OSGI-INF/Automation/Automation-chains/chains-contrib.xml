@@ -89,36 +89,56 @@
 
         <chain id="Expenses-assignID">
             <documentation>
-                Assign ID with the following rules: NGAAAAMM-IDNUMBER-XX Checks
-                in the Document for versioning
+                Assign ID with the following rules: NG-AAMM-0000000-XX Checks in the Document for versioning
+                With:   NG as constant string
+                        AA year
+                        MM month
+                        0000000 unique ID for each year
+                        XX unique ID sufix
             </documentation>
             <operation id="Context.FetchDocument" />
-            <!-- Year. Used for uniqueness of number id AND the composition of the
-               id -->
+            <!-- Year YYYY. Used for uniqueness of number id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">complete_year_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("yyyy").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Year. Used for uniqueness of number id AND the composition of the id -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">year_var</param>
                 <param type="object" name="value">expr:new
                     java.text.SimpleDateFormat("yy").format(Document["dc:created"].getTime())
                 </param>
             </operation>
-            <!-- Month. Used for uniqueness of number id AND the composition of the
-                id -->
+            <!-- Month. Used for uniqueness of number id AND the composition of the id -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">month_var</param>
                 <param type="object" name="value">expr:new
                     java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
                 </param>
             </operation>
-            <!-- Number ID -->
+            <!-- NG unique ID for each year -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">idNumber_var</param>
-                <param type="object" name="value">expr:Document["userFile:idNumber"]
+                <param type="object" name="value">expr:Fn.getNextId("unique-ex-year-key"+complete_year_var)
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">idNumber_var</param>
+                <param type="object" name="value">expr:idNumber_var.format("%07d",Integer.valueOf(idNumber_var))
+                </param>
+            </operation>
+            <!-- NG-AAMM-0000000 full prefix -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">prefix_id_var</param>
+                <param type="object" name="value">expr:@{"NG-"+year_var+month_var+"-"+idNumber_var}
                 </param>
             </operation>
             <!-- Number, which is formatted with 2 digits -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">uniqueexnumber_var</param>
-                <param type="object" name="value">expr:Fn.getNextId("unique-ex-key"+year_var+month_var+idNumber_var)
+                <param type="object" name="value">expr:Fn.getNextId("unique-ex-key"+prefix_id_var)
                 </param>
             </operation>
             <operation id="Context.SetVar">
@@ -126,11 +146,10 @@
                 <param type="object" name="value">expr:uniqueexnumber_var.format("%02d",Integer.valueOf(uniqueexnumber_var))
                 </param>
             </operation>
-            <!-- Final variable id_var with the ID composition. Stored in both title
-                and projectid -->
+            <!-- Final variable id_var with the ID composition. Stored in both title and projectid -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{"NG-"+year_var+month_var+"-"+idNumber_var+"-"+uniqueexnumberformatted_var}
+                <param type="object" name="value">expr:@{prefix_id_var + "-" + uniqueexnumberformatted_var}
                 </param>
             </operation>
             <operation id="Document.SetProperty">
