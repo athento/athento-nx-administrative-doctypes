@@ -90,7 +90,7 @@
 					<field>userFile:bankName</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="required">true</property>
+					<property name="required">false</property>
 				</properties>
 			</widget>
 			<widget name="userFile_bankIban" type="text">
@@ -102,7 +102,7 @@
 					<field>userFile:bankIban</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="required">true</property>
+					<property name="required">false</property>
 				</properties>
 			</widget>
 			<widget name="administrative_expenseDescription" type="textarea">
