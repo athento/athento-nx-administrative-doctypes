@@ -279,7 +279,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_routes</table>
 			<dataFile>data/vocabularies/routes.csv</dataFile>
 		</directory>
@@ -291,7 +291,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_routes_secondary</table>
 			<dataFile>data/vocabularies/routes_secondary.csv</dataFile>
 		</directory>
@@ -303,7 +303,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_routescom</table>
 			<dataFile>data/vocabularies/routescom.csv</dataFile>
 		</directory>
@@ -315,7 +315,7 @@
             <cacheMaxSize>1000</cacheMaxSize>
             <idField>id</idField>
             <autoincrementIdField>false</autoincrementIdField>
-            <createTablePolicy>always</createTablePolicy>
+            <createTablePolicy>on_missing_columns</createTablePolicy>
             <table>vocabulary_routescom_secondary</table>
             <dataFile>data/vocabularies/routescom_secondary.csv</dataFile>
         </directory>
