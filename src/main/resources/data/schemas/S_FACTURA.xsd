@@ -82,6 +82,8 @@
 	<xs:element name="providerid" type="xs:string" />
 	<!-- Provider ID, for Quiter integration -->
 	<xs:element name="providerIdIntegration" type="xs:string" />
+	<!-- Sucursal -->
+	<xs:element name="sucursal" type="xs:string" />
 	<!-- Included for compatibility -->
 	<xs:element name="state" type="xs:string" />
 	<!-- Subject -->

@@ -44,9 +44,10 @@
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
-						<property name="nxl_colspan_2">1</property>
+						<property name="nxl_colspan_1">1</property>
 					</properties>
 					<widget>providerIdIntegration</widget>
+					<widget>sucursal</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -198,6 +199,21 @@
 				<fields>
 					<field>S_FACTURA:providerIdIntegration</field>
 				</fields>
+			</widget>
+			<widget name="sucursal" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.S_FACTURA.sucursal</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:sucursal</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">office</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">false</property>
+				</properties>
 			</widget>
 			<widget name="providerAccount" type="text">
 				<labels>
