@@ -163,7 +163,7 @@
 
 		<action id="dashboard_user_workspaces" enabled="false">
 		</action>
-		
+
 		<action id="dashboard_user_sections" enabled="false">
 		</action>
 
