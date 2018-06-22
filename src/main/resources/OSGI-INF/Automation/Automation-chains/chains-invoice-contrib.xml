@@ -244,7 +244,7 @@
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">expr:@{"S_FACTURA:taxesLine/" + taxlineindex+"/totalInvoice"}</param>
                 <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:partialInvoice_var
+                <param type="serializable" name="value">expr:totalInvoice_var
                 </param>
             </operation>
             <operation id="Context.SetVar">
