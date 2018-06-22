@@ -306,7 +306,7 @@ public class ExpensesCalculationsListener implements EventListener {
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
                     currentExpense = new Expense(date, category, (Double) expense.get("expense"));
-                    currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
+                    currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     accumulated.add(currentExpense);
                 } else {
                     Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"));
