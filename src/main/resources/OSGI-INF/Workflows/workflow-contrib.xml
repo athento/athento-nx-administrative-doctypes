@@ -8,11 +8,6 @@
 	<extension target="org.nuxeo.ecm.platform.jbpm.core.JbpmService"
 		point="typeFilter">
 
-		<type name="PaymentOrder">
-			<processDefinition>review_parallel</processDefinition>
-			<processDefinition>review_approbation</processDefinition>
-		</type>
-
 	</extension>
 
 	<extension target="org.nuxeo.ecm.platform.actions.ActionService"
@@ -25,7 +20,10 @@
 				<group>extended_wf_initiators</group>
 			</rule>
 			<rule grant="false">
-				<condition>document.currentLifeCycleState != "Draft"</condition>
+				<condition>document.currentLifeCycleState == "Finished"</condition>
+				<condition>document.currentLifeCycleState == "NoFinished"</condition>
+				<condition>document.currentLifeCycleState == "Validated"</condition>
+				<condition>document.currentLifeCycleState == "PendingValidation"</condition>
 				<condition>#{currentDocument.S_FACTURA.type == 'Emitidas'}</condition>
 				<condition>#{currentDocument.S_FACTURA.type == '02'}</condition>
 				<condition>#{currentDocument.S_FACTURA.type == 'label.factura.issuedinvoices'}</condition>
