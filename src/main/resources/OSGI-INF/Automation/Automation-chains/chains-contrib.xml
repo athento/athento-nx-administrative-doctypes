@@ -1073,7 +1073,10 @@
                     'Draft' ? (Document.type == 'Invoice' ?
                     'Athento.StartMassiveInvoiceWF-individual' :
                     'Athento.StartMassiveInvoiceWF-not-possible') :
-                    'Athento.StartMassiveInvoiceWF-not-possible'</param>
+                    Document.lifeCycle ==
+                    'Denied' ? (Document.type == 'Invoice' ?
+                    'Athento.StartMassiveInvoiceWF-individual' :
+                    'Athento.StartMassiveInvoiceWF-not-possible')</param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
         </chain>
