@@ -112,6 +112,15 @@
 			</filters>
 		</handler>
 
+		<handler chainId="Expenses-userInfo">
+			<event>beforeDocumentModification</event>
+			<event>aboutToCreate</event>
+			<filters>
+				<doctype>Expenses</doctype>
+				<attribute>Regular Document</attribute>
+			</filters>
+		</handler>
+
 		<handler chainId="Opd-assignID">
 			<event>documentCreated</event>
 			<filters>

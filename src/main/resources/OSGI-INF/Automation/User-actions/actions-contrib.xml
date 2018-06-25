@@ -146,9 +146,25 @@
 			<filter id="filter@agencia">
 				<rule grant="true">
 					<group>administrators</group>
+					<group>Level18</group>
 					<type>TravelRequest</type>
 				</rule>
 			</filter>
+		</action>
+
+		<action id="dashboard_user_favorites" enabled="false">
+		</action>
+
+		<action id="dashboard_user_documents" enabled="false">
+		</action>
+
+		<action id="dashboard_domain_documents" enabled="false">
+		</action>
+
+		<action id="dashboard_user_workspaces" enabled="false">
+		</action>
+
+		<action id="dashboard_user_sections" enabled="false">
 		</action>
 
 	</extension>

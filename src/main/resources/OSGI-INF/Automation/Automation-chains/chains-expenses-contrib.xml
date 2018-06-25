@@ -655,7 +655,20 @@
 
         </chain>
 
-
+        <chain id="Expenses-userInfo">
+            <operation id="Context.FetchDocument" />
+            <operation id="Context.SetVar">
+                <param type="string" name="name">office</param>
+                <param type="object" name="value">expr:Document["userFile:office"]
+                </param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">userFile:account</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:office == empty ? empty : office
+                </param>
+            </operation>
+        </chain>
 
         <!-- <chain id="Athento.expensesPerDayTravelSum">
             <operation id="Context.FetchDocument" />

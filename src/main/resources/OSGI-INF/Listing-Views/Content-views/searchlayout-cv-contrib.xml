@@ -699,6 +699,12 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
+					<widget>providerIdIntegration</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
 					<widget>subject</widget>
 				</row>
 				<row>
@@ -927,6 +933,16 @@
 				<translated>true</translated>
 				<fields>
 					<field>administrative_cv:S_FACTURA_providerid</field>
+				</fields>
+			</widget>
+
+			<widget name="providerIdIntegration" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.providerIdIntegration</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative_cv:S_FACTURA_providerIdIntegration</field>
 				</fields>
 			</widget>
 

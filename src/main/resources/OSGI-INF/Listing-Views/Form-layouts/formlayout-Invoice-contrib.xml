@@ -46,6 +46,14 @@
 						<property name="nxl_colspan_0">1</property>
 						<property name="nxl_colspan_1">1</property>
 					</properties>
+					<widget>providerIdIntegration</widget>
+					<widget>sucursal</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+						<property name="nxl_colspan_1">1</property>
+					</properties>
 					<widget>tipoDocumento</widget>
 					<widget>date</widget>
 					<widget>number</widget>
@@ -64,6 +72,12 @@
 						<property name="nxl_colspan_0">2</property>
 					</properties>
 					<widget>erpNumber</widget>
+				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">3</property>
+					</properties>
+					<widget>observations</widget>
 				</row>
 			</rows>	
 			<widget name="account" type="text">
@@ -156,6 +170,18 @@
 					<field>S_FACTURA:number</field>
 				</fields>
 			</widget>
+			<widget name="observations" type="textarea">
+				<labels>
+					<label mode="any">label.S_FACTURA.observations</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:observations</field>
+				</fields>
+				<properties widgetMode="edit">
+					<property name="required">false</property>
+				</properties>
+			</widget>
 			<widget name="providerid" type="text">
 				<labels>
 					<label mode="any">label.S_FACTURA.providerid</label>
@@ -164,6 +190,30 @@
 				<fields>
 					<field>S_FACTURA:provider</field>
 				</fields>
+			</widget>
+			<widget name="providerIdIntegration" type="text">
+				<labels>
+					<label mode="any">label.S_FACTURA.providerIdIntegration</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:providerIdIntegration</field>
+				</fields>
+			</widget>
+			<widget name="sucursal" type="selectOneDirectory">
+				<labels>
+					<label mode="any">label.S_FACTURA.sucursal</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>S_FACTURA:sucursal</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">office</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">false</property>
+					<property name="localize">false</property>
+				</properties>
 			</widget>
 			<widget name="providerAccount" type="text">
 				<labels>

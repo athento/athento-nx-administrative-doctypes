@@ -83,7 +83,7 @@
 			</category>
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
-				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-userFileHeading-travelRequest-expenses</layout>
 				<layout>layout@formlayout-expenses</layout>
 				<layout>layout@formlayout-expenses-travel</layout>
 				<layout>layout@formlayout-expenses-nontravel</layout>
@@ -92,7 +92,7 @@
 				<layout>layout@formlayout-expenses-km-others</layout>
 			</layouts>
 			<layouts mode="edit">
-				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-userFileHeading-travelRequest-expenses</layout>
 				<layout>layout@formlayout-expenses</layout>
 				<layout>layout@formlayout-expenses-total</layout>
 				<layout>layout@formlayout-expenses-travel</layout>
@@ -102,7 +102,7 @@
 				<layout>layout@formlayout-expenses-km-others</layout>
 			</layouts>
 			<layouts mode="view">
-				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-userFileHeading-travelRequest-expenses</layout>
 				<layout>layout@formlayout-expenses</layout>
 				<layout>layout@formlayout-expenses-total</layout>
 				<layout>layout@formlayout-expenses-travel</layout>
@@ -220,19 +220,19 @@
 			<default-view>view_documents</default-view>
 			<layouts mode="create">
 				<layout>layout@formlayout-travelRequest-requester_is_traveler</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-userFileHeading-travelRequest-expenses</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
 			</layouts>
 			<layouts mode="edit">
 				<layout>layout@formlayout-travelRequest-requester_is_traveler</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-userFileHeading-travelRequest-expenses</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
 			</layouts>
 			<layouts mode="view">
 				<layout>layout@formlayout-travelRequest-requester_is_traveler</layout>
-				<layout>layout@formlayout-userFileHeading</layout>
+				<layout>layout@formlayout-userFileHeading-travelRequest-expenses</layout>
 				<layout>layout@formlayout-travelRequest-traveler</layout>
 				<layout>layout@formlayout-travelRequest</layout>
 			</layouts>

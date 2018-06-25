@@ -89,36 +89,56 @@
 
         <chain id="Expenses-assignID">
             <documentation>
-                Assign ID with the following rules: NGAAAAMM-IDNUMBER-XX Checks
-                in the Document for versioning
+                Assign ID with the following rules: NG-AAMM-0000000-XX Checks in the Document for versioning
+                With:   NG as constant string
+                        AA year
+                        MM month
+                        0000000 unique ID for each year
+                        XX unique ID sufix
             </documentation>
             <operation id="Context.FetchDocument" />
-            <!-- Year. Used for uniqueness of number id AND the composition of the
-               id -->
+            <!-- Year YYYY. Used for uniqueness of number id -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">complete_year_var</param>
+                <param type="object" name="value">expr:new
+                    java.text.SimpleDateFormat("yyyy").format(Document["dc:created"].getTime())
+                </param>
+            </operation>
+            <!-- Year. Used for uniqueness of number id AND the composition of the id -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">year_var</param>
                 <param type="object" name="value">expr:new
                     java.text.SimpleDateFormat("yy").format(Document["dc:created"].getTime())
                 </param>
             </operation>
-            <!-- Month. Used for uniqueness of number id AND the composition of the
-                id -->
+            <!-- Month. Used for uniqueness of number id AND the composition of the id -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">month_var</param>
                 <param type="object" name="value">expr:new
                     java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
                 </param>
             </operation>
-            <!-- Number ID -->
+            <!-- NG unique ID for each year -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">idNumber_var</param>
-                <param type="object" name="value">expr:Document["userFile:idNumber"]
+                <param type="object" name="value">expr:Fn.getNextId("unique-ex-year-key"+complete_year_var)
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">idNumber_var</param>
+                <param type="object" name="value">expr:idNumber_var.format("%07d",Integer.valueOf(idNumber_var))
+                </param>
+            </operation>
+            <!-- NG-AAMM-0000000 full prefix -->
+            <operation id="Context.SetVar">
+                <param type="string" name="name">prefix_id_var</param>
+                <param type="object" name="value">expr:@{"NG-"+year_var+month_var+"-"+idNumber_var}
                 </param>
             </operation>
             <!-- Number, which is formatted with 2 digits -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">uniqueexnumber_var</param>
-                <param type="object" name="value">expr:Fn.getNextId("unique-ex-key"+year_var+month_var+idNumber_var)
+                <param type="object" name="value">expr:Fn.getNextId("unique-ex-key"+prefix_id_var)
                 </param>
             </operation>
             <operation id="Context.SetVar">
@@ -126,11 +146,10 @@
                 <param type="object" name="value">expr:uniqueexnumber_var.format("%02d",Integer.valueOf(uniqueexnumber_var))
                 </param>
             </operation>
-            <!-- Final variable id_var with the ID composition. Stored in both title
-                and projectid -->
+            <!-- Final variable id_var with the ID composition. Stored in both title and projectid -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{"NG-"+year_var+month_var+"-"+idNumber_var+"-"+uniqueexnumberformatted_var}
+                <param type="object" name="value">expr:@{prefix_id_var + "-" + uniqueexnumberformatted_var}
                 </param>
             </operation>
             <operation id="Document.SetProperty">
@@ -450,6 +469,8 @@
         </chain>
 
         <chain id="Athento.rememberLastDocument-update">
+            <!-- *** *** GET VALUES *** *** -->
+
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:candidates[0]</param>
             </operation>
@@ -605,6 +626,47 @@
                 </param>
             </operation>
 
+            <!-- *** Here, specific Transfer Request *** -->
+
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_personalaccount</param>
+                <param type="object" name="value">expr:Document["transferrequest:personalaccount"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_destinationname</param>
+                <param type="object" name="value">expr:Document["transferrequest:destinationname"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_idpersonalnumber</param>
+                <param type="object" name="value">expr:Document["transferrequest:idpersonalnumber"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_dueDate</param>
+                <param type="object" name="value">expr:Document["transferrequest:dueDate"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_subject</param>
+                <param type="object" name="value">expr:Document["transferrequest:subject"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">administrative_sector</param>
+                <param type="object" name="value">expr:Document["administrative:sector"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">transferrequest_cobropago</param>
+                <param type="object" name="value">expr:Document["transferrequest:cobropago"]
+                </param>
+            </operation>
+
+
+            <!-- *** *** UPDATE VALUES *** *** -->
+
             <operation id="Document.Fetch">
                 <param type="document" name="value">expr:inCreation</param>
             </operation>
@@ -746,7 +808,6 @@
 
             <!-- Here, specific Expense -->
 
-
             <operation id="Document.SetProperty">
                 <param type="string" name="xpath">administrative:expenseYear</param>
                 <param type="boolean" name="save">false</param>
@@ -790,6 +851,43 @@
                 </param>
             </operation>
 
+            <!-- *** Here, specific Transfer Request *** -->
+
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:personalaccount</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_personalaccount == empty ? empty : transferrequest_personalaccount</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:destinationname</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_destinationname == empty ? empty : transferrequest_destinationname</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:idpersonalnumber</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_idpersonalnumber == empty ? empty : transferrequest_idpersonalnumber</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:dueDate</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_dueDate == empty ? empty : transferrequest_dueDate</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:subject</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_subject == empty ? empty : transferrequest_subject</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">administrative:sector</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:administrative_sector == empty ? empty : administrative_sector</param>
+            </operation>
+            <operation id="Document.SetProperty">
+                <param type="string" name="xpath">transferrequest:cobropago</param>
+                <param type="boolean" name="save">false</param>
+                <param type="serializable" name="value">expr:transferrequest_cobropago == empty ? empty : transferrequest_cobropago</param>
+            </operation>
         </chain>
 
         <chain id="TravelRequest-Expense">
@@ -975,7 +1073,10 @@
                     'Draft' ? (Document.type == 'Invoice' ?
                     'Athento.StartMassiveInvoiceWF-individual' :
                     'Athento.StartMassiveInvoiceWF-not-possible') :
-                    'Athento.StartMassiveInvoiceWF-not-possible'</param>
+                    Document.lifeCycle ==
+                    'Denied' ? (Document.type == 'Invoice' ?
+                    'Athento.StartMassiveInvoiceWF-individual' :
+                    'Athento.StartMassiveInvoiceWF-not-possible')</param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
         </chain>

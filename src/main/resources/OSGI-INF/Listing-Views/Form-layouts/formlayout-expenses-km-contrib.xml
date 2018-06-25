@@ -131,7 +131,7 @@
 							<property name="format">#{nxu:basicDateFormatter()}</property>
 						</properties>
 					</widget>
-					<widget name="sub1" type="selectOneDirectory">
+					<widget name="sub1" type="suggestOneDirectory">
 						<labels>
 							<label mode="any">label.administrative.expenseKm.route</label>
 						</labels>
@@ -222,7 +222,7 @@
 							<mode value="any">hidden</mode>
 						</widgetModes>
 					</widget>
-					<widget name="sub7" type="double">
+					<widget name="sub7" type="currency">
 						<labels>
 							<label mode="any">label.administrative.expenseKm.expense</label>
 						</labels>

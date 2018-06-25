@@ -46,6 +46,12 @@
 				</row>
 				<row>
 					<properties mode="any">
+						<property name="nxl_colspan_0">1</property>
+					</properties>
+					<widget>transferrequest_transfernumber</widget>
+				</row>
+				<row>
+					<properties mode="any">
 						<property name="nxl_colspan_0">4</property>
 					</properties>
 					<widget>transferrequest_content</widget>
@@ -127,8 +133,8 @@
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>file:content</field>
-					<field>file:content/filename</field>
+					<field>transferrequest:fil</field>
+					<field>transferrequest:fil/filename</field>
 				</fields>
 				<properties widgetMode="any">
 					<property name="required">true</property>
@@ -206,6 +212,22 @@
 				</widgetModes>
 			</widget>
 
+			<widget name="transferrequest_transfernumber" type="text">
+				<labels>
+					<label mode="any">label.transferrequest.transfernumber</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:transfernumber</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">false</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
 			<widget name="transferrequest_destinationiban" type="text">
 				<labels>
 					<label mode="any">label.transferrequest.destinationiban</label>
@@ -263,7 +285,7 @@
 					<property name="display">table</property>
 				</properties>
 				<widgetModes>
-					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+					<mode value="edit">#{layoutValue.currentLifeCycleState !='PendingValidation'?'edit':'view'}</mode>
 				</widgetModes>
 				<subWidgets>
 					<widget name="sub0" type="text">
