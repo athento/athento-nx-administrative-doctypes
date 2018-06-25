@@ -253,11 +253,13 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 LOG.info("Expense total for travel for " + category + " with date " + date + " is " + expenseTotal);
+                LOG.info("Gasto V " + date + ", " + limitForCategory + ", " + invitedNumber + ", " + expenseTotal);
+                LOG.info("ACcum NV " + accumulated.isLimitExceeded());
                 if (accumulated.hasExpense(date, category)) {
                     Expense currentExpense = accumulated.getExpense(date, category);
                     double subtotal = currentExpense.getTotal();
                     double accumulatedTotal = subtotal + expenseTotal;
-                    if (accumulatedTotal > limitForCategory) {
+                    if (limitForCategory > 0 && accumulatedTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
@@ -267,7 +269,7 @@ public class ExpensesCalculationsListener implements EventListener {
                 } else {
                     Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"));
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
-                    if (expenseTotal > limitForCategory) {
+                    if (limitForCategory > 0 && expenseTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
@@ -296,13 +298,14 @@ public class ExpensesCalculationsListener implements EventListener {
                 double expenseTotal = (Double) expense.get("expense") / invitedNumber;
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
-                LOG.info("Gasto " + date + ", " + limitForCategory + ", " + invitedNumber + ", " + expenseTotal);
+                LOG.info("Gasto NV " + category + ", " + date + ", " + limitForCategory + ", " + invitedNumber + ", " + expenseTotal);
+                LOG.info("ACcum NV " + accumulated.isLimitExceeded());
                 if (accumulated.hasExpense(date, category)) {
                     LOG.info("Expense total for Non travel for category " + category + " with date " + date + " is " + expenseTotal);
                     Expense currentExpense = accumulated.getExpense(date, category);
                     double subtotal = currentExpense.getTotal();
                     double accumulatedTotal = subtotal + expenseTotal;
-                    if (accumulatedTotal > limitForCategory) {
+                    if (limitForCategory > 0 && accumulatedTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
@@ -313,7 +316,7 @@ public class ExpensesCalculationsListener implements EventListener {
                     LOG.info("Non travel check " + expenseTotal + " > " + limitForCategory + " ?");
                     Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"));
                     currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
-                    if (expenseTotal > limitForCategory) {
+                    if (limitForCategory > 0 && expenseTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
