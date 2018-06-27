@@ -35,58 +35,6 @@
             </operation>
         </chain>
 
-        <chain id="travelRequest-assignID">
-            <documentation>
-                Assign ID with the following rules: OMAAAA/MM/XXXXXX Checks
-                in the Document for versioning
-            </documentation>
-            <operation id="Context.FetchDocument" />
-            <!-- Year. Used for uniqueness of number id AND the composition of the
-                id -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">year_var</param>
-                <param type="object" name="value">expr:new
-                    java.text.SimpleDateFormat("yy").format(Document["dc:created"].getTime())
-                </param>
-            </operation>
-            <!-- Month. Used for uniqueness of number id AND the composition of the
-                id -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">month_var</param>
-                <param type="object" name="value">expr:new
-                    java.text.SimpleDateFormat("MM").format(Document["dc:created"].getTime())
-                </param>
-            </operation>
-            <!-- Number, which is formatted with 6 digits -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">uniquetrnumber_var</param>
-                <param type="object" name="value">expr:Fn.getNextId("unique-tr-key"+year_var+month_var)
-                </param>
-            </operation>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">uniquetrnumberformatted_var</param>
-                <param type="object" name="value">expr:uniquetrnumber_var.format("%06d",Integer.valueOf(uniquetrnumber_var))
-                </param>
-            </operation>
-            <!-- Final variable id_var with the ID composition. Stored in both title
-                and projectid -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">id_var</param>
-                <param type="object" name="value">expr:@{"OM-"+year_var+month_var+"-"+uniquetrnumberformatted_var}
-                </param>
-            </operation>
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">dc:title</param>
-                <param type="boolean" name="save">true</param>
-                <param type="serializable" name="value">expr:id_var
-                </param>
-            </operation>
-            <operation id="Document.CheckIn">
-                <param type="string" name="version">0.0</param>
-            </operation>
-
-        </chain>
-
         <chain id="Expenses-assignID">
             <documentation>
                 Assign ID with the following rules: NG-AAMM-0000000-XX Checks in the Document for versioning
