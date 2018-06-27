@@ -90,7 +90,7 @@
             <!-- Number, which is formatted with 6 digits -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">uniquetrnumber_var</param>
-                <param type="object" name="value">expr:Fn.getNextId("unique-tr-approved-key"+year_var+month_var)
+                <param type="object" name="value">expr:Fn.getNextId("unique-tr-approved-key"+year_var)
                 </param>
             </operation>
             <operation id="Context.SetVar">
