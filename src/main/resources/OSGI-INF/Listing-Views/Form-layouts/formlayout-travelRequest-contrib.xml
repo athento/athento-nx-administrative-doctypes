@@ -414,7 +414,7 @@
 				</properties>
 			</widget>
 
-            <widget name="hotelsObservations" type="text">
+            <widget name="administrative_number" type="text">
                 <labels>
                     <label mode="any">Num. ERP</label>
                 </labels>
