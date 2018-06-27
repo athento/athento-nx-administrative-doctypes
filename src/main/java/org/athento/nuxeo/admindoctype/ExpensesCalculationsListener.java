@@ -178,6 +178,10 @@ public class ExpensesCalculationsListener implements EventListener {
                     lavanderiaTravel += total;
                     doc.setPropertyValue("administrative:expenseLavanderiaTravelTotal", lavanderiaTravel);
                 }
+                if ("300".equals(expense.getCategory())) {
+                    lavanderiaTravel += total;
+                    doc.setPropertyValue("administrative:expenseOthersTravelTotal", lavanderiaTravel);
+                }
             } else if (NONTRAVEL_PARENT_CATEGORY.equals(expense.getParentCategory())) {
                 nonTravelTotal += total;
                 if ("102".equals(expense.getCategory())) {
@@ -215,6 +219,10 @@ public class ExpensesCalculationsListener implements EventListener {
                 if ("208".equals(expense.getCategory())) {
                     lavanderiaNonTravel += total;
                     doc.setPropertyValue("administrative:expenseLavanderiaNonTravelTotal", lavanderiaNonTravel);
+                }
+                if ("300".equals(expense.getCategory())) {
+                    lavanderiaNonTravel += total;
+                    doc.setPropertyValue("administrative:expenseOthersNonTravelTotal", lavanderiaNonTravel);
                 }
             } else if (KMS_PARENT_CATEGORY.equals(expense.getParentCategory())) {
                 kmsTotal += total;

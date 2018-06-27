@@ -105,7 +105,7 @@
 					<widget></widget>
 					<widget>expenseInvitacionTercersoInternacionalTravelTotal</widget>
 					<widget></widget>
-					<widget>expenseCombustibleNonTravelTotal</widget>
+					<widget></widget>
 				</row>
                 <row>
                     <properties mode="any">
@@ -117,7 +117,7 @@
                     <widget></widget>
                     <widget>expenseBilletesTransporteTravelTotal</widget>
                     <widget></widget>
-                    <widget>expenseTelefonoNonTravelTotal</widget>
+                    <widget></widget>
                 </row>
                 <row>
                     <properties mode="any">
@@ -129,7 +129,7 @@
                     <widget></widget>
                     <widget>expensePeajeTravelTotal</widget>
                     <widget></widget>
-                    <widget>expenseInternetNonTravelTotal</widget>
+                    <widget></widget>
                 </row>
                 <row>
                     <properties mode="any">
@@ -141,7 +141,7 @@
                     <widget></widget>
                     <widget>expenseParkingTravelTotal</widget>
                     <widget></widget>
-                    <widget>expenseLavanderiaNonTravelTotal</widget>
+                    <widget></widget>
                 </row>
                 <row>
                     <properties mode="any">
@@ -153,12 +153,12 @@
                     <widget></widget>
                     <widget>expenseTaxisTravelTotal</widget>
                     <widget></widget>
-                    <widget></widget>
+                    <widget>expenseOthersNonTravelTotal</widget>
                 </row>
                 <row>
                     <properties mode="any">
                         <property name="nxl_colspan_0">2</property>
-                        <property name="nxl_colspan_1">2</property>
+						<widget>expenseOthersTravelTotal</widget>
                         <property name="nxl_colspan_2">2</property>
                         <property name="nxl_colspan_3">2</property>
                     </properties>
@@ -539,6 +539,42 @@
                     <mode value="create">hidden</mode>
                 </widgetModes>
             </widget>
+			<widget name="expenseOthersTravelTotal" type="currency">
+				<labels>
+					<label mode="any">label.administrative.expenseOthersTravelTotal</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:expenseOthersTravelTotal</field>
+				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
+			<widget name="expenseOthersNonTravelTotal" type="currency">
+				<labels>
+					<label mode="any">label.administrative.expenseOthersNonTravelTotal</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:expenseOthersNonTravelTotal</field>
+				</fields>
+				<properties widgetMode="view">
+					<property name="type">currency</property>
+					<property name="minFractionDigits">2</property>
+					<property name="currencySymbol">€</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">view</mode>
+					<mode value="create">hidden</mode>
+				</widgetModes>
+			</widget>
 			<widget name="administrative_expenseKmTotal" type="currency">
 				<labels>
 					<label mode="any">label.administrative.expenseKmTotal</label>
