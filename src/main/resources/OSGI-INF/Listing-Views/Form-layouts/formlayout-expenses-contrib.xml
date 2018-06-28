@@ -44,6 +44,12 @@
 					</properties>
 					<widget>administrative_expenseDescription</widget>
 				</row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">8</property>
+					</properties>
+					<widget>administrative_number</widget>
+				</row>
 			</rows>
 			<widget name="administrative_expenseMonth" type="selectOneDirectory">
 				<labels>
@@ -113,6 +119,18 @@
 				<fields>
 					<field>administrative:expenseDescription</field>
 				</fields>
+			</widget>
+			<widget name="administrative_number" type="text">
+				<labels>
+					<label mode="any">ERP Number</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>administrative:number</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="required">false</property>
+				</properties>
 			</widget>
 		</layout>
 

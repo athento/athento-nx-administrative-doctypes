@@ -84,7 +84,7 @@
             <!-- Office. Used for the composition of the id -->
             <operation id="Context.SetVar">
                 <param type="string" name="name">office_var</param>
-                <param type="object" name="value">expr:Document["administrative:travel_company"] == empty ?
+                <param type="object" name="value">expr:Document["administrative:company"] == empty ?
                 "0" : Document["administrative:travel_company"]</param>
             </operation>
             <!-- Number, which is formatted with 6 digits -->
@@ -147,7 +147,7 @@
                 </param>
             </operation>
             <operation id="Document.SetProperty">
-                <param type="string" name="xpath">administrative:travel_company</param>
+                <param type="string" name="xpath">administrative:company</param>
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:company_var
                 </param>

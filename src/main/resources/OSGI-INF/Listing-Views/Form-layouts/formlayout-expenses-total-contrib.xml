@@ -105,7 +105,7 @@
 					<widget></widget>
 					<widget>expenseInvitacionTercersoInternacionalTravelTotal</widget>
 					<widget></widget>
-					<widget></widget>
+					<widget>expenseOthersNonTravelTotal</widget>
 				</row>
                 <row>
                     <properties mode="any">
@@ -153,12 +153,12 @@
                     <widget></widget>
                     <widget>expenseTaxisTravelTotal</widget>
                     <widget></widget>
-                    <widget>expenseOthersNonTravelTotal</widget>
+					<widget></widget>
                 </row>
                 <row>
                     <properties mode="any">
                         <property name="nxl_colspan_0">2</property>
-						<widget>expenseOthersTravelTotal</widget>
+						<property name="nxl_colspan_1">2</property>
                         <property name="nxl_colspan_2">2</property>
                         <property name="nxl_colspan_3">2</property>
                     </properties>
@@ -167,6 +167,18 @@
                     <widget></widget>
                     <widget></widget>
                 </row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_1">2</property>
+						<property name="nxl_colspan_2">2</property>
+						<property name="nxl_colspan_3">2</property>
+					</properties>
+					<widget></widget>
+					<widget>expenseOthersTravelTotal</widget>
+					<widget></widget>
+					<widget></widget>
+				</row>
                 <row>
                     <properties mode="any">
                         <property name="nxl_colspan_0">2</property>
@@ -203,6 +215,18 @@
                     <widget></widget>
                     <widget></widget>
                 </row>
+				<row>
+					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+						<property name="nxl_colspan_1">2</property>
+						<property name="nxl_colspan_2">2</property>
+						<property name="nxl_colspan_3">2</property>
+					</properties>
+					<widget></widget>
+					<widget>expenseOthersTravelTotal</widget>
+					<widget></widget>
+					<widget></widget>
+				</row>
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">4</property>
