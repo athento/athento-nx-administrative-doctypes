@@ -718,7 +718,7 @@
                 <param type="boolean" name="save">false</param>
                 <param type="serializable" name="value">expr:administrative_sector == empty ? empty : administrative_sector</param>
             </operation>
-            
+
         </chain>
 
         <chain id="TravelRequest-Expense">

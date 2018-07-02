@@ -39,7 +39,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_carkmcost</table>
 			<dataFile>data/vocabularies/carkmcost.csv</dataFile>
 		</directory>
@@ -51,7 +51,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_carowner</table>
 			<dataFile>data/vocabularies/carowner.csv</dataFile>
 		</directory>
@@ -63,7 +63,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_cobropago</table>
 			<dataFile>data/vocabularies/cobropago.csv</dataFile>
 		</directory>
@@ -111,7 +111,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_courseexp</table>
 			<dataFile>data/vocabularies/courseexp.csv</dataFile>
 		</directory>
@@ -123,7 +123,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_courseloc</table>
 			<dataFile>data/vocabularies/courseloc.csv</dataFile>
 		</directory>
@@ -159,7 +159,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_expenseCat</table>
 			<dataFile>data/vocabularies/expenseCat.csv</dataFile>
 		</directory>
@@ -231,7 +231,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_office</table>
 			<dataFile>data/vocabularies/office.csv</dataFile>
 		</directory>
@@ -243,7 +243,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_officenat</table>
 			<dataFile>data/vocabularies/officenat.csv</dataFile>
 		</directory>
@@ -435,7 +435,7 @@
             <cacheMaxSize>1000</cacheMaxSize>
             <idField>id</idField>
             <autoincrementIdField>false</autoincrementIdField>
-            <createTablePolicy>always</createTablePolicy>
+            <createTablePolicy>on_missing_columns</createTablePolicy>
             <table>vocabulary_expenseexention</table>
             <dataFile>data/vocabularies/expenseexention.csv</dataFile>
         </directory>
@@ -447,7 +447,7 @@
 			<cacheMaxSize>1000</cacheMaxSize>
 			<idField>id</idField>
 			<autoincrementIdField>false</autoincrementIdField>
-			<createTablePolicy>always</createTablePolicy>
+			<createTablePolicy>on_missing_columns</createTablePolicy>
 			<table>vocabulary_expenselimits</table>
 			<dataFile>data/vocabularies/expenselimits.csv</dataFile>
 		</directory>

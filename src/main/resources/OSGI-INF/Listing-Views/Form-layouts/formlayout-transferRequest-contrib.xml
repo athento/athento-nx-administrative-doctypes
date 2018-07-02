@@ -224,7 +224,11 @@
 					<property name="required">false</property>
 				</properties>
 				<widgetModes>
-					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?
+					'edit' : currentUser.isMemberOf("Tesoreria - Madrid") ?
+					'edit' : currentUser.isMemberOf("Tesoreria - Barcelona") ?
+					'edit' : currentUser.isMemberOf("Tesoreria - Levante") ?
+					'edit' : layoutValue.currentLifeCycleState !='PendingValidation'? 'edit':'view'}</mode>
 				</widgetModes>
 			</widget>
 
