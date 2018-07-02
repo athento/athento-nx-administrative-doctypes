@@ -24,10 +24,10 @@
 				<condition>document.currentLifeCycleState == "NoFinished"</condition>
 				<condition>document.currentLifeCycleState == "Validated"</condition>
 				<condition>document.currentLifeCycleState == "PendingValidation"</condition>
-				<condition>#{currentDocument.S_FACTURA.type == 'Emitidas'}</condition>
+				<!--<condition>#{currentDocument.S_FACTURA.type == 'Emitidas'}</condition>
 				<condition>#{currentDocument.S_FACTURA.type == '02'}</condition>
 				<condition>#{currentDocument.S_FACTURA.type == 'label.factura.issuedinvoices'}</condition>
-				<!--<condition>#{currentDocument.projectFile.category == '01'}</condition>-->
+				<condition>#{currentDocument.projectFile.category == '01'}</condition>-->
 				<condition>document.isImmutable() || document.isProxy()</condition>
 			</rule>
 		</filter>
