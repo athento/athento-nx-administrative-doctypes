@@ -101,7 +101,7 @@
 					<property name="format">#{nxu:basicDateFormatter()}</property>
 				</properties>
 			</widget>
-			<widget name="assignedTo" type="selectOneDirectory">
+			<widget name="assignedTo" type="singleUserSuggestion">
 				<labels>
 					<label mode="any">label.S_FACTURA.assignedTo</label>
 				</labels>
@@ -110,25 +110,19 @@
 					<field>S_FACTURA:assignedTo</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="localize">true</property>
-					<property name="directoryName">pivot_users</property>
-					<property name="ordering">ordering</property>
-					<property name="displayIdAndLabel">true</property>
+					<property name="groupRestriction">invoiceValidators</property>
 				</properties>
 			</widget>
-			<widget name="assignedToSecond" type="selectOneDirectory">
+			<widget name="assignedToSecond" type="singleUserSuggestion">
 				<labels>
 					<label mode="any">Segunda validacion</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>S_FACTURA:assignedToSecondVocabulary</field>
+					<field>S_FACTURA:assignedToSecond</field>
 				</fields>
 				<properties widgetMode="any">
-					<property name="localize">true</property>
-					<property name="directoryName">pivot_users</property>
-					<property name="ordering">ordering</property>
-					<property name="displayIdAndLabel">true</property>
+					<property name="groupRestriction">ValidadoresFacturas2</property>
 				</properties>
 			</widget>
 			<widget name="companyid" type="text">
