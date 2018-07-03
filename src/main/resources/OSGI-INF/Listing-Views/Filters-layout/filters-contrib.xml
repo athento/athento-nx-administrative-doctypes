@@ -9,30 +9,24 @@
 		point="filters">
 
 		<filter id="filter@wf@ParallelDocumentReview" append="true">
-			<rule grant="true">
-				<permission>ReadWrite</permission>
-				<type>PaymentOrder</type>
-			</rule>
 			<rule grant="false">
-				<condition>document.isImmutable()</condition>
+				<!--<condition>document.isImmutable()</condition>-->
 				<type>Opd</type>
 				<type>TransferRequest</type>
 				<type>Expense</type>
 				<type>TravelRequest</type>
+				<type>Invoice</type>
 			</rule>
 		</filter>
 
 		<filter id="filter@SerialDocumentReview" append="true">
-			<rule grant="true">
-				<permission>ReadWrite</permission>
-				<type>PaymentOrder</type>
-			</rule>
 			<rule grant="false">
-				<condition>document.isImmutable()</condition>
+				<!--<condition>document.isImmutable()</condition>-->
 				<type>Opd</type>
 				<type>TransferRequest</type>
 				<type>Expense</type>
 				<type>TravelRequest</type>
+				<type>Invoice</type>
 			</rule>
 		</filter>
 
