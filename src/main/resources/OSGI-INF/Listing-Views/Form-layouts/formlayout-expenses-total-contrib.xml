@@ -475,7 +475,7 @@
 			</widget>
 			<widget name="expenseTaxisTravelTotal" type="currency">
 				<labels>
-					<label mode="any">label.administrative.expenseRestaurantNonTravelTotal</label>
+					<label mode="any">label.administrative.expenseTaxisTravelTotal</label>
 				</labels>
 				<translated>true</translated>
 				<fields>

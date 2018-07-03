@@ -257,6 +257,9 @@ public class ExpensesCalculationsListener implements EventListener {
                 String category = (String) expense.get("category");
                 double limitForCategory = getLimitForCategory(category);
                 double invitedNumber = (Double) expense.get("invitedNumber");
+                if (invitedNumber == 0) {
+                    invitedNumber = 1;
+                }
                 double expenseTotal = (Double) expense.get("expense") / invitedNumber;
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
@@ -303,6 +306,9 @@ public class ExpensesCalculationsListener implements EventListener {
                 String category = (String) expense.get("category");
                 double limitForCategory = getLimitForCategory(category);
                 double invitedNumber = (Double) expense.get("invitedNumber");
+                if (invitedNumber == 0) {
+                    invitedNumber = 1;
+                }
                 double expenseTotal = (Double) expense.get("expense") / invitedNumber;
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
