@@ -85,7 +85,7 @@
             <operation id="Context.SetVar">
                 <param type="string" name="name">office_var</param>
                 <param type="object" name="value">expr:Document["administrative:company"] == empty ?
-                "0" : Document["administrative:travel_company"]</param>
+                "0" : Document["administrative:company"]</param>
             </operation>
             <!-- Number, which is formatted with 6 digits -->
             <operation id="Context.SetVar">
