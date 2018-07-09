@@ -12,11 +12,13 @@ public class Expense implements Serializable {
     String date;
     String category;
     double total = 0.0;
+    double totalNormalized = 0.0;
 
-    public Expense(String date, String category, double total) {
+    public Expense(String date, String category, double total, double totalNormalized) {
         this.date = date;
         this.category = category;
         this.total = total;
+        this.totalNormalized = totalNormalized;
     }
 
     public String getParentCategory() {
@@ -51,12 +53,21 @@ public class Expense implements Serializable {
         this.total = total;
     }
 
+    public double getTotalNormalized() {
+        return totalNormalized;
+    }
+
+    public void setTotalNormalized(double totalNormalized) {
+        this.totalNormalized = totalNormalized;
+    }
+
     @Override
     public String toString() {
         return "Expense{" +
                 "date='" + date + '\'' +
                 ", category='" + category + '\'' +
                 ", total=" + total +
+                ", total normalized=" + totalNormalized +
                 '}';
     }
 }

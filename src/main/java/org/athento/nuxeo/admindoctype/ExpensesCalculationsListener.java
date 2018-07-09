@@ -268,17 +268,17 @@ public class ExpensesCalculationsListener implements EventListener {
                 LOG.info("ACcum NV " + accumulated.isLimitExceeded());
                 if (accumulated.hasExpense(date, category)) {
                     Expense currentExpense = accumulated.getExpense(date, category);
-                    double subtotal = currentExpense.getTotal();
-                    double accumulatedTotal = subtotal + expenseTotal;
+                    double subtotalNormalized = currentExpense.getTotalNormalized();
+                    double accumulatedTotal = subtotalNormalized + expenseTotal;
                     if (limitForCategory > 0 && accumulatedTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
-                    currentExpense = new Expense(date, category, (Double) expense.get("expense"));
+                    currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     accumulated.add(currentExpense);
                 } else {
-                    Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"));
+                    Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     if (limitForCategory > 0 && expenseTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
@@ -317,18 +317,18 @@ public class ExpensesCalculationsListener implements EventListener {
                 if (accumulated.hasExpense(date, category)) {
                     LOG.info("Expense total for Non travel for category " + category + " with date " + date + " is " + expenseTotal);
                     Expense currentExpense = accumulated.getExpense(date, category);
-                    double subtotal = currentExpense.getTotal();
-                    double accumulatedTotal = subtotal + expenseTotal;
+                    double subtotalNormalized = currentExpense.getTotalNormalized();
+                    double accumulatedTotal = subtotalNormalized + expenseTotal;
                     if (limitForCategory > 0 && accumulatedTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
-                    currentExpense = new Expense(date, category, (Double) expense.get("expense"));
+                    currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
                     currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     accumulated.add(currentExpense);
                 } else {
                     LOG.info("Non travel check " + expenseTotal + " > " + limitForCategory + " ?");
-                    Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"));
+                    Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
                     currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
                     if (limitForCategory > 0 && expenseTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
@@ -369,7 +369,7 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 LOG.info("Expense total for Km others with date " + date + " is " + expenseTotal);
-                Expense currentExpense = new Expense(date, car, expenseTotal);
+                Expense currentExpense = new Expense(date, car, expenseTotal, expenseTotal);
                 currentExpense.setParentCategory(KMS_PARENT_CATEGORY);
                 // Add expense to accumulated
                 accumulated.add(currentExpense);
@@ -411,7 +411,7 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 LOG.info("Expense total for Km red secundaria with date " + date + " is " + expenseTotal);
-                Expense currentExpense = new Expense(date, car, expenseTotal);
+                Expense currentExpense = new Expense(date, car, expenseTotal, expenseTotal);
                 currentExpense.setParentCategory(KMS_PARENT_CATEGORY);
                 // Add expense to accumulated
                 accumulated.add(currentExpense);
@@ -454,7 +454,7 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 LOG.info("Expense total for Km red secundaria with date " + date + " is " + expenseTotal);
-                Expense currentExpense = new Expense(date, car, expenseTotal);
+                Expense currentExpense = new Expense(date, car, expenseTotal, expenseTotal);
                 currentExpense.setParentCategory(KMS_PARENT_CATEGORY);
                 // Add expense to accumulated
                 accumulated.add(currentExpense);
