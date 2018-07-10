@@ -41,7 +41,7 @@
         jQuery(document).ready(function() {
            jQuery('#document_create').initSafeEditOnForm("create-#{currentDocument.id}-#{changeableDocument.type}", "#{messages['safeedit.page.has.unsaved.changes']}");
         });
-        jQuery('input[type="submit"]').click(function(e) {
+        jQuery('#document_create\\:nxw_documentCreateButtons_CREATE_DOCUMENT').click(function(e) {
            var ignoreSubmit = false;
            var trs = jQuery('.required').closest('td');
            jQuery(trs).each(function() {
