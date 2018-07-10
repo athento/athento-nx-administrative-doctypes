@@ -42,17 +42,19 @@
            jQuery('#document_create').initSafeEditOnForm("create-#{currentDocument.id}-#{changeableDocument.type}", "#{messages['safeedit.page.has.unsaved.changes']}");
         });
         jQuery('input[type="submit"]').click(function(e) {
-           let ignoreSubmit = false;
-           var v = jQuery("span:contains('Gastos No Viajes')").closest('.dataInput');
-           jQuery(v).find('input[type="text"], select, input:radio:checked').each(function() {
-               var input = jQuery(this);
-               if (input.val() === "" || input.val() === "none" || input.val() === 'keep') {
-                  var label = input.closest('tr').find('td.boldColumn').find('span').text();
-                  if (label === "") label = "Seleccione subir en el adjunto";
-                  else label = label + " debe ser completado en Gastos No Viajes";
-                  alert(label);
-                  ignoreSubmit = true;
-               }
+           var ignoreSubmit = false;
+           var trs = jQuery('.required').closest('td');
+           jQuery(trs).each(function() {
+               jQuery(this).next().find('input[type="text"],select').each(function() {
+                  var input = jQuery(this);
+                  if (input.val() === "") {
+                     var label = input.closest('tr').find('span').first().text();
+                     if (label === "") label = "Compruebe los campos obligatorios, por favor";
+                     else label = label + " debe ser completado";
+                     alert(label);
+                     ignoreSubmit = true;
+                  }
+               });
            });
            if (ignoreSubmit) return false;
          });
