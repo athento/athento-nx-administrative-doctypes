@@ -263,21 +263,26 @@ public class ExpensesCalculationsListener implements EventListener {
                 double expenseTotal = (Double) expense.get("expense") / invitedNumber;
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
-                LOG.info("Expense total for travel for " + category + " with date " + date + " is " + expenseTotal);
-                LOG.info("Gasto V " + date + ", " + limitForCategory + ", " + invitedNumber + ", " + expenseTotal);
-                LOG.info("ACcum NV " + accumulated.isLimitExceeded());
+                LOG.info("Gasto V " + category + ", " + date + ", " + limitForCategory + ", " + invitedNumber + ", " + expenseTotal);
                 if (accumulated.hasExpense(date, category)) {
+                    LOG.info("Expense total for travel for category " + category + " with date " + date + " is " + expenseTotal);
                     Expense currentExpense = accumulated.getExpense(date, category);
                     double subtotalNormalized = currentExpense.getTotalNormalized();
                     double accumulatedTotal = subtotalNormalized + expenseTotal;
+                    LOG.info("Accum V total: " + accumulatedTotal + ", Limit: " + limitForCategory + "?");
                     if (limitForCategory > 0 && accumulatedTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
-                    currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
+                    double totalAcc = (Double) expense.get("expense");
+                    totalAcc = totalAcc + currentExpense.getTotal();
+                    double totalNormalizedAcc = expenseTotal;
+                    totalNormalizedAcc = totalNormalizedAcc + currentExpense.getTotalNormalized();
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
-                    accumulated.add(currentExpense);
+                    currentExpense.setTotal(totalAcc);
+                    currentExpense.setTotalNormalized(totalNormalizedAcc);
                 } else {
+                    LOG.info("Travel check " + expenseTotal + " > " + limitForCategory + " ?");
                     Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
                     currentExpense.setParentCategory(TRAVEL_PARENT_CATEGORY);
                     if (limitForCategory > 0 && expenseTotal > limitForCategory) {
@@ -286,6 +291,7 @@ public class ExpensesCalculationsListener implements EventListener {
                     }
                     accumulated.add(currentExpense);
                 }
+                LOG.info("ACcum V " + accumulated.isLimitExceeded());
             }
         }
     }
@@ -313,19 +319,23 @@ public class ExpensesCalculationsListener implements EventListener {
                 // Manage date
                 String date = Utils.getStringDate(expenseDate);
                 LOG.info("Gasto NV " + category + ", " + date + ", " + limitForCategory + ", " + invitedNumber + ", " + expenseTotal);
-                LOG.info("ACcum NV " + accumulated.isLimitExceeded());
                 if (accumulated.hasExpense(date, category)) {
                     LOG.info("Expense total for Non travel for category " + category + " with date " + date + " is " + expenseTotal);
                     Expense currentExpense = accumulated.getExpense(date, category);
                     double subtotalNormalized = currentExpense.getTotalNormalized();
                     double accumulatedTotal = subtotalNormalized + expenseTotal;
+                    LOG.info("Accum NV total check: " + accumulatedTotal + ", Limit: " + limitForCategory + "?");
                     if (limitForCategory > 0 && accumulatedTotal > limitForCategory) {
                         accumulated.setLimitExceeded(true);
                         accumulated.setLimitExceededExpense(currentExpense);
                     }
-                    currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
+                    double totalAcc = (Double) expense.get("expense");
+                    totalAcc = totalAcc + currentExpense.getTotal();
+                    double totalNormalizedAcc = expenseTotal;
+                    totalNormalizedAcc = totalNormalizedAcc + currentExpense.getTotalNormalized();
                     currentExpense.setParentCategory(NONTRAVEL_PARENT_CATEGORY);
-                    accumulated.add(currentExpense);
+                    currentExpense.setTotal(totalAcc);
+                    currentExpense.setTotalNormalized(totalNormalizedAcc);
                 } else {
                     LOG.info("Non travel check " + expenseTotal + " > " + limitForCategory + " ?");
                     Expense currentExpense = new Expense(date, category, (Double) expense.get("expense"), expenseTotal);
@@ -336,6 +346,7 @@ public class ExpensesCalculationsListener implements EventListener {
                     }
                     accumulated.add(currentExpense);
                 }
+                LOG.info("ACcum NV " + accumulated.isLimitExceeded());
             }
         }
     }
