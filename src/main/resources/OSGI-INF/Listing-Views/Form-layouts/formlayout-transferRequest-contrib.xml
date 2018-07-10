@@ -47,10 +47,8 @@
 				<row>
 					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
-                        <property name="nxl_colspan_1">1</property>
 					</properties>
 					<widget>transferrequest_transfernumber</widget>
-                    <widget>transferrequest_pagado</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -233,27 +231,6 @@
 					'edit' : layoutValue.currentLifeCycleState !='PendingValidation'? 'edit':'view'}</mode>
 				</widgetModes>
 			</widget>
-
-            <widget name="transferrequest_pagado" type="checkbox">
-                <labels>
-                    <label mode="any">Pagado</label>
-                </labels>
-                <translated>true</translated>
-                <fields>
-                    <field>transferrequest:pagado</field>
-                </fields>
-                <properties widgetMode="any">
-                    <property name="required">false</property>
-                </properties>
-                <widgetModes>
-                    <mode value="edit">#{layoutValue.currentLifeCycleState =='Draft' ?
-					'xxx' : currentUser.isMemberOf("Tesoreria - Madrid") ?
-					'edit' : currentUser.isMemberOf("Tesoreria - Barcelona") ?
-					'edit' : currentUser.isMemberOf("Tesoreria - Levante") ?
-					'edit' : layoutValue.currentLifeCycleState !='PendingValidation'? 'edit':'view'}</mode>
-                    <mode value="create">hidden</mode>
-                </widgetModes>
-            </widget>
 
 			<widget name="transferrequest_destinationiban" type="text">
 				<labels>

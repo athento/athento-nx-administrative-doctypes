@@ -63,7 +63,6 @@
   <xs:element name="totalInput" type="xs:double" />
   <xs:element name="totalOutput" type="xs:double" />
   <xs:element name="fil" type="nxs:content" />
-  <xs:element name="pagado" type="xs:boolean" />
 
   
 </xs:schema>
