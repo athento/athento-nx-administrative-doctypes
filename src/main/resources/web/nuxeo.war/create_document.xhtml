@@ -38,26 +38,42 @@
                 </div>
             </h:form>
             <script>
+            //<![CDATA[
         jQuery(document).ready(function() {
            jQuery('#document_create').initSafeEditOnForm("create-#{currentDocument.id}-#{changeableDocument.type}", "#{messages['safeedit.page.has.unsaved.changes']}");
         });
+
         jQuery('#document_create\\:nxw_documentCreateButtons_CREATE_DOCUMENT').click(function(e) {
            var ignoreSubmit = false;
-           var trs = jQuery('.required').closest('td');
-           jQuery(trs).each(function() {
-               jQuery(this).next().find('input[type="text"],select').each(function() {
+           try {
+             var trs = jQuery('.required').closest('td');
+             jQuery(trs).each(function() {
+               jQuery(this).next().find('input[type="text"],input:hidden,select').each(function() {
                   var input = jQuery(this);
-                  if (input.val() === "") {
-                     var label = input.closest('tr').find('span').first().text();
-                     if (label === "") label = "Compruebe los campos obligatorios, por favor";
-                     else label = label + " debe ser completado";
-                     alert(label);
-                     ignoreSubmit = true;
+                  var iid = input.attr('id');
+                  var iclass= input.attr('class');
+                  if (!startsWith(iclass, 'select2'))
+                    if (input.val() === "" && (iid && (iid.indexOf('s2') != 0 || endsWith(iid,'_select2')))) {
+                      var label = input.closest('tr').find('span').first().text();
+                      if (label === "") label = "Compruebe los campos obligatorios, por favor";
+                      else label = label + " debe ser completado";
+                      alert(label);
+                      ignoreSubmit = true;
                   }
                });
-           });
+             });
+           } catch (err) {
+             console.log("Unable to control required fields: " + err.message);
+           }
            if (ignoreSubmit) return false;
          });
+         function startsWith(str, prefix) {
+             return str && str.indexOf(prefix) == 0;
+         }
+         function endsWith(str, suffix) {
+             return str.indexOf(suffix, str.length - suffix.length) !== -1;
+         }
+         //]]>
      </script>
         </div>
     </ui:define>
