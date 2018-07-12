@@ -1,0 +1,70 @@
+<ui:composition
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:c="http://java.sun.com/jstl/core"
+  xmlns:nxh="http://nuxeo.org/nxweb/html"
+  xmlns:nxu="http://nuxeo.org/nxweb/util"
+  xmlns:nxl="http://nuxeo.org/nxforms/layout">
+
+<ui:include src="/incl/safeEdit.xhtml"/>
+
+<h:form enctype="multipart/form-data" id="document_edit" styleClass="safeEditEnabled" >
+
+  <script>
+    jQuery(document).ready(function() {
+      jQuery('#document_edit').focusFirst();
+    });
+  </script>
+
+  <nxl:documentLayout mode="edit" value="#{currentDocument}" />
+
+  <nxl:layout name="document_edit_form_options"
+    mode="edit" value="#{currentDocument}" />
+
+  <div class="buttonsGadget">
+   <nxl:widget name="documentEditButtons" mode="view" value="#{currentDocument}" />
+  </div>
+
+  <script>
+    //<![CDATA[
+    jQuery(document).ready(function() {
+      jQuery('#document_edit').initSafeEditOnForm("#{currentDocument.id}", "#{messages['safeedit.page.has.unsaved.changes']}");
+    });
+    jQuery('#document_edit\\:nxw_documentEditButtons_EDIT_CURRENT_DOCUMENT').click(function(e) {
+           var ignoreSubmit = false;
+           try {
+             var trs = jQuery('.required').closest('td');
+             jQuery(trs).each(function() {
+               var l = jQuery(this);
+               jQuery(this).next().find('input[type="text"],input:hidden,select').each(function() {
+                  var input = jQuery(this);
+                  var iid = input.attr('id');
+                  var iclass= input.attr('class');
+                  if (!startsWith(iclass, 'select2'))
+                    if (input.val() === "" && (iid && (iid.indexOf('s2') != 0 || endsWith(iid,'_select2')))) {
+                      var label = l.text().trim();
+                      if (label === "") label = "Compruebe los campos obligatorios, por favor";
+                      else label = label + " debe ser completado";
+                      alert(label);
+                      ignoreSubmit = true;
+                  }
+               });
+             });
+           } catch (err) {
+             console.log("Unable to control required fields: " + err.message);
+           }
+           if (ignoreSubmit) return false;
+         });
+         function startsWith(str, prefix) {
+             return str && str.indexOf(prefix) == 0;
+         }
+         function endsWith(str, suffix) {
+             return str.indexOf(suffix, str.length - suffix.length) !== -1;
+         }
+         //]]>
+  </script>
+
+</h:form>
+
+</ui:composition>
