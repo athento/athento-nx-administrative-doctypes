@@ -48,13 +48,14 @@
            try {
              var trs = jQuery('.required').closest('td');
              jQuery(trs).each(function() {
+               var l = jQuery(this);
                jQuery(this).next().find('input[type="text"],input:hidden,select').each(function() {
                   var input = jQuery(this);
                   var iid = input.attr('id');
                   var iclass= input.attr('class');
                   if (!startsWith(iclass, 'select2'))
                     if (input.val() === "" && (iid && (iid.indexOf('s2') != 0 || endsWith(iid,'_select2')))) {
-                      var label = input.closest('tr').find('span').first().text();
+                      var label = l.text().trim();
                       if (label === "") label = "Compruebe los campos obligatorios, por favor";
                       else label = label + " debe ser completado";
                       alert(label);
@@ -74,7 +75,7 @@
              return str.indexOf(suffix, str.length - suffix.length) !== -1;
          }
          //]]>
-     </script>
+            </script>
         </div>
     </ui:define>
 
