@@ -25,7 +25,7 @@
 				</row>
 			</rows>
 
-			<widget name="requesterIsTraveller" type="dynamicRendererWidget_checkbox">
+			<widget name="requesterIsTraveller" type="dynamicRendererWidget_traveler_checkbox">
 				<labels>
 					<label mode="any">label.administrative.requesterIsTraveller</label>
 				</labels>
