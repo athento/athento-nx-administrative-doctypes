@@ -101,18 +101,27 @@
                     Document["dc:creator"]</param>
             </operation>
             <operation id="Athento.GetUsersByFilter">
+                <param type="string" name="filtername">username</param>
+                <param type="string" name="filtervalue">expr:dsNumber</param>
+                <param type="string" name="output">usersbyusername</param>
+            </operation>
+            <operation id="Athento.GetUsersByFilter">
                 <param type="string" name="filtername">dsNumber</param>
                 <param type="string" name="filtervalue">expr:dsNumber</param>
                 <param type="string" name="output">users</param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">usuario</param>
-                <param type="object" name="value">expr:users.isEmpty()?dsNumber:users.get(0).getPropertyValue("user:username")
+                <param type="object" name="value">expr:users.isEmpty() ?
+                    (usersbyusername.isEmpty() ? currentUser.name : usersbyusername.get(0).getPropertyValue("user:username"))
+                    : users.get(0).getPropertyValue("user:username")
                 </param>
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">manager</param>
-                <param type="object" name="value">expr:users.isEmpty()?dsNumber:users.get(0).getPropertyValue("user:manager")
+                <param type="object" name="value">expr:users.isEmpty() ?
+                    (usersbyusername.isEmpty() ? currentUser.name : usersbyusername.get(0).getPropertyValue("user:manager"))
+                    : users.get(0).getPropertyValue("user:manager")
                 </param>
             </operation>
             <operation id="Context.SetVar">
