@@ -952,7 +952,8 @@
             <operation id="Context.RunOperation">
                 <param type="string" name="id">expr:Document.type == 'TransferRequest' ?
                     'TransferRequest-assignID-approved' :
-                    (Document.type == 'Opd' ? 'Opd-assignID-approved' : 'voidChain')
+                    (Document.type == 'Opd' ? 'Opd-assignID-approved' :
+                    (Document.type == 'Expenses' ? 'Expenses-assignID-approved' : 'voidChain'))
                 </param>
                 <param type="boolean" name="isolate">false</param>
             </operation>
