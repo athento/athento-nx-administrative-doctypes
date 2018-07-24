@@ -226,19 +226,13 @@
 
             <!-- Variable which holds the sum of all the amounts specified in transferrequest:input -->
             <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumTRInput</param>
-                <param type="integer" name="value">0</param>
-            </operation>
-
-            <!-- Variable which holds the sum of all the amounts specified in transferrequest:output -->
-            <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumTROutput</param>
+                <param type="string" name="name">totalSumTR</param>
                 <param type="integer" name="value">0</param>
             </operation>
 
             <!-- Executes an operation to sum each entry of transferRequestDataList -->
             <operation id="Context.RunOperationOnList">
-                <param type="string" name="id">Athento.tr.sumInputOrOutput</param>
+                <param type="string" name="id">Athento.tr.itemSumTR</param>
                 <param type="string" name="list">transferRequestDataList</param>
                 <param type="boolean" name="isolate">false</param>
                 <param type="string" name="item">item</param>
@@ -248,58 +242,23 @@
 
             <!--Saves totalSumTRInput property -->
             <operation id="Document.SetProperty">
-                <param type="string" name="xpath">transferrequest:totalInput</param>
+                <param type="string" name="xpath">transferrequest:amount</param>
                 <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:totalSumTRInput</param>
-            </operation>
-
-            <!--Saves totalSumTROutput property -->
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">transferrequest:totalOutput</param>
-                <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:totalSumTROutput</param>
-            </operation>
-
-            <!-- Saves difference -->
-            <operation id="Document.SetProperty">
-                <param type="string" name="xpath">administrative:difference</param>
-                <param type="boolean" name="save">false</param>
-                <param type="serializable" name="value">expr:totalSumTROutput - totalSumTRInput</param>
+                <param type="serializable" name="value">expr:totalSumTR</param>
             </operation>
 
         </chain>
 
-        <chain id="Athento.tr.sumInputOrOutput">
-            <operation id="Context.RunOperation">
-                <param type="string" name="id">
-                    expr:item.get("inputoutput") == '01' ? 'Athento.tr.itemSumTRInput' :
-                    item.get("inputoutput") == '02' ? 'Athento.tr.itemSumTROutput' : "voidChain"
-                </param>
-                <param type="boolean" name="isolate">false</param>
-            </operation>
-
-        </chain>
         <!-- Chain executed for each entry, extracts the amount of the item and sums it.-->
-        <chain id="Athento.tr.itemSumTRInput">
+        <chain id="Athento.tr.itemSumTR">
             <operation id="Context.FetchDocument"/>
             <operation id="Context.SetVar">
                 <param type="string" name="name">itemValue</param>
                 <param type="object" name="value">expr:item.get("amount")</param>
             </operation>
             <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumTRInput</param>
-                <param type="object" name="value">expr:totalSumTRInput +item.get("amount")</param>
-            </operation>
-        </chain>
-        <chain id="Athento.tr.itemSumTROutput">
-            <operation id="Context.FetchDocument"/>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">itemValue</param>
-                <param type="object" name="value">expr:item.get("amount")</param>
-            </operation>
-            <operation id="Context.SetVar">
-                <param type="string" name="name">totalSumTROutput</param>
-                <param type="object" name="value">expr:totalSumTROutput +item.get("amount")</param>
+                <param type="string" name="name">totalSumTR</param>
+                <param type="object" name="value">expr:totalSumTR +item.get("amount")</param>
             </operation>
         </chain>
 

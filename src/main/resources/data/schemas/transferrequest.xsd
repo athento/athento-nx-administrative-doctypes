@@ -63,6 +63,7 @@
   <xs:element name="ordenante" type="xs:string"/>
   <xs:element name="totalInput" type="xs:double" />
   <xs:element name="totalOutput" type="xs:double" />
+  <xs:element name="amount" type="xs:double" />
   <xs:element name="fil" type="nxs:content" />
 
   

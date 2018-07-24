@@ -42,6 +42,11 @@
                 </param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">isRME_var</param>
+                <param type="object" name="value">expr:false
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">isCentral_var</param>
                 <param type="object" name="value">expr:office_var == "0509" ?
                     true : office_var == "0519" ?
@@ -139,6 +144,10 @@
                 <param type="object" name="value">Level10</param>
             </operation>
             <operation id="Context.SetVar">
+                <param type="string" name="name">RRHH</param>
+                <param type="object" name="value">expr:Document.workspace.title.equals("Solicitud de Transferencia RRHH") ? true : false</param>
+            </operation>
+            <operation id="Context.SetVar">
                 <param type="string" name="name">isDG</param>
                 <param type="boolean" name="value">
                     expr:org.nuxeo.runtime.api.Framework.getService(org.nuxeo.ecm.platform.usermanager.UserManager).getUsersInGroupAndSubGroups(DG).contains(usuario)
@@ -154,6 +163,12 @@
             <operation id="Context.SetWorkflowVar">
                 <param type="string" name="name">isDG</param>
                 <param type="object" name="value">expr:isDG
+                </param>
+            </operation>
+
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">isRRHH</param>
+                <param type="object" name="value">expr:RRHH
                 </param>
             </operation>
 
