@@ -79,8 +79,8 @@
 						<property name="nxl_colspan_0">2</property>
 						<property name="nxl_colspan_1">2</property>
 					</properties>
-					<widget>transferrequest_totalInput</widget>
-					<widget>transferrequest_totalOutput</widget>
+					<widget>transferrequest_amount</widget>
+					<widget></widget>
 				</row>
 			</rows>
 
@@ -391,13 +391,13 @@
 				</subWidgets>
 			</widget>
 
-			<widget name="transferrequest_totalInput" type="currency">
+			<widget name="transferrequest_amount" type="currency">
 				<labels>
-					<label mode="any">label.transferrequest.totalInput</label>
+					<label mode="any">Cantidad</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>transferrequest:totalInput</field>
+					<field>transferrequest:amount</field>
 				</fields>
 				<properties widgetMode="view">
 					<property name="type">currency</property>
@@ -410,24 +410,6 @@
 				</widgetModes>
 			</widget>
 
-			<widget name="transferrequest_totalOutput" type="currency">
-				<labels>
-					<label mode="any">label.transferrequest.totalOutput</label>
-				</labels>
-				<translated>true</translated>
-				<fields>
-					<field>transferrequest:totalOutput</field>
-				</fields>
-				<properties widgetMode="view">
-					<property name="type">currency</property>
-					<property name="minFractionDigits">2</property>
-					<property name="currencySymbol">€</property>
-				</properties>
-				<widgetModes>
-					<mode value="edit">hidden</mode>
-					<mode value="create">hidden</mode>
-				</widgetModes>
-			</widget>
 			<widget name="transferrequest_message" type="text">
 				<!-- Se quita este control a petición de cliente. Mantenemos el widget para posibles reincorporaciones. -->
 				<labels>
