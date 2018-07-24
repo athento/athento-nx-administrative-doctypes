@@ -209,9 +209,19 @@
                             <property name="query">SELECT * FROM Document WHERE ecm:primaryType = 'TravelRequest' AND
                                     ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState IN ('Finished','Closed',
 								    'Validated') AND administrative:travel_ipn = '#{currentUser.name}'
-								    AND dc:title ILIKE '%?%'
+								    AND dc:title ILIKE '%?%' ORDER BY dc:modified DESC
                             </property>
 							<property name="required">true</property>
+							<property name="documentSchemas">dublincore,common,administrative</property>
+							<property name="suggestionFormatter">myformatter</property>
+							<property name="selectionFormatter">myformatter</property>
+							<property name="inlinejs">
+								<![CDATA[function myformatter(doc) {
+								var markup = ""
+								markup += doc.title + " - Objeto de la mision: " + doc.properties['administrative:travelPurpose']
+								return markup;
+								}]]>
+							</property>
 						</properties>
 					</widget>
 					<widget name="sub7" type="selectOneDirectory">
