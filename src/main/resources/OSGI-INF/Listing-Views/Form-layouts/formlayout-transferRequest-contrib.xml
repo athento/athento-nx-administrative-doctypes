@@ -46,6 +46,12 @@
 				</row>
 				<row>
 					<properties mode="any">
+						<property name="nxl_colspan_0">2</property>
+					</properties>
+					<widget>transferrequest_ordenante</widget>
+				</row>
+				<row>
+					<properties mode="any">
 						<property name="nxl_colspan_0">1</property>
 					</properties>
 					<widget>transferrequest_transfernumber</widget>
@@ -205,6 +211,26 @@
 					<field>transferrequest:subject</field>
 				</fields>
 				<properties widgetMode="any">
+					<property name="required">true</property>
+				</properties>
+				<widgetModes>
+					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?'edit':'view'}</mode>
+				</widgetModes>
+			</widget>
+
+			<widget name="transferrequest_ordenante" type="selectOneDirectory">
+				<labels>
+					<label mode="any">Empresa ordenante</label>
+				</labels>
+				<translated>true</translated>
+				<fields>
+					<field>transferrequest:ordenante</field>
+				</fields>
+				<properties widgetMode="any">
+					<property name="directoryName">companynumber</property>
+					<property name="ordering">ordering</property>
+					<property name="displayIdAndLabel">true</property>
+					<property name="localize">true</property>
 					<property name="required">true</property>
 				</properties>
 				<widgetModes>
