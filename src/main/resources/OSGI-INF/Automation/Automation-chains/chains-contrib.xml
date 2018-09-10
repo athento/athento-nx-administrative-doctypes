@@ -65,9 +65,14 @@
                 <param type="object" name="value">expr:Document["projectFile:projectid"]
                 </param>
             </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">projectNumberReplaced</param>
+                <param type="object" name="value">expr:@{projectNumber.replaceAll("\'", "\\\\\'")}
+                </param>
+            </operation>
             <operation id="Document.Query">
                 <param type="string" name="query">expr:SELECT * FROM ProjectFile WHERE
-                    dc:title = '@{projectNumber}' AND
+                    dc:title = '@{projectNumberReplaced}' AND
                     ecm:isCheckedInVersion = 0 AND
                     ecm:currentLifeCycleState
                     != 'deleted'
