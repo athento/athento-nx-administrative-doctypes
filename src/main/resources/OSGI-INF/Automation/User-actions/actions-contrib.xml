@@ -152,6 +152,18 @@
 			</filter>
 		</action>
 
+		<action id="update_available_budget"
+				label="Actualizar disponible segun facturas asociadas" enabled="true"
+				order="10000" type="link" immediate="true"
+				link="#{operationActionBean.doOperation('updateRelated-checkEnabled')}">
+			<category>DOCUMENT_SUMMARY_CUSTOM_ACTIONS</category>
+			<filter id="filter@update_available_budget">
+				<rule grant="true">
+					<type>ProjectFile</type>
+				</rule>
+			</filter>
+		</action>
+
 		<action id="dashboard_user_favorites" enabled="false">
 		</action>
 
