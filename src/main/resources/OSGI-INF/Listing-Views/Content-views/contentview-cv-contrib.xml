@@ -701,8 +701,8 @@
 					<predicate parameter="S_FACTURA:assignedTo" operator="LIKE">
 						<field schema="administrative_cv" name="S_FACTURA_assignedTo" />
 					</predicate>
-					<predicate parameter="S_FACTURA:assignedToSecondVocabulary" operator="LIKE">
-						<field schema="administrative_cv" name="S_FACTURA_assignedToSecondVocabulary" />
+					<predicate parameter="S_FACTURA:assignedToSecond" operator="LIKE">
+						<field schema="administrative_cv" name="S_FACTURA_assignedToSecond" />
 					</predicate>
 					<predicate parameter="projectFile:projectid" operator="LIKE">
 						<field schema="administrative_cv" name="projectFile_projectid" />

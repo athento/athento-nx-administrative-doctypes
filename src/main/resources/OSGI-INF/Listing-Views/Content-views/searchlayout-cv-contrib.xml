@@ -597,7 +597,7 @@
 					<properties mode="any">
 						<property name="nxl_colspan_0">2</property>
 					</properties>
-					<widget>S_FACTURA_assignedToSecondVocabulary</widget>
+					<widget>S_FACTURA_assignedToSecond</widget>
 				</row>
 				<row>
 					<properties mode="any">
@@ -956,13 +956,13 @@
 				</fields>
 			</widget>
 
-			<widget name="S_FACTURA_assignedToSecondVocabulary" type="text">
+			<widget name="S_FACTURA_assignedToSecond" type="text">
 				<labels>
 					<label mode="any">label.S_FACTURA.assignedToSecondVocabulary</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>administrative_cv:S_FACTURA_assignedToSecondVocabulary</field>
+					<field>administrative_cv:S_FACTURA_assignedToSecond</field>
 				</fields>
 			</widget>
 

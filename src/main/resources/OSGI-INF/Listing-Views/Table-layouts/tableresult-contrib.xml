@@ -403,12 +403,12 @@
 					</properties>
 					<widget>S_FACTURA_assignedTo</widget>
 				</column>
-				<column name="S_FACTURA_assignedToSecondVocabulary" selectedByDefault="false">
+				<column name="S_FACTURA_assignedToSecond" selectedByDefault="false">
 					<properties mode="any">
 						<property name="useFirstWidgetLabelAsColumnHeader">true</property>
 						<property name="columnStyleClass"></property>
 						<property name="label">label.S_FACTURA.assignedToSecondVocabulary</property>
-						<property name="sortPropertyName">S_FACTURA:assignedToSecondVocabulary</property>
+						<property name="sortPropertyName">S_FACTURA:assignedToSecond</property>
 					</properties>
 					<properties mode="edit_sort_infos">
 						<property name="showInSortInfoSelection">true</property>
@@ -416,7 +416,7 @@
 					<properties mode="edit_sort_infos_map">
 						<property name="showInSortInfoSelection">true</property>
 					</properties>
-					<widget>S_FACTURA_assignedToSecondVocabulary</widget>
+					<widget>S_FACTURA_assignedToSecond</widget>
 				</column>
 				<column name="subject" selectedByDefault="false">
 					<properties mode="any">
@@ -645,13 +645,13 @@
 					<field>data['S_FACTURA']['assignedTo']</field>
 				</fields>
 			</widget>
-			<widget name="S_FACTURA_assignedToSecondVocabulary" type="text">
+			<widget name="S_FACTURA_assignedToSecond" type="text">
 				<labels>
 					<label mode="any">label.S_FACTURA.assignedToSecondVocabulary</label>
 				</labels>
 				<translated>true</translated>
 				<fields>
-					<field>data['S_FACTURA']['assignedToSecondVocabulary']</field>
+					<field>data['S_FACTURA']['assignedToSecond']</field>
 				</fields>
 			</widget>
 			<widget name="subject" type="text">
