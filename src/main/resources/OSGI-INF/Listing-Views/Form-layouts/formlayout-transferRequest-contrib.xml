@@ -251,9 +251,9 @@
 				</properties>
 				<widgetModes>
 					<mode value="edit">#{layoutValue.currentLifeCycleState =='Draft'?
-					'edit' : currentUser.isMemberOf("Tesoreria - Madrid") ?
-					'edit' : currentUser.isMemberOf("Tesoreria - Barcelona") ?
-					'edit' : currentUser.isMemberOf("Tesoreria - Levante") ?
+					'edit' : currentUser.isMemberOf("Tesoreria-Madrid") ?
+					'edit' : currentUser.isMemberOf("Tesoreria-Barcelona") ?
+					'edit' : currentUser.isMemberOf("Tesoreria-Levante") ?
 					'edit' : layoutValue.currentLifeCycleState !='PendingValidation'? 'edit':'view'}</mode>
 				</widgetModes>
 			</widget>
@@ -315,9 +315,9 @@
 					<property name="display">table</property>
 				</properties>
 				<widgetModes>
-					<mode value="edit">#{currentUser.isMemberOf("Tesoreria - Madrid") ?
-					'edit' : currentUser.isMemberOf("Tesoreria - Barcelona") ?
-					'edit' : currentUser.isMemberOf("Tesoreria - Levante") ?
+					<mode value="edit">#{currentUser.isMemberOf("Tesoreria-Madrid") ?
+					'edit' : currentUser.isMemberOf("Tesoreria-Barcelona") ?
+					'edit' : currentUser.isMemberOf("Tesoreria-Levante") ?
 					'edit' : layoutValue.currentLifeCycleState !='PendingValidation'? 'edit':'view'}</mode>
 				</widgetModes>
 				<subWidgets>
