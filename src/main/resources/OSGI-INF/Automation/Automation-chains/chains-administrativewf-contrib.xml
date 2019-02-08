@@ -37,15 +37,15 @@
                 <param type="string" name="name">isRME_var</param>
                 <param type="object" name="value">expr:office_var == "0529" ?
                     true : office_var == "0354" ?
-                    true : office_var == "0475" ?
-                    true : false
+                    false : office_var == "0475" ?
+                    false : false
                 </param>
             </operation>
-            <operation id="Context.SetVar">
+            <!--<operation id="Context.SetVar">
                 <param type="string" name="name">isRME_var</param>
                 <param type="object" name="value">expr:false
                 </param>
-            </operation>
+            </operation>-->
             <operation id="Context.SetVar">
                 <param type="string" name="name">isCentral_var</param>
                 <param type="object" name="value">expr:office_var == "0509" ?
@@ -60,7 +60,27 @@
             </operation>
             <operation id="Context.SetVar">
                 <param type="string" name="name">sector_var</param>
-                <param type="object" name="value">expr:Document["administrative:sector"]
+                <param type="object" name="value">expr:Document["administrative:sector"] == empty ?
+                    empty : Document["administrative:sector"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">travel_activity_var</param>
+                <param type="object" name="value">expr:Document["administrative:travel_activity"] == empty ?
+                    empty : Document["administrative:travel_activity"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">activity_var</param>
+                <param type="object" name="value">expr:Document["userFile:activity"] == empty ?
+                    empty : Document["userFile:activity"]
+                </param>
+            </operation>
+            <operation id="Context.SetVar">
+                <param type="string" name="name">activity_var</param>
+                <param type="object" name="value">expr:travel_activity_var != empty ? travel_activity_var :
+                    (activity_var != empty ? activity_var :
+                    (sector_var != empty ? sector_var : empty))
                 </param>
             </operation>
             <operation id="Context.SetVar">
@@ -178,7 +198,7 @@
                 </param>
             </operation>
 
-            <operation id="Context.SetWorkflowVar">
+            <!--<operation id="Context.SetWorkflowVar">
                 <param type="string" name="name">level25office</param>
                 <param type="object" name="value">expr:isRME_var ?
                     (sector_var == '00' ? RME_VN :
@@ -187,6 +207,18 @@
                     (sector_var == '00' ? DIST_VN :
                     sector_var == '05' ? RRHH_WF :
                     sector_var == '06' ? MK_WF : level25) :
+                    level25
+                </param>
+            </operation>-->
+            <operation id="Context.SetWorkflowVar">
+                <param type="string" name="name">level25office</param>
+                <param type="object" name="value">expr:isRME_var ?
+                    (activity_var == '00' ? RME_VN :
+                    activity_var == '01' ? level25 : level25) :
+                    isCentral_var ?
+                    (activity_var == '00' ? level25 :
+                    activity_var == '05' ? level25 :
+                    activity_var == '06' ? level25 : level25) :
                     level25
                 </param>
             </operation>
